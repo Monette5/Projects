@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns = "urn:bargraph"
+  targetNamespace="urn:bargraph"
+  >
+  <xs:element name="BarGraph">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Bar" type="Bar" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Bar">
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string" />
+      <xs:element name="Value" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

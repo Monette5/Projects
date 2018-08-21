@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet11.xsd" xmlns:mstns="http://tempuri.org/DataSet11.xsd" xmlns="http://tempuri.org/DataSet11.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.AccessLoginApp.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="System.Data.CData.ZohoCRM" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LeadsTableAdapter" GeneratorDataComponentClassName="LeadsTableAdapter" Name="Leads" UserDataComponentName="LeadsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="Leads" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [CData].[ZohoCRM].[Leads] WHERE (((@IsNull_Lead_Owner = 1 AND [Lead_Owner] IS NULL) OR ([Lead_Owner] = @Original_Lead_Owner)) AND ([LeadId] = @Original_LeadId) AND ((@IsNull_Company = 1 AND [Company] IS NULL) OR ([Company] = @Original_Company)) AND ((@IsNull_First_Name = 1 AND [First_Name] IS NULL) OR ([First_Name] = @Original_First_Name)) AND ((@IsNull_Last_Name = 1 AND [Last_Name] IS NULL) OR ([Last_Name] = @Original_Last_Name)) AND ((@IsNull_Designation = 1 AND [Designation] IS NULL) OR ([Designation] = @Original_Designation)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)) AND ((@IsNull_Fax = 1 AND [Fax] IS NULL) OR ([Fax] = @Original_Fax)) AND ((@IsNull_Mobile = 1 AND [Mobile] IS NULL) OR ([Mobile] = @Original_Mobile)) AND ((@IsNull_Website = 1 AND [Website] IS NULL) OR ([Website] = @Original_Website)) AND ((@IsNull_Lead_Source = 1 AND [Lead_Source] IS NULL) OR ([Lead_Source] = @Original_Lead_Source)) AND ((@IsNull_Lead_Status = 1 AND [Lead_Status] IS NULL) OR ([Lead_Status] = @Original_Lead_Status)) AND ((@IsNull_Industry = 1 AND [Industry] IS NULL) OR ([Industry] = @Original_Industry)) AND ((@IsNull_No_of_Employees = 1 AND [No_of_Employees] IS NULL) OR ([No_of_Employees] = @Original_No_of_Employees)) AND ((@IsNull_Annual_Revenue = 1 AND [Annual_Revenue] IS NULL) OR ([Annual_Revenue] = @Original_Annual_Revenue)) AND ((@IsNull_Rating = 1 AND [Rating] IS NULL) OR ([Rating] = @Original_Rating)) AND ((@IsNull_Created_By = 1 AND [Created_By] IS NULL) OR ([Created_By] = @Original_Created_By)) AND ((@IsNull_Email_Opt_Out = 1 AND [Email_Opt_Out] IS NULL) OR ([Email_Opt_Out] = @Original_Email_Opt_Out)) AND ((@IsNull_Skype_ID = 1 AND [Skype_ID] IS NULL) OR ([Skype_ID] = @Original_Skype_ID)) AND ((@IsNull_Modified_By = 1 AND [Modified_By] IS NULL) OR ([Modified_By] = @Original_Modified_By)) AND ((@IsNull_Salutation = 1 AND [Salutation] IS NULL) OR ([Salutation] = @Original_Salutation)) AND ((@IsNull_Last_Activity_Time = 1 AND [Last_Activity_Time] IS NULL) OR ([Last_Activity_Time] = @Original_Last_Activity_Time)) AND ((@IsNull_Secondary_Email = 1 AND [Secondary_Email] IS NULL) OR ([Secondary_Email] = @Original_Secondary_Email)) AND ((@IsNull_Twitter = 1 AND [Twitter] IS NULL) OR ([Twitter] = @Original_Twitter)) AND ((@IsNull_Street = 1 AND [Street] IS NULL) OR ([Street] = @Original_Street)) AND ((@IsNull_City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_State = 1 AND [State] IS NULL) OR ([State] = @Original_State)) AND ((@IsNull_Zip_Code = 1 AND [Zip_Code] IS NULL) OR ([Zip_Code] = @Original_Zip_Code)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ([SMOWNERID] = @Original_SMOWNERID) AND ([SMCREATORID] = @Original_SMCREATORID) AND ([Created_Time] = @Original_Created_Time) AND ([Modified_Time] = @Original_Modified_Time) AND ([MODIFIEDBY] = @Original_MODIFIEDBY))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Lead_Owner" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Owner" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Lead_Owner" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Owner" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_LeadId" Precision="0" Scale="0" Size="0" SourceColumn="LeadId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Company" Precision="0" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Company" Precision="0" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_First_Name" Precision="0" Scale="0" Size="0" SourceColumn="First_Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_First_Name" Precision="0" Scale="0" Size="0" SourceColumn="First_Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Last_Name" Precision="0" Scale="0" Size="0" SourceColumn="Last_Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Last_Name" Precision="0" Scale="0" Size="0" SourceColumn="Last_Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Designation" Precision="0" Scale="0" Size="0" SourceColumn="Designation" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Designation" Precision="0" Scale="0" Size="0" SourceColumn="Designation" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Email" Precision="0" Scale="0" Size="0" SourceColumn="Email" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Email" Precision="0" Scale="0" Size="0" SourceColumn="Email" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Phone" Precision="0" Scale="0" Size="0" SourceColumn="Phone" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Phone" Precision="0" Scale="0" Size="0" SourceColumn="Phone" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Fax" Precision="0" Scale="0" Size="0" SourceColumn="Fax" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Fax" Precision="0" Scale="0" Size="0" SourceColumn="Fax" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Mobile" Precision="0" Scale="0" Size="0" SourceColumn="Mobile" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Mobile" Precision="0" Scale="0" Size="0" SourceColumn="Mobile" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Website" Precision="0" Scale="0" Size="0" SourceColumn="Website" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Website" Precision="0" Scale="0" Size="0" SourceColumn="Website" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Lead_Source" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Source" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Lead_Source" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Source" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Lead_Status" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Status" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Lead_Status" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Status" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Industry" Precision="0" Scale="0" Size="0" SourceColumn="Industry" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Industry" Precision="0" Scale="0" Size="0" SourceColumn="Industry" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_No_of_Employees" Precision="0" Scale="0" Size="0" SourceColumn="No_of_Employees" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_No_of_Employees" Precision="0" Scale="0" Size="0" SourceColumn="No_of_Employees" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Annual_Revenue" Precision="0" Scale="0" Size="0" SourceColumn="Annual_Revenue" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Annual_Revenue" Precision="0" Scale="0" Size="0" SourceColumn="Annual_Revenue" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Rating" Precision="0" Scale="0" Size="0" SourceColumn="Rating" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Rating" Precision="0" Scale="0" Size="0" SourceColumn="Rating" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Created_By" Precision="0" Scale="0" Size="0" SourceColumn="Created_By" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Created_By" Precision="0" Scale="0" Size="0" SourceColumn="Created_By" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Email_Opt_Out" Precision="0" Scale="0" Size="0" SourceColumn="Email_Opt_Out" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Email_Opt_Out" Precision="0" Scale="0" Size="0" SourceColumn="Email_Opt_Out" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Skype_ID" Precision="0" Scale="0" Size="0" SourceColumn="Skype_ID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Skype_ID" Precision="0" Scale="0" Size="0" SourceColumn="Skype_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Modified_By" Precision="0" Scale="0" Size="0" SourceColumn="Modified_By" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Modified_By" Precision="0" Scale="0" Size="0" SourceColumn="Modified_By" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Salutation" Precision="0" Scale="0" Size="0" SourceColumn="Salutation" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Salutation" Precision="0" Scale="0" Size="0" SourceColumn="Salutation" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Last_Activity_Time" Precision="0" Scale="0" Size="0" SourceColumn="Last_Activity_Time" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Last_Activity_Time" Precision="0" Scale="0" Size="0" SourceColumn="Last_Activity_Time" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Secondary_Email" Precision="0" Scale="0" Size="0" SourceColumn="Secondary_Email" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Secondary_Email" Precision="0" Scale="0" Size="0" SourceColumn="Secondary_Email" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Twitter" Precision="0" Scale="0" Size="0" SourceColumn="Twitter" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Twitter" Precision="0" Scale="0" Size="0" SourceColumn="Twitter" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Street" Precision="0" Scale="0" Size="0" SourceColumn="Street" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Street" Precision="0" Scale="0" Size="0" SourceColumn="Street" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_City" Precision="0" Scale="0" Size="0" SourceColumn="City" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_City" Precision="0" Scale="0" Size="0" SourceColumn="City" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_State" Precision="0" Scale="0" Size="0" SourceColumn="State" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_State" Precision="0" Scale="0" Size="0" SourceColumn="State" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Zip_Code" Precision="0" Scale="0" Size="0" SourceColumn="Zip_Code" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Zip_Code" Precision="0" Scale="0" Size="0" SourceColumn="Zip_Code" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Country" Precision="0" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Country" Precision="0" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Description" Precision="0" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Description" Precision="0" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_SMOWNERID" Precision="0" Scale="0" Size="0" SourceColumn="SMOWNERID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_SMCREATORID" Precision="0" Scale="0" Size="0" SourceColumn="SMCREATORID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Created_Time" Precision="0" Scale="0" Size="0" SourceColumn="Created_Time" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Modified_Time" Precision="0" Scale="0" Size="0" SourceColumn="Modified_Time" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_MODIFIEDBY" Precision="0" Scale="0" Size="0" SourceColumn="MODIFIEDBY" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [CData].[ZohoCRM].[Leads] ([Lead_Owner], [Company], [First_Name], [Last_Name], [Designation], [Email], [Phone], [Fax], [Mobile], [Website], [Lead_Source], [Lead_Status], [Industry], [No_of_Employees], [Annual_Revenue], [Rating], [Created_By], [Email_Opt_Out], [Skype_ID], [Modified_By], [Salutation], [Last_Activity_Time], [Secondary_Email], [Twitter], [Street], [City], [State], [Zip_Code], [Country], [Description]) VALUES (@Lead_Owner, @Company, @First_Name, @Last_Name, @Designation, @Email, @Phone, @Fax, @Mobile, @Website, @Lead_Source, @Lead_Status, @Industry, @No_of_Employees, @Annual_Revenue, @Rating, @Created_By, @Email_Opt_Out, @Skype_ID, @Modified_By, @Salutation, @Last_Activity_Time, @Secondary_Email, @Twitter, @Street, @City, @State, @Zip_Code, @Country, @Description)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Lead_Owner" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Owner" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Company" Precision="0" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@First_Name" Precision="0" Scale="0" Size="0" SourceColumn="First_Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Last_Name" Precision="0" Scale="0" Size="0" SourceColumn="Last_Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Designation" Precision="0" Scale="0" Size="0" SourceColumn="Designation" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Email" Precision="0" Scale="0" Size="0" SourceColumn="Email" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Phone" Precision="0" Scale="0" Size="0" SourceColumn="Phone" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Fax" Precision="0" Scale="0" Size="0" SourceColumn="Fax" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Mobile" Precision="0" Scale="0" Size="0" SourceColumn="Mobile" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Website" Precision="0" Scale="0" Size="0" SourceColumn="Website" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Lead_Source" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Source" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Lead_Status" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Status" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Industry" Precision="0" Scale="0" Size="0" SourceColumn="Industry" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@No_of_Employees" Precision="0" Scale="0" Size="0" SourceColumn="No_of_Employees" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Annual_Revenue" Precision="0" Scale="0" Size="0" SourceColumn="Annual_Revenue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Rating" Precision="0" Scale="0" Size="0" SourceColumn="Rating" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Created_By" Precision="0" Scale="0" Size="0" SourceColumn="Created_By" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Email_Opt_Out" Precision="0" Scale="0" Size="0" SourceColumn="Email_Opt_Out" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Skype_ID" Precision="0" Scale="0" Size="0" SourceColumn="Skype_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Modified_By" Precision="0" Scale="0" Size="0" SourceColumn="Modified_By" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Salutation" Precision="0" Scale="0" Size="0" SourceColumn="Salutation" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Last_Activity_Time" Precision="0" Scale="0" Size="0" SourceColumn="Last_Activity_Time" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Secondary_Email" Precision="0" Scale="0" Size="0" SourceColumn="Secondary_Email" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Twitter" Precision="0" Scale="0" Size="0" SourceColumn="Twitter" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Street" Precision="0" Scale="0" Size="0" SourceColumn="Street" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@City" Precision="0" Scale="0" Size="0" SourceColumn="City" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@State" Precision="0" Scale="0" Size="0" SourceColumn="State" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Zip_Code" Precision="0" Scale="0" Size="0" SourceColumn="Zip_Code" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Country" Precision="0" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Description" Precision="0" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT [Lead_Owner], [LeadId], [Company], [First_Name], [Last_Name], [Designation], [Email], [Phone], [Fax], [Mobile], [Website], [Lead_Source], [Lead_Status], [Industry], [No_of_Employees], [Annual_Revenue], [Rating], [Created_By], [Email_Opt_Out], [Skype_ID], [Modified_By], [Salutation], [Last_Activity_Time], [Secondary_Email], [Twitter], [Street], [City], [State], [Zip_Code], [Country], [Description], [SMOWNERID], [SMCREATORID], [Created_Time], [Modified_Time], [MODIFIEDBY] FROM [Leads]</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [CData].[ZohoCRM].[Leads] SET [Lead_Owner] = @Lead_Owner, [Company] = @Company, [First_Name] = @First_Name, [Last_Name] = @Last_Name, [Designation] = @Designation, [Email] = @Email, [Phone] = @Phone, [Fax] = @Fax, [Mobile] = @Mobile, [Website] = @Website, [Lead_Source] = @Lead_Source, [Lead_Status] = @Lead_Status, [Industry] = @Industry, [No_of_Employees] = @No_of_Employees, [Annual_Revenue] = @Annual_Revenue, [Rating] = @Rating, [Created_By] = @Created_By, [Email_Opt_Out] = @Email_Opt_Out, [Skype_ID] = @Skype_ID, [Modified_By] = @Modified_By, [Salutation] = @Salutation, [Last_Activity_Time] = @Last_Activity_Time, [Secondary_Email] = @Secondary_Email, [Twitter] = @Twitter, [Street] = @Street, [City] = @City, [State] = @State, [Zip_Code] = @Zip_Code, [Country] = @Country, [Description] = @Description WHERE (((@IsNull_Lead_Owner = 1 AND [Lead_Owner] IS NULL) OR ([Lead_Owner] = @Original_Lead_Owner)) AND ([LeadId] = @Original_LeadId) AND ((@IsNull_Company = 1 AND [Company] IS NULL) OR ([Company] = @Original_Company)) AND ((@IsNull_First_Name = 1 AND [First_Name] IS NULL) OR ([First_Name] = @Original_First_Name)) AND ((@IsNull_Last_Name = 1 AND [Last_Name] IS NULL) OR ([Last_Name] = @Original_Last_Name)) AND ((@IsNull_Designation = 1 AND [Designation] IS NULL) OR ([Designation] = @Original_Designation)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)) AND ((@IsNull_Fax = 1 AND [Fax] IS NULL) OR ([Fax] = @Original_Fax)) AND ((@IsNull_Mobile = 1 AND [Mobile] IS NULL) OR ([Mobile] = @Original_Mobile)) AND ((@IsNull_Website = 1 AND [Website] IS NULL) OR ([Website] = @Original_Website)) AND ((@IsNull_Lead_Source = 1 AND [Lead_Source] IS NULL) OR ([Lead_Source] = @Original_Lead_Source)) AND ((@IsNull_Lead_Status = 1 AND [Lead_Status] IS NULL) OR ([Lead_Status] = @Original_Lead_Status)) AND ((@IsNull_Industry = 1 AND [Industry] IS NULL) OR ([Industry] = @Original_Industry)) AND ((@IsNull_No_of_Employees = 1 AND [No_of_Employees] IS NULL) OR ([No_of_Employees] = @Original_No_of_Employees)) AND ((@IsNull_Annual_Revenue = 1 AND [Annual_Revenue] IS NULL) OR ([Annual_Revenue] = @Original_Annual_Revenue)) AND ((@IsNull_Rating = 1 AND [Rating] IS NULL) OR ([Rating] = @Original_Rating)) AND ((@IsNull_Created_By = 1 AND [Created_By] IS NULL) OR ([Created_By] = @Original_Created_By)) AND ((@IsNull_Email_Opt_Out = 1 AND [Email_Opt_Out] IS NULL) OR ([Email_Opt_Out] = @Original_Email_Opt_Out)) AND ((@IsNull_Skype_ID = 1 AND [Skype_ID] IS NULL) OR ([Skype_ID] = @Original_Skype_ID)) AND ((@IsNull_Modified_By = 1 AND [Modified_By] IS NULL) OR ([Modified_By] = @Original_Modified_By)) AND ((@IsNull_Salutation = 1 AND [Salutation] IS NULL) OR ([Salutation] = @Original_Salutation)) AND ((@IsNull_Last_Activity_Time = 1 AND [Last_Activity_Time] IS NULL) OR ([Last_Activity_Time] = @Original_Last_Activity_Time)) AND ((@IsNull_Secondary_Email = 1 AND [Secondary_Email] IS NULL) OR ([Secondary_Email] = @Original_Secondary_Email)) AND ((@IsNull_Twitter = 1 AND [Twitter] IS NULL) OR ([Twitter] = @Original_Twitter)) AND ((@IsNull_Street = 1 AND [Street] IS NULL) OR ([Street] = @Original_Street)) AND ((@IsNull_City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_State = 1 AND [State] IS NULL) OR ([State] = @Original_State)) AND ((@IsNull_Zip_Code = 1 AND [Zip_Code] IS NULL) OR ([Zip_Code] = @Original_Zip_Code)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ([SMOWNERID] = @Original_SMOWNERID) AND ([SMCREATORID] = @Original_SMCREATORID) AND ([Created_Time] = @Original_Created_Time) AND ([Modified_Time] = @Original_Modified_Time) AND ([MODIFIEDBY] = @Original_MODIFIEDBY))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Lead_Owner" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Owner" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Company" Precision="0" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@First_Name" Precision="0" Scale="0" Size="0" SourceColumn="First_Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Last_Name" Precision="0" Scale="0" Size="0" SourceColumn="Last_Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Designation" Precision="0" Scale="0" Size="0" SourceColumn="Designation" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Email" Precision="0" Scale="0" Size="0" SourceColumn="Email" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Phone" Precision="0" Scale="0" Size="0" SourceColumn="Phone" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Fax" Precision="0" Scale="0" Size="0" SourceColumn="Fax" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Mobile" Precision="0" Scale="0" Size="0" SourceColumn="Mobile" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Website" Precision="0" Scale="0" Size="0" SourceColumn="Website" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Lead_Source" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Source" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Lead_Status" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Status" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Industry" Precision="0" Scale="0" Size="0" SourceColumn="Industry" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@No_of_Employees" Precision="0" Scale="0" Size="0" SourceColumn="No_of_Employees" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Annual_Revenue" Precision="0" Scale="0" Size="0" SourceColumn="Annual_Revenue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Rating" Precision="0" Scale="0" Size="0" SourceColumn="Rating" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Created_By" Precision="0" Scale="0" Size="0" SourceColumn="Created_By" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Email_Opt_Out" Precision="0" Scale="0" Size="0" SourceColumn="Email_Opt_Out" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Skype_ID" Precision="0" Scale="0" Size="0" SourceColumn="Skype_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Modified_By" Precision="0" Scale="0" Size="0" SourceColumn="Modified_By" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Salutation" Precision="0" Scale="0" Size="0" SourceColumn="Salutation" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Last_Activity_Time" Precision="0" Scale="0" Size="0" SourceColumn="Last_Activity_Time" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Secondary_Email" Precision="0" Scale="0" Size="0" SourceColumn="Secondary_Email" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Twitter" Precision="0" Scale="0" Size="0" SourceColumn="Twitter" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Street" Precision="0" Scale="0" Size="0" SourceColumn="Street" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@City" Precision="0" Scale="0" Size="0" SourceColumn="City" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@State" Precision="0" Scale="0" Size="0" SourceColumn="State" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Zip_Code" Precision="0" Scale="0" Size="0" SourceColumn="Zip_Code" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Country" Precision="0" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Description" Precision="0" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Lead_Owner" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Owner" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Lead_Owner" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Owner" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_LeadId" Precision="0" Scale="0" Size="0" SourceColumn="LeadId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Company" Precision="0" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Company" Precision="0" Scale="0" Size="0" SourceColumn="Company" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_First_Name" Precision="0" Scale="0" Size="0" SourceColumn="First_Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_First_Name" Precision="0" Scale="0" Size="0" SourceColumn="First_Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Last_Name" Precision="0" Scale="0" Size="0" SourceColumn="Last_Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Last_Name" Precision="0" Scale="0" Size="0" SourceColumn="Last_Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Designation" Precision="0" Scale="0" Size="0" SourceColumn="Designation" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Designation" Precision="0" Scale="0" Size="0" SourceColumn="Designation" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Email" Precision="0" Scale="0" Size="0" SourceColumn="Email" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Email" Precision="0" Scale="0" Size="0" SourceColumn="Email" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Phone" Precision="0" Scale="0" Size="0" SourceColumn="Phone" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Phone" Precision="0" Scale="0" Size="0" SourceColumn="Phone" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Fax" Precision="0" Scale="0" Size="0" SourceColumn="Fax" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Fax" Precision="0" Scale="0" Size="0" SourceColumn="Fax" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Mobile" Precision="0" Scale="0" Size="0" SourceColumn="Mobile" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Mobile" Precision="0" Scale="0" Size="0" SourceColumn="Mobile" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Website" Precision="0" Scale="0" Size="0" SourceColumn="Website" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Website" Precision="0" Scale="0" Size="0" SourceColumn="Website" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Lead_Source" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Source" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Lead_Source" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Source" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Lead_Status" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Status" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Lead_Status" Precision="0" Scale="0" Size="0" SourceColumn="Lead_Status" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Industry" Precision="0" Scale="0" Size="0" SourceColumn="Industry" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Industry" Precision="0" Scale="0" Size="0" SourceColumn="Industry" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_No_of_Employees" Precision="0" Scale="0" Size="0" SourceColumn="No_of_Employees" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_No_of_Employees" Precision="0" Scale="0" Size="0" SourceColumn="No_of_Employees" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Annual_Revenue" Precision="0" Scale="0" Size="0" SourceColumn="Annual_Revenue" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Annual_Revenue" Precision="0" Scale="0" Size="0" SourceColumn="Annual_Revenue" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Rating" Precision="0" Scale="0" Size="0" SourceColumn="Rating" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Rating" Precision="0" Scale="0" Size="0" SourceColumn="Rating" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Created_By" Precision="0" Scale="0" Size="0" SourceColumn="Created_By" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Created_By" Precision="0" Scale="0" Size="0" SourceColumn="Created_By" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Email_Opt_Out" Precision="0" Scale="0" Size="0" SourceColumn="Email_Opt_Out" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Email_Opt_Out" Precision="0" Scale="0" Size="0" SourceColumn="Email_Opt_Out" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Skype_ID" Precision="0" Scale="0" Size="0" SourceColumn="Skype_ID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Skype_ID" Precision="0" Scale="0" Size="0" SourceColumn="Skype_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Modified_By" Precision="0" Scale="0" Size="0" SourceColumn="Modified_By" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Modified_By" Precision="0" Scale="0" Size="0" SourceColumn="Modified_By" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Salutation" Precision="0" Scale="0" Size="0" SourceColumn="Salutation" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Salutation" Precision="0" Scale="0" Size="0" SourceColumn="Salutation" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Last_Activity_Time" Precision="0" Scale="0" Size="0" SourceColumn="Last_Activity_Time" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Last_Activity_Time" Precision="0" Scale="0" Size="0" SourceColumn="Last_Activity_Time" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Secondary_Email" Precision="0" Scale="0" Size="0" SourceColumn="Secondary_Email" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Secondary_Email" Precision="0" Scale="0" Size="0" SourceColumn="Secondary_Email" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Twitter" Precision="0" Scale="0" Size="0" SourceColumn="Twitter" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Twitter" Precision="0" Scale="0" Size="0" SourceColumn="Twitter" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Street" Precision="0" Scale="0" Size="0" SourceColumn="Street" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Street" Precision="0" Scale="0" Size="0" SourceColumn="Street" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_City" Precision="0" Scale="0" Size="0" SourceColumn="City" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_City" Precision="0" Scale="0" Size="0" SourceColumn="City" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_State" Precision="0" Scale="0" Size="0" SourceColumn="State" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_State" Precision="0" Scale="0" Size="0" SourceColumn="State" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Zip_Code" Precision="0" Scale="0" Size="0" SourceColumn="Zip_Code" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Zip_Code" Precision="0" Scale="0" Size="0" SourceColumn="Zip_Code" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Country" Precision="0" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Country" Precision="0" Scale="0" Size="0" SourceColumn="Country" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Description" Precision="0" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Description" Precision="0" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_SMOWNERID" Precision="0" Scale="0" Size="0" SourceColumn="SMOWNERID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_SMCREATORID" Precision="0" Scale="0" Size="0" SourceColumn="SMCREATORID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Created_Time" Precision="0" Scale="0" Size="0" SourceColumn="Created_Time" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_Modified_Time" Precision="0" Scale="0" Size="0" SourceColumn="Modified_Time" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@Original_MODIFIEDBY" Precision="0" Scale="0" Size="0" SourceColumn="MODIFIEDBY" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Lead_Owner" DataSetColumn="Lead_Owner" />
+              <Mapping SourceColumn="LeadId" DataSetColumn="LeadId" />
+              <Mapping SourceColumn="Company" DataSetColumn="Company" />
+              <Mapping SourceColumn="First_Name" DataSetColumn="First_Name" />
+              <Mapping SourceColumn="Last_Name" DataSetColumn="Last_Name" />
+              <Mapping SourceColumn="Designation" DataSetColumn="Designation" />
+              <Mapping SourceColumn="Email" DataSetColumn="Email" />
+              <Mapping SourceColumn="Phone" DataSetColumn="Phone" />
+              <Mapping SourceColumn="Fax" DataSetColumn="Fax" />
+              <Mapping SourceColumn="Mobile" DataSetColumn="Mobile" />
+              <Mapping SourceColumn="Website" DataSetColumn="Website" />
+              <Mapping SourceColumn="Lead_Source" DataSetColumn="Lead_Source" />
+              <Mapping SourceColumn="Lead_Status" DataSetColumn="Lead_Status" />
+              <Mapping SourceColumn="Industry" DataSetColumn="Industry" />
+              <Mapping SourceColumn="No_of_Employees" DataSetColumn="No_of_Employees" />
+              <Mapping SourceColumn="Annual_Revenue" DataSetColumn="Annual_Revenue" />
+              <Mapping SourceColumn="Rating" DataSetColumn="Rating" />
+              <Mapping SourceColumn="Created_By" DataSetColumn="Created_By" />
+              <Mapping SourceColumn="Email_Opt_Out" DataSetColumn="Email_Opt_Out" />
+              <Mapping SourceColumn="Skype_ID" DataSetColumn="Skype_ID" />
+              <Mapping SourceColumn="Modified_By" DataSetColumn="Modified_By" />
+              <Mapping SourceColumn="Salutation" DataSetColumn="Salutation" />
+              <Mapping SourceColumn="Last_Activity_Time" DataSetColumn="Last_Activity_Time" />
+              <Mapping SourceColumn="Secondary_Email" DataSetColumn="Secondary_Email" />
+              <Mapping SourceColumn="Twitter" DataSetColumn="Twitter" />
+              <Mapping SourceColumn="Street" DataSetColumn="Street" />
+              <Mapping SourceColumn="City" DataSetColumn="City" />
+              <Mapping SourceColumn="State" DataSetColumn="State" />
+              <Mapping SourceColumn="Zip_Code" DataSetColumn="Zip_Code" />
+              <Mapping SourceColumn="Country" DataSetColumn="Country" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="SMOWNERID" DataSetColumn="SMOWNERID" />
+              <Mapping SourceColumn="SMCREATORID" DataSetColumn="SMCREATORID" />
+              <Mapping SourceColumn="Created_Time" DataSetColumn="Created_Time" />
+              <Mapping SourceColumn="Modified_Time" DataSetColumn="Modified_Time" />
+              <Mapping SourceColumn="MODIFIEDBY" DataSetColumn="MODIFIEDBY" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Leads" msprop:Generator_TableClassName="LeadsDataTable" msprop:Generator_TableVarName="tableLeads" msprop:Generator_TablePropName="Leads" msprop:Generator_RowDeletingName="LeadsRowDeleting" msprop:Generator_RowChangingName="LeadsRowChanging" msprop:Generator_RowEvHandlerName="LeadsRowChangeEventHandler" msprop:Generator_RowDeletedName="LeadsRowDeleted" msprop:Generator_UserTableName="Leads" msprop:Generator_RowChangedName="LeadsRowChanged" msprop:Generator_RowEvArgName="LeadsRowChangeEvent" msprop:Generator_RowClassName="LeadsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Lead_Owner" msprop:Generator_ColumnVarNameInTable="columnLead_Owner" msprop:Generator_ColumnPropNameInRow="Lead_Owner" msprop:Generator_ColumnPropNameInTable="Lead_OwnerColumn" msprop:Generator_UserColumnName="Lead_Owner" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LeadId" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLeadId" msprop:Generator_ColumnPropNameInRow="LeadId" msprop:Generator_ColumnPropNameInTable="LeadIdColumn" msprop:Generator_UserColumnName="LeadId">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Company" msprop:Generator_ColumnVarNameInTable="columnCompany" msprop:Generator_ColumnPropNameInRow="Company" msprop:Generator_ColumnPropNameInTable="CompanyColumn" msprop:Generator_UserColumnName="Company" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="First_Name" msprop:Generator_ColumnVarNameInTable="columnFirst_Name" msprop:Generator_ColumnPropNameInRow="First_Name" msprop:Generator_ColumnPropNameInTable="First_NameColumn" msprop:Generator_UserColumnName="First_Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Last_Name" msprop:Generator_ColumnVarNameInTable="columnLast_Name" msprop:Generator_ColumnPropNameInRow="Last_Name" msprop:Generator_ColumnPropNameInTable="Last_NameColumn" msprop:Generator_UserColumnName="Last_Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Designation" msprop:Generator_ColumnVarNameInTable="columnDesignation" msprop:Generator_ColumnPropNameInRow="Designation" msprop:Generator_ColumnPropNameInTable="DesignationColumn" msprop:Generator_UserColumnName="Designation" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Phone" msprop:Generator_ColumnVarNameInTable="columnPhone" msprop:Generator_ColumnPropNameInRow="Phone" msprop:Generator_ColumnPropNameInTable="PhoneColumn" msprop:Generator_UserColumnName="Phone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fax" msprop:Generator_ColumnVarNameInTable="columnFax" msprop:Generator_ColumnPropNameInRow="Fax" msprop:Generator_ColumnPropNameInTable="FaxColumn" msprop:Generator_UserColumnName="Fax" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Mobile" msprop:Generator_ColumnVarNameInTable="columnMobile" msprop:Generator_ColumnPropNameInRow="Mobile" msprop:Generator_ColumnPropNameInTable="MobileColumn" msprop:Generator_UserColumnName="Mobile" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Website" msprop:Generator_ColumnVarNameInTable="columnWebsite" msprop:Generator_ColumnPropNameInRow="Website" msprop:Generator_ColumnPropNameInTable="WebsiteColumn" msprop:Generator_UserColumnName="Website" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Lead_Source" msprop:Generator_ColumnVarNameInTable="columnLead_Source" msprop:Generator_ColumnPropNameInRow="Lead_Source" msprop:Generator_ColumnPropNameInTable="Lead_SourceColumn" msprop:Generator_UserColumnName="Lead_Source" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Lead_Status" msprop:Generator_ColumnVarNameInTable="columnLead_Status" msprop:Generator_ColumnPropNameInRow="Lead_Status" msprop:Generator_ColumnPropNameInTable="Lead_StatusColumn" msprop:Generator_UserColumnName="Lead_Status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Industry" msprop:Generator_ColumnVarNameInTable="columnIndustry" msprop:Generator_ColumnPropNameInRow="Industry" msprop:Generator_ColumnPropNameInTable="IndustryColumn" msprop:Generator_UserColumnName="Industry" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="No_of_Employees" msprop:Generator_ColumnVarNameInTable="columnNo_of_Employees" msprop:Generator_ColumnPropNameInRow="No_of_Employees" msprop:Generator_ColumnPropNameInTable="No_of_EmployeesColumn" msprop:Generator_UserColumnName="No_of_Employees" type="xs:int" minOccurs="0" />
+              <xs:element name="Annual_Revenue" msprop:Generator_ColumnVarNameInTable="columnAnnual_Revenue" msprop:Generator_ColumnPropNameInRow="Annual_Revenue" msprop:Generator_ColumnPropNameInTable="Annual_RevenueColumn" msprop:Generator_UserColumnName="Annual_Revenue" type="xs:double" minOccurs="0" />
+              <xs:element name="Rating" msprop:Generator_ColumnVarNameInTable="columnRating" msprop:Generator_ColumnPropNameInRow="Rating" msprop:Generator_ColumnPropNameInTable="RatingColumn" msprop:Generator_UserColumnName="Rating" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Created_By" msprop:Generator_ColumnVarNameInTable="columnCreated_By" msprop:Generator_ColumnPropNameInRow="Created_By" msprop:Generator_ColumnPropNameInTable="Created_ByColumn" msprop:Generator_UserColumnName="Created_By" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email_Opt_Out" msprop:Generator_ColumnVarNameInTable="columnEmail_Opt_Out" msprop:Generator_ColumnPropNameInRow="Email_Opt_Out" msprop:Generator_ColumnPropNameInTable="Email_Opt_OutColumn" msprop:Generator_UserColumnName="Email_Opt_Out" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Skype_ID" msprop:Generator_ColumnVarNameInTable="columnSkype_ID" msprop:Generator_ColumnPropNameInRow="Skype_ID" msprop:Generator_ColumnPropNameInTable="Skype_IDColumn" msprop:Generator_UserColumnName="Skype_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Modified_By" msprop:Generator_ColumnVarNameInTable="columnModified_By" msprop:Generator_ColumnPropNameInRow="Modified_By" msprop:Generator_ColumnPropNameInTable="Modified_ByColumn" msprop:Generator_UserColumnName="Modified_By" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Salutation" msprop:Generator_ColumnVarNameInTable="columnSalutation" msprop:Generator_ColumnPropNameInRow="Salutation" msprop:Generator_ColumnPropNameInTable="SalutationColumn" msprop:Generator_UserColumnName="Salutation" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Last_Activity_Time" msprop:Generator_ColumnVarNameInTable="columnLast_Activity_Time" msprop:Generator_ColumnPropNameInRow="Last_Activity_Time" msprop:Generator_ColumnPropNameInTable="Last_Activity_TimeColumn" msprop:Generator_UserColumnName="Last_Activity_Time" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Secondary_Email" msprop:Generator_ColumnVarNameInTable="columnSecondary_Email" msprop:Generator_ColumnPropNameInRow="Secondary_Email" msprop:Generator_ColumnPropNameInTable="Secondary_EmailColumn" msprop:Generator_UserColumnName="Secondary_Email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Twitter" msprop:Generator_ColumnVarNameInTable="columnTwitter" msprop:Generator_ColumnPropNameInRow="Twitter" msprop:Generator_ColumnPropNameInTable="TwitterColumn" msprop:Generator_UserColumnName="Twitter" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Street" msprop:Generator_ColumnVarNameInTable="columnStreet" msprop:Generator_ColumnPropNameInRow="Street" msprop:Generator_ColumnPropNameInTable="StreetColumn" msprop:Generator_UserColumnName="Street" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="City" msprop:Generator_ColumnVarNameInTable="columnCity" msprop:Generator_ColumnPropNameInRow="City" msprop:Generator_ColumnPropNameInTable="CityColumn" msprop:Generator_UserColumnName="City" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="State" msprop:Generator_ColumnVarNameInTable="columnState" msprop:Generator_ColumnPropNameInRow="State" msprop:Generator_ColumnPropNameInTable="StateColumn" msprop:Generator_UserColumnName="State" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Zip_Code" msprop:Generator_ColumnVarNameInTable="columnZip_Code" msprop:Generator_ColumnPropNameInRow="Zip_Code" msprop:Generator_ColumnPropNameInTable="Zip_CodeColumn" msprop:Generator_UserColumnName="Zip_Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Country" msprop:Generator_ColumnVarNameInTable="columnCountry" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_UserColumnName="Country" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SMOWNERID" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSMOWNERID" msprop:Generator_ColumnPropNameInRow="SMOWNERID" msprop:Generator_ColumnPropNameInTable="SMOWNERIDColumn" msprop:Generator_UserColumnName="SMOWNERID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SMCREATORID" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSMCREATORID" msprop:Generator_ColumnPropNameInRow="SMCREATORID" msprop:Generator_ColumnPropNameInTable="SMCREATORIDColumn" msprop:Generator_UserColumnName="SMCREATORID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Created_Time" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCreated_Time" msprop:Generator_ColumnPropNameInRow="Created_Time" msprop:Generator_ColumnPropNameInTable="Created_TimeColumn" msprop:Generator_UserColumnName="Created_Time" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Modified_Time" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnModified_Time" msprop:Generator_ColumnPropNameInRow="Modified_Time" msprop:Generator_ColumnPropNameInTable="Modified_TimeColumn" msprop:Generator_UserColumnName="Modified_Time" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MODIFIEDBY" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMODIFIEDBY" msprop:Generator_ColumnPropNameInRow="MODIFIEDBY" msprop:Generator_ColumnPropNameInTable="MODIFIEDBYColumn" msprop:Generator_UserColumnName="MODIFIEDBY" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Leads" />
+      <xs:field xpath="mstns:LeadId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

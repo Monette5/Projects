@@ -1,0 +1,12 @@
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\bin\Debug\AccessLoginApp.exe.config
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\bin\Debug\AccessLoginApp.exe
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\bin\Debug\AccessLoginApp.pdb
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\obj\Debug\AccessLoginApp.csprojResolveAssemblyReference.cache
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\obj\Debug\AccessLoginApp.Form1.resources
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\obj\Debug\AccessLoginApp.Properties.Resources.resources
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\obj\Debug\AccessLoginApp.csproj.GenerateResource.Cache
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\obj\Debug\AccessLoginApp.exe
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\obj\Debug\AccessLoginApp.pdb
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\obj\Debug\AccessLoginApp.Form2.resources
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\bin\Debug\Microsoft.Web.XmlTransform.dll
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\AccessLoginApp\AccessLoginApp\bin\Debug\NuGet.Core.dll

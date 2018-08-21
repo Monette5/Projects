@@ -1,0 +1,19 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.example.myapp"
+        },
+        "cordova-plugin-googlemaps": {
+            "API_KEY_FOR_ANDROID": "AIzaSyCvfbmi9IwPy5_R5HxwoILqrsFpFeTBqQs",
+            "PACKAGE_NAME": "com.example.myapp"
+        }
+    },
+    "dependent_plugins": {}
+}

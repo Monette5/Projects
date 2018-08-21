@@ -1,0 +1,10 @@
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\zohotest\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\zohotest\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\zohotest\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\zohotest\ConsoleApplication1\bin\Debug\ConsoleApplication1.xml
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\zohotest\ConsoleApplication1\obj\Debug\ConsoleApplication1.Resources.resources
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\zohotest\ConsoleApplication1\obj\Debug\ConsoleApplication1.vbproj.GenerateResource.Cache
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\zohotest\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\zohotest\ConsoleApplication1\obj\Debug\ConsoleApplication1.xml
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\zohotest\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\Monette\Documents\Visual Studio 2015\Projects\zohotest\ConsoleApplication1\obj\Debug\ConsoleApplication1.Form1.resources
