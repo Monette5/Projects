@@ -1,0 +1,90 @@
+<div tab="Support" >
+  <div wix-ctrl="SectionDividerLabeled" wix-options="{
+      label: 'Developer info'
+  }"></div>
+
+  <ul class="ro-list">
+    <li>
+      <a id="faqsModel" href="#">
+        <div class="ro-list-icon" wix-ctrl="Symbol" wix-options="{name: 'info'}"></div>
+        App FAQs
+      </a>
+    </li>
+    <li>
+      <a target="_blank" href="mailto:info@wearedigitalvision.com" >
+        <div class="ro-list-icon" wix-ctrl="Symbol" wix-options="{name: 'email'}"></div>
+        info@wearedigitalvision.com
+      </a>
+    </li>
+    <li>
+      <a target= "_blank" href="http://www.rolloverfx.com/">
+        <div class="ro-list-icon" wix-ctrl="Symbol" wix-options="{name: 'globe'}"></div>
+        Developer Website
+      </a>
+    </li>
+  </ul>
+
+  <hr class="divider-short" />
+
+  <div class="ro">
+    <p>See examples and find out more on the <a class="list_label" target= "_blank" href = "http://www.rolloverfx.com/">Rollover blog</a></p>
+  </div>
+
+  <hr class="divider-long" />
+  <div wix-ctrl="SectionDividerLabeled" wix-options="{ label: 'Review The App' }"></div>
+
+  <div class="ro">
+    <p>Enjoying our app? Leave us a review in the App Market.</p>
+    <p style="text-align:center">
+      <button id="rateModel" class="control-button btn-confirm-primary"><span>Rate Us</span></button>
+    </p>
+  </div>
+
+  <hr class="divider-long" />
+  <div wix-ctrl="SectionDividerLabeled" wix-options="{ label: 'Send us a message' }"></div>
+
+  <div id="msgsent" style="display:none" class="ro">
+    <p>Thanks for your message.
+    <p>Premium users will receive a response within 48 hours.
+  </div>
+
+  <div id="formsend">
+
+    <div id="inputemail" wix-ctrl="Input" wix-options="{
+      placeholder: 'john@wix.com',
+      title: 'What\'s your email?',
+      invalidMessage: 'Invalid email'
+    }"></div>
+
+    <hr class="divider-short"/>
+
+    <div id="inputmessage" wix-ctrl="Input" wix-options="{
+      placeholder: 'Write your request',
+      title: 'Message',
+      invalidMessage: 'Invalid message',
+      isMultiLine: true
+    }"></div>
+
+    <hr class="divider-short"/>
+
+    <div class="ro-text-center">
+      <div id="buttonsend" class="email_button" wix-ctrl="Button" wix-options="{
+          label: 'Send',
+          disabled: true,
+          className: 'btn-confirm-default'
+      }"></div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('#faqsModel').on('click', function() {
+        Wix.Settings.openModal("https://rolloverfx.wixanswers.com/en", '80%', '90%', "App FAQs");
+      });
+
+      $('#rateModel').on('click', function() {
+        Wix.Settings.openReviewInfo();
+      });
+    });
+  </script>
+</div>

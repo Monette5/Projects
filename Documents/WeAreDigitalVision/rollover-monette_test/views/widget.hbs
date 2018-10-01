@@ -1,0 +1,1999 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rollover - Widget</title>
+  <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  <script src="//static.parastorage.com/services/js-sdk/1.96.0/js/wix.min.js"></script>
+
+  <link rel="stylesheet" href="src/widget/widget.css" />
+  <link rel="stylesheet" type="text/css" href="src/widget/stylesheets/widget.css" />
+  <link rel="stylesheet" type="text/css" href="src/widget/stylesheets/set1.css" />
+  <link rel="stylesheet" type="text/css" href="src/widget/stylesheets/set2.css" />
+
+  <link rel="stylesheet" href="src/widget/stylesheets/codyhouse/css/reset.css" />
+  <link rel="stylesheet" href="src/widget/stylesheets/codyhouse/css/style.css" />
+  <script src="src/widget/js/codyhouse/modernizr.js"></script>
+	<script src="src/widget/js/codyhouse/main.js"></script>
+  <script src="src/widget/js/browser-detect.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="src/widget/stylesheets/codrops/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/codrops/css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/codrops/css/component.css" />
+
+  <script src="dist/rollovers.js"></script>
+	<script src="dist/generic.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxQueue/0.1.1/jquery.ajaxQueue.js"></script>
+	<link rel="stylesheet" src="src/widget/stylesheets/responsive-youtube-video-background/style.css" />
+  <script type="text/javascript">
+    // Load the initial settings into the settings variable
+    var settings = {{{settingsJSON}}};
+
+    // Load the component ID into the compId variable
+		var compId = getParameterByName('compId');
+
+		/* Listen for changes to the settings */
+		Wix.addEventListener(Wix.Events.SETTINGS_UPDATED, onSettingsUpdate, compId);
+
+    /* When settings are updated */
+		function onSettingsUpdate(update) {
+      // Update the settings variable
+			settings = update;
+
+      // Remove the html body class
+      $('body').attr('class','');
+
+      // Inject styles into the stylesheet
+			$('#forcestyle').html('');
+			$('#forcestyle').append('.unblur .face0 img, .blur .face1 img { -webkit-filter: blur(' + (update.blurLevel > 1 ? update.blurLevel/6 : update.blurLevel) + 'px);	-moz-filter:blur(' +  (update.blurLevel > 1 ? update.blurLevel/6 : update.blurLevel) + 'px);filter:blur(' +  (update.blurLevel > 1 ? update.blurLevel/6 : update.blurLevel) + 'px);}');
+			$('#forcestyle').append('.unblur .face0 .tv , .blur .face1 .tv2  { -webkit-filter: blur(' + (update.blurLevel > 1 ? update.blurLevel/6 : update.blurLevel) + 'px);	-moz-filter:blur(' +  (update.blurLevel > 1 ? update.blurLevel/6 : update.blurLevel) + 'px);filter:blur(' +  (update.blurLevel > 1 ? update.blurLevel/6 : update.blurLevel) + 'px);}');
+			$('#forcestyle').append('.unopaque .face0 {	opacity:' +  (update.opacityLevel > 1 ? update.opacityLevel/100 : update.opacityLevel) + ';}');
+			$('#forcestyle').append('.hover.opaque .face1 {opacity:' +  (update.opacityLevel > 1 ? update.opacityLevel/100 : update.opacityLevel) + ';}  .preview.opaque .face1 {opacity:' +  (update.opacityLevel > 1 ? update.opacityLevel/100 : update.opacityLevel) + ' !important;}');
+			$('#forcestyle').append('.zoom .card {-webkit-transition: all .2s ease-in-out;	transition: all .2s ease-in-out;	-webkit-transform: scale(' + (update.zoomLevel > 2 ? 1+(update.zoomLevel/50) : update.zoomLevel) + ');transform: scale(' +  (update.zoomLevel > 2 ? 1+(update.zoomLevel/50) : update.zoomLevel) + ');} ');
+			$('#forcestyle').append('.hover.unzoom .card, .preview.unzoom .card {-webkit-transform: scale(' +  (update.zoomLevel > 1 ? 1-(update.zoomLevel/100) : update.zoomLevel) + ');transform: scale(' + (update.zoomLevel > 1 ? 1-(update.zoomLevel/100) : update.zoomLevel) + ');}');
+			$('#forcestyle').append('.hover.twistl .card, .preview.twistl .card {-webkit-transform: scale(' +  (update.zoomLevel > 2 ? 1+(update.zoomLevel/50) : update.zoomLevel) + ')  rotate(-' +  update.twistLevel + 'deg);transform: scale(' +  (update.zoomLevel > 2 ? 1+(update.zoomLevel/50) : update.zoomLevel) + ')  rotate(-' +  update.twistLevel + 'deg);}');
+			$('#forcestyle').append( '.hover.twistr .card , .preview.twistr .card{-webkit-transform: scale(' +  (update.zoomLevel > 2 ? 1+(update.zoomLevel/50) : update.zoomLevel) + ')  rotate(' +  update.twistLevel + 'deg);transform: scale(' +  (update.zoomLevel > 2 ? 1+(update.zoomLevel/50) : update.zoomLevel) + ') rotate(' +  update.twistLevel + 'deg);} ' );
+
+      if(settings.imageZoomOff) {
+        $('#codyhouse-image0').addClass('imagezoom');
+      } else {
+        $('#codyhouse-image0').removeClass('imagezoom');
+      }
+
+			/****Check codrops Zoom effect *****/
+			if(settings.transitiontype=="codrops"){
+				if(settings.imageZoomOn) {
+					if(settings.textbtna==true || settings.textbtna=='true'){
+						$(".codrops-modal-trigger").click('on',function(){
+								$('#codrops-image1').addClass('imagezoom');
+						});
+
+						$(".codrops-close").click('on',function(){
+								$('#codrops-image1').removeClass('imagezoom');
+								$("#codrops .content--intro").css('-webkit-transform','translateY(0vh)');
+						});
+					}else{
+							$(".codrops-close").hide();
+							$('body').mouseleave(function(){
+										$('#codrops-image1').removeClass('imagezoom');
+							});
+							$('body').mouseenter(function(){
+									$('#codrops-image1').addClass('imagezoom');
+							});
+					}
+				} else {
+				 	$('#codrops-image1').removeClass('imagezoom');
+				}
+				if (settings.image1) {
+						if(settings.image1[0]==undefined){
+								$('#codrops-image1').hide();
+						}else{
+								$('#codrops-image1').show();
+						}
+				}else{
+					$('#codrops-image1').hide();
+				}
+
+			}
+			/****Check codrops Zoom effect *****/
+
+      // Load or reload the widget
+			if (widgetload) {
+					widgetload(update);
+			}
+		}
+	</script>
+
+	<style wix-style>
+    #container {
+      border : \{{style.borderSize 0}}px solid \{{style.borderColor transparent}};
+      border-radius: \{{style.radius0 0}}px;
+      display: block;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    #container.mobile {
+      border-radius: \{{style.radiusMobile0 0}}px !important;
+    }
+    body.ap1 #container {
+      background: #fff;
+    }
+    .preview #face0, .preview #face4{
+      opacity: 0;
+    }
+    .preview #face1{
+      opacity: 1;
+    }
+    .preview #face1 .text1{
+      display: block;
+    }
+    .preview #face5 {
+      opacity: 1;
+      visibility: visible;
+    }
+		.preview.unzoom .card {
+      transition: initial;
+		}
+		.preview #figure #figure-overlay-on {
+			display: block !important;
+		}
+
+		#face4, #face5 {
+			background-size: cover !important;
+		}
+
+    #face0, #face4 {
+      background:  \{{style.backColor0 color-1}};
+    }
+
+    .shape {
+      fill: \{{style.backColor0 color-1}};
+    }
+
+		#figure {
+      background-color:  \{{style.backColorB0 color-1}} !important;
+    }
+
+    #face1, #face5 {
+      background:  \{{style.backColor1 color-1}};
+      z-index: 10;
+    }
+
+    #face1 {
+      z-index: auto;
+    }
+
+    .hover #face1 {
+      z-index: 10;
+    }
+
+    #text0, #text1 {
+      padding: 20px 0;
+    }
+
+    #text0, #text4, #text00 {
+      color: \{{style.textColor0 color-1}};
+      \{{style.myFont0 Heading-L}}
+      word-break: break-word;
+    }
+
+		#btntext0, #btntext00{
+			text-transform: none !important;
+			color: \{{style.textColorB0 #FFF}};
+      \{{style.myFontB0 Body-M}}
+		  background:  \{{style.backColorB0}};
+		  border : \{{style.backSizeBborder0 1}}px solid \{{style.backColorBborder0 color-1}};
+		  border-radius : \{{style.radiusB0 4}}px;
+		}
+
+		#btntext1, #btntext11{
+			text-transform: none !important;
+			color: \{{style.textColorB1}};
+      \{{style.myFontB1 Body-M}}
+		  background:  \{{style.backColorB1 color-1}};
+		  border : \{{style.backSizeBborder1 1}}px solid \{{style.backColorBborder1 color-1}};
+		  border-radius : \{{style.radiusB1 4}}px;
+		  display: inline-block;
+		}
+
+    #text1, #text5,#text11 {
+      color:\{{style.textColor1 color-1}};
+      \{{style.myFont1 Heading-L}}
+      word-break: break-word;
+    }
+
+		#text5, #text4 {
+		 margin-bottom: 0px;
+		 display: block;
+		 line-height: normal;
+		}
+
+		#subtext5, #subtext4 {
+      display: block ;
+      margin-bottom: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 10px;
+      padding: 0 20px;
+      max-width: 100%;
+      min-width: 100px !important;
+      word-wrap: break-word
+    }
+
+		#subtext5{
+			color:\{{style.subtextColor1 color-1}};
+      \{{style.submyFont1 Body-M}};
+			max-width:  \{{style.subtextWidth1 640}}px;
+		}
+
+		#subtext4 {
+      color:\{{style.subtextColor0 color-1}};
+      \{{style.submyFont0 Body-M}}
+      max-width:  \{{style.subtextWidth0 640}}px;
+    }
+		#subtext1, #subtext0{
+			max-width: 100%;
+      min-width: 100px !important;
+			word-wrap: break-word;
+		}
+		#subtext1{
+      color:\{{style.subtextColor1}};
+      \{{style.submyFont1 Body-M}}
+      max-width:  \{{style.subtextWidth1 660}}px;
+    }
+		#subtext0 {
+      color:\{{style.subtextColor0}};
+      \{{style.submyFont0 Heading-L}}
+      max-width:  \{{style.subtextWidth0 660}}px;
+    }
+
+		#text4, #text00{
+			margin-bottom:  \{{style.subtextPaddingTB0 10}}px !important;
+		}
+
+		#btntext0, #btntext00{
+			margin-top:  \{{style.subtextPaddingTB0 10}}px !important;
+		}
+
+		#text5, #text11{
+			margin-bottom:  \{{style.subtextPaddingTB1 10}}px !important;
+		}
+
+		#btntext1, #btntext11{
+			margin-top:  \{{style.subtextPaddingTB1 10}}px !important;
+		}
+
+    .card .text0, .card .text1 {
+      color: \{{style.textColor0 color-5}};
+      \{{style.myFont0 Heading-L}}
+    }
+
+    .card .fontvariant .text1 {
+      color:\{{style.textColor0 color-5}};
+      color:\{{style.textColor1 color-5}};
+     \{{style.myFont1 Heading-L}}
+    }
+
+    figure h2.text0, figure h2.text1 {
+      color:\{{style.textColorH color-1}};
+      \{{style.myFontH Heading-M}}
+      /*text-align: center;*/
+    }
+
+    figure h2.text0 a {
+      color:\{{style.textColorH color-1}};
+    }
+
+    figure p.text0, figure p.text1 {
+      color:\{{style.textColorS color-1}};
+      \{{style.myFontS Heading-L}}
+    }
+
+    figure.effect-marley h2::after {
+      background:\{{style.lineColor0 color-1}};
+    }
+
+    figure.effect-apollo p {
+      border-color:\{{style.lineColor0 color-1}};
+    }
+
+    figure.effect-romeo figcaption::before, figure.effect-romeo figcaption::after {
+      background:\{{style.lineColor0 color-1}};
+    }
+
+    figure.effect-moses h2, figure.effect-moses p {
+      border: 2px solid \{{style.lineColor0 color-1}};
+    }
+
+    figure.effect-jazz figcaption::after {
+      border: 0 1px solid \{{style.lineColor0 color-1}};
+      {{!--border-bottom: 1px solid \{{style.lineColor0 color-1}};--}}
+    }
+
+    figure.effect-lexi figcaption::before {
+      border: 2px solid \{{style.lineColor0 color-1}};
+    }
+
+    figure.effect-julia p {
+      background: \{{style.lineColor0 color-1}};
+      opacity: 0.9;
+    }
+
+    figure.effect-roxy figcaption::before {
+      border:1px solid \{{style.lineColor0 color-1}};
+    }
+
+    figure.effect-sadie:hover h2 {
+      color: \{{style.textColorS color-1}};
+    }
+
+		.text-card-context .modal-close,
+		.text-card-context .modal-close:hover,
+		.cd-modal .modal-close,
+		.cd-modal .modal-close:hover,
+		.cd-modal .codrops-close,
+		.cd-modal .codrops-close:hover{
+			background:  \{{style.backColorB1close color-5}} !important;
+		}
+
+    .text-card-context .modal-close::before,
+		.text-card-context .modal-close::after,
+    .text-card-context .codrops-close::before,
+		.text-card-context .codrops-close::after,
+		.cd-modal .modal-close::before,
+		.cd-modal .modal-close::after,
+    .cd-modal .codrops-close::before,
+		.cd-modal .codrops-close::after{
+			background:  \{{style.crossColorB1close color-1}} !important;
+		}
+
+		#figure, #card {
+			position: relative;
+		}
+
+    .mobile #figure, .mobile #card {
+      border-radius: \{{style.radiusMobile0 0}}px !important;
+    }
+
+    .mobile #codyhouse {
+      border-radius: \{{style.radiusMobile0 0}}px !important;
+    }
+
+    #codyhouse-image0, #codyhouse-image1, #codrops-image0, #codrops-image1 {
+      background-size: cover;
+      bottom: 0px;
+      left: 0px;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+
+    #codyhouse-image0.imagezoom {
+      -webkit-animation: zoomIn \{{style.zoomDurantionOff 5}}s;
+      animation: zoomIn \{{style.zoomDurantionOff 5}}s;
+
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+    }
+
+    #codyhouse-image1.imagezoom {
+      -webkit-animation: zoomIn \{{style.zoomDurantionOn 5}}s;
+      animation: zoomIn \{{style.zoomDurantionOn 5}}s;
+
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+    }
+
+    @-webkit-keyframes zoomIn {
+      100% {
+        -webkit-transform: scale(1.2);
+      }
+    }
+
+    @keyframes zoomIn {
+      100% {
+        transform: scale(1.2);
+      }
+    }
+
+    .text-card-content {
+      padding: 20px 0;
+    }
+
+		.desktop .text {
+			padding-left:  \{{style.subtextPadding0 30}}px !important;
+			padding-right: \{{style.subtextPadding0 30}}px !important;
+		}
+
+    .desktop .text1 {
+			padding-left:  \{{style.subtextPadding1 30}}px !important;
+			padding-right: \{{style.subtextPadding1 30}}px !important;
+		}
+
+    .text20 {
+      padding: 0 20px;
+    }
+
+		html body #codyhouse .cd-transition-layer .bg-layer {
+			-webkit-mask-size: 100% 100%;
+			-webkit-mask-repeat: no-repeat;
+			-webkit-mask-position: 0 0;
+			mask-size: 100% 100%;
+			mask-repeat: no-repeat;
+			mask-position: 0 0;
+			background-color: \{{style.trancolorFilter #fff}};
+      background-image: none;
+		}
+
+    html body #codyhouse .cd-transition-layer .svg-fill {
+      fill: \{{style.trancolorFilter #fff}};
+    }
+
+    html.ie body #codyhouse .cd-transition-layer .bg-layer {
+      background-color: transparent !important;
+    }
+
+		/* new */
+		#text4, #subtext4, #btntext0,
+		#text5, #subtext5, #btntext1{
+      position: relative;
+      z-index: 1;
+		}
+
+		#figure-overlay-on, #figure-overlay-off, #codyhouse-overlay0, #codyhouse-overlay1, #figcaption,
+		#text00, #subtext0, #btntext00,
+		#text11, #subtext1, #btntext11{
+				z-index: 1;
+		}
+
+    #figure-overlay-off, #codyhouse-overlay0, #codyhouse-overlay1 {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+		#figure{
+      border-radius: \{{style.radius0 0}}px;
+			max-width: 100%;
+			overflow: hidden;
+		}
+		#card{
+			overflow: hidden;
+		}
+
+		.lexi #figcaption {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+		}
+    .upgrade {
+      background:#2BAA90;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 99999;
+			font-family: 'Avenir Black';
+			opacity: 0.8;
+    }
+    .upgrade h3 {
+      color: #fff;
+      font-size: 26px;
+      margin: 0;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+    }
+
+    .bg-layer {
+      display: none;
+    }
+
+		.plinlinecontent iframe{border: none !important; outline: none;}
+		.text-center{text-align: center !important;}
+
+
+		/*****Codrops CSS*****/
+		#codrops-image1.imagezoom {
+      -webkit-animation: zoomIn \{{style.zoomDurantionOn 5}}s;
+      animation: zoomIn \{{style.zoomDurantionOn 5}}s;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+    }
+		.codrops-overlay{
+			z-index: 1;
+			bottom: 0px;
+			left: 0px;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+		}
+
+		/*****TransPack 1 CSS*****/
+		.extinguisher-transition .svg-layer,
+		.glitch-transition .svg-layer,
+		.clones-transition .svg-layer,
+		.ink-transition .svg-layer,
+		 {
+      display: none;
+    }
+		.extinguisher-transition .bg-layer,
+		.glitch-transition .bg-layer,
+		.clones-transition .bg-layer,
+		.ink-transition .bg-layer
+		{
+      display: block;
+    }
+
+		/*****TranPack 2 CSS******/
+		.arrows-transition .svg-layer,
+		.balls-transition .svg-layer,
+		.curtains-transition .svg-layer,
+		.shutter-transition .svg-layer,
+		.fragment-transition .svg-layer,
+		.plane-transition  .svg-layer,
+		.pixelate-transition .svg-layer,
+		.grow-transition  .svg-layer,
+		.circle-transition  .svg-layer
+		 {
+      display: none;
+    }
+		.arrows-transition .bg-layer,
+		.balls-transition  .bg-layer,
+		.curtains-transition .bg-layer,
+		.shutter-transition .bg-layer,
+		.fragment-transition .bg-layer,
+
+		.plane-transition  .bg-layer,
+		.pixelate-transition .bg-layer,
+		.grow-transition  .bg-layer,
+		.circle-transition .bg-layer
+		{
+      display: block;
+    }
+
+		.codyhouse2 .cd-transition-layer .svg-layer {
+      fill: \{{style.trancolorFilter #fff}};
+    }
+	.clearfix{clear: both;}
+
+	.tv, .tv2 {
+  	  position: absolute;
+  	  top: 0;
+  	  left: 0;
+  	  width: 100%;
+  	  height: 100%;
+  	  overflow: hidden;
+  	  background: #000;
+  	}
+  	.tv .screen, .tv2 .screen {
+  	  position: absolute;
+  	  top: 0;
+  	  right: 0;
+  	  bottom: 0;
+  	  left: 0;
+  	  margin: auto;
+  	  opacity: 0;
+  	  transition: opacity .5s;
+      width: 100vw;
+  	}
+  	.tv .screen.active, .tv2 .screen.active  {
+  	  opacity: 1;
+  	}
+		#codrops #text0{margin-top:10px; }
+		#codrops #face5-wrap{padding-top: 20px; }
+		#codrops .codrops-close{position: absolute;cursor: pointer;padding:10px;bottom:5px;}
+		.style-jlq5zush{ min-height: 400px !important;}
+
+		.iphone #text4, .iphone #text00{
+			margin-bottom:  \{{style.subtextPaddingTB0 5}}px !important;
+		}
+
+		.tooltip__trigger span{
+	   	\{{style.triggerFont Heading-M}};
+      color:\{{style.triggerFontColor}} !important;
+		}
+
+		.tooltip__content{
+			color:\{{style.tooltipFontColor #000}} !important;
+      \{{style.tooltipFont Body-M}}
+		}
+		.tooltip__shape{
+				fill: \{{ style.cooltipscolor }};
+				stroke:\{{ style.borderColor }};
+    		stroke-width: \{{ style.borderSize }}%;
+		}
+
+		.tooltip__base .svg-layer{
+			position: absolute;
+			left: 0;
+			right: 0;
+			width:250px;
+			height:150px;
+		}
+    .grid__item{
+        fill: \{{ style.particlescolor }};
+        stroke:\{{ style.borderColor }};
+        stroke-width: \{{ style.borderSize }}%;
+    }
+
+    .particles .svg-layer{
+      position: absolute;
+      left: 0;
+      right: 0;
+      width:250px;
+      height:150px;
+    }
+
+	</style>
+
+	<style id="forcestyle"></style>
+	<style id="forcestyle2"></style>
+	<style id="forcestyle3"></style>
+	<style id="forcestyle4-face0"></style>
+	<style id="forcestyle4-face1"></style>
+	<style id="forcestyle4-mobile"></style>
+</head>
+
+<body id="{{instanceId}}" class="body-widget">
+	<div wix-ctrl="Preloader" id="preloader"></div>
+
+	<a id="container" class="container fontvariant">
+		<figure class="" id='figure'>
+			<img id='figure-image' />
+			<div id='figure-overlay-on' class='figure-overlay' style = 'background-image: -webkit-linear-gradient(156deg, rbg(139,0,0), rbg(108,122,76)'></div>
+			<div id='figure-overlay-off' class='figure-overlay'></div>
+			<figcaption id='figcaption'></figcaption>
+
+			<div class="tv auto-resizable-iframe">
+					<div class="outer_vid">
+							<div class="screen mute active" id="tv_1"></div>
+							<div class="play_container">
+								<div class="play_vid"></div>
+							</div>
+						</div>
+			</div><!--/.tv-->
+		</figure><!--/#figure-->
+
+		<div class="card" id='card'>
+			<div id="face0" class="front face face0">
+				<img id="image0" />
+				<span id="svg0"></span>
+				<div class="face1-text-wrap"><span class="text" id="text0"></span></div>
+
+				<div class="text-card-context display-none">
+					<div class="text-card-context-inner">
+						<div class="text-card-align" >
+							<div class="text-card-content text-card-content0">
+								<div class="text" id="text00"></div>
+								<div class="text" id="subtext0"></div>
+								<div style="display: block;  clear: both"></div>
+                <div class="text text20">
+								  <div href="#face1" class="cd-btn" id="btntext00"></div>
+                </div>
+							</div><!--/.text-card-content.text-card-content0-->
+						</div><!--/.text-card-align-->
+					</div><!--/.text-card-context-inner-->
+				</div><!--/.text-card-context-->
+
+				<div class="tv auto-resizable-iframe">
+					 <div class="outer_vid">
+							<div class="screen mute active" id="tv_2"></div>
+							<div class="play_container">
+								<div class="play_vid"></div>
+							</div>
+						</div>
+				</div><!--/.tv-->
+      </div><!--/.front.face.face0-->
+
+			<div id="face1" class="back face face1">
+				<img id="image1">
+				<span id="svg1"></span>
+				<div class="face1-text-wrap" ><span class="text" id="text1"></span></div>
+
+				<div class="text-card-context display-none">
+					<div class="text-card-context-inner">
+						<div class="text-card-align">
+							<div class="text-card-content text-card-content1">
+								<div class="text text1" id="text11"></div>
+								<div class="text text1" id="subtext1"></div>
+                <div class="text1 text20">
+									<div class="clearfix"></div>
+								  <div  class="cd-btn" id="btntext11"></div>
+                </div>
+							</div><!--/.text-card-content.text-card-content1-->
+						</div><!--/.text-card-align-->
+            <span class="modal-close">Close</span>
+					</div><!--/.text-card-context-inner-->
+				</div><!--/.text-card-context-->
+
+				<div class="tv2 auto-resizable-iframe">
+						<div class="outer_vid">
+							  <div class="screen mute active" id="tv2_2"></div>
+								<div class="play_container">
+									<div class="play_vid2"></div>
+						  	</div>
+						</div>
+				</div><!--/.tv2-->
+			</div><!--/.back.face.face1-->
+		</div><!--/#card-->
+
+		<div id="codyhouse" style="display: none">
+			<div class="cd-main-content" id="face4">
+				<div>
+          <div id="codyhouse-image0"></div>
+          <div id='codyhouse-overlay0' class='codyhouse-overlay'></div>
+
+					<div class="codyhouse-context0">
+						<span class="text" id="text4"></span>
+						<span class="text" id="subtext4"></span>
+						<span style="display: block;  clear: both"></span>
+            <div class="text text20">
+              <span href="#face5" class="cd-btn cd-modal-trigger" id="btntext0">Start Effect</span>
+            </div>
+					</div><!--/.codyhouse-context0-->
+
+          <div class="tv auto-resizable-iframe">
+						<div class="outer_vid">
+							<div class="screen mute active" id="tv"></div>
+							<div class="play_container">
+								<div class="play_vid"></div>
+							</div>
+						</div>
+          </div><!--/.tv-->
+				</div>
+			</div><!--/.cd-main-content -->
+
+			<div class="cd-modal" id="face5">
+        <div id="codyhouse-image1"></div>
+        <div id='codyhouse-overlay1' class='codyhouse-overlay'></div>
+
+				<div class="modal-content">
+					<div id="face5-wrap">
+						<div class="codyhouse-context1">
+							<span class="text text1" id="text5"></span>
+							<span class="text text1" id="subtext5"></span>
+							<span style="display: block;  clear: both"></span>
+              <div class="text1 text20">
+								<div class="clearfix"></div>
+							  <span  id="btntext1" class ="cd-btn"></span>
+              </div>
+						</div><!--/.codyhouse-context1-->
+					</div><!--/.face5-wrap-->
+
+					<span href="#0" class="modal-close">Close</span>
+				</div> <!--/.modal-content -->
+
+        <div class="tv2 auto-resizable-iframe">
+						<div class="outer_vid">
+							  <div class="screen mute active" id="tv2"></div>
+								<div class="play_container">
+									<div class="play_vid2"></div>
+						  	</div>
+						</div>
+        </div><!--/.tv2-->
+			</div><!--/.cd-modal -->
+
+			<div class="cd-transition-layer">
+        <div class="bg-layer"></div> <!-- Backward compatibility for non svg support -->
+			</div><!--/.cd-transition-layer -->
+		</div><!--/#codyhouse-->
+	</a>
+
+	<div id="codrops" class="demo-1">
+    <div class="content content--nopadding content--intro">
+			<div id="face_content" class="content__inner">
+        <main class="cd-main-content" id="face4">
+  				<div>
+            <div class="codrops-context0">
+              <span class="text" id="text4"></span>
+              <span class="text" id="subtext4"></span>
+              <span style="display: block;  clear: both"></span>
+              <div class="text text20">
+                <span href="#face5" class="cd-btn codrops-modal-trigger" id="btntext0">Start Effect</span>
+              </div>
+            </div>
+          </div>
+        </main>
+			</div>
+			<div class="shape-wrap">
+        {{#if_eq transition 'waveup-transition'}}
+  				<svg class="shape" width="100%" height="100vh" preserveAspectRatio="none" viewBox="0 0 1440 800" xmlns:pathdata="http://www.codrops.com/">
+  					<path d="M -44,-50 C -52.71,28.52 15.86,8.186 184,14.69 383.3,22.39 462.5,12.58 638,14 835.5,15.6 987,6.4 1194,13.86 1661,30.68 1652,-36.74 1582,-140.1 1512,-243.5 15.88,-589.5 -44,-50 Z" pathdata:id="M -44,-50 C -137.1,117.4 67.86,445.5 236,452 435.3,459.7 500.5,242.6 676,244 873.5,245.6 957,522.4 1154,594 1593,753.7 1793,226.3 1582,-126 1371,-478.3 219.8,-524.2 -44,-50 Z"></path>
+  				</svg>
+        {{/if_eq}}
+        {{#if_eq transition 'paintup-transition'}}
+        <svg class="shape" width="100%" height="100vh" preserveAspectRatio="none" viewBox="0 0 1440 800" xmlns:pathdata="http://www.codrops.com/">
+          <path d="M -65.11,-1.008 C -38.79,8.492 -48.8,43.89 -24.09,59.91 -17.38,64.25 -7.411,68.1 2.397,67.74 19.94,67.09 30.89,61.16 46.62,50.39 64.99,37.82 92.16,36.57 112.8,41.49 141.9,48.44 153.5,80.16 178.5,78.34 194.6,77.17 205.3,67.96 216.8,48.87 224.6,35.89 230.6,20.21 251.4,19.41 278.8,18.35 288.2,28.98 298.5,67.48 303.6,86.48 308.2,97.24 316.3,102.6 329.4,111.3 340.7,106 350.5,100.2 377.5,84.13 369.6,23.41 401.2,20.7 415.9,19.43 431.7,33.86 449.9,57.07 462.7,73.41 475.5,91.96 494.9,96.72 503.8,98.9 513,97.38 521.6,90.13 532.1,81.21 532.2,62.36 551.7,62.17 565.7,62.03 569.6,72.01 575.9,89 580.5,101.3 598.1,139.1 628.6,117.5 649.1,103 641.6,81.95 658,80.67 674.4,79.39 692.2,136.3 720.8,141.4 738.9,144.6 763.5,132 771.2,119.3 782.1,101.2 783.6,81.7 799.1,81.97 829.3,82.49 818.2,122.8 838.2,143.8 858.1,164.8 875.7,158.9 886.4,155.8 910.4,149 913.1,122.8 939.2,119.6 953.9,117.9 964.8,130.2 979.7,131.6 997.3,133.3 1016,132.6 1027,121 1038,109.3 1038,80.15 1054,79.92 1071,79.67 1073,89.94 1079,106.8 1084,119.5 1089,133.9 1101,141.1 1111,147.3 1124,146.3 1136,145 1150,143.4 1160,132.7 1177,130.8 1194,128.8 1219,128.2 1236,138.8 1257,151.6 1271,147.7 1280,137.3 1291,124.1 1294,92.34 1316,90.47 1344,88.04 1348,163.9 1380,183.1 1401,195.1 1428,196.6 1451,190.6 1478,183.7 1503,161.8 1518,143 1544,109.1 1550,43.89 1551,32.49 1568,-303.4 -510,-224.1 -65.11,-1.008 Z" pathdata:id="M -35.73,45.41 C -9.412,61.01 -30.93,379.4 -17.31,545.8 -12.26,607.5 -54.94,740.4 6.142,730.1 63.67,720.4 26.97,284.9 27.01,202.3 27.06,104.3 51.66,29.07 106,54.36 160.3,79.65 103.7,491.7 187.7,465.7 231.9,452 156.6,99.89 249.4,94.08 285.7,91.81 299.9,127.5 305,190.9 316,327.7 328.6,462.6 321.1,598.3 315.8,695.4 294.5,776.7 353.9,773.6 415.6,770.4 379.8,650.7 368.7,588.8 337.4,415 369.6,190.1 391.1,111 412.5,31.92 457,96.83 463.3,127.2 480.9,212.1 493.9,307.8 489,396.1 487.4,425.7 482.1,460.1 517.1,455.2 548.5,450.7 476.2,166 550.9,168.9 594.8,170.6 591.6,626.8 586.3,663.5 578.4,717.8 609.1,742.4 633.9,700.6 651.9,670.2 578.3,209.7 650.8,194.1 723.2,178.5 700.8,277.9 687.6,401.1 680.2,470 766.1,486.3 756,414.3 750.3,373.5 703.1,145.6 793.4,146.1 939.9,146.8 846.2,556.8 844,601.8 841.9,646.8 878.6,682.8 903.3,630.6 928,578.4 863.2,264.8 891.7,178.8 920.2,92.81 997.3,215.6 972,292.8 946.6,370 1030,353.1 999,295.7 985.9,271.6 977.1,119.1 1048,117.8 1119,116.5 1127,634.6 1123,682.6 1119,730.6 1110,749.8 1118,771.3 1134,815.5 1173,803.5 1164,734 1155,664.5 1139,665.8 1143,418.4 1148,170.9 1225,122 1240,215 1249,273 1202,413 1282,391.7 1324,380.7 1280,165.5 1316,159.6 1362,152 1296,358.2 1379,361.2 1462,364.2 1312,753 1444,751.2 1592,749.2 1484,458.5 1505,312.2 1518,221.3 1544,58.44 1545,39.57 1562,-514.4 -480.6,-322.6 -35.73,45.41 Z"></path>
+        </svg>
+        {{/if_eq}}
+        {{#if_eq transition 'gumup-transition'}}
+          <svg class="shape" width="100%" height="100vh" preserveAspectRatio="none" viewBox="0 0 1440 800" xmlns:pathdata="http://www.codrops.com/">
+            <path d="M 73.3,178.6 C 101.7,363.8 76.38,735 118.7,813.8 161,892.7 327.3,946.7 381.1,853.3 434.9,759.9 427.2,488.9 436.8,341.5 443.3,241.3 447.3,33.05 516.1,36.19 574.9,38.88 611.6,214.9 622.3,429.7 633,644.6 614.7,796.1 688.1,849 761.6,901.8 860.7,873.7 897.6,850 982.3,795.5 951.2,639.3 961.1,506.1 970.9,372.9 958.5,43.53 1023,43.47 1063,43.43 1085,173.6 1095,370.7 1105,567.8 1082,804.3 1165,842.6 1197,857.5 1304,901 1342,833 1380,765 1354,413.7 1379,156.2 1407,-137.5 1719,-12.96 1719,-12.96 L -53.5,-44.66 C -53.5,-44.66 44.91,-6.65 73.3,178.6 Z" pathdata:id="M 105.3,190.6 C 159.7,353.8 143.2,774.2 149.1,779.5 155,784.8 159.4,782 164.8,778.2 170.2,774.4 168.9,242.8 240.3,125 311.7,7.205 430.7,2.307 564.2,13.56 707.9,25.67 806,166.3 800.5,376 804.7,587.3 801.2,773.9 807.1,782.7 813,791.4 816.8,792.7 821.4,786 826.4,778.8 819.4,566.3 820.3,498.1 821.2,429.9 781.4,95.51 992.5,74.58 1108,63.14 1235,166.4 1250,359.4 1265,552.4 1248,763.7 1271,781.4 1277,786 1281,786.2 1286,779.7 1292,773.2 1260,251.3 1355,103.9 1441,-30.35 1610,-117.6 1610,-117.6 L -110.1,-132.3 C -110.1,-132.3 50.91,27.35 105.3,190.6 Z"></path>
+          </svg>
+        {{/if_eq}}
+        {{#if_eq transition 'pixelup-transition'}}
+          <svg class="shape" width="100%" height="100vh" preserveAspectRatio="none" viewBox="0 0 1440 800" xmlns:pathdata="http://www.codrops.com/">
+            <path d="M -30.45,-43.86 -30.45,0 53.8,0 53.8,0 179.5,0 179.5,0 193.3,0 193.3,0 253.1,0 253.1,0 276.1,0 276.1,0 320.6,0 320.6,0 406.5,0 406.5,0 435.6,0 435.6,0 477,0 477,0 527.6,0 527.6,0 553.7,0 553.7,0 592,0 592,0 742.3,0 742.3,0 762.2,0 762.2,0 776,0 776,0 791.3,0 791.3,0 852.7,0 852.7,0 871.1,0 871.1,0 878.7,0 878.7,0 891,0 891,0 923.2,0 923.2,0 940.1,0 940.1,0 976.9,0 976.9,0 1031,0 1031,0 1041,0 1041,0 1176,0 1176,0 1192,0 1192,0 1210,0 1210,0 1225,0 1225,0 1236,0 1236,0 1248,0 1248,0 1273,0 1273,0 1291,0 1291,0 1316,0 1316,0 1337,0 1337,0 1356,0 1356,0 1414,0 1414,0 1432,0 1432,0 1486,0 1486,-43.86 Z" pathdata:id="M -30.45,-57.86 -30.45,442.6 53.8,443.8 53.8,396.3 179.5,396.3 179.5,654.7 193.3,654.7 193.3,589.1 253.1,589.1 253.1,561.6 276.1,561.6 276.1,531.2 320.6,531.2 320.6,238.6 406.5,238.6 406.5,213.9 435.6,213.9 435.6,246.2 477,246.2 477,289.9 527.6,289.9 527.6,263.3 553.7,263.3 553.7,280.4 592,280.4 592,189.2 742.3,189.2 742.3,259.5 762.2,259.5 762.2,103.7 776,103.7 776,77.11 791.3,77.11 791.3,18.21 852.7,18.21 852.7,86.61 871.1,86.61 871.1,231 878.7,240.5 878.7,320.3 891,320.3 891,434.3 923.2,434.3 923.2,145.5 940.1,145.5 940.1,117 976.9,117 976.9,139.8 1031,139.8 1031,284.2 1041,284.2 1041,242.4 1176,242.4 1176,282.3 1192,282.3 1192,641.4 1210,641.4 1210,692.7 1225,692.7 1225,599.6 1236,599.6 1236,527.4 1248,527.4 1248,500.8 1273,500.8 1273,523.6 1291,523.6 1291,652.8 1316,652.8 1316,533.1 1337,533.1 1337,502.7 1356,502.7 1356,523.6 1414,523.6 1414,491.3 1432,491.3 1432,523.6 1486,523.6 1486,-57.86 Z"></path>
+          </svg>
+        {{/if_eq}}
+			</div>
+		</div>
+		<div class="content content--fixed">
+			<div class="content__inner">
+        <div id="face5" class="cd-modal visible">
+          <div id="codrops-image1"></div>
+          <div id='codrops-overlay1' class='codrops-overlay'></div>
+
+  				<div class="modal-content">
+  					<div id="face5-wrap">
+  						<div class="codrops-context1">
+  							<span class="text text1" id="text5"></span>
+  							<span class="text text1" id="subtext5"></span>
+  							<span style="display: block;  clear: both"></span>
+                <div class="text1 text20">
+									<div class="clearfix"></div>
+  							  <span  id="btntext1" class ="cd-btn"></span>
+                </div>
+  						</div>
+  					</div>
+
+  					<span href="#0" class="codrops-close">Close</span>
+  				</div>
+  			</div>
+			</div>
+		</div>
+
+  </div>
+
+	<div id="cooltips">
+    <div class="content content--nopadding content--intro">
+			<div id="face_content" class="content__inner">
+        <main class="cd-main-content">
+						<div class="grid">
+							<div class="grid__item">
+								<div class="tooltip tooltip--{{transition}}" data-type="{{transition}}">
+									<div class="tooltip__trigger" role="tooltip" aria-describedby="info-{{transition}}">
+										<span class="tooltip__trigger-image">
+											<img id='tooltip__trigger-img' />
+										</span>
+										<span class="tooltip__trigger-text"></span>
+									</div>
+									<div class="tooltip__base">
+
+										 {{#if_eq transition 'cora'}}
+											<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+												<path d="M 199,21.9 C 152,22.2 109,35.7 78.8,57.4 48,79.1 29,109 29,142 29,172 45.9,201 73.6,222 101,243 140,258 183,260 189,270 200,282 200,282 200,282 211,270 217,260 261,258 299,243 327,222 354,201 371,172 371,142 371,109 352,78.7 321,57 290,35.3 247,21.9 199,21.9 Z"/>
+											</svg>
+											{{/if_eq}}
+
+											{{#if_eq transition 'smaug'}}
+											<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+												<path d="M 314,100 C 313,100 312,100 311,100 L 89.5,100 C 55.9,100 29.1,121 29.1,150 29.1,178 53.1,201 89.5,201 L 184,201 200,223 217,201 311,201 C 344,201 371,178 371,150 371,122 346,99 314,100 Z"/>
+											</svg>
+											{{/if_eq}}
+
+											{{#if_eq transition 'uldor'}}
+											<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+												<path d="M 79.5,66 C 79.5,66 128,106 202,105 276,104 321,66 321,66 321,66 287,84 288,155 289,226 318,232 318,232 318,232 258,198 200,198 142,198 80.5,230 80.5,230 80.5,230 112,222 111,152 110,82 79.5,66 79.5,66 Z"/>
+											</svg>
+											{{/if_eq}}
+
+											{{#if_eq transition 'dori'}}
+											<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+												<path d="M 22,108 22,236 C 22,236 64,216 103,212 142,208 184,212 184,212 L 200,229 216,212 C 216,212 258,207 297,212 336,217 378,236 378,236 L 378,108 C 378,108 318,83.7 200,83.7 82,83.7 22,108 22,108 Z"/>
+											</svg>
+											{{/if_eq}}
+
+											{{#if_eq transition 'gram'}}
+											<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+												<path d="M 92.4,79 C 136,79 154,115 200,116 246,117 263,80.4 308,79 353,77.6 381,111 381,150 381,189 346,220 308,221 270,222 236,188 200,188 164,188 130,222 92.4,221 54.4,220 19,189 19,150 19,111 48.6,79 92.4,79 Z"/>
+											</svg>
+											{{/if_eq}}
+
+											{{#if_eq transition 'indis'}}
+											<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+												<path d="M 44.5,24 C 138,4.47 246,-6.47 356,24 367,26.9 376,32.9 376,44 L 376,256 C 376,267 367,279 356,276 231,240 168,241 44.5,276 33.8,279 24.5,267 24.5,256 L 24.5,44 C 24.5,32.9 33.6,26.3 44.5,24 Z"/>
+											</svg>
+											{{/if_eq}}
+
+											{{#if_eq transition 'walda'}}
+												<div class="tooltip__deco"></div>
+											{{/if_eq}}
+
+											{{#if_eq transition 'narvi'}}
+												<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+													<path class="path-narvi" d="M 307,150 199,212 92.5,274 92.7,150 92.5,26.2 200,88.4 Z"/>
+												</svg>
+											{{/if_eq}}
+
+											{{#if_eq transition 'amras'}}
+											<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+									<path class="path-amras-2" d="M 293,106 A 90.1,90.1 0 0 1 203,197 90.1,90.1 0 0 1 112,106 90.1,90.1 0 0 1 203,16.2 90.1,90.1 0 0 1 293,106 Z"/>
+									<path class="path-amras-3" d="M 324,66.2 A 46.9,46.9 0 0 1 277,113 46.9,46.9 0 0 1 230,66.2 46.9,46.9 0 0 1 277,19.3 46.9,46.9 0 0 1 324,66.2 Z"/>
+									<path class="path-amras-1" d="M 180,111 A 67.2,67.2 0 0 1 112,178 67.2,67.2 0 0 1 45.9,111 67.2,67.2 0 0 1 112,43.5 67.2,67.2 0 0 1 180,111 Z"/>
+									<path class="path-amras-4" d="M 371,98.6 A 52.7,52.7 0 0 1 318,152 52.7,52.7 0 0 1 266,98.6 52.7,52.7 0 0 1 318,45.9 52.7,52.7 0 0 1 371,98.6 Z"/>
+									<path class="path-amras-9" d="M 375,167 A 66.8,55.1 0 0 1 308,222 66.8,55.1 0 0 1 241,167 66.8,55.1 0 0 1 308,112 66.8,55.1 0 0 1 375,167 Z"/>
+									<path class="path-amras-5" d="M 187,199 A 52,52 0 0 1 136,251 52,52 0 0 1 84.1,199 52,52 0 0 1 136,147 52,52 0 0 1 187,199 Z"/>
+									<path class="path-amras-6" d="M 287,217 A 66.8,66.8 0 0 1 221,284 66.8,66.8 0 0 1 154,217 66.8,66.8 0 0 1 221,150 66.8,66.8 0 0 1 287,217 Z"/>
+									<path class="path-amras-7" d="M 132,168 A 53.9,53.9 0 0 1 78.7,222 53.9,53.9 0 0 1 24.8,168 53.9,53.9 0 0 1 78.7,114 53.9,53.9 0 0 1 132,168 Z"/>
+									<path class="path-amras-8" d="M 343,211 A 48.7,48.7 0 0 1 295,260 48.7,48.7 0 0 1 246,211 48.7,48.7 0 0 1 295,163 48.7,48.7 0 0 1 343,211 Z"/>
+								</svg>
+											{{/if_eq}}
+
+											{{#if_eq transition 'hador'}}
+															<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+													<path class="path-hador-1" d="M 154,283 A 6.12,6.12 0 0 1 149,290 6.12,6.12 0 0 1 142,286 6.12,6.12 0 0 1 146,278 6.12,6.12 0 0 1 154,283 Z"/>
+													<path class="path-hador-2" d="M 167,265 A 7.83,7.83 0 0 1 162,276 7.83,7.83 0 0 1 152,270 7.83,7.83 0 0 1 157,261 7.83,7.83 0 0 1 167,265 Z"/>
+													<path class="path-hador-3" d="M 183,244 A 11.9,11.9 0 0 1 174,258 11.9,11.9 0 0 1 160,250 11.9,11.9 0 0 1 168,235 11.9,11.9 0 0 1 183,244 Z"/>
+													<path class="path-hador-4" d="M 327,120 A 127,111 0 0 1 200,231 127,111 0 0 1 72.9,120 127,111 0 0 1 200,9.44 127,111 0 0 1 327,120 Z"/>
+												</svg>
+											{{/if_eq}}
+
+												{{#if_eq transition 'malva'}}
+												<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+													<path d="M 94.9,90.2 101,30.7 163,72.3 229,17.7 263,68.2 319,55.9 315,102 375,144 316,175 340,228 265,220 251,263 180,233 143,282 98.9,218 57.5,236 82,189 25,170 82.8,141 48.7,93.7 Z"/>
+												</svg>
+											{{/if_eq}}
+
+											{{#if_eq transition 'sadoc'}}
+												<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+													<path d="M 32.1,42.7 54.5,257 185,257 193,269 200,282 207,269 214,257 342,257 368,23.9 Z"/>
+												</svg>
+											{{/if_eq}}
+
+										<div class="tooltip__content" id="info-{{transition}}"></div>
+									</div>
+								</div>
+							</div>
+					</div>
+        </main>
+			</div>
+		</div>
+  </div>
+  /***Particle buttons svg****/
+  <svg class="hidden">
+			<symbol id="icon-arrow" viewBox="0 0 24 24">
+				<title>arrow</title>
+				<polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "/>
+			</symbol>
+			<symbol id="icon-drop" viewBox="0 0 24 24">
+				<title>drop</title>
+				<path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z"/><path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z"/>
+			</symbol>
+			<svg id="icon-github" viewBox="0 0 33 33">
+				<title>github</title>
+				<path d="M16.608.455C7.614.455.32 7.748.32 16.745c0 7.197 4.667 13.302 11.14 15.456.815.15 1.112-.353 1.112-.785 0-.386-.014-1.411-.022-2.77-4.531.984-5.487-2.184-5.487-2.184-.741-1.882-1.809-2.383-1.809-2.383-1.479-1.01.112-.99.112-.99 1.635.115 2.495 1.679 2.495 1.679 1.453 2.489 3.813 1.77 4.741 1.353.148-1.052.569-1.77 1.034-2.177-3.617-.411-7.42-1.809-7.42-8.051 0-1.778.635-3.233 1.677-4.371-.168-.412-.727-2.069.16-4.311 0 0 1.367-.438 4.479 1.67a15.602 15.602 0 0 1 4.078-.549 15.62 15.62 0 0 1 4.078.549c3.11-2.108 4.475-1.67 4.475-1.67.889 2.242.33 3.899.163 4.311C26.37 12.66 27 14.115 27 15.893c0 6.258-3.809 7.635-7.437 8.038.584.503 1.105 1.497 1.105 3.017 0 2.177-.02 3.934-.02 4.468 0 .436.294.943 1.12.784 6.468-2.159 11.131-8.26 11.131-15.455 0-8.997-7.294-16.29-16.291-16.29"></path>
+			</svg>
+			<svg id="icon-rewind" viewBox="0 0 36 20">
+				<title>rewind</title>
+				<path d="M16.315.061c.543 0 .984.44.984.984v17.217c0 .543-.44.983-.984.983L.328 10.391s-.738-.738 0-1.476C1.066 8.178 16.315.061 16.315.061zM35.006.061c.543 0 .984.44.984.984v17.217c0 .543-.44.984-.984.984L19.019 10.39s-.738-.738 0-1.475C19.757 8.178 35.006.06 35.006.06z"/>
+			</svg>
+		</svg>
+/***Particle buttons div****/
+  <main>
+  <div id="particles">
+    <div class="content content--nopadding content--intro">
+      <div id="face_content" class="content__inner">
+        <main class="cd-main-content">
+    <div class="grid">
+      <div class="grid__item theme-1">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">Send</button>
+      </div>
+      <div class="grid__item theme-2">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">Upload</button>
+      </div>
+      <div class="grid__item theme-3">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">Delete</button>
+      </div>
+      <div class="grid__item theme-4">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">Submit</button>
+      </div>
+      <div class="grid__item theme-5">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">refresh</button>
+      </div>
+      <div class="grid__item theme-6">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">Bookmark</button>
+      </div>
+      <div class="grid__item theme-7">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">Subscribe</button>
+      </div>
+      <div class="grid__item theme-8">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">Logout</button>
+      </div>
+      <div class="grid__item theme-9">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">Add to cart</button>
+      </div>
+      <div class="grid__item theme-10">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">Pause</button>
+      </div>
+      <div class="grid__item theme-11">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">Register</button>
+      </div>
+      <div class="grid__item theme-12">
+        <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+        <button class="particles-button">Export</button>
+      </div>
+    </div>
+        </main>
+/****Particle buttons end ***/
+</body>
+
+<script src="src/widget/js/codrops/imagesloaded.pkgd.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#preloader').show();
+		setTimeout(function(){
+				$('#preloader').hide('FadeOut');
+		}, 1500);
+	});
+
+	var insId = '{{instanceId}}';
+
+
+	if(insId=='2f5f4237-09fd-4cfc-aca7-ad7d1317e83c'){
+			settings.trial_expires = '2019-08-30T00:00:00.000Z';
+	}
+
+	if(settings.textbtna=='1' || settings.textbtna=="true" || settings.textbtna==true ){
+				if(settings.transitiontype=="ap1")
+				{
+					settings.textbtna = false;
+				}else{
+					settings.textbtna = true;
+				}
+	}else{
+		settings.textbtna = false;
+	}
+
+
+	if(settings.transitiontype == 'codyhouse'  || settings.transitiontype == 'codyhouse2' || settings.transitiontype == 'codyhouse3' || settings.transitiontype == 'codyhouse4' || settings.transitiontype == 'codyhouse5' || settings.transitiontype == 'codyhouse6'){
+		var tvid = 'tv'
+		var tvid2 = 'tv2'
+	}else if(settings.transitiontype == 'ap1'){
+			var tvid = 'tv_1'
+			var tvid2 = 'tv2_2'
+			//  Remove onButtonClick event
+			settings.textbtna = "false";
+	}else{
+		var tvid = 'tv_2'
+		var tvid2 = 'tv2_2'
+	}
+if(settings.youtube0!=undefined && settings.youtube0!=""){
+
+			$('.cd-modal-trigger').hide();
+			$('.codyhouse-context0').show();
+			$('.codyhouse-overlay').hide();
+
+			$('body').mouseenter(function(){
+					$('.cd-modal-trigger').show();
+					$('.codyhouse-context0').show();
+			});
+			$('body').mouseleave(function(){
+					$('.cd-modal-trigger').hide();
+					$('.codyhouse-context0').hide();
+			});
+}
+
+if(settings.youtube1!=undefined && settings.youtube1!=""){
+
+}
+
+	if(settings.youtube0){
+
+		var vid = [
+  		{'videoId': settings.youtube0, 'startSeconds': parseInt(settings.youtube0start), 'endSeconds': parseInt(settings.youtube0end), 'suggestedQuality': 'hd720'}
+		],
+		randomVid = Math.floor(Math.random() * vid.length),
+		currVid = randomVid;
+			$('.tv').show();
+	}else{
+		var vid = '';
+		$('.tv').hide();
+	}
+
+	if(settings.youtube1){
+		var vid2 = [
+		{'videoId': settings.youtube1, 'startSeconds': parseInt(settings.youtube1start), 'endSeconds': parseInt(settings.youtube1end), 'suggestedQuality': 'hd720'}
+		],
+		randomVid2 = Math.floor(Math.random() * vid2.length),
+		currVid2 = randomVid2;
+		$('.tv2').show();
+	}else{
+		var vid2 = '';
+		$('.tv2').hide();
+	}
+</script>
+
+<script src="src/widget/js/responsive-youtube-video-background/index.js"></script>
+<script>
+  $(function() {
+    onSettingsUpdate(settings);
+  	if(settings.transitiontype == 'codyhouse' || settings.transitiontype == 'codyhouse2' || settings.transitiontype == 'codyhouse3' || settings.transitiontype == 'codyhouse4' || settings.transitiontype == 'codyhouse5' || settings.transitiontype == 'codyhouse6') {
+      $.preloadImages = function() {
+        for (var i = 0; i < arguments.length; i++) {
+          $("<img />").attr("src", arguments[i]);
+        }
+      }
+      $.preloadImages("../src/widget/images/"+settings.transitiontype+"/" + settings.transition + ".png");
+    }
+
+		if(settings.textAlign0=="mc" && settings.transitiontype!= 'codyhouse'){
+			$('.text0').addClass('text-center');
+		}
+  });
+
+  // On conponent resize save dimensions
+  $(window).resize(function() {
+      clearTimeout(this.id);
+      this.id = setTimeout(doneResizing, 500);
+  });
+
+
+  function doneResizing(){
+    // Store component size in S3
+    settings.height = $(window).height();
+    settings.width = $(window).width();
+
+			$.ajaxQueue({
+				type: "POST",
+				url: "save",
+				data: { instance: getParameterByName('instance'), compId: compId, settings: settings },
+				success: function(result) {
+					//console.log(settings);
+				}
+			});
+  }
+
+   // Load the widget
+   function widgetload(settings) {
+     // If the device is a mobile
+    if(getParameterByName('deviceType') != 'desktop') {
+       // Set mobile font sizes
+      $('#text0, #text00, #text1, #text11, #text4, #text5, figure h2.text0').css({'font-size' : settings.mobilefontsize + 'px', 'line-height' : (parseInt(settings.mobilefontsize) + 6) + 'px'});
+      $('#subtext0, #subtext1, #subtext4, #subtext5').css({'font-size' : settings.mobileparagraphsize + 'px', 'line-height' : (parseInt(settings.mobileparagraphsize) + 6) + 'px'});
+      $('#btntext0, #btntext1, #btntext00, #btntext11').css({'font-size' : settings.mobilebuttonsize + 'px', 'line-height' : (parseInt(settings.mobilebuttonsize) + 4) + 'px'});
+
+      // Inject styles into mobile style sheet
+      $('#forcestyle4-mobile').html('#subtext4,#subtext5,#subtext1,#subtext0 {  font-size: 100%; } #btntext0, #btntext1,#btntext00, #btntext11{ padding: 10px 30px !important; }  .cd-modal .modal-close::before,  .cd-modal .modal-close::after{height: 2px;  width: 16px; top: calc(50% - 1px);  left: calc(50% - 8px);}  .cd-modal .modal-close{ width: 30px; height: 30px; } ');
+      $('#forcestyle4-mobile').append('#text5, #text4 { margin-bottom: 10px; } #subtext5,#subtext4{ width: 100% !important; }');
+      $('#forcestyle4-mobile').append('#face1 .text-card-context .modal-close::before,  #face1 .text-card-context .modal-close::after, #face1 .text-card-context .codrops-close::before,  #face1 .text-card-context .codrops-close::after{height: 2px;  width: 16px; top: calc(50% - 1px);  left: calc(50% - 8px);}  #face1 .text-card-context .modal-close{ padding: 0; width: 30px; height: 30px; } ');
+    }else{
+      $('#forcestyle4-mobile').html('');
+	  }
+
+	  if( $(window).width() < settings.subtextWidth0  || typeof settings.subtextWidth0 == 'undefined' ){
+			$('#forcestyle').append('#subtext4, #subtext0{ width: 100% !important; .max-width: 100%; }');
+	  }
+
+	  if( $(window).width() < settings.subtextWidth1  || typeof settings.subtextWidth1 == 'undefined' ){
+			$('#forcestyle').append('#subtext5, #subtext1{ width: 100% !important; }');
+	  }
+
+    if(settings.transitiontype == 'codyhouse') {
+      if(settings.startEndToggle == 1) {
+        if($('.codyhouse-context0').height() > 288) {
+          Wix.Settings.resizeComponent({
+            height: $('.codyhouse-context0').height() + 80
+          });
+
+          settings.height = $('.codyhouse-context0').height() + 80
+        }
+      }
+
+      if(settings.startEndToggle == 2) {
+        if($('.codyhouse-context1').height() > 288) {
+          Wix.Settings.resizeComponent({
+            height: $('.codyhouse-context1').height() + 80
+          });
+
+          settings.height = $('.codyhouse-context1').height() + 80;
+        }
+      }
+    }
+
+    if(settings.transitiontype == 'trad') {
+      if(settings.startEndToggle == 1) {
+        if($('#text0').outerHeight() > 373) {
+          Wix.Settings.resizeComponent({
+            height: $('#text0').outerHeight()
+          });
+
+          settings.height = $('#text0').outerHeight();
+        }
+        if($('.text-card-content0').outerHeight() > 373) {
+          Wix.Settings.resizeComponent({
+            height: $('.text-card-content0').outerHeight()
+          });
+
+          settings.height = $('.text-card-content0').outerHeight();
+        }
+      }
+
+      if(settings.startEndToggle == 2) {
+        if($('#text1').outerHeight() > 373) {
+          Wix.Settings.resizeComponent({
+            height: $('#text1').outerHeight()
+          });
+
+          settings.height = $('#text1').outerHeight();
+        }
+
+        if($('.text-card-content1').outerHeight() > 373) {
+          Wix.Settings.resizeComponent({
+            height: $('.text-card-content1').outerHeight()
+          });
+
+          settings.height = $('.text-card-content1').outerHeight();
+        }
+      }
+    }
+
+
+		$('#image0').attr('src','');
+		$('#image1').attr('src','');
+		$('#figure-image').attr('src','');
+		$('#figure-image').attr('src','');
+		$('#codyhouse-image0').css('background-image','none');
+		$('#codyhouse-image1').css('background-image','none');
+
+		var instance = getParameterByName('instance');
+		var instanceId = '{{instanceId}}';
+		var compId = getParameterByName('compId');
+		var vendorProductId='{{vendorProductId}}';
+
+		var isPremium = vendorProductId=='premium' || vendorProductId=='premiem'
+		|| instanceId=='137afc24-d5cb-21bf-f511-a5dbb9499ac8'
+		|| instanceId=='138868d3-ea8c-b107-5c27-070dd4d950c2'
+		|| instanceId=='138bbf3b-7e2f-acaa-c233-b0a49e9baee0'
+		|| instanceId=='13aed443-29e7-6c07-d349-20ebeb1e3179' // http://www.meadwebdesign.com/#!about1/c3b6
+		|| instanceId=='b309f27f-de66-4064-82c9-b28b99d81a21' // rollover-test
+		|| instanceId=='801aee0d-e89d-452a-889f-bc69a2f39a88' // rollover-fx
+		|| instanceId=='1362fe99-89fe-2d42-fff7-59be43347e1b' // local
+		|| instanceId=='55f7a743-2ef0-4fbf-a059-5226e3796f32' // rollover-fx (test)
+		|| instanceId=='0983c526-fc1d-4642-8db6-5fda7fd701ad' // http://www.wixexpert.com/
+		|| instanceId=='f530857c-3061-40e5-b1aa-89875935e40c' // http://www.holliscreekrevival.com/
+		;
+
+		$('.codyhouse-context1').attr('class','codyhouse-context1');
+		$('.codyhouse-context0').attr('class','codyhouse-context0');
+
+		if(settings.transitiontype=='codrops'){
+			$('.codrops-context0').attr('class','codrops-context0');
+			$('.codrops-context1').attr('class','codrops-context1');
+			$('.codrops-context0 #subtext4').attr('class','text');
+			$('.codrops-context1 #subtext5').attr('class','text text1');
+		}
+
+		$('.text-card-content0').attr('class','text-card-content text-card-content0');
+		$('.text-card-content1').attr('class','text-card-content text-card-content1');
+
+		if(settings.allowSubtextBtn == 'true' || settings.allowSubtextBtn == true || settings.allowSubtextBtn == 1 ){
+			$('.face1-text-wrap').addClass('display-none');
+			$('.text-card-context').removeClass('display-none');
+		}else{
+			$('.face1-text-wrap').removeClass('display-none');
+			$('.text-card-context').addClass('display-none');
+		}
+
+    /* If the device is a desktop add a desktop class to the main container otherwise add mobile class */
+    if(getParameterByName('deviceType') == 'desktop') {
+      $('#container').addClass('desktop');
+    } else {
+      $('#container').addClass('mobile');
+    }
+
+    if(getParameterByName('deviceType') != 'desktop'){
+      if(settings.subtextAllowmob1 == 'true' || settings.subtextAllowmob1 == true || settings.subtextAllowmob1 == 1){
+        $('#subtext5').addClass('display-none-mobile');
+        $('#subtext1').addClass('display-none-mobile');
+      }else{
+        $('#subtext5').removeClass('display-none-mobile');
+        $('#subtext1').removeClass('display-none-mobile');
+      }
+
+			if(settings.subtextAllowmob0 == 'true' || settings.subtextAllowmob0 == true || settings.subtextAllowmob0 == 1){
+				$('#subtext4').addClass('display-none-mobile');
+				$('#subtext0').addClass('display-none-mobile');
+			}else{
+				$('#subtext4').removeClass('display-none-mobile');
+				$('#subtext0').removeClass('display-none-mobile');
+			}
+    }else{
+			//cody
+			$('#subtext5').removeClass('display-none-mobile');
+      $('#subtext4').removeClass('display-none-mobile');
+
+			//card
+			$('#subtext1').removeClass('display-none-mobile');
+			$('#subtext0').removeClass('display-none-mobile');
+    }
+
+
+	if($('.container').hasClass('mobile')) {
+				$('.mobile .codyhouse-context1').addClass('context1align' + settings.subtextMobileAlign1);
+				$('.mobile .codyhouse-context0').addClass('context0align' + settings.subtextMobileAlign0);
+				$('.mobile .text-card-content1').addClass('context1align' + settings.subtextMobileAlign1);
+				$('.mobile .text-card-content0').addClass('context0align' + settings.subtextMobileAlign0);
+
+				if(settings.transitiontype=='codrops'){
+					$('.mobile .codrops-context1').addClass('context1align' + settings.subtextAlign1);
+					$('.mobile .codrops-context0').addClass('context0align' + settings.subtextAlign0);
+					$('.mobile .codrops-context0 #subtext4').addClass('align' + settings.subtextAlign0);
+					$('.mobile .codrops-context1 #subtext5').addClass('align' + settings.subtextAlign1);
+				}
+
+			} else {
+				$('.codyhouse-context1').addClass('context1align' + settings.subtextAlign1);
+				$('.codyhouse-context0').addClass('context0align' + settings.subtextAlign0);
+				$('.text-card-content1').addClass('context1align' + settings.subtextAlign1);
+				$('.text-card-content0').addClass('context0align' + settings.subtextAlign0);
+
+				if(settings.transitiontype=='codrops'){
+						$('.codrops-context1').addClass('context1align' + settings.subtextAlign1);
+						$('.codrops-context0').addClass('context0align' + settings.subtextAlign0);
+						$('.codrops-context0 #subtext4').addClass('align' + settings.subtextAlign0);
+						$('.codrops-context1 #subtext5').addClass('align' + settings.subtextAlign1);
+				}
+
+    }
+
+			var getResizedImageUrl = Wix.Utils.Media.getResizedImageUrl;
+			if (instanceId === '2e340ff0-2e19-4f53-a50c-8864bd738663') {
+				getResizedImageUrl = Wix.Utils.Media.getImageUrl;
+			}
+
+			var viewmode = getParameterByName('viewMode');
+			var editor = viewmode=='editor';
+
+			var testinterval=null;
+
+			var body=document.body;
+			var container=document.getElementById("container");
+
+			var text0=$('#text0'),
+			text1=$('#text1'),
+			text2=$('#text2'),
+			face0=$("#face0"),
+			face1=$("#face1"),
+			face2=$("#face2"),
+			face3=$("#face3"),
+			subtext0=$("#subtext4"),
+			subtext=$("#subtext5"),
+			subtext00=$("#subtext0"),
+			subtext11=$("#subtext1"),
+			onclick=$("#onclick"),
+			texts=$('.text'),
+			actualWidth=0,
+			idealHeight=0;
+
+		 	if (Wix.Events){
+        Wix.addEventListener(Wix.Events.COMPONENT_DELETED, function(data) {
+          $.ajaxQueue({
+            type: "POST",
+            url: 'delete',
+            data: { instance: instance, compId: compId }
+          });
+        });
+
+        Wix.addEventListener(Wix.Events.PAGE_NAVIGATION_OUT, function(data) {
+          $('#face5, .cd-transition-layer').removeClass('visible');
+        });
+			}
+
+			Wix.Settings.getSiteInfo( function( info ) {
+        $.ajaxQueue({
+          type: "POST",
+          url: 'info',
+          data: { productId:'rollover', subProductId:transition, instanceId: instanceId, compId:compId, url:info.baseUrl, title:info.pageTitle, viewmode:viewmode, vendorProductId:vendorProductId }
+        });
+			});
+
+			settings.transition = settings.transition || 'gooey-transition';
+			settings.parallaxSpeed = settings.parallaxSpeed || 0;
+			settings.sticky = settings.sticky || false;
+
+      var transition = settings.transition, rollover = false;
+
+			rollover = rollovers[transition];
+
+			$('#card').hide();
+			$('#figure').hide();
+			$('#codyhouse').hide();
+			$('#cooltips').hide();
+			var elem0, elem1;
+
+			if(rollover.display_method == 'codyhouse'){
+					$('body').attr('class','');
+					$('#codyhouse').attr('class','');
+					$('#codyhouse').addClass(settings.transition).trigger('classChange');
+					$('#codyhouse').show();
+					$('#codrops').hide();
+			} else if(rollover.display_method == 'card'){
+					elem0=document.getElementById("image0");
+					elem1=document.getElementById("image1");
+					$('#card').show();
+					$('#codrops').hide();
+			}
+			else if(rollover.display_method == 'cooltips'){
+					$('#cooltips').show();
+					$('#codrops').hide();
+					$("#container").hide();
+			}
+      else if(rollover.display_method == 'particles'){
+					$('#particles').show();
+          $('#cooltips').show();
+					$('#codrops').hide();
+					$("#container").hide();
+			}
+			else if(rollover.display_method == 'codrops') {
+					$('#codrops').show();
+					if(settings.startEndToggle=="2"){
+							$('#codrops #face_content').addClass('hide-bg-atomic');
+					}else{
+							$('#codrops #face_content').removeClass('hide-bg-atomic');
+					}
+
+      } else {
+				elem0=document.getElementById("figure-image");
+				$('#figure').show();
+				$('#codrops').hide();
+			}
+
+			settings.isPremium = isPremium;
+
+			var wixViewMode = Wix.Utils.getViewMode();
+			editmode = wixViewMode;
+
+
+			if(editmode!= "editor"){
+
+				if(settings.transition=="romeo"){
+
+					if(settings.zoomArtLevel && settings.zoomArtLevel!='NaN' && settings.zoomArtLevel!=null){
+
+							$('body').mouseenter(function(){
+										$('.effect-romeo img').css('transform','translate3d(0,0,0)');
+							});
+							$('body').mouseleave(function(){
+								//	$('.effect-romeo img').css('transform','translate3d(0,0,'+settings.zoomArtLevel+'px)');
+							});
+					}else{
+
+							setTimeout(function(){
+								$('.effect-romeo img').css('transform','translate3d(0,0,300px)');
+							},100);
+
+							$('body').mouseenter(function(){
+										$('.effect-romeo img').css('transform','translate3d(0,0,0)');
+							});
+							$('body').mouseleave(function(){
+									$('.effect-romeo img').css('transform','translate3d(0,0,300px)');
+							});
+					}
+				}
+
+			}
+
+      // If the widget is being viewed from the live site and the trial has expired and the user isn't premium
+      if(editmode == "site" && !{{{premium}}} && {{{trialExpired}}}) {
+        $('.cssanimations').remove();
+      }
+
+      // If the widget is being viewed from the editor and the trial has expired and the user isn't premium
+     if(editmode == "editor" && !{{{premium}}} && {{{trialExpired}}}) {
+        $('body').before('<div class="upgrade"><h3>Make your site #evenmorestunning by upgrading Rollover Today:  Edit dozens of effects to add interactivity to your site</h3></div>');
+     }
+
+      Wix.addEventListener(Wix.Events.EDIT_MODE_CHANGE, function(e) {
+        if(e['editMode'] == "editor" && !{{{premium}}} && {{{trialExpired}}}) {
+         $('body').before('<div class="upgrade"><h3>Make your site #evenmorestunning by upgrading Rollover Today:  Edit dozens of effects to add interactivity to your site</h3></div>');
+        } else {
+          $('.upgrade').remove();
+        }
+
+        $('.cd-transition-layer').removeClass('visible');
+        stuck = false;
+      });
+
+			try {
+  			rollover.on_load(settings);
+			} catch( e ) {
+				//console.log(e);
+			}
+
+			if (transition=='slide'){
+				transition+=settings.direction;
+			}
+
+			var stext0=settings.text0;
+			if (stext0===undefined) {
+				stext0='';
+			}
+			var stext1=settings.text1;
+			if (stext1===undefined) {
+				stext1='';
+			}
+			text0.text(stext0);
+			text1.text(stext1);
+			if (rollover.premium && !isPremium) {
+				if (wixViewMode!='editor' && wixViewMode!='preview') {
+					if (rollover.display_method==='figure'){
+						face2.show();
+					} else{
+						face3.show();
+					}
+				}
+			}
+
+			var positionarr = ['tl','tc','tr','ml','mc','mr','bl','bc','br','l','r','c','j','undefined'];
+			$.each(positionarr, function() {
+				face0.removeClass('align'+this);
+				text0.removeClass('align'+this);
+				face1.removeClass('align'+this);
+				text1.removeClass('align'+this);
+				subtext0.removeClass('align'+this);
+				subtext.removeClass('align'+this);
+				subtext00.removeClass('align'+this);
+				subtext11.removeClass('align'+this);
+				$('.modal-close').removeClass('close'+this);
+			});
+
+      if($('.container').hasClass('mobile')) {
+  			face0.addClass('align'+settings.textMobileAlign0);
+  			text0.addClass('align'+settings.textMobileAlign0);
+  			face1.addClass('align'+settings.textMobileAlign1);
+  			text1.addClass('align'+settings.textMobileAlign1);
+  			subtext0.addClass('align'+settings.subtextMobileAlign0);
+  			subtext.addClass('align'+settings.subtextMobileAlign1);
+  			subtext00.addClass('align'+settings.subtextMobileAlign0);
+  			subtext11.addClass('align'+settings.subtextMobileAlign1);
+      } else {
+        face0.addClass('align'+settings.textAlign0);
+  			text0.addClass('align'+settings.textAlign0);
+  			face1.addClass('align'+settings.textAlign1);
+  			text1.addClass('align'+settings.textAlign1);
+  			subtext0.addClass('align'+settings.subtextAlign0);
+  			subtext.addClass('align'+settings.subtextAlign1);
+  			subtext00.addClass('align'+settings.subtextAlign0);
+  			subtext11.addClass('align'+settings.subtextAlign1);
+      }
+
+      if( isIPad1()){
+				$('.modal-close').addClass('close'+settings.subtextAlign1);
+			}
+
+			if (rollover.copyTextColor) {
+				$('#container').removeClass('fontvariant');
+			}
+
+			var fontSize = settings.fontSize;
+			if (fontSize) {
+				texts.css('fontSize',fontSize+'pt');
+			}
+
+			$('body').addClass(transition + ' ' + settings.transitiontype);
+			var parallaxBorder=0;
+			if (settings.parallaxSpeed != 0) {
+				var lastY=0;
+				var parallax=$('img');
+				var parallaxFactor=-(11-settings.parallaxSpeed)*5;
+
+				function updateParallax() {
+					Wix.getBoundingRectAndOffsets(function(data){
+						var yOffset=data.offsets.y;
+						var top=data.rect.top;
+						var newY=((top-yOffset)/parallaxFactor)-parallaxBorder;
+						if (newY!=lastY) {
+							parallax.css('margin-top',newY);
+							lastY=newY;
+						}
+					});
+				}
+			  setInterval( updateParallax, 100 );
+			}
+
+			var lastWidth = $(window).width(), lastHeight = $(window).height();
+			var resize = function() {
+
+				var actualWidth = $(window).width();
+				var idealHeight = $(window).height();
+
+        if(rollover.display_method == 'figure' && (lastWidth !== actualWidth || lastHeight !== idealHeight)){
+					lastWidth = actualWidth;
+					lastHeight = idealHeight;
+					document.location.href = document.location.href;
+				}
+
+				var margin=8;
+				if (transition=='zoom' || transition=='unzoom'){
+					margin=16;
+				}
+				if (transition=='flipx' || transition=='flipy'){
+					margin=16;
+				}
+				margin0=margin;
+				var margin1=margin;
+				if (transition=='blur') {
+					margin1=16;
+				}
+				if (transition=='unblur') {
+					margin0=16;
+				}
+
+				//$(container).height(idealHeight);
+				// $(elem0).height(idealHeight);
+				$(elem0).width(actualWidth);
+				// $(elem1).height(idealHeight);
+				$(elem1).width(actualWidth);
+				$('#figure').height(idealHeight);
+				$('#figure').css('max-height',idealHeight);
+
+        if (settings.image0 && settings.image0 != null && settings.image0 != "") {
+          if(rollover.display_method == 'card'){
+            if($.isArray(settings.image0)) {
+  					  var relativeUri0 = settings.image0[0].relativeUri;
+            } else {
+              var relativeUri0 = settings.image0.relativeUri;
+            }
+  					elem0.src=getResizedImageUrl(relativeUri0,actualWidth,idealHeight);
+  					var width0=actualWidth-margin0;
+  					elem0.width=width0;
+  					if (transition=='greyscale' && (getInternetExplorerVersion() >= 10 || isIPad1())){
+  						var html='<svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 '+width0+' '+idealHeight+'" width="'+width0+'" height="'+idealHeight+'"><defs><filter id="filtersPicture"><feColorMatrix id="filter_38" type="saturate" values="0" data-filterid="38" /></filter></defs>';
+  						html+='<image filter="url(&quot;#filtersPicture&quot;)" x="0" y="0" width="'+width0+'" height="'+idealHeight+'" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="'+elem0.src+'" /></svg>';
+  						$('#svg0').html(html);
+  						$(elem0).remove();
+  					}
+
+  					if (transition=='unblur' && isFirefoxOrAndroidOrIPad1()) {
+  						var html='<svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 '+width0+' '+idealHeight+'" width="'+width0+'" height="'+idealHeight+'" style="'+'">' +
+  						'<defs>' +
+  						'<filter id="svgBlur" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur in="SourceGraphic" stdDeviation="5"/></filter>' +
+  						'</defs>' +
+  						'<image filter="url(&quot;#svgBlur&quot;)" x="0" y="0" width="'+width0+'" height="'+idealHeight+'" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="'+elem0.src+'" />' +
+  						'</svg>';
+  						$('#svg0').html(html);
+  						$(elem0).remove();
+  					}
+  				}
+        }
+
+        if (settings.image1 && settings.image1 != null && settings.image1 != "") {
+  				if(rollover.display_method == 'card') {
+					if($.isArray(settings.image1)) {
+							var relativeUri1 = settings.image1[0].relativeUri;
+					} else {
+					  var relativeUri1 = settings.image1.relativeUri;
+					}
+  					elem1.src=getResizedImageUrl(relativeUri1,actualWidth,idealHeight);
+  					var width1=actualWidth-margin1;
+  					elem1.width=width1;
+  					if (transition=='blur' && isFirefoxOrAndroidOrIPad1()) {
+  						var html='<svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 '+width1+' '+idealHeight+'" width="'+width1+'" height="'+idealHeight+'" style="'+'">' +
+  						'<defs>' +
+  						  '<filter id="svgBlur" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur in="SourceGraphic" stdDeviation="5"/></filter>' +
+  						'</defs>' +
+  						'<image filter="url(&quot;#svgBlur&quot;)" x="0" y="0" width="'+width1+'" height="'+idealHeight+'" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="'+elem1.src+'" />' +
+  						'</svg>';
+  						$('#svg1').html(html);
+  						$(elem1).remove();
+  					}
+  				}
+        }
+
+        /* If no image is set add display-none class to the #figure-image element */
+		if(settings.noimage0 == 'true' || settings.noimage0  == 1){
+					 $('#figure-image').addClass('display-none');
+				}else{
+					$('#figure-image').removeClass('display-none');
+				}
+
+        /* If no youtube video is set add display-none class to the #figure-image element */
+		if(settings.youtube0){
+					$('#figure-image').addClass('display-none');
+				}else{
+					$('#figure-image').removeClass('display-none');
+				}
+			}
+
+			window.onresize = resize;
+
+			resize();
+
+			if(settings.urlmode=='anchor'){
+				var urls=settings.urlsanchor;
+			}else if(settings.urlmode=='pages'){
+				var urls=settings.urlspages;
+			}else if(settings.urlmode=='off'){
+				var urls="";
+			}else{
+				var urls=settings.urls;
+			}
+
+			var linkelem = '';
+
+			$(container).removeClass('target').removeClass('target-link');
+
+      function is_url(str) {
+        regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+
+        if(regexp.test(str)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      // R1 link patch
+      if(settings.urlmode || settings.urlmode == "") {
+        settings.endStateLink = true;
+
+        if(settings.urlmode == "") {
+          if(is_url(settings.url)) {
+            settings.linkData = {
+              target: "_blank",
+              type: "ExternalLink",
+              url: settings.url
+            };
+          } else {
+            settings.linkData = {
+              pageId: '#' + settings.url.split('/')[1],
+              type: "PageLink"
+            };
+          }
+        } else if(settings.urlmode == "anchor") {
+          settings.linkData = {
+            anchorDataId: "#" + settings.url.split('/')[1].replace('comp', 'dataItem'),
+            anchorName: settings.url.split('/')[0].replace('#!', ''),
+            pageId: "#c1dmp",
+            type: "AnchorLink"
+          };
+        } else if(settings.urlmode == "email") {
+          settings.linkData = {
+            recipient: settings.url,
+            type: "EmailLink"
+          };
+        } else if(settings.urlmode == "tel") {
+          settings.linkData = {
+            phoneNumber: settings.url,
+            type: "PhoneLink"
+          };
+        }
+      }
+
+      if(settings.endStateLink) {
+  			if(settings.textbtnb == 'true' || settings.textbtnb == true || settings.textbtnb == 1){
+  				$('#btntext1').addClass('target').addClass('target-link');
+  				$('#btntext11').addClass('target').addClass('target-link');
+  				$(container).removeClass('target').removeClass('target-link');
+  				$("#face1 .text-card-context-inner").removeClass('target').removeClass('target-link');
+  				$("#face5-wrap").removeClass('target').removeClass('target-link');
+  			} else {
+
+  				if(settings.textbtna == 'true' || settings.textbtna == true || settings.textbtna == 1) {
+
+						if(rollover.display_method == 'codyhouse'){
+  						$("#face5-wrap").addClass('target').addClass('target-link');
+  					} else if(rollover.display_method == 'card') {
+  						if(settings.allowSubtextBtn == 'true' || settings.allowSubtextBtn == true || settings.allowSubtextBtn == 1 ){
+  							$("#face1 .text-card-context-inner").addClass('target').addClass('target-link');
+  						}else{
+  							$(container).addClass('target').addClass('target-link');
+  						}
+  					} else {
+								if(settings.transitiontype=="codrops"){
+									$('#codrops #face5-wrap').addClass('target-link');
+								}
+								$(container).addClass('target').addClass('target-link');
+					}
+  				} else {
+					if(settings.transitiontype=="codrops"){
+									$('#codrops #face5-wrap').addClass('target-link');
+					}
+  					$(container).addClass('target').addClass('target-link');
+					$('#btntext1').removeClass('target') .removeClass('target-link');
+    				$('#btntext11').removeClass('target') .removeClass('target-link');
+  				}
+        }
+      }
+
+			if (urls && urls!='' ) {
+				if (settings.urlmode=='email') {
+					  var u='mailto:'+urls;
+					  onclick.show();
+					  if (isPremium || wixViewMode=='preview') {
+						onclick.attr('href',u).attr('target','_blank');
+					  } else {
+						clickable.click( function() {
+							//alert('Clickable email available only in Premium'); //Not allowed to be change
+						} );
+					  }
+				}
+			}
+
+			if(wixViewMode ==  'editor') {
+        //$('.cd-transition-layer').removeClass('visible');
+			//	console.log('sdsdsdsdsdd');
+				if(settings.startEndToggle == 2) {
+					$('body').addClass('preview');
+          $('#face5').addClass('visible');
+				} else {
+					$('body').removeClass('preview');
+          $('#face5').removeClass('visible');
+				}
+			} else {
+				$('body').removeClass('preview');
+			}
+
+			Wix.addEventListener(Wix.Events.EDIT_MODE_CHANGE, function(e) {
+				if(e['editMode'] != 'editor'){
+						$('body').removeClass('preview');
+			   }
+		  });
+		}
+
+		$(document).ready(function() {
+		  Wix.addEventListener(Wix.Events.EDIT_MODE_CHANGE, function(e) {
+			  editmode = e['editMode'] ;
+		  });
+    });
+
+		function triggerlink(){
+
+      if(settings.linkData) {
+        Wix.navigateTo(settings.linkData);
+      }
+		}
+
+		var stuck=false;
+		var on=false;
+		var cur_hover = false;
+
+		function enter() {
+			if(getParameterByName('viewMode')!='editor'){
+					cur_hover = true;
+					var transition='gooey-transition', rollover = false;
+					if (settings.transition && settings.transition!='') {
+							transition=settings.transition;
+					} else {
+							transition='gooey-transition';
+					}
+					rollover = rollovers[transition];
+					on=true;
+					if (!stuck) {
+						rollover.animation_script_on(settings);
+					}
+			}
+		}
+
+		function leave() {
+				if(getParameterByName('viewMode')!='editor'){
+				cur_hover = false;
+				var transition= 'gooey-transition', rollover = false;
+
+				if (settings.transition && settings.transition!='') {
+					transition=settings.transition;
+				} else {
+					transition='gooey-transition';
+				}
+
+				rollover = rollovers[transition];
+
+				if (!stuck) {
+					on = false;
+
+					if (settings.sticky === true || settings.sticky === "true") {
+						stuck = true;
+					} else {
+						rollover.animation_script_off(settings);
+					}
+				}
+
+			}
+		}
+
+		// If there is no trigger on button allow transition hover
+		if(settings.textbtna == false || settings.textbtna == "false"  || !settings.textbtna && getParameterByName('viewMode')!='editor') {
+				$('body').mouseenter(enter);
+				if(settings.endStateLink=="false"){
+							$('#container').click('on',function(){
+								return false;
+							});
+							$('#codrops').click('on',function(){
+								return false;
+							});
+				}
+		}
+
+		if(settings.textbtna == false || settings.textbtna == "false" || !settings.textbtna && getParameterByName('viewMode')!='editor') {
+			$('body').mouseleave(leave);
+		}
+
+		var toggle = function() {
+		  if (!on) {
+			  enter();
+		  } else {
+				if(settings.linkData == undefined || settings.linkData == '') {
+				  leave();
+				} else {
+					$('html').off().on('click','.target-link',function(){
+							triggerlink();
+					});
+				}
+			  }
+		}
+
+    // Use click events for desktop and touch events for mobile
+    if(getParameterByName('deviceType') == 'desktop') {
+		  $('body').bind('click', toggle);
+    } else {
+		  $('body').bind('touchstart', toggle);
+    }
+
+		function getInternetExplorerVersion(){
+			var rv = -1;
+			if (navigator.appName == 'Microsoft Internet Explorer'){
+				var ua = navigator.userAgent;
+				var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+				if (re.exec(ua) != null)
+				rv = parseFloat( RegExp.$1 );
+			}
+			else if (navigator.appName == 'Netscape'){
+				var ua = navigator.userAgent;
+				var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+				if (re.exec(ua) != null)
+				rv = parseFloat( RegExp.$1 );
+			}
+		  return rv;
+		}
+
+		function isFirefoxOrAndroidOrIPad1() {
+		  return navigator.userAgent.indexOf('Firefox/')!=-1 || navigator.userAgent.indexOf('Android')!=-1 || isIPad1();
+		}
+
+		function isIPad1() {
+		  return navigator.userAgent.indexOf('Apple-iPad/')!=-1 || navigator.userAgent.indexOf('Apple-iPad1C1/')!=-1;
+		}
+
+
+
+		$('#btntext00').on('click',function(){
+			default_on_transition_click(settings);
+		});
+
+		$('#face1 .text-card-context .modal-close').on('click', function() {
+			default_off_transition_click(settings);
+		});
+	</script>
+<script src="src/widget/js/charming.min.js"></script>
+<script src="src/widget/js/tooltip.js"></script>
+<script src="src/widget/js/codyhouse/inlineSVG.min.js"></script>
+<script src='src/widget/js/particleButtons/particles.js'></script>
+<script src='src/widget/js/particleButtons/demo.js'></script>
+</html>
