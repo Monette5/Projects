@@ -1,0 +1,2957 @@
+/* --------------------------------
+
+Primary style
+
+-------------------------------- */
+.textcenter{
+	text-align: center;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+/* --------------------------------
+
+Shared style
+
+-------------------------------- */
+.cd-btn {
+  display: inline-block;
+  padding: .5em 1.5em;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  -webkit-transition: box-shadow .3s;
+  transition: box-shadow .3s;
+  cursor: pointer;
+}
+.cd-btn:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  line-height: 1;
+}
+
+/* Main Content */
+.cd-main-content, .modal-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  /* vertically align its content */
+  display: table;
+}
+.cd-main-content .mc, .modal-content .mc {
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+}
+.cd-main-content .tl, .modal-content .tl{
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: top;
+  text-align: left;
+  width: 100%;
+}
+.cd-main-content .tc, .modal-content .tc{
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: top;
+  text-align: center;
+  width: 100%;
+}
+.cd-main-content .tr, .modal-content .tr{
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: top;
+  text-align: right;
+  width: 100%;
+}
+.cd-main-content .ml, .modal-content .ml{
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  width: 100%;
+}
+.cd-main-content .mr, .modal-content .mr{
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  width: 100%;
+}
+.cd-main-content .bl, .modal-content .bl{
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: left;
+  width: 100%;
+}
+.cd-main-content .bc, .modal-content .bc{
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: center;
+  width: 100%;
+}
+.cd-main-content .br, .modal-content .br{
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: right;
+  width: 100%;
+}
+
+.codyhouse-context1,
+.codyhouse-context0,
+.modal-content{
+	max-width: 980px;
+	margin: 0px auto;
+	width: 100%;
+}
+
+/* Modal Window */
+.cd-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+  transition: opacity .3s 0s, visibility 0s .3s;
+}
+.cd-modal .modal-content {
+  height: 100%;
+  overflow-y: auto;
+ /* padding: 3em 5%;*/
+}
+.cd-modal h1, .cd-modal .text {
+  text-align: center;
+}
+.cd-modal p {
+  line-height: 1.6;
+  margin: 2em auto;
+  max-width: 800px;
+}
+.cd-modal .modal-close, .cd-modal .codrops-close {
+  /* 'X' icon */
+  position: absolute;
+  z-index: 1;
+  top: 30px;
+  right: 30px;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 100%;
+  color: transparent;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: visibility 0s .3s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: visibility 0s .3s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
+  transition: transform .3s 0s, visibility 0s .3s, opacity .3s 0s, -webkit-transform .3s 0s;
+  cursor: pointer;
+}
+
+.cd-modal .closer.modal-close, .cd-modal .closer.codrops-close {
+	left: 5%;
+	right: initial;
+}
+.cd-modal .modal-close::before, .cd-modal .modal-close::after, .cd-modal.visible .codrops-close::before, .cd-modal.visible .codrops-close::after {
+	background: #fff;
+  content: '';
+  display: inline-block;
+  position: absolute;
+  height: 2px;
+  width: 20px;
+  top: calc(50% - 1px);
+  left: calc(50% - 10px);
+}
+.cd-modal .modal-close::before, .cd-modal.visible .codrops-close::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.cd-modal .modal-close::after, .cd-modal.visible .codrops-close::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.cd-modal.visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity .7s, visibility 0s;
+  transition: opacity .7s, visibility 0s;
+}
+.cd-modal.visible .modal-content {
+  /* this fixes the buggy scrolling on webkit browsers - mobile devices only - when overflow property is applied */
+  -webkit-overflow-scrolling: touch;
+}
+.cd-modal.visible .modal-close, .cd-modal.visible .codrops-close {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: visibility 0s 0s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: visibility 0s 0s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
+  transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s, -webkit-transform .3s 0s;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+@media only screen and (min-width: 1100px) {
+  .cd-modal .modal-close, .cd-modal .codrops-close {
+    height: 60px;
+    width: 60px;
+  }
+  .cd-modal .modal-close::before, .cd-modal .modal-close::after, .cd-modal .codrops-close::before, .cd-modal .codrops-close::after {
+    height: 2px;
+    width: 26px;
+    top: calc(50% - 1px);
+    left: calc(50% - 13px);
+  }
+}
+
+/* Transition Layer */
+.cd-transition-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+.cd-transition-layer .bg-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateX(-2%);
+          transform: translateY(-50%) translateX(-2%);
+  /* its dimentions will be overwritten using jQuery to proportionally fit the viewport */
+  height: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+.cd-transition-layer .svg-layer {
+	height: 100%;
+	position: absolute;
+	left: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateX(0%);
+          transform: translateY(-50%) translateX(0%);
+	width: auto;
+}
+.cd-transition-layer.opening .svg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.cd-transition-layer.closing .svg-layer  {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+.cd-transition-layer.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.cd-transition-layer.visible .bg-layer {
+  -webkit-transform: translateY(-50%) translateX(-98%);
+          transform: translateY(-50%) translateX(-98%);
+}
+.cd-transition-layer.opening .bg-layer, .cd-transition-layer.closing .bg-layer {
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.no-cssanimations .cd-transition-layer {
+  display: none;
+}
+
+/* --------------------------------
+
+Scrub Effect
+
+-------------------------------- */
+.scrub-transition {
+  /* font-family: "PT Sans", sans-serif; */
+  color: #2c1a32;
+}
+.scrub-transition h1, .scrub-transition .text {
+ /*  font-family: "Sigmar One", serif; */
+  margin-bottom: .4em;
+   /* font-size: 4rem; */
+}
+.scrub-transition .cd-btn {
+  color: #ffffff;
+}
+.scrub-transition .cd-main-content {
+  background: #ffbc59;
+}
+.scrub-transition .cd-modal {
+  background: #633b63;
+}
+.scrub-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.scrub-transition .cd-modal .modal-close {
+  background: #543254;
+}
+.scrub-transition .cd-modal .modal-close:hover {
+  background: #452945;
+}
+.scrub-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/scrub-transition.png);
+}
+.scrub-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.scrub-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+@media only screen and (min-width: 768px) {
+}
+
+/* --------------------------------
+
+Fire Extinguisher Effect
+
+-------------------------------- */
+.extinguisher-transition h1, .extinguisher-transition .text {
+ /* font-family: "Merriweather", serif;*/
+  margin-bottom: .4em;
+/*  font-size: 3.2rem;*/
+}
+.extinguisher-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.extinguisher-transition .cd-main-content {
+  background: #e93741;
+}
+.extinguisher-transition .cd-modal {
+  background: #f1faee;
+}
+.extinguisher-transition .cd-modal .modal-content {
+  color: #437a9f;
+}
+.extinguisher-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/extinguisher-transition.png);
+
+}
+.extinguisher-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.extinguisher-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+@media only screen and (min-width: 768px) {
+}
+
+/* --------------------------------
+
+Glitch Effect
+
+-------------------------------- */
+.glitch-transition h1, .glitch-transition .text {
+  margin-bottom: .4em;
+  /* font-size: 4rem;*/
+  /* font-weight: 700;*/
+}
+.glitch-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.glitch-transition .cd-main-content {
+  background: #2e2f36;
+}
+.glitch-transition .cd-modal {
+  background: #ffffff;
+}
+.glitch-transition .cd-modal .modal-content {
+  color: #676970;
+}
+.glitch-transition .cd-modal .modal-close {
+  background: #d9d9d9;
+}
+.glitch-transition .cd-modal .modal-close:hover {
+  background: #b3b3b3;
+}
+.glitch-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/glitch-transition.png);
+}
+.glitch-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.glitch-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+@media only screen and (min-width: 768px) {
+}
+
+/* --------------------------------
+
+Scribble Effect
+
+-------------------------------- */
+.scribble-transition h1, .scribble-transition .text {
+  margin-bottom: .4em;
+ /*  font-family: "Rock Salt", cursive;*/
+  /* font-size: 4rem;*/
+  /* font-weight: 700;*/
+}
+.scribble-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.scribble-transition .cd-main-content {
+  background: #653d55;
+}
+.scribble-transition .cd-modal {
+  background: #e44b60;
+}
+.scribble-transition .cd-modal .modal-content {
+  color: #fcf4e1;
+}
+.scribble-transition .cd-transition-layer .bg-layer {
+  -webkit-transform: translateY(-50%) translateX(-1.3158%);
+          transform: translateY(-50%) translateX(-1.3158%);
+  /* sprite composed of 38 frames */
+  width: 3800%;
+  background-image: url(../img/scribble-transition.png);
+}
+.scribble-transition .cd-transition-layer .svg-layer {
+  -webkit-transform: translateY(-50%) translateX(-1.3158%);
+          transform: translateY(-50%) translateX(-1.3158%);
+  /* sprite composed of 38 frames */
+  width: 3800%;
+}
+.scribble-transition .cd-transition-layer.opening .bg-layer, .scribble-transition .cd-transition-layer.opening .svg-layer {
+  -webkit-animation: cd-sequence-2 0.8s steps(37) forwards;
+          animation: cd-sequence-2 0.8s steps(37) forwards;
+}
+.scribble-transition .cd-transition-layer.closing .bg-layer, .scribble-transition .cd-transition-layer.closing .svg-layer {
+  -webkit-animation: cd-sequence-2 0.8s steps(37) forwards reverse;
+          animation: cd-sequence-2 0.8s steps(37) forwards reverse;
+}
+.scribble-transition .cd-transition-layer.visible .bg-layer, .scribble-transition .cd-transition-layer.visible .svg-layer {
+  -webkit-transform: translateY(-50%) translateX(-98.6842%);
+          transform: translateY(-50%) translateX(-98.6842%);
+}
+
+/* --------------------------------
+
+Gummy Effect
+
+-------------------------------- */
+.gummy-transition h1, .gummy-transition .text {
+  margin-bottom: .4em;
+  /* font-size: 4rem;*/
+  /* font-weight: 700;*/
+}
+.gummy-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.gummy-transition .cd-main-content {
+  background: #001d5b;
+}
+.gummy-transition .cd-modal {
+  background: #ef8692;
+}
+.gummy-transition .cd-modal .modal-content {
+  color: #f2f2f2;
+}
+.gummy-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/gummy-transition.png);
+}
+.gummy-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.gummy-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+@media only screen and (min-width: 768px) {
+
+}
+
+/* --------------------------------
+
+Gooey Effect
+
+-------------------------------- */
+.gooey-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.gooey-transition .cd-main-content {
+  background: #053644;
+}
+.gooey-transition .cd-modal {
+  background: #466c5e;
+}
+.gooey-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.gooey-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/gooey-transition.png);
+}
+.gooey-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.gooey-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+.gooey-transition .cd-transition-layer.opening .svg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.gooey-transition .cd-transition-layer.closing .svg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Mirror Effect
+
+-------------------------------- */
+.mirror-transition h1, .mirror-transition .text {
+  margin-bottom: .4em;
+}
+.mirror-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.mirror-transition .cd-main-content {
+  background: #000000;
+}
+.mirror-transition .cd-modal {
+  background: #ff9900;
+}
+.mirror-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.mirror-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/mirror-transition.png);
+}
+.mirror-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.mirror-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Diamond Effect
+
+-------------------------------- */
+.diamond-transition h1, .diamond-transition .text {
+  margin-bottom: .4em;
+/*   font-size: 4rem;*/
+  /* font-weight: 700;*/
+}
+.diamond-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.diamond-transition .cd-main-content {
+  background: #f2efde;
+}
+.diamond-transition .cd-modal {
+  background: #41355a;
+}
+.diamond-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.diamond-transition .cd-transition-layer .bg-layer {
+  -webkit-transform: translateY(-50%) translateX(-2.5%);
+          transform: translateY(-50%) translateX(-2.5%);
+  /* sprite composed of 20 frames */
+  width: 2000%;
+  background-image: url(../img/diamond-transition.png);
+}
+.diamond-transition .cd-transition-layer .svg-layer {
+  -webkit-transform: translateY(-50%) translateX(-2.5%);
+          transform: translateY(-50%) translateX(-2.5%);
+  /* sprite composed of 20 frames */
+  width: 2000%;
+}
+.diamond-transition .cd-transition-layer.opening .bg-layer, .diamond-transition .cd-transition-layer.opening .svg-layer {
+  -webkit-animation: cd-sequence-3 0.8s steps(19) forwards;
+          animation: cd-sequence-3 0.8s steps(19) forwards;
+}
+.diamond-transition .cd-transition-layer.closing .bg-layer, .diamond-transition .cd-transition-layer.closing .svg-layer {
+  -webkit-animation: cd-sequence-3 0.8s steps(19) forwards reverse;
+          animation: cd-sequence-3 0.8s steps(19) forwards reverse;
+}
+.diamond-transition .cd-transition-layer.visible .bg-layer, .diamond-transition .cd-transition-layer.visible .svg-layer {
+  -webkit-transform: translateY(-50%) translateX(-97.5%);
+          transform: translateY(-50%) translateX(-97.5%);
+}
+
+/* --------------------------------
+
+Cartoon Effect
+
+-------------------------------- */
+.cartoon-transition h1, .cartoon-transition .text {
+  margin-bottom: .4em;
+  /* font-size: 4rem;*/
+ /*  font-weight: 700;*/
+/*   font-family: "Boogaloo", serif;*/
+}
+.cartoon-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.cartoon-transition .cd-main-content {
+  background: #256276;
+}
+.cartoon-transition .cd-modal {
+  background: #f55850;
+}
+.cartoon-transition .cd-modal .modal-content {
+  color: #eeeeee;
+}
+.cartoon-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/cartoon-transition.png);
+}
+.cartoon-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.cartoon-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+@media only screen and (min-width: 768px) {
+  
+}
+
+/* --------------------------------
+
+Clones Effect
+
+-------------------------------- */
+.clones-transition h1, .clones-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.clones-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.clones-transition .cd-main-content {
+  background: #948ec6;
+}
+.clones-transition .cd-modal {
+  background: #ffa700;
+}
+.clones-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.clones-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/clones-transition.png);
+}
+.clones-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.clones-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Arrows Effect
+
+-------------------------------- */
+.arrows-transition h1, .arrows-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.arrows-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.arrows-transition .cd-main-content {
+  background: #948ec6;
+}
+.arrows-transition .cd-modal {
+  background: #ffa700;
+}
+.arrows-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.arrows-transition .cd-transition-layer .bg-layer {
+  width: 2500%;
+  background-image: url(../img/arrows-transition.png);
+}
+.arrows-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.arrows-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Balls Effect
+
+-------------------------------- */
+.balls-transition h1, .balls-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.balls-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.balls-transition .cd-main-content {
+  background: #948ec6;
+}
+.balls-transition .cd-modal {
+  background: #ffa700;
+}
+.balls-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.balls-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/balls-transition.png);
+}
+.balls-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.balls-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Curtains Effect
+
+-------------------------------- */
+
+.curtains-transition h1, .curtains-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.curtains-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.curtains-transition .cd-main-content {
+  background: #948ec6;
+}
+.curtains-transition .cd-modal {
+  background: #ffa700;
+}
+.curtains-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.curtains-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/curtains-transition.png);
+}
+.curtains-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.curtains-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Fragment Effect
+
+-------------------------------- */
+
+.fragment-transition h1, .fragment-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.fragment-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.fragment-transition .cd-main-content {
+  background: #948ec6;
+}
+.fragment-transition .cd-modal {
+  background: #ffa700;
+}
+.fragment-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.fragment-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/fragment-transition.png);
+}
+.fragment-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.fragment-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Geometry Effect
+
+-------------------------------- */
+
+.geometry-transition h1, .geometry-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.geometry-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.geometry-transition .cd-main-content {
+  background: #948ec6;
+}
+.geometry-transition .cd-modal {
+  background: #ffa700;
+}
+.geometry-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.geometry-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/geometry-transition.png);
+}
+.geometry-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.geometry-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Grow Effect
+
+-------------------------------- */
+.grow-transition h1, .grow-transition .text {
+  margin-bottom: .4em;
+}
+.grow-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.grow-transition .cd-main-content {
+  background: #948ec6;
+}
+.grow-transition .cd-modal {
+  background: #ffa700;
+}
+.grow-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.grow-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/grow-transition.png);
+}
+.grow-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.grow-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Pixelate Effect
+
+-------------------------------- */
+
+.pixelate-transition h1, .pixelate-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.pixelate-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.pixelate-transition .cd-main-content {
+  background: #948ec6;
+}
+.pixelate-transition .cd-modal {
+  background: #ffa700;
+}
+.pixelate-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.pixelate-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/pixelate-transition.png);
+}
+.pixelate-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.pixelate-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Plane Effect
+
+-------------------------------- */
+
+.plane-transition h1, .plane-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.plane-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.plane-transition .cd-main-content {
+  background: #948ec6;
+}
+.plane-transition .cd-modal {
+  background: #ffa700;
+}
+.plane-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.plane-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/plane-transition.png);
+}
+.plane-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.plane-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Radiowaves Effect
+
+-------------------------------- */
+
+.radiowaves-transition h1, .radiowaves-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.radiowaves-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.radiowaves-transition .cd-main-content {
+  background: #948ec6;
+}
+.radiowaves-transition .cd-modal {
+  background: #ffa700;
+}
+.radiowaves-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.radiowaves-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/radiowaves-transition.png);
+}
+.radiowaves-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.radiowaves-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Snowing Effect
+
+-------------------------------- */
+
+.snowing-transition h1, .snowing-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.snowing-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.snowing-transition .cd-main-content {
+  background: #948ec6;
+}
+.snowing-transition .cd-modal {
+  background: #ffa700;
+}
+.snowing-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.snowing-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/snowing-transition.png);
+}
+.snowing-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.snowing-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+  animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Wave Effect
+
+-------------------------------- */
+
+.wave-transition h1, .wave-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.wave-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.wave-transition .cd-main-content {
+  background: #948ec6;
+}
+.wave-transition .cd-modal {
+  background: #ffa700;
+}
+.wave-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.wave-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/wave-transition.png);
+}
+.wave-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.wave-transition .cd-transition-layer.closing .bg-layer {
+	-webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+	animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Dancers Effect
+
+-------------------------------- */
+
+.dancers-transition h1, .dancers-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.dancers-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.dancers-transition .cd-main-content {
+  background: #948ec6;
+}
+.dancers-transition .cd-modal {
+  background: #ffa700;
+}
+.dancers-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.dancers-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/dancers-transition.png);
+}
+.dancers-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.dancers-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Sound Wave Effect
+
+-------------------------------- */
+
+.soundwave-transition h1, .soundwave-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.soundwave-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.soundwave-transition .cd-main-content {
+  background: #948ec6;
+}
+.soundwave-transition .cd-modal {
+  background: #ffa700;
+}
+.soundwave-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.soundwave-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/soundwave-transition.png);
+}
+.soundwave-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.soundwave-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Mic Stand Effect
+
+-------------------------------- */
+
+.micstand-transition h1, .micstand-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.micstand-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.micstand-transition .cd-main-content {
+  background: #948ec6;
+}
+.micstand-transition .cd-modal {
+  background: #ffa700;
+}
+.micstand-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.micstand-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/micstand-transition.png);
+}
+.micstand-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.micstand-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Hands in the Air Effect
+
+-------------------------------- */
+
+.hands-transition h1, .hands-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.hands-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.hands-transition .cd-main-content {
+  background: #948ec6;
+}
+.hands-transition .cd-modal {
+  background: #ffa700;
+}
+.hands-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.hands-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/hands-transition.png);
+}
+.hands-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.hands-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Band on Stage Effect
+
+-------------------------------- */
+
+.band-transition h1, .band-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.band-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.band-transition .cd-main-content {
+  background: #948ec6;
+}
+.band-transition .cd-modal {
+  background: #ffa700;
+}
+.band-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.band-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/band-transition.png);
+}
+.band-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.band-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Stage Lights Effect
+
+-------------------------------- */
+
+.stagelights-transition h1, .stagelights-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.stagelights-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.stagelights-transition .cd-main-content {
+  background: #948ec6;
+}
+.stagelights-transition .cd-modal {
+  background: #ffa700;
+}
+.stagelights-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.stagelights-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/stagelights-transition.png);
+}
+.stagelights-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.stagelights-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+London Effect
+
+-------------------------------- */
+
+.london-transition h1, .london-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.london-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.london-transition .cd-main-content {
+  background: #948ec6;
+}
+.london-transition .cd-modal {
+  background: #ffa700;
+}
+.london-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.london-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/london-transition.png);
+}
+.london-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.london-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+New York Effect
+
+-------------------------------- */
+
+.newyork-transition h1, .newyork-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.newyork-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.newyork-transition .cd-main-content {
+  background: #948ec6;
+}
+.newyork-transition .cd-modal {
+  background: #ffa700;
+}
+.newyork-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.newyork-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/newyork-transition.png);
+}
+.newyork-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.newyork-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+San Fran Effect
+
+-------------------------------- */
+
+.sanfran-transition h1, .sanfran-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.sanfran-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.sanfran-transition .cd-main-content {
+  background: #948ec6;
+}
+.sanfran-transition .cd-modal {
+  background: #ffa700;
+}
+.sanfran-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.sanfran-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/sanfran-transition.png);
+}
+.sanfran-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.sanfran-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Tel Aviv Effect
+
+-------------------------------- */
+
+.telaviv-transition h1, .telaviv-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.telaviv-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.telaviv-transition .cd-main-content {
+  background: #948ec6;
+}
+.telaviv-transition .cd-modal {
+  background: #ffa700;
+}
+.telaviv-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.telaviv-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/telaviv-transition.png);
+}
+.telaviv-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.telaviv-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Shanghai Effect
+
+-------------------------------- */
+
+.shanghai-transition h1, .shanghai-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.shanghai-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.shanghai-transition .cd-main-content {
+  background: #948ec6;
+}
+.shanghai-transition .cd-modal {
+  background: #ffa700;
+}
+.shanghai-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.shanghai-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/shanghai-transition.png);
+}
+.shanghai-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.shanghai-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Paris Effect
+
+-------------------------------- */
+
+.paris-transition h1, .paris-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.paris-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.paris-transition .cd-main-content {
+  background: #948ec6;
+}
+.paris-transition .cd-modal {
+  background: #ffa700;
+}
+.paris-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.paris-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/paris-transition.png);
+}
+.paris-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.paris-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Rome Effect
+
+-------------------------------- */
+
+.rome-transition h1, .rome-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.rome-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.rome-transition .cd-main-content {
+  background: #948ec6;
+}
+.rome-transition .cd-modal {
+  background: #ffa700;
+}
+.rome-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.rome-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/rome-transition.png);
+}
+.rome-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.rome-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Dubai Effect
+
+-------------------------------- */
+
+.dubai-transition h1, .dubai-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.dubai-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.dubai-transition .cd-main-content {
+  background: #948ec6;
+}
+.dubai-transition .cd-modal {
+  background: #ffa700;
+}
+.dubai-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.dubai-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/dubai-transition.png);
+}
+.dubai-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.dubai-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Cardiff Effect
+
+-------------------------------- */
+
+.cardiff-transition h1, .cardiff-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.cardiff-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.cardiff-transition .cd-main-content {
+  background: #948ec6;
+}
+.cardiff-transition .cd-modal {
+  background: #ffa700;
+}
+.cardiff-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.cardiff-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/cardiff-transition.png);
+}
+.cardiff-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.cardiff-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Football Cam Effect
+
+-------------------------------- */
+
+.footballcam-transition h1, .footballcam-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.footballcam-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.footballcam-transition .cd-main-content {
+  background: #948ec6;
+}
+.footballcam-transition .cd-modal {
+  background: #ffa700;
+}
+.footballcam-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.footballcam-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/footballcam-transition.png);
+}
+.footballcam-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.footballcam-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Penalty Effect
+
+-------------------------------- */
+.penalty-transition h1, .penalty-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.penalty-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.penalty-transition .cd-main-content {
+  background: #948ec6;
+}
+.penalty-transition .cd-modal {
+  background: #ffa700;
+}
+.penalty-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.penalty-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/penalty-transition.png);
+}
+.penalty-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.penalty-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Heading Effect
+
+-------------------------------- */
+.heading-transition h1, .heading-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.heading-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.heading-transition .cd-main-content {
+  background: #948ec6;
+}
+.heading-transition .cd-modal {
+  background: #ffa700;
+}
+.heading-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.heading-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/heading-transition.png);
+}
+.heading-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.heading-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Saved Goal Effect
+
+-------------------------------- */
+.savedgoal-transition h1, .savedgoal-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.savedgoal-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.savedgoal-transition .cd-main-content {
+  background: #948ec6;
+}
+.savedgoal-transition .cd-modal {
+  background: #ffa700;
+}
+.savedgoal-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.savedgoal-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/savedgoal-transition.png);
+}
+.savedgoal-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.savedgoal-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Tennis Girl Effect
+
+-------------------------------- */
+.tennisgirl-transition h1, .tennisgirl-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.tennisgirl-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.tennisgirl-transition .cd-main-content {
+  background: #948ec6;
+}
+.tennisgirl-transition .cd-modal {
+  background: #ffa700;
+}
+.tennisgirl-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.tennisgirl-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/tennisgirl-transition.png);
+}
+.tennisgirl-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.tennisgirl-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Tennis Boy Effect
+
+-------------------------------- */
+.tennisboy-transition h1, .tennisboy-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.tennisboy-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.tennisboy-transition .cd-main-content {
+  background: #948ec6;
+}
+.tennisboy-transition .cd-modal {
+  background: #ffa700;
+}
+.tennisboy-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.tennisboy-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/tennisboy-transition.png);
+}
+.tennisboy-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.tennisboy-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Ghosts Effect
+
+-------------------------------- */
+.ghosts-transition h1, .ghosts-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.ghosts-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.ghosts-transition .cd-main-content {
+  background: #948ec6;
+}
+.ghosts-transition .cd-modal {
+  background: #ffa700;
+}
+.ghosts-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.ghosts-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/ghosts-transition.png);
+}
+.ghosts-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.ghosts-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Bats left to right Effect
+
+-------------------------------- */
+.batsltr-transition h1, .batsltr-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.batsltr-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.batsltr-transition .cd-main-content {
+  background: #948ec6;
+}
+.batsltr-transition .cd-modal {
+  background: #ffa700;
+}
+.batsltr-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.batsltr-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/batsltr-transition.png);
+}
+.batsltr-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.batsltr-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Bats right down Effect
+
+-------------------------------- */
+.batsrd-transition h1, .batsrd-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.batsrd-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.batsrd-transition .cd-main-content {
+  background: #948ec6;
+}
+.batsrd-transition .cd-modal {
+  background: #ffa700;
+}
+.batsrd-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.batsrd-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/batsrd-transition.png);
+}
+.batsrd-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.batsrd-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Bats left up Effect
+
+-------------------------------- */
+.batslu-transition h1, .batslu-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.batslu-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.batslu-transition .cd-main-content {
+  background: #948ec6;
+}
+.batslu-transition .cd-modal {
+  background: #ffa700;
+}
+.batslu-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.batslu-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/batslu-transition.png);
+}
+.batslu-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.batslu-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Ghost flying Effect
+
+-------------------------------- */
+.ghostflying-transition h1, .ghostflying-transition .text {
+  margin-bottom: .4em;
+ /*  font-size: 4rem;*/
+ /*  font-weight: 700;*/
+}
+.ghostflying-transition .cd-btn {
+  background: #676970;
+  color: #ffffff;
+}
+.ghostflying-transition .cd-main-content {
+  background: #948ec6;
+}
+.ghostflying-transition .cd-modal {
+  background: #ffa700;
+}
+.ghostflying-transition .cd-modal .modal-content {
+  color: #ffffff;
+}
+.ghostflying-transition .cd-transition-layer .bg-layer {
+  /* sprite composed of 25 frames */
+  width: 2500%;
+  background-image: url(../img/ghostflying-transition.png);
+}
+.ghostflying-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.ghostflying-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+/* --------------------------------
+
+Thick Blood Effect
+
+-------------------------------- */
+.bloodthick-transition h1, .bloodthick-transition .text {
+  margin-bottom: .4em;
+}
+.cd-main-content, .modal-content {
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  display: table;
+}
+.cd-main-content .mc, .modal-content .mc {
+  height: 100vh;
+	position: relative;
+  text-align: center;
+  width: 100%;
+}
+.cd-main-content .tl, .modal-content .tl{
+  display: table-cell;
+  vertical-align: top;
+  text-align: left;
+  width: 100%;
+}
+.cd-main-content .tc, .modal-content .tc{
+  display: table-cell;
+  vertical-align: top;
+  text-align: center;
+  width: 100%;
+}
+.cd-main-content .tr, .modal-content .tr{
+  display: table-cell;
+  vertical-align: top;
+  text-align: right;
+  width: 100%;
+}
+.cd-main-content .ml, .modal-content .ml{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  width: 100%;
+}
+.cd-main-content .mr, .modal-content .mr{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  width: 100%;
+}
+.cd-main-content .bl, .modal-content .bl{
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: left;
+  width: 100%;
+}
+.cd-main-content .bc, .modal-content .bc{
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: center;
+  width: 100%;
+}
+.cd-main-content .br, .modal-content .br{
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: right;
+  width: 100%;
+}
+
+.codyhouse-context1,
+.codyhouse-context0,
+.codrops-context1,
+.codrops-context0,
+.modal-content{
+	max-width: 980px;
+	margin: 0px auto;
+	width: 100%;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+
+.iphone  .waveup-transition  .codrops-context1,
+{
+  top: 24%;
+  transform: translate(-50%, -24%);
+}
+
+.iphone  .waveup-transition  .codrops-context0
+{
+  top: 15%;
+  transform: translate(-50%, -15%);
+}
+
+.iphone  .gumup-transition  .codrops-context0
+{
+  top: 19%;
+  transform: translate(-50%, -19%);
+}
+
+.iphone  .gumup-transition  .codrops-context1
+{
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.iphone  .paintup-transition  .codrops-context0
+{
+  top:20%;
+  transform: translate(-50%, -20%);
+}
+
+.iphone  .paintup-transition  .codrops-context1
+{
+  top:30%;
+  transform: translate(-50%, -30%);
+}
+
+.iphone  .pixelup-transition .codrops-context0
+{
+  top:26%;
+  transform: translate(-50%, -26%);
+}
+
+.iphone  .pixelup-transition  .codrops-context1{
+  top: 28%;
+  transform: translate(-50%, -28%);
+}
+
+/* Modal Window */
+.cd-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+  transition: opacity .3s 0s, visibility 0s .3s;
+}
+.cd-modal .modal-content {
+  height: 100%;
+  overflow-y: auto;
+}
+.cd-modal h1, .cd-modal .text {
+  text-align: center;
+}
+.cd-modal p {
+  line-height: 1.6;
+  margin: 2em auto;
+  max-width: 800px;
+}
+.cd-modal .modal-close, .cd-modal .codrops-close {
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  right: 15px;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 100%;
+  color: transparent;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: visibility 0s .3s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: visibility 0s .3s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
+  transition: transform .3s 0s, visibility 0s .3s, opacity .3s 0s, -webkit-transform .3s 0s;
+  cursor: pointer;
+}
+
+.cd-modal .closer.modal-close {
+	left: 5%;
+	right: initial;
+}
+.cd-modal .modal-close::before, .cd-modal .modal-close::after, .cd-modal .codrops-close::before, .cd-modal .codrops-close::after {
+	background: #fff;
+  content: '';
+  display: inline-block;
+  position: absolute;
+  height: 2px;
+  width: 20px;
+  top: calc(50% - 1px);
+  left: calc(50% - 10px);
+}
+.cd-modal .modal-close::before, .cd-modal .codrops-close::before {
+  -webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.cd-modal .modal-close::after, .cd-modal .codrops-close::after {
+  -webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+.cd-modal.visible {
+  opacity: 1;
+  visibility: visible;
+	-webkit-transition: visibility 0s 0s, opacity .1s 0s, -webkit-transform .1s 0s;
+  transition: visibility 0s 0s, opacity .1s 0s, -webkit-transform .1s 0s;
+  transition: transform .1s 0s, visibility 0s 0s, opacity .1s 0s;
+  transition: transform .1s 0s, visibility 0s 0s, opacity .1s 0s, -webkit-transform .1s 0s;
+}
+.cd-modal.visible .modal-content {
+  -webkit-overflow-scrolling: touch;
+}
+.cd-modal.visible .modal-close, .cd-modal.visible .codrops-close {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: visibility 0s 0s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: visibility 0s 0s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
+  transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s, -webkit-transform .3s 0s;
+  -webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+
+@media only screen and (min-width: 1100px) {
+  .cd-modal .modal-close, .cd-modal .codrops-close {
+    height: 60px;
+    width: 60px;
+  }
+  .cd-modal .modal-close::before, .cd-modal .modal-close::after, .cd-modal .codrops-close::before, .cd-modal .codrops-close::after {
+    height: 2px;
+    width: 26px;
+    top: calc(50% - 1px);
+    left: calc(50% - 13px);
+  }
+}
+
+/* Transition Layer */
+.cd-transition-layer {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 2;
+  height:100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+	transform: translateY(-50%);
+  overflow: hidden;
+}
+.cd-transition-layer .bg-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateX(-2%);
+	transform: translateY(-50%) translateX(-2%);
+  height: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+	width: 2500%;
+}
+.cd-transition-layer .svg-layer {
+	height: 100%;
+	position: absolute;
+	left: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateX(0%);
+	transform: translateY(-50%) translateX(0%);
+	width: auto;
+}
+.cd-transition-layer.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.cd-transition-layer.visible .bg-layer, .cd-transition-layer.visible .svg-layer {
+  -webkit-transform: translateY(-50%) translateX(-98%);
+	transform: translateY(-50%) translateX(-98%);
+}
+.cd-transition-layer.opening .bg-layer, .cd-transition-layer.opening .svg-layer {
+	-webkit-animation: cd-sequence 0.8s steps(24) forwards;
+	animation: cd-sequence 0.8s steps(24) forwards;
+}
+.cd-transition-layer.closing .bg-layer, .cd-transition-layer.closing .svg-layer {
+	-webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+	animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+.no-cssanimations .cd-transition-layer {
+  display: none;
+}
+
+/*---------------------------------*/
+/* Global transition effects
+/*---------------------------------*/
+.cd-modal .modal-content {
+  color: #ffffff;
+}
+
+/*---------------------------------*/
+/* Codyhouse transition effects
+/*---------------------------------*/
+.scrub-transition .cd-transition-layer .bg-layer { background-image: url(../img/scrub-transition.png); }
+.extinguisher-transition .cd-transition-layer .bg-layer { background-image: url(../img/extinguisher-transition.png); }
+.glitch-transition .cd-transition-layer .bg-layer { background-image: url(../img/glitch-transition.png); }
+.gummy-transition .cd-transition-layer .bg-layer { background-image: url(../img/gummy-transition.png); }
+.gooey-transition .cd-transition-layer .bg-layer { background-image: url(../img/gooey-transition.png); }
+.mirror-transition .cd-transition-layer .bg-layer { background-image: url(../img/mirror-transition.png); }
+.cartoon-transition .cd-transition-layer .bg-layer { background-image: url(../img/cartoon-transition.png); }
+.clones-transition .cd-transition-layer .bg-layer { background-image: url(../img/clones-transition.png); }
+.arrows-transition .cd-transition-layer .bg-layer { background-image: url(../img/arrows-transition.png); }
+.balls-transition .cd-transition-layer .bg-layer { background-image: url(../img/balls-transition.png); }
+.curtains-transition .cd-transition-layer .bg-layer { background-image: url(../img/curtains-transition.png); }
+.fragment-transition .cd-transition-layer .bg-layer { background-image: url(../img/fragment-transition.png); }
+.geometry-transition .cd-transition-layer .bg-layer { background-image: url(../img/geometry-transition.png); }
+.grow-transition .cd-transition-layer .bg-layer { background-image: url(../img/grow-transition.png); }
+.pixelate-transition .cd-transition-layer .bg-layer { background-image: url(../img/pixelate-transition.png); }
+.plane-transition .cd-transition-layer .bg-layer { background-image: url(../img/plane-transition.png); }
+.radiowaves-transition .cd-transition-layer .bg-layer { background-image: url(../img/radiowaves-transition.png); }
+.snowing-transition .cd-transition-layer .bg-layer { background-image: url(../img/snowing-transition.png); }
+.wave-transition .cd-transition-layer .bg-layer { background-image: url(../img/wave-transition.png); }
+.dancers-transition .cd-transition-layer .bg-layer { background-image: url(../img/dancers-transition.png); }
+.soundwave-transition .cd-transition-layer .bg-layer { background-image: url(../img/soundwave-transition.png); }
+.micstand-transition .cd-transition-layer .bg-layer { background-image: url(../img/micstand-transition.png); }
+.hands-transition .cd-transition-layer .bg-layer { background-image: url(../img/hands-transition.png); }
+.band-transition .cd-transition-layer .bg-layer { background-image: url(../img/band-transition.png); }
+.stagelights-transition .cd-transition-layer .bg-layer { background-image: url(../img/stagelights-transition.png); }
+.london-transition .cd-transition-layer .bg-layer { background-image: url(../img/london-transition.png); }
+.newyork-transition .cd-transition-layer .bg-layer { background-image: url(../img/newyork-transition.png); }
+.sanfran-transition .cd-transition-layer .bg-layer { background-image: url(../img/sanfran-transition.png); }
+.telaviv-transition .cd-transition-layer .bg-layer { background-image: url(../img/telaviv-transition.png); }
+.shanghai-transition .cd-transition-layer .bg-layer { background-image: url(../img/shanghai-transition.png); }
+.paris-transition .cd-transition-layer .bg-layer { background-image: url(../img/paris-transition.png); }
+.rome-transition .cd-transition-layer .bg-layer { background-image: url(../img/rome-transition.png); }
+.dubai-transition .cd-transition-layer .bg-layer { background-image: url(../img/dubai-transition.png); }
+.cardiff-transition .cd-transition-layer .bg-layer { background-image: url(../img/cardiff-transition.png); }
+.footballcam-transition .cd-transition-layer .bg-layer { background-image: url(../img/footballcam-transition.png); }
+.penalty-transition .cd-transition-layer .bg-layer { background-image: url(../img/penalty-transition.png); }
+.heading-transition .cd-transition-layer .bg-layer { background-image: url(../img/heading-transition.png); }
+.savedgoal-transition .cd-transition-layer .bg-layer { background-image: url(../img/savedgoal-transition.png); }
+.tennisgirl-transition .cd-transition-layer .bg-layer { background-image: url(../img/tennisgirl-transition.png); }
+.tennisboy-transition .cd-transition-layer .bg-layer { background-image: url(../img/tennisboy-transition.png); }
+.ghosts-transition .cd-transition-layer .bg-layer { background-image: url(../img/ghosts-transition.png); }
+.batsltr-transition .cd-transition-layer .bg-layer { background-image: url(../img/batsltr-transition.png); }
+.batsrd-transition .cd-transition-layer .bg-layer { background-image: url(../img/batsrd-transition.png); }
+.batslu-transition .cd-transition-layer .bg-layer { background-image: url(../img/batslu-transition.png); }
+.ghostflying-transition .cd-transition-layer .bg-layer { background-image: url(../img/ghostflying-transition.png); }
+.bloodthick-transition .cd-transition-layer .bg-layer { background-image: url(../img/bloodthick-transition.png); }
+.bloodthick2-transition .cd-transition-layer .bg-layer { background-image: url(../img/bloodthick2-transition.png); }
+.pumpkin-transition .cd-transition-layer .bg-layer { background-image: url(../img/pumpkin-transition.png); }
+.grave-transition .cd-transition-layer .bg-layer { background-image: url(../img/grave-transition.png); }
+.kaleidoscope-transition .cd-transition-layer .bg-layer { background-image: url(../img/kaleidoscope-transition.png); }
+
+/*---------------------------------*/
+/* Scribble transition effects
+/*---------------------------------*/
+.scribble-transition .cd-transition-layer .bg-layer {
+	background-image: url(../img/scribble-transition.png);
+  -webkit-transform: translateY(-50%) translateX(-1.3158%);
+	transform: translateY(-50%) translateX(-1.3158%);
+  width: 3800%;
+}
+.scribble-transition .cd-transition-layer .svg-layer {
+  -webkit-transform: translateY(-50%) translateX(-1.3158%);
+  transform: translateY(-50%) translateX(-1.3158%);
+  width: 3800%;
+}
+.scribble-transition .cd-transition-layer.opening .bg-layer, .scribble-transition .cd-transition-layer.opening .svg-layer {
+  -webkit-animation: cd-sequence-2 0.8s steps(37) forwards;
+  animation: cd-sequence-2 0.8s steps(37) forwards;
+}
+.scribble-transition .cd-transition-layer.closing .bg-layer, .scribble-transition .cd-transition-layer.closing .svg-layer {
+  -webkit-animation: cd-sequence-2 0.8s steps(37) forwards reverse;
+  animation: cd-sequence-2 0.8s steps(37) forwards reverse;
+}
+.scribble-transition .cd-transition-layer.visible .bg-layer, .scribble-transition .cd-transition-layer.visible .svg-layer {
+  -webkit-transform: translateY(-50%) translateX(-98.6842%);
+  transform: translateY(-50%) translateX(-98.6842%);
+}
+
+/*---------------------------------*/
+/* Diamond transition effects
+/*---------------------------------*/
+.diamond-transition .cd-transition-layer .bg-layer {
+	background-image: url(../img/diamond-transition.png);
+  -webkit-transform: translateY(-50%) translateX(-2.5%);
+  transform: translateY(-50%) translateX(-2.5%);
+}
+.diamond-transition .cd-transition-layer .svg-layer {
+  -webkit-transform: translateY(-50%) translateX(-2.5%);
+	transform: translateY(-50%) translateX(-2.5%);
+}
+.diamond-transition .cd-transition-layer.opening .bg-layer, .diamond-transition .cd-transition-layer.opening .svg-layer {
+  -webkit-animation: cd-sequence-3 0.8s steps(19) forwards;
+  animation: cd-sequence-3 0.8s steps(19) forwards;
+}
+.diamond-transition .cd-transition-layer.closing .bg-layer, .diamond-transition .cd-transition-layer.closing .svg-layer {
+  -webkit-animation: cd-sequence-3 0.8s steps(19) forwards reverse;
+  animation: cd-sequence-3 0.8s steps(19) forwards reverse;
+}
+.diamond-transition .cd-transition-layer.visible .bg-layer, .diamond-transition .cd-transition-layer.visible .svg-layer {
+  -webkit-transform: translateY(-50%) translateX(-97.5%);
+  transform: translateY(-50%) translateX(-97.5%);
+}
+
+/*------------------------------------------*/
+/* ink transition effects
+/*------------------------------------------*/
+.ink-transition .cd-transition-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+	transform: none;
+}
+.ink-transition .cd-transition-layer .bg-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateX(-2%);
+  -moz-transform: translateY(-50%) translateX(-2%);
+  -ms-transform: translateY(-50%) translateX(-2%);
+  -o-transform: translateY(-50%) translateX(-2%);
+  transform: translateY(-50%) translateX(-2%);
+  height: 100%;
+  background: url(../img/ink-transition.png) no-repeat 0 0;
+  background-size: 100% 100%;
+}
+.ink-transition .cd-transition-layer.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.ink-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24);
+  -moz-animation: cd-sequence 0.8s steps(24);
+  animation: cd-sequence 0.8s steps(24);
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.ink-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence-reverse 0.8s steps(24);
+  -moz-animation: cd-sequence-reverse 0.8s steps(24);
+  animation: cd-sequence-reverse 0.8s steps(24);
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.no-cssanimations .cd-transition-layer {
+  display: none;
+}
+
+/* --------------------------------
+
+Animations
+
+-------------------------------- */
+@-webkit-keyframes cd-sequence {
+  0% {
+    /* translateX(-2%) is used to horizontally center the first frame inside the viewport */
+    -webkit-transform: translateY(-50%) translateX(-2%);
+            transform: translateY(-50%) translateX(-2%);
+			opacity: 0;
+  }
+  30%{
+	    opacity: 1;
+  }
+  100% {
+    /* translateX(-98%) (2% + 96) is used to horizontally center the last frame inside the viewport  */
+    -webkit-transform: translateY(-50%) translateX(-98%);
+            transform: translateY(-50%) translateX(-98%);
+			opacity: 1;
+  }
+}
+@keyframes cd-sequence {
+  0% {
+    /* translateX(-2%) is used to horizontally center the first frame inside the viewport */
+    -webkit-transform: translateY(-50%) translateX(-2%);
+            transform: translateY(-50%) translateX(-2%);
+			opacity: 0;
+  }
+  30%{
+	  opacity: 1;
+  }
+  100% {
+    /* translateX(-98%) (2% + 96) is used to horizontally center the last frame inside the viewport  */
+    -webkit-transform: translateY(-50%) translateX(-98%);
+            transform: translateY(-50%) translateX(-98%);
+			opacity: 1;
+  }
+}
+@-webkit-keyframes svg-sequence {
+  0% {
+    -webkit-transform: translateY(-50%) translateX(-2%);
+    transform: translateY(0) translateX(0);
+		opacity: 0;
+  }
+  30%{
+	  opacity: 1;
+  }
+  100% {
+		-webkit-transform: translateY(-50%) translateX(-98%);
+		transform: translateY(0) translateX(-100%);
+		opacity: 1;
+  }
+}
+@keyframes svg-sequence {
+  0% {
+		-webkit-transform: translateY(-50%) translateX(-2%);
+		transform: translateY(0) translateX(0);
+		opacity: 0;
+  }
+  30%{
+	  opacity: 1;
+  }
+  100% {
+		-webkit-transform: translateY(-50%) translateX(-98%);
+		transform: translateY(0) translateX(-100%);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes cd-sequence-2 {
+  0% {
+    -webkit-transform: translateY(-50%) translateX(-1.3158%);
+            transform: translateY(-50%) translateX(-1.3158%);
+			opacity: 0;
+  }
+  30%{
+	    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-98.6842%);
+            transform: translateY(-50%) translateX(-98.6842%);
+			opacity: 1;
+  }
+}
+@keyframes cd-sequence-2 {
+  0% {
+    -webkit-transform: translateY(-50%) translateX(-1.3158%);
+            transform: translateY(-50%) translateX(-1.3158%);
+			opacity: 0;
+  }
+  30%{
+	    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-98.6842%);
+            transform: translateY(-50%) translateX(-98.6842%);
+			opacity: 1;
+  }
+}
+@-webkit-keyframes cd-sequence-3 {
+  0% {
+    -webkit-transform: translateY(-50%) translateX(-2.5%);
+            transform: translateY(-50%) translateX(-2.5%);
+			opacity: 0;
+  }
+  30%{
+	    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-97.5%);
+            transform: translateY(-50%) translateX(-97.5%);
+			opacity: 1;
+  }
+}
+@keyframes cd-sequence-3 {
+  0% {
+    -webkit-transform: translateY(-50%) translateX(-2.5%);
+            transform: translateY(-50%) translateX(-2.5%);
+			opacity: 0;
+  }
+  30%{
+	     opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-97.5%);
+            transform: translateY(-50%) translateX(-97.5%);
+			opacity: 1;
+  }
+}
+
+/* ink */
+
+
+@-webkit-keyframes cd-sequence {
+  0% {
+    /* translateX(-2%) is used to horizontally center the first frame inside the viewport */
+    -webkit-transform: translateY(-50%) translateX(-2%);
+	opacity: 0;
+  }
+  30%{
+	     opacity: 1;
+  }
+  100% {
+    /* translateX(-98%) (2% + 96) is used to horizontally center the last frame inside the viewport  */
+    -webkit-transform: translateY(-50%) translateX(-98%);
+	opacity: 1;
+  }
+}
+@-moz-keyframes cd-sequence {
+  0% {
+    /* translateX(-2%) is used to horizontally center the first frame inside the viewport */
+    -moz-transform: translateY(-50%) translateX(-2%);
+	opacity: 0;
+  }
+  30%{
+	   opacity: 1;
+  }
+  100% {
+    /* translateX(-98%) (2% + 96) is used to horizontally center the last frame inside the viewport  */
+    -moz-transform: translateY(-50%) translateX(-98%);
+	opacity: 1;
+  }
+}
+@keyframes cd-sequence {
+  0% {
+    /* translateX(-2%) is used to horizontally center the first frame inside the viewport */
+    -webkit-transform: translateY(-50%) translateX(-2%);
+    -moz-transform: translateY(-50%) translateX(-2%);
+    -ms-transform: translateY(-50%) translateX(-2%);
+    -o-transform: translateY(-50%) translateX(-2%);
+    transform: translateY(-50%) translateX(-2%);
+	opacity: 0;
+  }
+  30%{
+	  opacity: 1;
+  }
+  100% {
+    /* translateX(-98%) (2% + 96) is used to horizontally center the last frame inside the viewport  */
+    -webkit-transform: translateY(-50%) translateX(-98%);
+    -moz-transform: translateY(-50%) translateX(-98%);
+    -ms-transform: translateY(-50%) translateX(-98%);
+    -o-transform: translateY(-50%) translateX(-98%);
+    transform: translateY(-50%) translateX(-98%);
+	opacity: 1;
+  }
+}
+@-webkit-keyframes cd-sequence-reverse {
+  0% {
+    -webkit-transform: translateY(-50%) translateX(-98%);
+	opacity: 1;
+  }
+  70%{
+	  opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-2%);
+	opacity: 0;
+
+  }
+}
+@-moz-keyframes cd-sequence-reverse {
+  0% {
+    -moz-transform: translateY(-50%) translateX(-98%);
+	opacity: 1;
+  }
+  70%{
+	    opacity: 1;
+  }
+  100% {
+    -moz-transform: translateY(-50%) translateX(-2%);
+	opacity: 0;
+  }
+}
+@keyframes cd-sequence-reverse {
+  0% {
+    -webkit-transform: translateY(-50%) translateX(-98%);
+    -moz-transform: translateY(-50%) translateX(-98%);
+    -ms-transform: translateY(-50%) translateX(-98%);
+    -o-transform: translateY(-50%) translateX(-98%);
+    transform: translateY(-50%) translateX(-98%);
+	opacity: 1;
+  }
+  70%{
+	     opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-2%);
+    -moz-transform: translateY(-50%) translateX(-2%);
+    -ms-transform: translateY(-50%) translateX(-2%);
+    -o-transform: translateY(-50%) translateX(-2%);
+    transform: translateY(-50%) translateX(-2%);
+	opacity: 0;
+  }
+}
+
+/* Text animations */
+#text0 .letter, #text4 .letter, #text00 .letter {
+	display: inline-block;
+	position: relative;
+}
+
+.mexican-wave .text-wrapper, .rotate-up .text-wrapper, .fold-in .text-wrapper  {
+	position: relative !important;
+	display: inline-block !important;
+  padding-top: 0.2em !important;
+  padding-right: 0.05em !important;
+  overflow: hidden !important;
+}
+
+.mexican-wave .letters, .fold-in .letters {
+	overflow: hidden !important;
+}
+
+.mexican-wave .letter {
+	display: inline-block;
+}
+
+.rotate-up {
+	position: relative !important;
+}
+
+.rotate-up .letter {
+	display: inline-block !important;
+	transform-origin: 0 100% !important;
+}
+
+.fold-in .letter {
+	display: inline-block !important;
+	transform-origin: 0 0 !important;
+}
+
+
+/****************New transpack 2 transition***************/
+
+/**********Grow Effect************/
+
+
+/**********Circle Effect************/
+
+
+/****Custom Play Pause Button******/
+.play_vid,.play_vid2 {
+  border: 0;
+  box-sizing: border-box;
+  width: 0;
+  height: 12px;
+  border-color: transparent transparent transparent #ffff;
+  transition: 100ms all ease;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 10px 0 10px 10px;
+  position: absolute;
+  bottom:0;
+  top:0;
+  right:0;
+  left:0;
+  margin:auto;
+}
+.play_vid.pause_vid, .play_vid2.pause_vid2 {
+  border-style: double;
+  border-width: 0px 0 0px 12px;
+  bottom:0;
+  top:0;
+  right:0;
+  left:0;
+  margin:auto;
+}
+.play_vid:hover, .play_vid2:hover  {
+  border-color: transparent transparent transparent #fff;
+}
+.play_container{
+  background: #1F1F1D;
+  padding: 17px;
+  width: 50px;
+  height: 40px;
+  position: absolute;
+  border-radius: 8px;
+  bottom: 10px;
+  opacity: 0.8;
+  margin-left: 20px;
+  text-align: center;
+  z-index: 999;
+}
+
+/********Animation Plane**************/
+.plane-transition .cd-transition-layer.opening .svg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards;
+          animation: cd-sequence 0.8s steps(24) forwards;
+}
+.plane-transition .cd-transition-layer.closing .svg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24) forwards reverse;
+          animation: cd-sequence 0.8s steps(24) forwards reverse;
+}
+
+.auto-resizable-iframe {
+  min-width: 420px;
+  margin: 0px auto;
+}
+
+.auto-resizable-iframe > div.outer_vid {
+  position: relative;
+    /* padding-bottom: 60%; */
+    min-height: 100vh;
+    /* transform: scale(1); */
+    /* top: 60%; */
+}
+
+.auto-resizable-iframe iframe {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+/****padding set for heading *******/
+#card #text00  span{padding:0px !important}
+#card #text11  span{padding:0px !important}
+#face5-wrap.target-link{cursor: pointer;}
+
+/*****Iphone Css ********************/
+.iphone  #codrops .codrops-close{
+  right:5px;
+  top:5px;
+}
+.iphone #card .face .text-card-context-inner #subtext0, 
+.iphone #card .face .text-card-context-inner #subtext1{
+  line-height: 24px !important;
+}
+.iphone .text-card-content{
+  padding: 10px 0 !important;
+}
+
+.iphone .cd-modal .modal-close,.iphone .cd-modal .codrops-close {
+
+	height: 25px;
+	width: 25px;
+
+}
+
+.iphone .cd-modal .modal-close::before,
+ .iphone .cd-modal .modal-close::after,
+  .iphone .cd-modal.visible .codrops-close::before,
+   .iphone .cd-modal.visible .codrops-close::after {
+
+	width: 14px;
+	top: calc(50% - 1px);
+	left: calc(50% - 7px);
+}
+.iphone #btntext0,.iphone  #btntext1, .iphone #btntext00, .iphone  #btntext11 {
+  padding: 6px 30px !important;
+  margin-top: 5px !important;
+}
+
+
+#face1 .text-card-context .modal-close{
+  position: absolute;
+  top: 0;
+  right: -8px;
+}
+

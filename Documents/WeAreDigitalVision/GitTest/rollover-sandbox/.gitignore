@@ -1,0 +1,6 @@
+#Everything else
+.idea
+node_modules/*
+npm-debug.log
+.vscode
+.elasticbeanstalk

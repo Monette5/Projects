@@ -1,0 +1,640 @@
+  .main-tab {
+    text-align: center;
+  }
+
+  .main-tab .app-logo {
+    height: auto;
+    width: 60px;
+    margin: 20px auto 0;
+    position: relative;
+  }
+
+  .main-tab .app-description, .global-text {
+    text-align: center;
+    padding: 0 24px;
+    line-height: 21px;
+    font-size: 14px;
+    color: #2b5672;
+  }
+
+  .main-tab .main-cta-btn {
+    width: 180px;
+  }
+
+  .clear{
+	  clear: both;
+  }
+
+  .myrow{
+	  width: 100%;
+  }
+
+  .mycol2{
+	  float: left;
+	  width: 50%;
+  }
+
+  .align-left{
+	  text-align: left;
+  }
+
+  .align-right{
+	  text-align: right;
+  }
+
+  .align-center{
+	  text-align: center;
+  }
+
+  #linkChoice input {
+    width: 80%;
+  }
+
+  #linkModel {
+    bottom: 6px;
+    position: absolute;
+    right: 0;
+  }
+
+  #linkModel span {
+    display: none;
+  }
+
+  #linkModel button {
+    height: 24px;
+    padding: 0 5px;
+  }
+
+  #linkModel button:before {
+    background: url('../svg/link.svg');
+    content: "";
+    display: block;
+		height: 14px;
+    width: 14px;
+  }
+
+	.mydrilldown .myhead  {
+			margin: 0px 30px 0px 24px;
+			cursor: pointer;
+			height: 60px;
+	}
+
+	.mydrilldown .myhead:hover .mybutton {
+			background-color: rgb(177, 221, 248);
+			border-radius: 50%;
+	}
+
+  .mydrilldown .myhead .mylabel{
+	  font-size: 16px;
+	  color: #162D3D;
+	  line-height: 19.2px;
+	  margin: 22px 0px 24px 0px;
+	 display:inline-block;
+	 float: left;
+
+  }
+  .mydrilldown .myhead  .mybutton{
+		background-image: url("../svg/Arrow.svg");
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 30px;
+		height: 30px;
+		margin: 15px 0px;
+		display:inline-block;
+		float: right;
+  }
+
+    .mydrilldown.myactive .myhead  .mybutton{
+		 -webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		transform: rotate(90deg);
+		background-color: rgb(177, 221, 248);
+		border-radius: 50%;
+  }
+
+   .mydrilldown  .mybody{
+	   display: none;
+	   transition: all 0.5s ease;
+   }
+
+  .mydrilldown.myactive .mybody{
+	    display: block;
+		transition: all 0.5s ease;
+  }
+
+  .mydrilldown .mybody{
+		list-style-image: none;
+		list-style-position: outside;
+		list-style-type: none;
+		padding: 0px;
+		margin: 0px;
+		margin-left: 24px;
+  }
+
+  .mydrilldown .mybody li {
+		margin: 0px 5px 10px 0px;
+		float: left;
+		text-align: center;
+		overflow: hidden;
+	}
+
+	 .mydrilldown .mybody li span{
+		font-size: 12px;
+		width:70px;
+		overflow: hidden;
+		color: #3899ec;
+	}
+
+	  /*.mydrilldown  .mythumb {
+		  width:105px;
+		  height: 105px;
+		   width:70px;
+		  height: 70px;
+		  overflow: hidden;
+		  border: 1px solid #dddddd;
+		  -webkit-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		position: relative;
+		padding: 3px;
+		cursor: pointer;
+	}*/
+
+	 /*.mydrilldown  .mythumb.myselected {
+		  background-color:  #0088cc;
+		border: solid 1px #3899ec;
+	}*/
+      /*.mydrilldown .mythumb img {
+		width:100%;
+		object-fit: contain;
+		margin:auto;
+		display:block;
+        -webkit-user-drag: none;
+		top: -50%;
+		left: -50%;
+		bottom: -50%;
+		right: -50%;
+		position: absolute;
+	}*/
+
+  .relative {
+    position: relative;
+  }
+
+
+  .main-tab{
+	  text-align: center;
+	  /*padding: 5px;*/
+  }
+
+  .myparagraph {
+    text-align: center;
+    padding: 0 $padding;
+    line-height: 20px;
+    font-size: $main-text-size;
+    color: $main-text-color;
+  }
+
+  .hidden { visibility: hidden }
+
+  .title_section{
+		color: #3899ec;
+		font-weight: normal;
+  }
+
+  #featured_prev{
+	  float: left;
+  }
+
+  #featured_next{
+	  float: right;
+  }
+
+  .featured_otherbtn{
+	  border-bottom: 1px solid #dddddd;
+
+  }
+
+
+.control-section-divider.labeled{
+	border-bottom: 1px solid #d9e1e8 !important;
+}
+
+.mydrilldown.select-effect .myhead{
+	font-family: HelveticaNeueW01-45Ligh,HelveticaNeueW02-45Ligh,HelveticaNeueW10-45Ligh,Helvetica Neue,Helvetica,Arial,メイリオ,meiryo,ヒラギノ角ゴ pro w3,hiragino kaku gothic pro,sans-serif;
+    font-size: 1pc;
+    position: relative;
+    text-align: center;
+    cursor: default;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #2b5672;
+	margin: 0px;
+	height: auto;
+	margin-bottom: 20px;
+}
+
+.mydrilldown.select-effect .myhead .mylabel{
+	font-size: 14px;
+    color: #2b5672;
+	float: none;
+	width: 100%;
+	text-align: left;
+	margin: 0px 24px;
+	line-height: 42px;
+}
+
+#start-end-toggle .group-buttons-container, #start-end-toggle2 .group-buttons-container, #start-end-toggle3 .group-buttons-container, #start-end-toggle4 .group-buttons-container{
+	padding: 0px 17px;
+}
+
+ #review_now    .control-button{
+	margin: 9pt 75px;
+ }
+
+ .animation-panel .control-buttons-group, .background-sub-panel .control-buttons-group, .settings-panel .control-buttons-group {
+    padding: 19px 24px 26px 0px;
+}
+
+#linkto .control-buttons-group {
+    padding: 19px 24px 26px 0px;
+}
+
+#linkto .control-buttons-group input+span{
+	    width: 50px;
+		max-width: initial;
+		min-width: initial;
+}
+
+ /* Main */
+.main-tab .main-divider{
+	/*margin-top: 130px;*/
+	margin-top: 75px;
+ }
+
+ /*  Effects */
+ #transitions video{
+	object-fit: cover;
+	border-radius: 4px;
+ }
+
+/*.mydrilldown  .mythumb{
+	border-radius: 8px;
+}*/
+
+/*  Settings */
+.cus_title{
+	margin-top: 19px;
+	margin-left: 24px;
+	margin-bottom: 14px;
+	font-family: HelveticaNeueW01-45Ligh,HelveticaNeueW02-45Ligh,HelveticaNeueW10-45Ligh,Helvetica Neue,Helvetica,Arial,メイリオ,meiryo,ヒラギノ角ゴ pro w3,hiragino kaku gothic pro,sans-serif;
+	font-size: 14px;
+	color: #2b5672;
+}
+
+/*  Design */
+.drill_accordion > ul li{
+    margin-left: 12px;
+    padding: 20px 18px 21px 24px;
+    border-bottom: 1px solid #d9e1e8;
+    font-size: 16px;
+	position: relative;
+	cursor: pointer;
+}
+
+.drill_accordion > ul li.drillaccordionback{
+	padding: 24px 15px 24px 15px;
+	font-size: 13px;
+	position: relative;
+	border-bottom: none;
+	color: #3899ec;
+	display: none;
+	cursor: initial;
+}
+
+
+.drill_accordion > ul li.drillaccordionback .backlink{
+	background: #E9F7FE;
+    color: #3899ec;
+	padding: 5px 15px;
+    display: inline;
+    border-radius: 20px;
+	cursor: pointer;
+}
+.drill_accordion > ul li.drillaccordionback .backlink:hover{background: #C8EDFD;}
+.drill_accordion > ul li.drillaccordionback .backlink:visited,
+.drill_accordion > ul li.drillaccordionback .backlink:focus{background: #C8EDFD;}
+
+.drill_accordion > ul li.drillaccordionlink:hover::after{
+	background-color: rgb(177, 221, 248);
+	border-radius: 20px;
+}
+
+.drill_accordion > ul li.drillaccordionlink::after{
+		content: ' ';
+		background-image: url("../svg/Arrow.svg");
+		background-repeat: no-repeat;
+		background-position: center;
+		position: absolute;
+		right: 18px;
+		top: calc(58% - 15px);
+		width: 20px;
+		height: 20px;
+}
+
+.drill_accordion .drillaccordioncontent{
+	display: none;
+}
+/* image preview */
+.image-preview .placeholder-wrapper{
+	background-image: url(../jpg/cam.jpg);
+	background-position: 50% 40%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.image-preview .add-control-button{
+	background-image: url(../jpg/plus.jpg);
+    background-repeat: no-repeat;
+	background-position: 9% 50%;
+	padding-left: 34px;
+}
+
+.image-preview .remove-control-button{
+	background-image: url(../jpg/minus.jpg);
+    background-repeat: no-repeat;
+	background-position: 9% 50%;
+	padding-left: 34px;
+}
+
+.display-none{
+	display: none !important;
+}
+
+.display-block{
+	display: block !important;
+}
+
+#design_drill ul {
+    margin-left: -12px;
+}
+
+#design_drill ul li {
+    margin-left: 12px;
+}
+
+.premium{
+	display: block;
+	position: relative;
+	width: 18px;
+	height: 18px;
+}
+.premium img{width: 100%;}
+
+.control-button.btn-upgrade {
+  height: auto !important;
+}
+.control-button.btn-upgrade-banner:hover,
+.control-button.btn-upgrade-banner:visited,
+.control-button.btn-upgrade-banner:focus{
+	background-color: #D8BAE2 !important;
+	opacity: 1;
+	color: #333 !important;
+}
+.control-buttons-group input + span:hover {
+    background-color: #3899ec;
+    color: #fff;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.11) inset;
+    top: 2px;
+}
+.image-preview .button-wrapper button.action:hover svg *{fill: #fff;}
+.image-preview .button-wrapper button.action:hover span{color: #fff;}
+.image-preview .button-wrapper button.action:hover,
+.image-preview .button-wrapper button.action:active {
+    background-color: #5b99e7 !important;
+	  color: #fff !important;
+}
+
+
+/**
+ * Modification by Dion
+ */
+
+/* The labels are auto generated and doesn't have any reference to target, for now we will opt to child order*/
+.effectcat .control-radio-buttons label:nth-of-type(1),
+.effectcat .control-radio-buttons label:nth-of-type(2),
+.effectcat .control-radio-buttons label:nth-of-type(3),
+.effectcat .control-radio-buttons label:nth-of-type(4){
+  position: relative;
+}
+
+.control-thumbnails .ro-effect-item.radio-control .label {
+  padding-top:0px;
+  padding-bottom:10px;
+}
+
+.control-thumbnails.with-title .ro-effect-item div {
+  margin-bottom:10px;
+}
+
+#upgradeto {
+  color: #CD68ED;
+  padding: 0px 24px;
+  position: relative;
+  top: -20px;
+  cursor: pointer;
+}
+
+/* on Support Tab, under Developer Info */
+.ro-list{
+  margin: 23px 22px 19px;
+}
+.ro-list li{
+  margin-bottom: 12px;
+}
+
+.ro-list a{
+  display: block;
+  text-decoration: none;
+  line-height: 1.29;
+  color: #3899ec;
+  font-size: 14px;
+}
+
+.ro-list-icon{
+  vertical-align: middle;
+  margin-right: 11px;
+}
+
+.ro{
+  color: #2b5672;
+  margin: 17px 17px 17px 24px;
+  line-height: 1.29;
+  font-size: 14px;
+}
+
+.ro-text-center{
+  text-align: center;
+}
+
+.ro a{
+  color: #2e84e7;
+  text-decoration: none;
+}
+
+.ro-tight-container{
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.subtext-off .control-thumbnails.highlighted .radio-control .image-radio, .subtext-off .control-thumbnails.vmark .radio-control .image-radio,
+.subtext-on .control-thumbnails.highlighted .radio-control .image-radio, .subtext-on .control-thumbnails.vmark .radio-control .image-radio {
+  border: none!important;
+  background-color: #eaf7ff;
+  transition: background-color .2s;
+}
+
+.subtext-off .control-thumbnails.highlighted .radio-control .image-radio:before, .subtext-off .control-thumbnails.vmark .radio-control .image-radio:before,
+.subtext-on .control-thumbnails.highlighted .radio-control .image-radio:before, .subtext-on .control-thumbnails.vmark .radio-control .image-radio:before {
+  content: none !important;
+}
+
+.subtext-off .control-thumbnails.highlighted .radio-control:hover:not(.active) .image-radio, .subtext-off .control-thumbnails.vmark .radio-control:hover:not(.active) .image-radio,
+.subtext-on .control-thumbnails.highlighted .radio-control:hover:not(.active) .image-radio, .subtext-on .control-thumbnails.vmark .radio-control:hover:not(.active) .image-radio {
+  background-color: #d3edff !important;
+}
+
+.subtext-off .control-thumbnails.highlighted .radio-control.active .image-radio, .subtext-off .control-thumbnails.vmark .radio-control.active .image-radio,
+.subtext-on .control-thumbnails.highlighted .radio-control.active .image-radio, .subtext-on .control-thumbnails.vmark .radio-control.active .image-radio {
+	background: #3899ec;
+  border: none;
+}
+
+.subtext-off .control-thumbnails.highlighted .radio-control.active .image-radio:before, .subtext-off .control-thumbnails.vmark .radio-control.active .image-radio:before,
+.subtext-on .control-thumbnails.highlighted .radio-control.active .image-radio:before, .subtext-on .control-thumbnails.vmark .radio-control.active .image-radio:before {
+  content: none !important;
+}
+
+.image-radio img {
+  background-color: #49C5F8;
+  height: 38px;
+  width: 38px;
+}
+
+.control-thumbnails.highlighted .radio-control.active .image-radio img, .control-thumbnails.vmark .radio-control.active .image-radio img {
+  background-color: #FFF;
+}
+
+.image-radio.image-radio-l img {
+  -webkit-mask-image: url(../svg/align-left.svg);
+  mask-image: url(../svg/align-left.svg);
+}
+
+.image-radio.image-radio-c img {
+  -webkit-mask-image: url(../svg/align-center.svg);
+  mask-image: url(../svg/align-center.svg);
+}
+
+.image-radio.image-radio-r img {
+  -webkit-mask-image: url(../svg/align-right.svg);
+  mask-image: url(../svg/align-right.svg);
+}
+
+.image-radio.image-radio-j img {
+  -webkit-mask-image: url(../svg/align-justified.svg);
+  mask-image: url(../svg/align-justified.svg);
+}
+
+.input-slider.has-label>label, .control-text-input>label {
+  font-weight: 400 !important;
+}
+  /****18 July2018 *******/
+  .togglebtn-container-cls .control-buttons-group{ display: flex; flex-direction: column;}
+  .togglebtn-container-cls .group-buttons-container{order:1}
+  .togglebtn-container-cls .control-buttons-group p{order:2;margin-top: 15px;margin-left: 15px; }
+  .togglebtn-container-cls .info-icon{order:3;top: 52pt !important;}
+  .text-left .label-switch{text-align: left !important;}
+  #start-end-toggle2{text-align:center;}
+  
+  .control-buttons-group{text-align: center !important;}
+
+  @media (max-width:1160px){
+      .note-toolbar > .note-color,
+      .note-toolbar > .note-para {
+      float:left;
+      }
+      }
+      
+      @media (max-width:440px){
+      .note-color .dropdown-menu {
+      min-width: 200px !important;
+      }
+      
+      .note-color .dropdown-menu li .btn-group {
+      margin: 16px !important;
+      }
+    }
+    
+    /*****Edit setting button Css*****/
+    #gotodesign{text-align:center;}
+    #gotodesign button{padding:13px 50px 26px 50px;}
+    .list_designs_tab{margin-bottom: 0px;}
+    #settings_triggerlink_container{
+      text-align: center;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    .alert-warning{
+      position: absolute;
+      top:0;
+      display: none;
+      right:0;
+    }
+
+    .alert {
+      padding: 8px 23px 8px 8px !important;
+      margin: 3px !important;
+ 
+  }
+
+.reset-btn-text{margin: 0px 60pt 10pt !important; };
+.selected_effect_type h6{
+  font-size: 10pt;
+  text-transform: uppercase;
+  font-weight:600;
+}
+
+.alert-success {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width:70%;
+}
+
+
+/*****CSS 01nov2018*****************/
+.image-radio.image-radio-top img{
+  -webkit-mask-image: url(../svg/upwards-arrow.svg);
+    mask-image: url(../svg/upwards-arrow.svg);
+}
+.image-radio.image-radio-mid img{
+  -webkit-mask-image: url(../svg/middle-arrow.svg);
+    mask-image: url(../svg/middle-arrow.svg);
+}
+.image-radio.image-radio-bot img{
+  -webkit-mask-image: url(../svg/downwards-arrow.svg);
+    mask-image: url(../svg/downwards-arrow.svg);
+}
+
+#text-position-subtextoff .control-thumbnails.highlighted .radio-control.active .image-radio img{
+  background: rgb(56, 153, 236);
+}
+
+.image0_divider{margin-bottom: 5px ;}
+
+
+.dist_img1_level{margin-top:10px;}

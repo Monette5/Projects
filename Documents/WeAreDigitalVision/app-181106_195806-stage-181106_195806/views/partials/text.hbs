@@ -1,0 +1,54 @@
+<div tab="Text">
+  <div class="text-on">
+    <hr class="divider-long"/>
+    <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Switch View', infoText:'Switch between Start and End to edit and preview your Rollover app'}"></div>
+
+    <!-- Toggle -->
+    <div id="start-end-toggle3" class = 'end-tab' wix-ctrl="ToggleButtons" wix-options="{ defaultValue: '1', infoTitle:'Toggle Switch', infoText:'You can switch between editing the start and end of the effect with this Toggle Switch', options: [{ value: '1', label: 'Start'}, { value: '2', label: 'End'} ]}"></div>
+  </div>
+
+  <div class="heading-off"  wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Text', infoText:'To design your fonts go to Design, then click Fonts'}"></div>
+  <div id="heading-off"  wix-ctrl="Input"  wix-options="{ title: 'Heading', placeholder: 'Heading text', defaultText: 'Welcome to rollover', maxLength: 200, invalidMessage: 'Max 200 characters' }" ></div>
+  <hr class="divider-long heading-off"/>
+  <div id="subheading-off" wix-ctrl="Input"  wix-options="{ title: 'SubHeading', placeholder: 'SubHeading text', defaultText: 'Wow your users with stunning animations', maxLength: 500, invalidMessage: 'Max 500 characters' }" ></div>
+  <hr class="divider-long subheading-off"/>
+
+  <div class="text-on">
+    <div class="start-tab-container">
+      <hr class="divider-long" />
+      <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Start Text', infoText:'To design your fonts go to Design, then click Fonts'}"></div>
+
+      <!--  CodyHouse & Classic -->
+      <div id="text-off"  wix-ctrl="Input"  wix-options="{ title: 'Start Heading' , placeholder: 'Heading text', defaultText: 'Welcome to rollover', maxLength: 980, invalidMessage: 'Max 980 characters' }" ></div>
+      <hr class="divider-long text-off"/>
+      <div id="subtext-off" class="text-para-editor"  wix-ctrl="Input"  wix-options="{ title: 'Start Paragraph',isMultiLine:true, placeholder: 'Paragraph text', maxLength: 2000, invalidMessage: 'Max 2000 characters' }" ></div>
+      <div id="resetbtn_start" wix-ctrl="Button" wix-options="{label: 'Reset Text', className: 'btn-confirm-primary btn-md reset-btn-text', icon: 'image-change'}"></div>
+      <hr class="divider-long text-align"/>
+        <div class="text-align" id="text-align-off"  wix-ctrl="DropDown" wix-options="{title: 'Position', defaultValue: 'mc', options:[  {value: 'tl', label: 'Top Left'}, {value: 'tc', label: 'Top Centre'}, {value: 'tr', label: 'Top Right'}, {value:'ml', label: 'Middle Left'}, {value:'mc', label: 'Middle Centre'}, {value: 'mr', label: 'Middle Right'}, {value: 'bl', label: 'Bottom Left'}, {value: 'bc', label: 'Bottom Centre'}, {value:'br', label: 'Bottom Right'} ]}"></div>
+      <div class="textbtn-tab">
+        <hr class="divider-long subtext-off"/>
+        <div id="textbtn-off"  wix-ctrl="Input"  wix-options="{ title: 'Start Button', defaultText:'Run Effect', maxLength: 100, invalidMessage: 'Max 100 characters' }" ></div>
+      </div>
+    </div>
+
+    <div  class="end-tab-container">
+      <hr class="divider-long"/>
+      <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'End Text'}"></div>
+
+      <div id="text-on"  wix-ctrl="Input"  wix-options="{ title: 'End Heading', placeholder: 'Heading text', defaultText: 'It\'s your turn', maxLength: 200, invalidMessage: 'Max 200 characters' }" ></div>
+      <hr class="divider-long subtext-font-on"/>
+      <div id="subtext-on"  wix-ctrl="Input"  wix-options="{ title: 'End Paragraph',isMultiLine:true, placeholder: 'Paragraph text', defaultText: 'To make something amazing!', maxLength: 2000, invalidMessage: 'Max 2000 characters' }" ></div>
+      <div id="resetbtn_end" wix-ctrl="Button" wix-options="{label: 'Reset Text', className: 'btn-confirm-primary btn-md reset-btn-text', icon: 'image-change'}"></div>
+      <hr class="divider-long text-align"/>
+      <div class="text-align" id="text-align-on"  wix-ctrl="DropDown" wix-options="{title: 'Position', defaultValue: 'mc', options:[  {value: 'tl', label: 'Top Left'}, {value: 'tc', label: 'Top Centre'}, {value: 'tr', label: 'Top Right'}, {value:'ml', label: 'Middle Left'}, {value:'mc', label: 'Middle Centre'}, {value: 'mr', label: 'Middle Right'}, {value: 'bl', label: 'Bottom Left'}, {value: 'bc', label: 'Bottom Centre'}, {value:'br', label: 'Bottom Right'} ]}"></div>
+      <div class="textbtn-tablink">
+        <hr class="divider-long subtext-on"/>
+        <div id="textbtn-on"  wix-ctrl="Input"  wix-options="{ title: 'End Link Button', defaultText:'Edit this button', maxLength: 100, invalidMessage: 'Max 100 characters' }" ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="textbtn-tablink end-tab-container">
+    <hr class="divider-long textbtn-on"/>
+  </div>
+</div>

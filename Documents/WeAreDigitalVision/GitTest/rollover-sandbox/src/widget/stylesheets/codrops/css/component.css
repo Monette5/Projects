@@ -1,0 +1,232 @@
+.tooltip {
+	position: relative;
+	display: inline-block;
+	width:100%;
+}
+
+.tooltip__trigger {
+	cursor: pointer;
+    position: relative;
+    top: 8%;
+}
+
+.tooltip__trigger-text {
+	display: block;
+	pointer-events: none;
+}
+
+.tooltip__base {
+	position: absolute;
+    bottom:0%;
+    right: 0;
+    margin-left: 0;
+    width: 100%;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tooltip__content {
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	width: 65%;
+	padding: 0 1.5em;
+	opacity: 0;
+	font-size: 0.85em;
+}
+
+.tooltip__shape,
+.tooltip__deco {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+/* Indivudual styles */
+
+/* Narvi */
+.path-narvi {
+	transform-origin: 200px 150px;
+}
+
+.tooltip--narvi .tooltip__content {
+	width: 80%;
+}
+
+/* Amras */
+.path-amras-1 {
+	transform-origin: 115px 111px;
+}
+
+.path-amras-2 {
+	transform-origin: 204px 107px;
+}
+
+.path-amras-3 {
+	transform-origin: 279px 66px;
+}
+
+.path-amras-4 {
+	transform-origin: 320px 99px;
+}
+
+.path-amras-5 {
+	transform-origin: 137px 199px;
+}
+
+.path-amras-6 {
+	transform-origin: 222px 217px;
+}
+
+.path-amras-7 {
+	transform-origin: 80px 168px;
+}
+
+.path-amras-8 {
+	transform-origin: 296px 211px;
+}
+
+.path-amras-9 {
+	transform-origin: 310px 167px;
+}
+
+/* Hador */
+.tooltip--hador .tooltip__base {
+	bottom: 1.25em;
+	margin-left: -115px;
+}
+
+.path-hador-1 {
+	transform-origin: 148px 284px;
+}
+
+.path-hador-2 {
+	transform-origin: 160px 268px;
+}
+
+.path-hador-3 {
+	transform-origin: 171px 246px;
+}
+
+.path-hador-4 {
+	transform-origin: 200px 120px;
+}
+
+/*****New Changes 01 oct 2018 ************/
+#cooltips  #face4{background: transparent;}
+.grid{grid-template-columns: inherit;}
+#tooltip__trigger-img {
+		top: 85%!important;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+}
+.tooltip__trigger-text{position: relative;}
+.tooltip__trigger{top:24vh;}
+/****Few Cooltips top  Css ***/
+.tooltip__trigger-text{width:100%;text-align: center; padding: 5px;}
+/* Cora CSS*/
+#cora_grid 	 .tooltip__base{transform-origin: 50% 100%;min-height: 60vh !important;}
+#cora_grid   .tooltip__shape{height:65vh !important;}
+#cora_grid   .tooltip__trigger{top:24vh !important;}
+#cora_grid   .tooltip__content{top:3vh !important;margin-bottom: 1em;}	
+
+/* Smaug */
+#smaug_grid .tooltip__trigger{top: 20vh !important;}
+#smaug_grid .tooltip__shape{height: 100vh !important;}
+#smaug_grid .tooltip__base {bottom: -0.5em;transform-origin: 50% 100%;min-height: 80vh !important;}
+#smaug_grid .tooltip__content {padding: 0;top: 10vh !important;}
+
+/****Uldor CSS****************/
+.uldor .tooltip__trigger{ top:30vh !important;}
+.uldor .tooltip__base{transform: scale(1.2) !important;min-height:66vh !important;}
+.uldor .tooltip__content{ top:12vh !important;}
+.uldor .tooltip__shape{ top:12vh !important;}
+
+/* Dori */
+.tooltip--dori .tooltip__trigger{ top:30vh !important;}
+.tooltip--dori .tooltip__base{transform: scale(1.2) !important;min-height:64vh !important;}
+.tooltip--dori .tooltip__content{ top:10vh !important;}
+.tooltip--dori .tooltip__shape{ top:12vh !important;}
+
+/* Gram */
+.gram .tooltip__trigger{ top:25vh !important;}
+.gram .tooltip__base{bottom: -0.5em; transform: scale(1.2) !important;min-height:64vh !important;}
+.gram .tooltip__content{ top:12vh !important;}
+.gram .tooltip__shape{ top:12vh !important;}
+/****Indis CSS****************/
+.indis .tooltip__trigger{ top:25vh !important;}
+.indis .tooltip__base{bottom: -0.5em; transform: scale(1.0) !important;min-height:64vh !important;}
+.indis .tooltip__content{ top:12vh !important;}
+.indis .tooltip__shape{ top:12vh !important;}
+
+/****Walda CSS****************/
+.walda .tooltip__trigger{ top:20vh !important;}
+.walda .tooltip__base{bottom: -0.5em; transform: scale(1.0) !important;min-height:64vh !important;}
+.walda .tooltip__content{ top:28vh !important;}
+.walda .tooltip__shape{ top:12vh !important;}
+.walda .tooltip__trigger-text{text-align: left !important;}
+.tooltip--walda .tooltip__base {
+	left: 0;
+	position: absolute;
+	margin-left: 0;
+	width: 250px;
+	height: 100px;
+	padding: 0 0 0 0.25em;
+}
+.tooltip--walda .tooltip__trigger-text {
+	padding: 1em;
+}
+.tooltip--walda .tooltip__content {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	align-items: flex-start;
+	text-align: left;
+	line-height: 2;
+	opacity: 1;
+	justify-content: flex-start;
+}
+.tooltip--walda .tooltip__letters span {
+	display: inline-block;
+	white-space: pre;
+	opacity: 0;
+}
+.tooltip--walda .tooltip__deco {
+	width: 4px;
+	height: 100%;
+	background: #141514;
+	transform-origin: 50% 100%;
+}
+/****Narvi CSS****************/
+.narvi .tooltip__trigger{ top:22vh !important;}
+.narvi .tooltip__base{bottom: -0.5em; transform: scale(1.0) !important;min-height:64vh !important;}
+.narvi .tooltip__content{ top:11vh !important;}
+.narvi .tooltip__shape{ top:12vh !important;}
+
+/****Amras CSS****************/
+.amras .tooltip__trigger{ top:30vh !important;}
+.amras .tooltip__base{bottom: -0.5em; transform: scale(1.0) !important;min-height:64vh !important;}
+.amras .tooltip__content{ top:11vh !important;}
+.amras .tooltip__shape{ top:12vh !important;}
+
+/****Hador CSS****************/
+.hador .tooltip__trigger{ top:32vh !important;}
+.hador .tooltip__base{bottom: -0.5em; transform: scale(1.0) !important;min-height:64vh !important;}
+.hador .tooltip__content{ top:7vh !important;}
+.hador .tooltip__shape{ top:12vh !important;}
+/****malva CSS****************/
+.tooltip--malva .tooltip__content { width: 50%; top: 2vh;}
+/* Sadoc CSS*/
+.tooltip--sadoc .tooltip__base { bottom: 2.5em;min-height: 50vh;}
+.sadoc .tooltip__content{top: 0vh;}
+.sadoc .tooltip__trigger{ top:8vh !important;}
+
+#cooltips{background: rgba(0,0,0,0.0);}

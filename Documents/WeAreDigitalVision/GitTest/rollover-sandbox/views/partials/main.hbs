@@ -1,0 +1,36 @@
+<div tab="Main" class="main-tab">
+  <img class="app-logo" src="src/settings/png/logo.png" alt="app logo"/>
+  {{#if_all trialExpired showUpgrade}}
+    <p class="app-description">Your free trial is over. To keep using Rollover upgrade now.</p>
+    <div class="upgradenow_button" wix-ctrl="Button" wix-options="{ label: 'Upgrade Now', className: 'btn-upgrade' }" id="upgradenow"  ></div>
+    <div class="text-center">
+      <div wix-ctrl="Button" wix-options="{ label: 'Learn More Here', className: 'btn-confirm-secondary' }" id="learn_more"  ></div>
+    </div>
+  {{else}}
+    <p class="app-description">Edit dozens of effects to animate your site and increase engagement </p>
+    <div class="chooseeffect_button" wix-ctrl="Button" wix-options="{ label: 'Choose an Effect', className: 'btn-confirm-primary' }" id="chooseeffect" ></div>
+     <div class="newwidget display-none" wix-ctrl="Button" wix-options="{ label: 'Add New', className: 'btn-confirm-primary' }" id="newwidget" ></div>
+
+    {{#if showUpgrade}}
+    <div style="position:absolute; bottom:20px; left:0; width: 100%;">
+      <hr class="divider-long main-divider"/>
+      <p class="app-description">
+        Free trial expires in: {{trialExpires}}
+      </p>
+      <div class="upgradenow_button" wix-ctrl="Button" wix-options="{ label: 'Upgrade Now', className: 'btn-upgrade-banner' }" id="upgradenow"  ></div>
+    </div>
+    {{/if}}
+  {{/if_all}}
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      if({{{showUpgrade}}} && {{{trialExpired}}}) {
+        $("#tabpanel_main").getCtrl().showTabNotification(0, 'To keep using this app, upgrade now.');
+      }
+    });
+  </script>
+
+   <div class="addwidget_container text-center">
+      <div wix-ctrl="Button" wix-options="{ label: 'Add New Widget', className: 'btn-confirm-secondary' }" id="addnew_widget"  ></div>
+  </div>
+</div>

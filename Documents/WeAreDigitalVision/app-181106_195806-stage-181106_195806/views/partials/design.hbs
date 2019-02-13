@@ -1,0 +1,525 @@
+<div tab="Design">
+  <div class="text-off start_end_view">
+    <hr class="divider-long" />
+    <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Switch View', infoText:'Switch between Start and End to edit and preview your Rollover app'}"></div>
+
+    <!-- Toggle -->
+    <div id="start-end-toggle2" class='end-tab hide-endtab' wix-ctrl="ToggleButtons" wix-options="{ defaultValue: '1', infoTitle:'Toggle Switch', infoText:'You can switch between editing the start and end of the effect with this Toggle Switch', options: [{ value: '1', label: 'Start'}, { value: '2', label: 'End'} ]}"></div>
+  </div>
+  <div class="drill_accordion" id="design_drill">
+    <div class="drillaccordionshowactive" style="display: none">
+      <div id="both-tab-container">
+        <div id="both-tab">
+        </div>
+      </div>
+      <hr class="divider-long" />
+      <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Switch View', infoText:'Switch between Start and End to edit and preview your Rollover app'}"></div>
+      <!-- Toggle -->
+      <div id="start-end-toggle" class='end-tab hide-filter-effect' wix-ctrl="ToggleButtons" wix-options="{ defaultValue: '1', infoTitle:'Toggle Switch', infoText:'You can switch between editing the start and end of the effect with this Toggle Switch', options: [{ value: '1', label: 'Start'}, { value: '2', label: 'End'} ]}"></div>
+    </div>
+
+    <ul class="list_designs_tab">
+      <li data-item="1" data-main="design_drill" class="drillaccordionlink images_filter">Images &amp; Filters</li>
+      <li data-item="6" data-main="design_drill" id="videoAccordion" class="drillaccordionlink">Video</li>
+      <li data-item="8" data-main="design_drill" class="drillaccordionlink" id="trans_color_link">Transition colour</li>
+      <li data-item="2" data-main="design_drill" class="drillaccordionlink" id="borderandline1">Border &amp; Line</li>
+      <li data-item="3" data-main="design_drill" class="drillaccordionlink" id="font-option">Fonts</li>
+      <div class="allowbuttons">
+        <li data-item="4" data-main="design_drill" class="drillaccordionlink">Buttons</li>
+      </div>
+      <!-- <li class="drillaccordionback">
+        <div class="backlink" data-main="design_drill">❮ Back</div>
+      </li>-->
+    </ul>
+
+
+    <!-- Effect & Filter -->
+    <div class="drillaccordioncontent item_1">
+
+      <div id="twist" wix-param="twistLevel" wix-ctrl="Slider" wix-options="{title: 'Twist', defaultValue:0, units: '%', max : 100}"></div>
+
+      <hr class="divider-long twist" />
+      <div class="specialhide img-filter-label" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Images &amp; Filters', infoText: 'Classic and Transition packs use two images. Artisan packs only use one.'}"></div>
+      <div>
+      </div>
+
+      <div class="start-tab-container" id="start-tab-container">
+        <div id="start-tab">
+          <div id="image0" class="codrops-hide" wix-ctrl="ImagePreview"></div>
+
+          <div id="image-zoom-off" wix-param="imageZoomOff" wix-ctrl="ToggleSwitch" wix-options="{label:'Zoom Image', infoText: 'Start state image will zoom on load', defaultValue:false}"></div>
+          <hr class="divider-long image-zoom-off codrops-hide" />
+
+          <div id="zoom-duration-off" class="zoom-duration-off" wix-param="zoomDurantionOff" wix-ctrl="Slider" wix-options="{title: 'Zoom Duration', defaultValue:5, units: ' s', max : 10}"></div>
+          <hr class="divider-long zoom-duration-off" />
+
+          <hr class="divider-long" />
+
+           <div id="zoom_arisian" wix-param="zoomArtLevel" wix-ctrl="Slider" wix-options="{title: 'Zoom level', defaultValue:0, units: '%', max : 130}"></div>
+
+          <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Colour filters', infoText: 'Apply filters to match your brand colours, or create new effects'}"></div>
+
+          <div id="background-colour-off" wix-param="backColor0" wix-ctrl="ColorPickerSlider" wix-options="{title: 'Background colour', startWithColor: 'color-5', startWithOpacity: 1, infoText:'You can use rollover without an image. Set the background colour and opacity here'}"></div>
+          <hr class="divider-long background-colour-off" />
+
+          <div id="overlay-off" class="premiumonly">
+            <div id="overlayOffColour2Container" wix-param="overlayOffColour2" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Overlay Filter 1', startWithColor: 'color-1', startWithOpacity: '0'}"></div>
+            <hr class="divider-long" />
+            <div id="overlayOffColour1Container" wix-param="overlayOffColour1" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Overlay Filter 2', startWithColor: 'color-1', startWithOpacity: '0', infoText:'CCC'}"></div>
+            <hr class="divider-long" />
+            <div id="overlayOffAngleContainer" wix-param="overlayOffAngle" wix-ctrl="Slider" wix-options="{title: 'Angle', defaultValue:0, units: '&deg;', max : 360, infoText:'You can change the angle of your colour filter with this tool'}"></div>
+            <hr class="divider-long" />
+          </div>
+        </div>
+      </div>
+
+      <div class="end-tab-container" id="end-tab-container">
+        <div id="end-tab">
+          <div id="image1" wix-ctrl="ImagePreview"></div>
+          <hr class="divider-long" />
+          <div id="image-zoom-on" wix-param="imageZoomOn" wix-ctrl="ToggleSwitch" wix-options="{label:'Zoom Image', infoText: 'End state image will zoom after transition', defaultValue:false}"></div>
+          <hr class="divider-long background-colour-on" />
+
+          <div id="zoom-duration-on" class="zoom-duration-on" wix-param="zoomDurantionOn" wix-ctrl="Slider" wix-options="{title: 'Zoom Duration', defaultValue:5, units: ' px', max : 10}"></div>
+          <hr class="divider-long zoom-duration-on" />
+
+          <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Colour filters', infoText: 'Apply filters to match your brand colours, or create new effects'}"></div>
+          <div id="background-colour-on" class="img-back-color-on" wix-param="backColor1" wix-ctrl="ColorPickerSlider" wix-options="{title: 'Background Color', startWithColor: 'color-5', startWithOpacity: 1, infoText:'You can use rollover without an image. Set the background colour and opacity here'}"></div>
+
+          <hr class="divider-long background-colour-on" />
+          <div id="overlay-on" class="premiumonly">
+            <div id="overlayOnColour2Container" wix-param="overlayOnColour2" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Overlay Filter 1', startWithColor: 'color-1', startWithOpacity: '0'}"></div>
+            <hr class="divider-long" />
+            <div id="overlayOnColour1Container" wix-param="overlayOnColour1" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Overlay Filter 2', startWithColor: 'color-1', startWithOpacity: '0'}"></div>
+            <hr class="divider-long" />
+            <div id="overlayOnAngleContainer" wix-param="overlayOnAngle" wix-ctrl="Slider" wix-options="{title: 'Angle', defaultValue:0, units: '&deg;', max : 360}"></div>
+            <hr class="divider-long" />
+          </div>
+        </div>
+      </div>
+
+      <script>
+        $(document).ready(function () {
+          // Image controls
+          var imageOffControl = $('#image0').getCtrl();
+          var imageOnControl = $('#image1').getCtrl();
+
+          var buttons = [
+            {
+              label: 'Change',
+              icon: 'image-change',
+              onClick: function () {
+                Wix.Settings.openMediaDialog(Wix.Settings.MediaType.IMAGE, false, function (data) {
+                  imageOffControl.setValue([data]);
+                  image_trigger('image0', [data]);
+                   var img0Ext = data.relativeUri.split('.').pop();
+                   if(img0Ext!='png'){
+                      $("#background-colour-off").hide();
+                   }
+                   if(img0Ext=='png'){
+                      console.log('show');
+                      $("#background-colour-off").show();
+                   }
+                });
+              }
+            },
+            {
+              label: 'Remove',
+              icon: 'delete',
+              onClick: function () {
+                imageOffControl.setValue([]);
+                $("#background-colour-off").show();
+                setTimeout(saveAndRefresh, 100);
+              }
+            }
+          ];
+
+          imageOffControl.setButtons(buttons);
+
+          // Image controls
+          var buttons = [
+            {
+              label: 'Change',
+              icon: 'image-change',
+              onClick: function () {
+                Wix.Settings.openMediaDialog(Wix.Settings.MediaType.IMAGE, false, function (data) {
+                  imageOnControl.setValue([data]);
+                  var img1Ext = data.relativeUri.split('.').pop();
+                   if(img1Ext!='png'){
+                       $("#background-colour-on").hide();
+                   }
+                  image_trigger('image1', [data]);
+                });
+              }
+            },
+            {
+              label: 'Remove',
+              icon: 'delete',
+              onClick: function () {
+                imageOnControl.setValue([]);
+                $("#background-colour-on").show();
+                setTimeout(saveAndRefresh, 100);
+              },
+            }
+          ];
+
+          imageOnControl.setButtons(buttons);
+        });
+      </script>
+
+      <div id="extra-container">
+        <div id="extra-tab">
+          <div id="blur" wix-param="blurLevel" wix-ctrl="Slider" wix-options="{title: 'Blur level', defaultValue:0, units: '%', max : 100}"></div>
+          <hr class="divider-long blur" />
+          <div id="opacity" wix-param="opacityLevel" wix-ctrl="Slider" wix-options="{title: 'Opacity level', defaultValue: 30, units: '%', max : 100}"></div>
+          <hr class="divider-long opacity" />
+          <div id="zoom" wix-param="zoomLevel" wix-ctrl="Slider" wix-options="{title: 'Zoom level', defaultValue:20, units: '%', max : 100}"></div>
+          <hr class="divider-long zoom" />
+          <div id="direction" wix-ctrl="RadioButtons" wix-options="{
+            title: 'Direction',
+            defaultValue: 'l',
+            infoText:'You can change the entry direction of this effect',
+            options:[
+              {value: 'l', label: 'Left'},
+              {value: 'r', label: 'Right'},
+              {value:'u', label: 'Up'},
+              {value:'d', label: 'Down'}
+            ]}"></div>
+           
+        </div>
+      </div>
+
+    </div>
+    <div class="drillaccordioncontent item_2">
+      <hr class="divider-long" />
+      <div wix-ctrl="SectionDividerLabeled" id="borderandline2" wix-options="{label: 'Border'}"></div>
+      <div id="border-color" wix-param="borderColor" wix-ctrl="ColorPickerInput" wix-options="{ title: 'Border Color', startWithColor: 'color-1'}"></div>
+      <hr class="divider-long border-color" />
+      <div id="border-size" wix-param="borderSize" wix-ctrl="Slider" wix-options="{title: 'Border Size', defaultValue:0, units: ' px', max : 10}"></div>
+      <hr class="divider-long border-color" />
+      <div id="corner-controls">
+        <div wix-ctrl="SectionDividerLabeled" id="borderandline2" wix-options="{label: 'Corners'}"></div>
+        <div id="radius-off" wix-param="radius0" wix-ctrl="Slider" wix-options="{title: 'Corner Roundness', defaultValue:0, units: ' px', max : 100}"></div>
+        <hr class="divider-long border-color" />
+        <div id="radius-mobile-off" wix-param="radiusMobile0" wix-ctrl="Slider" wix-options="{title: 'Mobile Corner Roundness', defaultValue:0, units: ' px', max : 100}"></div>
+      </div>
+      <hr class="divider-long" />
+      <div id="line-colour-0-container" wix-ctrl="SectionDividerLabeled" id="borderandline2" wix-options="{label: 'Line'}"></div>
+      <div id="line-colour-0" wix-param="lineColor0" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Line Color', startWithColor: 'color-1', startWithOpacity: 1}"></div>
+    </div>
+    <div class="drillaccordioncontent item_3">
+      <hr class="divider-long specialhide" />
+      <div class="text-font-heading specialhide" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Fonts',infoText:'To change your displayed text, choose the Text Tab'}"></div>
+
+      <div id="text-font-heading" wix-param-font="myFontH" wix-param-color="textColorH" wix-ctrl="FontAndColorPicker" wix-options="{title: 'Heading', startWithColor: 'color-1', startWithTheme : 'font_4'}"></div>
+      <hr class="divider-long text-font-heading" />
+      <div id="text-font-subheading" wix-param-font="myFontS" wix-param-color="textColorS" wix-ctrl="FontAndColorPicker" wix-options="{title: 'Subheading', startWithColor: 'color-1',startWithTheme : 'font_8'}"></div>
+      <hr class="divider-long text-font-subheading" />
+
+      <div class="start-tab-container">
+        <div class="text-font-off" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Start Fonts', infoText:'Choose an animated text style that displays when your Rollover loads, pick a delay time to suit your needs'}"></div>
+        <div id="text-animation-off" class="text-animation-off design-animation-dropdown" wix-ctrl="DropDown" wix-options="{title: 'Text Animation', defaultValue: 'none', options:[
+          {value: 'none', label: 'None'},
+          {value: 'grow', label: 'Grow'},
+          {value:'zoom-in', label: 'Zoom In'},
+          {value:'fade-in', label: 'Fade In'},
+          {value:'mexican-wave', label: 'Mexican Wave'},
+          {value:'rotate-up', label: 'Rotate Up'},
+          {value:'fold-in', label: 'Fold In'}
+        ]}"></div>
+        <hr class="divider-long text-animation-off" />
+        <div id="text-animation-delay-off" wix-ctrl="Slider" wix-param="text-animation-delay-off" wix-options="{title: 'Text Animation Delay', defaultValue:800, units: 'ms', max : 5000, infoText: 'Delay text animation (milliseconds)'}"></div>
+        <hr class="divider-long text-animation-off" />
+        <div id="text-font-off" wix-param-font="myFont0" wix-param-color="textColor0" wix-ctrl="FontAndColorPicker" wix-options="{title: 'Start Heading', startWithColor: 'color-1', startWithTheme : 'font_4', fontMaxSize: 120}"></div>
+        <hr class="divider-long text-font-off" />
+        <div id="subtext-font-off" wix-param-font="submyFont0" wix-param-color="subtextColor0" wix-ctrl="FontAndColorPicker" wix-options="{title: 'Start Paragraph', startWithColor: 'color-1', startWithTheme : 'font_8', fontMaxSize: 120}"></div>
+        <hr class="divider-long subtext-font-off" />
+        <div class="textbtn-tab">
+          <hr class="divider-long" />
+          <div id="textbtn-font-off" wix-param-font="myFontB0" wix-param-color="textColorB0" wix-ctrl="FontAndColorPicker" wix-options="{title: 'Start Button', startWithColor: 'color-1', startWithTheme : 'font_8', fontMaxSize: 80}"></div>
+          <hr class="divider-long" />
+        </div>
+      </div>
+
+      <div class="end-tab-container">
+        <div class="text-font-on" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'End Fonts', infoText:' Choose an animated text style that displays when your Rollover loads, pick a delay time to suit your needs'}"></div>
+        <div id="text-animation-on" class="text-animation-on" wix-ctrl="DropDown" wix-options="{title: 'Text Animation', defaultValue: 'none', options:[
+          {value: 'none', label: 'None'},
+          {value: 'grow', label: 'Grow'},
+          {value:'zoom-in', label: 'Zoom In'},
+          {value:'fade-in', label: 'Fade In'},
+          {value:'mexican-wave', label: 'Mexican Wave'},
+          {value:'rotate-up', label: 'Rotate Up'},
+          {value:'fold-in', label: 'Fold In'}
+        ]}"></div>
+        <hr class="divider-long text-animation-on" />
+        <div id="text-animation-delay-on" wix-ctrl="Slider" wix-param="text-animation-delay-on" wix-options="{title: 'Text Animation Delay', defaultValue:800, units: 'ms', max : 5000, infoText: 'Delay text animation (milliseconds)'}"></div>
+        <hr class="divider-long text-animation-on" />
+        <div id="text-font-on" wix-param-font="myFont1" wix-param-color="textColor1" wix-ctrl="FontAndColorPicker" wix-options="{title: 'End Heading', startWithColor: 'color-1', startWithTheme : 'font_4', fontMaxSize: 120}"></div>
+        <hr class="divider-long text-font-on" />
+        <div id="subtext-font-on" wix-param-font="submyFont1" wix-param-color="subtextColor1" wix-ctrl="FontAndColorPicker" wix-options="{title: 'End Paragraph', startWithColor: 'color-1', startWithTheme : 'font_8', fontMaxSize: 120}"></div>
+        <hr class="divider-long subtext-font-on" />
+        <div class="textbtn-tablink">
+          <div id="textbtn-font-on" wix-param-font="myFontB1" wix-param-color="textColorB1" wix-ctrl="FontAndColorPicker" wix-options="{title: 'End Button', startWithColor: 'color-1', startWithTheme : 'font_8', fontMaxSize: 80}"></div>
+          <hr class="divider-long textbtn-font-on" />
+        </div>
+      </div>
+
+      <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Mobile text design', infoText: 'Set custom settings for mobile users'}"></div>
+
+      <div id="mobilefontsize" wix-ctrl="Slider" wix-param="mobilefontsize" wix-options="{title: 'Mobile heading size', defaultValue:28, units: 'px', max : 50, infoText: 'You can overide the default heading font size with this setting'}"></div>
+      <hr class="divider-long textbtn-font-on" />
+      <div id="mobileparagraphsize" wix-ctrl="Slider" wix-param="mobileparagraphsize" wix-options="{title: 'Mobile paragraph size', defaultValue:20, units: 'px', max : 50, infoText: 'You can overide the default paragraph font size with this setting'}"></div>
+      <div id="mobilebuttonsize" wix-ctrl="Slider" wix-param="mobilebuttonsize" wix-options="{title: 'Mobile button font size', defaultValue:15, units: 'px', max : 50, infoText: 'You can overide the default button font size with this setting'}"></div>
+    </div>
+    <div class="drillaccordioncontent item_4">
+      <div id="design-button-start">
+        <hr class="divider-long" />
+        <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Start Button'}"></div>
+        <div id="textbtn-backcolour-off" wix-param="backColorB0" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Button Background Color', startWithColor: 'color-1', startWithOpacity: '0', infoText:'You can use rollover without an image. Set the background colour and opacity here'}"></div>
+        <hr class="divider-short" />
+        <div id="textbtn-colour-border-off" wix-param="backColorBborder0" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Button Border Color', startWithColor: 'color-1', startWithOpacity: 1}"></div>
+        <hr class="divider-short" />
+        <div id="textbtn-size-border-off" wix-ctrl="Slider" wix-param="backSizeBborder0" wix-options="{title: 'Button Border Size', defaultValue:1, units: 'px', max : 10}"></div>
+        <hr class="divider-short" />
+        <div id="textbtn-radius-off" wix-ctrl="Slider" wix-param="radiusB0" wix-options="{title: 'Corner Roundness', defaultValue:4, max : 100, units : 'px'}"></div>
+        <hr class="divider-short" />
+        <div style="display: none" id="textbtn-align-off" wix-ctrl="DropDown" wix-options="{title: 'Position', defaultValue: 'mc', options:[  {value: 'tl', label: 'Top Left'}, {value: 'tc', label: 'Top Centre'}, {value: 'tr', label: 'Top Right'}, {value:'ml', label: 'Middle Left'}, {value:'mc', label: 'Middle Centre'}, {value: 'mr', label: 'Middle Right'}, {value: 'bl', label: 'Bottom Left'}, {value: 'bc', label: 'Bottom Centre'}, {value:'br', label: 'Bottom Right'} ]}"></div>
+      </div>
+
+      <div id="design-button-end">
+        <hr class="divider-long" />
+        <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'End Button'}"></div>
+  
+        <div id="textbtn-colour-on" wix-param="backColorB1" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Button Background Color', startWithColor: 'color-1', startWithOpacity: '0', infoText:'You can use rollover without an image. Set the background colour and opacity here'}"></div>
+        <hr class="divider-short trigger_end_divider" />
+        <div id="textbtn-colour-border-on" wix-param="backColorBborder1" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Button Border Color', startWithColor: 'color-1', startWithOpacity: 1}"></div>
+        <hr class="divider-short trigger_end_divider" />
+        <div id="textbtn-size-border-on" wix-ctrl="Slider" wix-param="backSizeBborder1" wix-options="{title: 'Button Border Size', defaultValue:1, units: 'px', max : 10}"></div>
+        <hr class="divider-short trigger_end_divider" />
+        <div id="textbtn-radius-on" wix-ctrl="Slider" wix-param="radiusB1" wix-options="{title: 'Corner Roundness', defaultValue:4, max : 100, units:'px'}"></div>
+        <hr class="divider-short trigger_end_divider" />
+        <div style="display: none" id="textbtn-align-on" wix-ctrl="DropDown" wix-options="{title: 'Position', defaultValue: 'mc', options:[  {value: 'tl', label: 'Top Left'}, {value: 'tc', label: 'Top Centre'}, {value: 'tr', label: 'Top Right'}, {value:'ml', label: 'Middle Left'}, {value:'mc', label: 'Middle Centre'}, {value: 'mr', label: 'Middle Right'}, {value: 'bl', label: 'Bottom Left'}, {value: 'bc', label: 'Bottom Centre'}, {value:'br', label: 'Bottom Right'} ]}"></div>
+        <hr class="divider-short trigger_end_divider" />
+        <div id="cross-colour-on-close" wix-param="crossColorB1close" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Close Button X Color', startWithColor: 'color-1', startWithOpacity: 1 }"></div>
+        <hr class="divider-short" />
+        <div id="textbtn-colour-on-close" wix-param="backColorB1close" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Close Button Background Color', startWithColor: 'color-5', startWithOpacity: 1 }"></div>
+
+        <hr class="divider-long" />
+        <div id="settings_triggerlink_container">
+          <a href="Javascript:void(0);" id="btn_settings_triggerlink">
+            Want to add a link to your Rollover, click here to go to the Settings Tab
+          </a>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="drillaccordioncontent item_6">
+      <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Add Youtube Video'}" class="specialhide"></div>
+      <div id="start-tab-container2" class="specialhide start-tab-container">
+        <div id="start-tab">
+          <div id="youtube0" wix-ctrl="Input" wix-options="{ placeholder: 'e.g. https://www.youtube.com/watch?v=z0s9aLpK9Zs', title: 'YouTube', infoTitle: 'Just copy the ID at the END of the YouTube URL.' }"></div>
+          <hr class="divider-long" />
+          <div id="youtube0start" wix-ctrl="Input" wix-options="{ placeholder: '', defaultText:'0', title: 'Start time (seconds)' }"></div>
+          <hr class="divider-long" />
+          <div id="youtube0end" wix-ctrl="Input" wix-options="{ placeholder: '', defaultText:'30', title: 'End time (seconds)'}"></div>
+          <hr class="divider-long" />
+          <div id="youtube0mute" wix-param="youtube0mute" wix-ctrl="ToggleSwitch" wix-options="{label:'Mute', infoText: 'YouTube audio mute', defaultValue:true}">
+          </div>
+          <hr class="divider-long" />
+           <hr class="divider-long" />
+          <div id="youtube0loop" wix-param="youtube0loop" wix-ctrl="ToggleSwitch" wix-options="{label:'Loop', infoText: 'Loop YouTube video', defaultValue:false}">
+          </div>
+          <hr class="divider-long" />
+          <div id="youtube0autoplay" wix-param="youtube0autoplay" wix-ctrl="ToggleSwitch" wix-options="{label:'Autoplay', infoText: 'Autoplay YouTube video', defaultValue:false}">
+          </div>
+        </div>
+      </div>
+
+      <div id="end-tab-container2" class="specialhide end-tab-container">
+        <div id="end-tab">
+          <div id="youtube1" wix-ctrl="Input" wix-options="{ placeholder: 'e.g. https://www.youtube.com/watch?v=z0s9aLpK9Zs', title: 'YouTube', infoTitle: 'Just copy the ID at the END of the YouTube URL.' }"></div>
+          <hr class="divider-long" />
+          <div id="youtube1start" wix-ctrl="Input" wix-options="{ placeholder: '', defaultText:'0', title: 'Start time (seconds)' }"></div>
+          <hr class="divider-long" />
+          <div id="youtube1end" wix-ctrl="Input" wix-options="{ placeholder: '', defaultText:'30', title: 'End time (seconds)'}"></div>
+          <hr class="divider-long" />
+          <div id="youtube1mute" wix-param="youtube1mute" wix-ctrl="ToggleSwitch" wix-options="{label:'Mute', infoText: 'YouTube audio mute', defaultValue:true}">
+          </div>
+          <hr class="divider-long" />
+          <div id="youtube1loop" wix-param="youtube1loop" wix-ctrl="ToggleSwitch" wix-options="{label:'Loop', infoText: 'Loop YouTube video', defaultValue:false}">
+          </div>
+          <hr class="divider-long" />
+          <div id="youtube1autoplay" wix-param="youtube1autoplay" wix-ctrl="ToggleSwitch" wix-options="{label:'Autoplay', infoText: 'Autoplay YouTube video', defaultValue:false}">
+          </div>
+          <hr class="divider-long" />
+        </div>
+      </div>
+    </div>
+
+    <div class="drillaccordioncontent item_8">
+      <div class="trans-color-container">
+        <div id="header-trancolor">
+          <hr class="divider-long" />
+          <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Transition color', infoText:'Choose a color to transition between images'}"></div>
+        </div>
+        <div id="trancolor" wix-param="trancolorFilter" wix-ctrl="ColorPickerInput" wix-options="{startWithColor: 'color-1', title: 'Transition color'}"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $('.drill_accordion > ul .drillaccordionlink').on('click', function () {
+        $("#settings_triggerlink_container").hide();
+        $('.start_end_view').addClass('display-none');
+        $("#trans_color_link").hide();
+        var drill_id = $(this).data('main');
+        if (!drill_id) {
+          return false;
+        }
+        var drill_item = $(this).data('item');
+        $('#' + drill_id + ' > ul li.drillaccordionlink').hide();
+        $('#' + drill_id + ' > ul li.drillaccordionback').show();
+        $('#' + drill_id + ' > .drillaccordioncontent').hide();
+        $('#' + drill_id + ' > .drillaccordioncontent.item_' + drill_item).show();
+
+        /****Aritisian pack******/
+        if (transition_type == 'ap1') {
+          setTimeout(function(){
+             artisianPack();
+          }, 500);
+        }
+
+        /****Atomic pack ******/
+        if (transition_type == 'codrops') {
+          atomicPack();
+        }
+
+        /****Transition pack ******/
+        if (transition_type == 'codyhouse') {
+          transitionPack();
+        }
+        /****Transition pack ******/
+
+        /****Trad pack ******/
+        if (transition_type == 'trad') {
+          tradPack();
+        }
+        /****Trad pack ******/
+
+        if (drill_item != 2 && drill_item != 5) {
+          $('#' + drill_id + ' > .drillaccordionshowactive').show();
+          $('#image1').show();
+        }
+      });
+      globaldesignSettings(settings.transitiontype);
+    });
+
+    function tradPack(){
+        $("#image1").show();
+    }
+
+    function reload_drill(drill_id) {
+      $('.start_end_view').removeClass('display-none');
+      $('#' + drill_id + ' > ul li.drillaccordionlink').show();
+      $('#' + drill_id + ' > ul li.drillaccordionback').hide();
+      $('#' + drill_id + ' > .drillaccordioncontent').hide();
+      $('#' + drill_id + ' > .drillaccordionshowactive').hide();
+    }
+
+    function artisianPack() {
+      $('.hide-filter-effect label input[value="2"]').parent().click('on',
+        function () {
+                $('.start_end_view').addClass('display-none');
+                $('#image-zoom-on').hide();
+                $('.img-filter-label').hide();
+        });
+      $('.hide-filter-effect label input[value="1"]').parent().click('on',
+        function () {
+            $('.start_end_view').addClass('display-none');
+            $('.img-filter-label').show();
+      });
+    }
+
+    function atomicPack() {
+      $("#text-animation-off").show();
+      $("#image-zoom-on").removeClass('display-none');
+      $(".allowbuttons").show();
+      $('.img-back-color-off').show();
+      $('#textbtn-radius-off').show();
+
+      hidesectionAtomic();
+      $('.hide-filter-effect label input[value="1"]').parent().click('on',
+        function () {
+            $('.img-back-color-off').show();
+            $("#text-animation-off").show();
+            $('#textbtn-radius-off').show();
+            hidesectionAtomic();
+        });
+      $('.hide-filter-effect label input[value="2"]').parent().click('on',
+        function () {
+          $('#image1').show();
+          $('#overlay-on').show();
+          $('#overlayOffAngleContainer').show();
+          $('.content--intro').show();
+          $(".img-filter-label").show();
+        });
+    }
+
+    function hidesectionAtomic() {
+      $('#overlay-on').hide();
+      $('#overlay-off').hide();
+      $('#overlayOffAngleContainer').hide();
+      $('#image0').hide();
+      $("#image-zoom-off").hide();
+      $(".img-filter-label").hide();
+    }
+
+    function transitionPack() {
+      setTimeout(function(){
+                $("#image0").show();
+                $("#image-zoom-off").show();
+                $('#overlay-off').show();
+                $('.img-filter-label').show();
+                $('#overlayOffAngleContainer').show();
+       },1000);
+    }
+
+    function globaldesignSettings(transition_type) {
+       /****Transition pack ******/
+        if (transition_type == 'codyhouse') {
+            $("#trans_color_link").show();
+        }
+      /****Transition pack ******/
+      $('.hide-filter-effect label input[value="1"]').parent().click('on',
+        function () {
+          $('.start_end_view').addClass('display-none');
+          $("#settings_triggerlink_container").hide();
+      });
+
+      $('.hide-filter-effect label input[value="2"]').parent().click('on',
+        function () {
+          $("#settings_triggerlink_container").show();
+      });
+
+      $('#trancolor .color-picker-color, #border-color .color-picker-color, .color-picker-color').on('click', function () {
+        $('.start_end_view').addClass('display-none');
+      });
+
+      $('.drill_accordion > ul  > li.drillaccordionback > .backlink').on('click', function () {
+        $('.start_end_view').show();
+        $('.start_end_view').removeClass('display-none');
+        if (!drill_id) {
+          return false;
+        }
+        $('#' + drill_id + ' > ul li.drillaccordionlink').show();
+        $('#' + drill_id + ' > ul li.drillaccordionback').hide();
+        $('#' + drill_id + ' > .drillaccordioncontent').hide();
+        $('#' + drill_id + ' > .drillaccordionshowactive').hide();
+      });
+    }
+  </script>
+</div>

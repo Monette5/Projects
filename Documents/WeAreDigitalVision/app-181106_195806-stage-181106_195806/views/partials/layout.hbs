@@ -1,0 +1,146 @@
+<div tab="Layout" class="tab-button">
+  <div class="text-off">
+    <hr class="divider-long" />
+    <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Switch View', infoText:'Switch between Start and End to edit and preview your Rollover app'}"></div>
+
+    <!-- Toggle -->
+    <div id="start-end-toggle2" class='end-tab' wix-ctrl="ToggleButtons" wix-options="{ defaultValue: '1', infoTitle:'Toggle Switch', infoText:'You can switch between editing the start and end of the effect with this Toggle Switch', options: [{ value: '1', label: 'Start'}, { value: '2', label: 'End'} ]}"></div>
+  </div>
+
+  <div class="start-tab-container layout-tab-options">
+    <hr class="divider-long" />
+
+    <div class="subtext-off" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Start layout', infoText: 'Use these tools to design the position of the text and buttons'}"></div>
+
+    <div id="text-align-subtextoff" class="subtext-off" wix-ctrl="Thumbnails" wix-param="subtextAlign0" wix-options="{  activeDesign:'highlighted', maxThumbsPerRow:5, defaultValue: 'c', title:'Text and button alignment', square:true, options:[ {value: 'l', label : 'Left', src: 'src/settings/svg/blank.svg'}, {value: 'c', label : 'Center', src: 'src/settings/svg/blank.svg'}, {value: 'r', label : 'Right', src: 'src/settings/svg/blank.svg'}, {value: 'j', label : 'Justify',  src: 'src/settings/svg/blank.svg'}  ]}"></div>
+    <hr class="divider-long subtext-off" />
+
+    <div id="text-width-subtextoff" class="subtext-off" wix-ctrl="Slider" wix-param="subtextWidth0" wix-options="{title: 'Text width', defaultValue:564, units: 'px', max : 641,min : 100,  infoText: 'Set a maximum width for text. The text will resize to respond to the size of your Rollover'}"></div>
+    <hr class="divider-long subtext-off" />
+    <div id="text-padding-subtextoff" class="subtext-off" wix-ctrl="Slider" wix-param="subtextPadding0" wix-options="{title: 'Horizontal Offset', defaultValue:'30', units: 'px', max : 250,min : 0, infoText: 'Adjust the position of your text and button elements'}"></div>
+    <hr class="divider-long subtext-off" />
+    <div id="text-paddingTB-subtextoff" class="subtext-off" wix-ctrl="Slider" wix-param="subtextPaddingTB0" wix-options="{title: 'Vertical Offset', defaultValue:'0', units: 'px', max : 250,min : 10, infoText: 'Adjust the height position of your text and button elements'}"></div>
+
+    <hr class="divider-long subtext-off" />
+
+    <div class="subtext-off" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Mobile layout', infoText: 'Use these tools to design the position of the text and buttons'}"></div>
+    <div id="text-align-mobileoff" class="subtext-off" wix-ctrl="Thumbnails" wix-param="subtextMobileAlign0" wix-options="{  activeDesign:'highlighted', maxThumbsPerRow:5, defaultValue: 'c', title:'Mobile text and button alignment', square:true, options:[ {value: 'l', label : 'Left', src: 'src/settings/svg/blank.svg'}, {value: 'c', label : 'Center', src: 'src/settings/svg/blank.svg'}, {value: 'r', label : 'Right', src: 'src/settings/svg/blank.svg'}, {value: 'j', label : 'Justify',  src: 'src/settings/svg/blank.svg'}  ]}"></div>
+      <hr class="divider-long subtext-off" />
+     <!-- Hide Start paragraph  -->
+    <div class="subtext-off text-left">
+      <div id="text-width-subtextoff-allowmob" wix-param="subtextAllowmob0" wix-ctrl="ToggleSwitch" wix-options="{label:'Hide Start Paragraph on Mobile', defaultValue:false, infoText:'Hide Start Paragraph on Mobile'}">
+      </div>
+      <hr class="divider-long" />
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      console.log(settings.width);
+      if (settings.width <= 980) {
+
+        $("#text-width-subtextoff").getCtrl().comp.props.max = settings.width;
+        //$("#text-width-subtextoff").getCtrl().comp.setState({value: settings.width - 40});
+
+        $("#text-width-subtexton").getCtrl().comp.props.max = settings.width;
+        //$("#text-width-subtexton").getCtrl().comp.setState({value: settings.width - 40});
+      } else {
+        $("#text-width-subtextoff").getCtrl().comp.props.max = 980;
+        $("#text-width-subtexton").getCtrl().comp.props.max = 980;
+      }
+
+      // Set and retain off state alignments
+      $('#text-align-subtextoff .radio-control').removeClass('active');
+      $('#text-align-mobileoff .radio-control').removeClass('active');
+
+      $('#text-align-subtextoff .radio-control').click(function () {
+        $('#text-align-subtextoff .radio-control').removeClass('active');
+        $(this).addClass('active');
+      });
+
+      $('#text-align-mobileoff .radio-control').click(function () {
+        $('#text-align-mobileoff .radio-control').removeClass('active');
+        $(this).addClass('active');
+      });
+
+      if (settings.subtextAlign0 == 'l') {
+        $('#text-align-subtextoff .radio-control:nth-of-type(1)').addClass('active');
+      } else if (settings.subtextAlign0 == 'r') {
+        $('#text-align-subtextoff .radio-control:nth-of-type(3)').addClass('active');
+      } else if (settings.subtextAlign0 == 'j') {
+        $('#text-align-subtextoff .radio-control:nth-of-type(4)').addClass('active');
+      } else {
+        $('#text-align-subtextoff .radio-control:nth-of-type(2)').addClass('active');
+      }
+
+      if (settings.subtextMobileAlign0 == 'l') {
+        $('#text-align-mobileoff .radio-control:nth-of-type(1)').addClass('active');
+      } else if (settings.subtextMobileAlign0 == 'r') {
+        $('#text-align-mobileoff .radio-control:nth-of-type(3)').addClass('active');
+      } else if (settings.subtextMobileAlign0 == 'j') {
+        $('#text-align-mobileoff .radio-control:nth-of-type(4)').addClass('active');
+      } else {
+        $('#text-align-mobileoff .radio-control:nth-of-type(2)').addClass('active');
+      }
+
+      // Set and retain on state alignments
+      $('#text-align-subtexton .radio-control').removeClass('active');
+      $('#text-align-mobileon .radio-control').removeClass('active');
+
+      $('#text-align-subtexton .radio-control').click(function () {
+        $('#text-align-subtexton .radio-control').removeClass('active');
+        $(this).addClass('active');
+      });
+
+      $('#text-align-mobileon .radio-control').click(function () {
+        $('#text-align-mobileon .radio-control').removeClass('active');
+        $(this).addClass('active');
+      });
+
+      if (settings.subtextAlign1 == 'l') {
+        $('#text-align-subtexton .radio-control:nth-of-type(1)').addClass('active');
+      } else if (settings.subtextAlign1 == 'r') {
+        $('#text-align-subtexton .radio-control:nth-of-type(3)').addClass('active');
+      } else if (settings.subtextAlign1 == 'j') {
+        $('#text-align-subtexton .radio-control:nth-of-type(4)').addClass('active');
+      } else {
+        $('#text-align-subtexton .radio-control:nth-of-type(2)').addClass('active');
+      }
+
+      if (settings.subtextMobileAlign1 == 'l') {
+        $('#text-align-mobileon .radio-control:nth-of-type(1)').addClass('active');
+      } else if (settings.subtextMobileAlign1 == 'r') {
+        $('#text-align-mobileon .radio-control:nth-of-type(3)').addClass('active');
+      } else if (settings.subtextMobileAlign1 == 'j') {
+        $('#text-align-mobileon .radio-control:nth-of-type(4)').addClass('active');
+      } else {
+        $('#text-align-mobileon .radio-control:nth-of-type(2)').addClass('active');
+      }
+    });
+  </script>
+
+  <div class="end-tab-container">
+    <hr class="divider-long" />
+    <div class="subtext-on" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'End layout', infoText: 'Use these tools to design the position of the text and buttons'}">
+    </div>
+    <div id="text-align-subtexton" class="subtext-on" wix-ctrl="Thumbnails" wix-param="subtextAlign1" wix-options="{  activeDesign:'highlighted', maxThumbsPerRow:5, defaultValue: 'c', title:'Text and button alignment', square:true, options:[ {value: 'l', label : 'Left', src: 'src/settings/svg/blank.svg'}, {value: 'c', label : 'Center', src: 'src/settings/svg/blank.svg'}, {value: 'r', label : 'Right', src: 'src/settings/svg/blank.svg'}, {value: 'j', label : 'Justify',  src: 'src/settings/svg/blank.svg'}  ]}"></div>
+    <hr class="divider-long subtext-on" />
+
+   
+    <div id="text-width-subtexton" class="subtext-on" wix-ctrl="Slider" wix-param="subtextWidth1" wix-options="{title: 'Text width', defaultValue:660, units: 'px', max : 975, min : 100, infoText: 'Set a maximum width for text.  The text will resize to respond to the size of your Rollover'}"></div>
+    <hr class="divider-long subtext-on" />
+    <div id="text-padding-subtexton" class="subtext-on" wix-ctrl="Slider" wix-param="subtextPadding1" wix-options="{title: 'Horizontal Offset', defaultValue:'30', units: 'px', max : 250,min : 0, infoText: 'Adjust the position of your text and button elements'}"></div>
+    <hr class="divider-long subtext-on" />
+    <div id="text-paddingTB-subtexton" class="subtext-on" wix-ctrl="Slider" wix-param="subtextPaddingTB1" wix-options="{title: 'Vertical Offset', defaultValue:'0', units: 'px', max : 250,min : 10, infoText: 'Adjust the height position of your text and button elements'}"></div>
+    
+    <div class="subtext-on" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Mobile layout', infoText: 'Use these tools to design the position of the text and buttons'}"></div>
+     <div id="text-align-mobileon" class="subtext-on" wix-ctrl="Thumbnails" wix-param="subtextMobileAlign1" wix-options="{  activeDesign:'highlighted', maxThumbsPerRow:5, defaultValue: 'c', title:'Mobile text and button alignment', square:true, options:[ {value: 'l', label : 'Left', src: 'src/settings/svg/blank.svg'}, {value: 'c', label : 'Center', src: 'src/settings/svg/blank.svg'}, {value: 'r', label : 'Right', src: 'src/settings/svg/blank.svg'}, {value: 'j', label : 'Justify',  src: 'src/settings/svg/blank.svg'}  ]}"></div>
+    <hr class="divider-long subtext-off" />
+    <!-- Hide End paragraph  -->
+    <div class="subtext-on text-left">
+      <div id="text-width-subtexton-allowmob" wix-param="subtextAllowmob1" wix-ctrl="ToggleSwitch" wix-options="{label:'Hide End Paragraph on Mobile', defaultValue:false, infoText:'Hide End Paragraph on Mobile'}">
+      </div>
+      <hr class="divider-long" />
+    </div>
+  </div>
+</div>

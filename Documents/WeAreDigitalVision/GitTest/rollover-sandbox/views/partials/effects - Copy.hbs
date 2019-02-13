@@ -1,0 +1,185 @@
+<div tab="Effects">
+  <hr class="divider-long"/>
+
+  <div id="selected_effect_type" class="selected_effect_type hide" wix-ctrl="RadioButtons" wix-param="radioParam" 
+wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rollover to your page', defaultValue: '1', options: [{ value: '1', label: 'Transition pack'}]}"></div>
+
+  <div class="effectcat_level" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Step 1 - Select Effect Type', infoText: 'Choose a pack, each has different characteristics'}"></div>
+  <div id="effectcat" class="effectcat" wix-ctrl="RadioButtons" wix-param="effectcat"  wix-options="{
+    title: '',
+    defaultValue: 'codyhouse',
+    options: [
+      {value: 'trad', label: 'Classic Pack'},
+      {value: 'codrops', label: 'Atomic Pack', name:'Atomic Pack'},
+      {value: 'codyhouse', label: 'Transition Pack', name:'Transition Pack'},
+      {value: 'ap1', label: 'Artisan Pack', name:'Artisan Pack'},
+      {value: 'cooltips', label: 'CoolTips Pack', name:'CoolTips Pack'},
+      {value: 'particles', label: 'Particle Buttons', name:'Particle Buttons'},
+      {value: 'distortion', label: 'Distortion Pack', name:'Distortion Pack'}
+    ]
+  }">
+  </div>
+
+   <!---<div id="effectcat" class="effectcat" wix-ctrl="RadioButtons" wix-param="effectcat"  wix-options="{
+    title: '',
+    defaultValue: 'codyhouse',
+    options: [
+      {value: 'trad', label: 'Classic Pack'},
+      {value: 'codrops', label: 'Atomic Pack', name:'Atomic Pack'},
+      {value: 'codyhouse', label: 'Transition Pack', name:'Transition Pack'},
+      {value: 'ap1', label: 'Artisan Pack', name:'Artisan Pack'},
+      {value: 'codyhouse2', label: 'Transition Pack 2', name:'Transition Pack 2'},
+      {value: 'codrops', label: 'Atomic Pack', name:'Atomic Pack'},
+      {value: 'codyhouse3', label: 'Music Pack', name:'Music Pack'},
+      {value: 'codyhouse4', label: 'City Landscapes Pack', name:'City Landscapes Pack'},
+      {value: 'codyhouse5', label: 'Sports Pack', name:'Sports Pack'},
+      {value: 'codyhouse6', label: 'Halloween Pack', name:'Halloween Pack'}
+    ]
+  }"></div>-->
+
+  <div class="addwidget_effect_container text-center">
+      <div wix-ctrl="Button" wix-options="{ label: 'Add Widget for selected effect', className: 'btn-confirm-secondary' }" class="add_widget_oneffect"  ></div>
+  </div>
+
+  <hr class="divider-long select-effect-type"/>
+  <div id="select-effect" class="select-effect-type" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Step 2 - Select Effect',infoText: 'Pick an Effect to edit, then go to Settings or Design tab to get started'}"></div>
+
+  <div id="transitions"></div>
+
+  <hr class="divider-long"/>
+
+  <div id="select-effect" class="select-effect-type" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Step 3 - Get Started',infoText: 'Click on this to go to the Settings tab'}"></div>
+  <div id="gotodesign" wix-ctrl="Button" wix-options="{label: 'Edit Settings', className: 'btn-confirm-primary'}">
+  </div>
+
+  <script>
+    // Build menu
+    //var effectcat = $('#effectcat').getCtrl().getValue();
+
+    var tp=$('#transitions');
+    var pnt_head = 0;
+    var tree_roller = {};
+    tree_roller[pnt_head] = {};
+    tree_roller[pnt_head]['name'] = '';
+    tree_roller[pnt_head]['sub'] = {};
+    var featured_roller = {};
+    var emp_head = false;
+    var ctr = 0;
+    var effectTypeArr = ['cooltips','particles'];
+
+    // the effect item and groups are here
+    // rollovers is a global object , see/dist/rollovers.js
+    // initial setup here
+    for(rk in rollovers){
+      var rollover = rollovers[rk];
+      var testServer = false;
+      if(rollover.visible || testServer) {
+        if (rollover.html) {
+          pnt_head = rk;
+          tree_roller[pnt_head] = {};
+          tree_roller[pnt_head]['name'] = rollover.html
+          tree_roller[pnt_head]['sub'] = {}
+
+          // there is no info if it is premium or not, lets do it in hard code
+          var premiumPack = ['Transition Pack', 'Artisan Pack']
+          if (premiumPack.indexOf(rollover.html) > -1) {
+            tree_roller[pnt_head]['premium'] = true
+          } else {
+            tree_roller[pnt_head]['premium'] = false
+          }
+        } else {
+          emp_head = pnt_head == 0 ? true : emp_head;
+          tree_roller[pnt_head]['sub'][rk] = {};
+          tree_roller[pnt_head]['sub'][rk]['name'] = rollover.name;
+          var layer = {};
+          layer['name'] = rk;
+          layer['value'] = rollover;
+          featured_roller[ctr++] = layer;
+        }
+      }
+    }
+
+    // loop the effect pack
+    for(key in tree_roller){
+      var rolleritem=tree_roller[key];
+
+      var val_name = tree_roller[key]['name'];
+
+      if((val_name == '' && emp_head) || val_name){
+
+        var drill_down;
+
+        // set container for pack
+        drill_down = $('<div>').attr({
+          class: 'ro-effects control-thumbnails with-title square vmark mydrilldown select-effect',
+          'data-max-thumbs-per-row': 2,
+          'data-items-to-skip': 0,
+          'data-cat': key
+        });
+
+        // trim name if needed
+        if(val_name.length > 20) val_name = val_name.substring(0,17) + '...';
+
+        // loop the effect
+        for(key2 in tree_roller[key]['sub']){
+          var keyed = tree_roller[key]['sub'][key2];
+
+          var effectName = keyed.name;
+        
+          var isPremium = key2!='alt'; // && key2!='blur' && key2!='unblur';
+
+          var drill_down_body_opt =  $('<label class="ro-effect-item radio-control '+(isPremium?'pthumb':'')+' ' + (settings.transition == key2 ? 'active' : '') + '">');
+
+          var videoSrc = tree_roller[key]['sub'][key2]['image'] ?  tree_roller[key]['sub'][key2]['image']  : 'src/settings/mp4/' + key2 + '-movie.mp4';
+          var posterSrc = tree_roller[key]['sub'][key2]['image'] ?  tree_roller[key]['sub'][key2]['image']  : 'src/settings/png/' + key2 + '-poster.png';
+
+          // prepare markup for video thumbnails
+          drill_down_body_opt.append($('<input>').attr('type', 'radio'));
+          drill_down_body_opt.append($('<div>').attr({
+            class: 'image-radio mythumb transition',
+            'data-category': key,
+            id: 'transition-'+key2,
+            value: key2
+          }))
+        
+
+          drill_down_body_opt.find('.image-radio').append($('<video>').attr({
+              preload: 'none',
+              loop: false,
+              autoplay: false,
+              width: '100%',
+              height: '100%',
+              src: videoSrc,
+              poster: posterSrc}))
+  
+          drill_down_body_opt.append($('<span class="label">' + effectName + '</span>'));
+          drill_down.append(drill_down_body_opt);
+        }
+        drill_down.append(drill_down);
+      }
+      tp.append(drill_down);
+    }
+
+    $(document).ready(function() {
+      $("#gotodesign").getCtrl().onClick(function(){ 
+					$('#tabpanel_main').getCtrl().setValue(2);
+			});
+
+      $('.ro-effect-item').hover(function() {
+        var video = $(this).find('video').get(0);
+
+
+        if($.inArray(settings.transitiontype, effectTypeArr) !== -1){
+            video.play();
+            $(this).find('video').on('ended',function(){
+              video.pause();
+              video.currentTime = 0;
+            });
+        }
+      });
+    });
+  </script>
+
+  
+
+</div>

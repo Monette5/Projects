@@ -1,0 +1,153 @@
+<div tab="Settings">
+  <div id="heading-phone" wix-ctrl="Input" wix-options="{ title: 'Phone number' , placeholder:'+44123456789'}"></div>
+  <hr class="divider-short" />
+  <div id="hide-phone" wix-ctrl="ToggleSwitch" wix-param="hidePhone" wix-options="{ label: 'Only show on mobile', infoText:'Hide this on your desktop' }"></div>
+  <hr class="divider-long heading-phone" />
+  <hr class="divider-long allowSubtextBtn" />
+
+  <div class="video_trigger_enable hide" id="video_trigger_enable">
+    <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Button trigger Video', infoText:'Button trigger is enabled for videos so there is no option to have rollover if you need rollover please click below button to empty video value using video tab'}"></div>
+    <div class="design_tab_button text-center" wix-ctrl="Button" wix-options="{ label: 'Go to design', className: 'btn-confirm-primary' }"></div>
+  </div>
+
+  <div class="textbtn-tab textbtn-allow premiumonly" id="choose_effect_container">
+    <div id="settings_trigger_level" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Choose Effect trigger', infoText:'You can choose how your effect is triggered. Choose Rollover if you want it to run when a visitor hovers over the image, or choose Button press'}"></div>
+    <div id="textbtn-allow" wix-param="textbtna" class='end-tab' wix-ctrl="ToggleButtons" wix-options="{ defaultValue: 1, infoTitle:'Toggle Switch', infoText:'You can switch between editing the start and end of the effect with this Toggle Switch', options: [{ value: '0', label: 'Rollover'}, { value: '1', label: 'Button'} ]}"></div>
+    <hr class="divider-long" />
+  </div>
+	
+   <!-- Cooltip -->	
+   <div class="tooltip-container">
+    <div id="tootltipsettings" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'ToolTip Trigger Settings', infoText:'Select your tooltips elements with animations'}"></div>
+  
+    <hr class="divider-long" />
+      <div id="tooltip_btn_mouseout" wix-param="tooltiponmouse" wix-ctrl="ToggleSwitch" wix-options="{label:'Run Effect once', defaultValue:false, infoText: 'To select this option to stay with tooltips on mouseout'}">
+      </div>
+       <hr class="divider-long" />
+  </div>
+  <!-- Cooltip -->	
+
+  <!-- Run effect once -->
+  <div id="peranent-effect" class="peranent-effect text-left" wix-param="sticky" wix-ctrl="ToggleSwitch" wix-options="{label:'Only animate first time', defaultValue:false, infoText: 'If you want the effect to stay on the End State after the effect has run, toggle this switch'}">
+  </div>
+  <hr class="divider-long peranent-effect" />
+  <!-- Add link to end state -->
+  <div id="end-state-link" class="end-state-link text-left" wix-param="endStateLink" wix-ctrl="ToggleSwitch" wix-options="{label:'Add link to end state', defaultValue:false, infoText: 'Turn this switch on to add a link to the end state of your rollover.'}">
+  </div>
+  <hr class="divider-long peranent-effect" />
+
+  <!-- Add Link -->
+  <div id="addLink" class="specialhide">
+    <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Add Link'}"></div>
+    <div style="display: none;">
+      <div id="linkData" wix-ctrl="Input"></div>
+    </div>
+    <div class="main-tab relative">
+      <div id="linkChoice" wix-ctrl="Input" wix-options="{placeholder: 'Choose Link', title: 'Where does it link to?', infoText: 'Add a link to the end state of your rollover'}"></div>
+      <div id="linkModel" wix-ctrl="Button" wix-options="{label: 'Add an action link', infoText: 'Link to...', className: 'btn-confirm-primary'}"></div>
+    </div>
+    <div id="textbtn-allowlink-container">
+      <hr class="divider-short" />
+      <div id="textbtn-allowlink" wix-param="textbtnb" wix-ctrl="ToggleSwitch" wix-options="{label:'Trigger end link with button', defaultValue:false, infoText: 'To Design your Link button, go to Design, then, buttons'}">
+      </div>
+    </div>
+  </div>
+
+  <div id="layoutsettings" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Advanced Layout Settings', infoText:'Setup your Rollover layout. For precision edits go to Layout tab'}"></div>
+
+  <div class="premiumonly">
+    <!-- Enable text formatting and button -->
+    <div id="allowSubtextBtn" wix-param="allowSubtextBtn" wix-ctrl="ToggleSwitch" wix-options="{label:'Advanced layout', infoText: 'Rollover now gives you more layout options than ever. Try them out by turning this switch to ON', defaultValue:true}">
+    </div>
+    <hr class="divider-long allowSubtextBtn" />
+  </div>
+
+
+  <script>
+    $(document).ready(function () {
+      var linkTitle;
+      if (settings.linkData != undefined && settings.linkData && settings.linkData != "") {
+
+        if (settings.linkData.type == "PageLink") {
+          linkTitle = settings.linkData.pageId;
+        } else if (settings.linkData.type == "AnchorLink") {
+          linkTitle = settings.linkData.anchorName;
+        } else if (settings.linkData.type == "ExternalLink") {
+          linkTitle = settings.linkData.url;
+        } else if (settings.linkData.type == "EmailLink") {
+          linkTitle = settings.linkData.recipient;
+        } else if (settings.linkData.type == "PhoneLink") {
+          linkTitle = settings.linkData.phoneNumber;
+        }
+
+        $('#linkChoice').getCtrl().setValue((settings.linkData.type == "ExternalLink" ? "" : settings.linkData.type + ': ') + linkTitle);
+      }
+
+      
+
+      $('#linkModel, #linkChoice input').off().on('click', function () {
+        var currentData;
+
+        if (settings.linkData) {
+          currentData = { link: settings.linkData };
+        } else {
+          currentData = {};
+        }
+
+        Wix.Settings.openLinkPanel(currentData,
+          function (linkData) {
+
+            function linkage() {
+
+              if (!linkData || linkData == "") {
+                $('#linkData').getCtrl().setValue(linkData);
+                $('#linkChoice').getCtrl().setValue('');
+              } else if (linkData.type == "PageLink") {
+                linkTitle = linkData.pageId;
+                $('#linkData').getCtrl().setValue(linkData);
+                $('#linkChoice').getCtrl().setValue((linkData.type == "ExternalLink" ? "" : linkData.type + ': ') + linkTitle)
+              } else if (linkData.type == "AnchorLink") {
+                linkTitle = linkData.anchorName;
+                $('#linkData').getCtrl().setValue(linkData);
+                $('#linkChoice').getCtrl().setValue((linkData.type == "ExternalLink" ? "" : linkData.type + ': ') + linkTitle)
+              } else if (linkData.type == "ExternalLink") {
+                linkTitle = linkData.url;
+                $('#linkData').getCtrl().setValue(linkData);
+                $('#linkChoice').getCtrl().setValue((linkData.type == "ExternalLink" ? "" : linkData.type + ': ') + linkTitle)
+              } else if (linkData.type == "EmailLink") {
+
+                linkTitle = linkData.recipient;
+                $('#linkData').getCtrl().setValue(linkData);
+                $('#linkChoice').getCtrl().setValue((linkData.type == "ExternalLink" ? "" : linkData.type + ': ') + linkTitle)
+              } else if (linkData.type == "PhoneLink") {
+                linkTitle = linkData.phoneNumber;
+                $('#linkData').getCtrl().setValue(linkData);
+                $('#linkChoice').getCtrl().setValue((linkData.type == "ExternalLink" ? "" : linkData.type + ': ') + linkTitle)
+              }
+              else if (linkData.type == "DocumentLink") {
+                linkTitle = linkData.name;
+                $('#linkData').getCtrl().setValue(linkData);
+                $('#linkChoice').getCtrl().setValue((linkData.type == "ExternalLink" ? "" : linkData.type + ': ') + linkTitle)
+              }
+            }
+
+            linkage()
+              ,
+              function (error) {
+                console.log(error)
+              };
+          });
+      });
+   
+    /***********Advanced layout off Case******/
+     /***if ($('#allowSubtextBtn').getCtrl().getValue() != settings.allowSubtextBtn) {
+            if(settings.allowSubtextBtn=='false' || settings.allowSubtextBtn==false){
+                $('#allowSubtextBtn').getCtrl().setValue(false);
+            }else{
+          $('#allowSubtextBtn').getCtrl().setValue(true); 
+        }
+    } ****/	
+	/***********Advanced layout off Case******/	
+ });
+</script>
+</div>

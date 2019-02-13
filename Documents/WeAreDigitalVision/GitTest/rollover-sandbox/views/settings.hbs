@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Rollover - Settings</title>
+	<link rel="stylesheet" href="src/settings/css/settings2.css">
+
+	<script src="//static.parastorage.com/services/third-party/react/15.3.1/react-with-addons.min.js"></script>
+	<script src="//static.parastorage.com/services/third-party/react/15.3.1/react-dom.min.js"></script>
+	<script src="//static.parastorage.com/services/third-party/jquery/3.1.1/dist/jquery.min.js"></script>
+	<script src="//static.parastorage.com/services/third-party/lodash/4.17.2/lodash.js"></script>
+
+	<!--<script src="//static.parastorage.com/services/js-sdk/1.87.0/js/wix.min.js"></script>-->
+	<script type="text/javascript" src="//static.parastorage.com/services/js-sdk/1.102.0/js/wix.min.js"></script>
+	<script src="//static.parastorage.com/services/editor-ui-lib/1.28.0/lib/editor-ui-lib-jquery.min.js"></script>
+
+	<script src="dist/rollovers.js"></script>
+	<script src="dist/generic.js"></script>
+	<script src="dist/helpers.js"></script>
+	<script src="dist/scripts.js"></script>
+
+	<link rel="stylesheet" href="src/settings/css/bootstrap.css">
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="src/settings/css/icon-picker.css">
+	<link rel="stylesheet" href="src/settings/css/fonts/gi/genericons.css">
+	<script src="src/settings/icon-picker.js"></script>
+	<!-- <script src="dist/settings.js"></script> -->
+	<script>
+		// Load default settings from S3
+		var settings = {{{ wixSettings }}};
+
+		if (settings.transition == undefined) {
+			settings.transition = 'gooey-transition';
+			settings.effectcat = 'codyhouse';
+		}
+		var vendorProductId = '{{vendorProductId}}';
+		var isPremium = vendorProductId == 'premium' || vendorProductId == 'premiem';
+	</script>
+	<script type="text/javascript">
+		(function($){
+
+			$(document).ready(function(){
+				var $body = $('body');
+				$('.icon-picker').qlIconPicker({
+					'save': 'class'
+				});
+				$('.save-code').qlIconPicker({
+					'save': 'code'
+				});
+				$('.icon-large').qlIconPicker({
+					'size': 'large',
+					'mode': 'inline'
+				});
+				$('.icon-dontclose').qlIconPicker({
+					'mode': 'inline',
+					'closeOnPick': false
+				});
+
+				$body.on('iconselected.queryloop', function(e, icon){ 
+					saveAndRefresh();
+				});
+
+				if(settings.cooltipicon!=undefined){
+					$('.icon-preview').addClass('icon-preview-on');
+					$('.icon-text input').val(settings.cooltipicon); 
+					$('.icon-preview-fa i').addClass(settings.cooltipicon);
+					$('.icon-preview-fa .remove-times').show();
+				}
+				$('.icon-preview-fa .remove-times').off().click('on',function(){
+					console.log('delete icon');
+					$('.icon-text input').val("fa fa-info-circle"); 
+					$('.icon-preview-fa i').addClass("fa fa-info-circle");
+					saveAndRefresh();
+				})
+			});
+
+		})(jQuery);
+	</script>
+</head>
+
+<body>
+	<div wix-ctrl="appSettings"></div>
+	<div id="tabpanel_main" wix-ctrl="panelTabs" wix-options="{defaultTabIndex:0}">
+		<!-- Settings menu content -->
+		{{> main}} {{> effects}} {{> settings}} {{> design}} {{> text}} {{> layout}} {{> support}} {{#if showUpgrade}}
+		<hr class="divider-short" />
+		<div id='upgradenow2' wix-ctrl="Button" wix-options="{  className: 'btn-upgrade-nav',   label: 'Upgrade' }"></div>
+		{{/if}}
+	</div>
+	<div class="alert alert-warning alert-dismissable" role="alert">
+		<span class="warning_text">Please select an effect first !</span>
+		<button type="button" class="close alert_close" >
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+	<div class="alert alert-success alert-dismissable" role="alert">
+		Default transition pack is selected !
+		<button type="button" class="close alert_close" >
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+	<script>
+		if (!{{ trialExpired }} && {{ showUpgrade }}) {
+			$(attachTabListeners);
+			function attachTabListeners() {
+				$("#chooseeffect").getCtrl().onClick(function () {
+					$('#tabpanel_main').getCtrl().setValue(1)
+				}); 
+
+				$("#btn_settings_triggerlink").click(function () {
+					$('#tabpanel_main').getCtrl().setValue(2)
+				}); 
+			}
+		}
+
+		$(document).ready(function () {
+		
+			if(settings.transitiontype=="cooltips"){
+				setTimeout(function(){
+					$(".tabs-menu div:nth-of-type(5)").hide();
+				},700);
+				if(settings.triggerchoice=='1'){
+					$(".images_filter").hide();
+				}else{
+					$(".images_filter").show();
+				}
+			}
+			
+			$('.tabs-menu .label-text').each(function() {
+					var text = $(this).text();
+					if($.trim(text)=='Text'){
+						$(this).text('Texts');	
+					}
+			});	
+			
+			$('.alert_close').off().on('click',function(){
+					$('.alert').hide('slow');
+			})
+
+		/****Hide toggle on artisian pack******/
+
+        /****Hide toggle on artisian pack******/
+			$('#tabpanel_main .tab-label').off().on('click', function () {
+
+				 $('.hide-filter-effect').removeClass('display-none');
+
+				var componetTab = $(this).find('.label-text').text();
+				
+				if ($.trim(componetTab)== "Main") {	
+					$("#learn_more").click(function(){
+						window.location.href = 'https://rolloverfx.wixanswers.com/en/'; 
+
+						 //Wix.navigateTo('https://rolloverfx.wixanswers.com/en/');
+					})
+				}	
+				/****Stop Switching Code******/
+				if ($.trim(componetTab)!= "Effects") {	
+					var getTransitiontype = $('#effectcat').getCtrl().getValue();
+						console.log(settings.transition);
+						if(settings.transition==''){
+							$('.alert-warning').show('slow');
+							return false;
+						}
+				}
+
+				if ($.trim(componetTab)!= "Effects" && $.trim(componetTab)!= "Main") {
+					var getTransitiontype = $('#effectcat').getCtrl().getValue();
+				 	 if((getTransitiontype=="codyhouse")){
+						if(settings.is_active!=1){
+							$('.alert-success').show('slow');
+							settings.is_active = 1;
+						}
+					 }
+				}
+
+				if ($.trim(componetTab)== "Texts" || $.trim(componetTab)== "Design") {
+					var getTransitiontype = $('#effectcat').getCtrl().getValue();
+					if((getTransitiontype=="particles")){
+							console.log(settings.endStateLink);
+							$('.alert-warning').hide();
+							if(settings.endStateLink!=true){
+								console.log(settings.endStateLink);
+								$('.warning_text').text('Please add link');
+								$('.alert-warning').show('slow');
+								return false;
+						}
+					}  
+				}	
+
+				/****Stop Switching Code******/
+				
+				/*****Set Text Using Text Tab*****/
+				if ($.trim(componetTab) == "Texts") {
+
+					var startText = settings.subtext0;
+					var endText = settings.subtext1;
+
+					$("#subtext-off").getCtrl().setValue(startText);
+					$("#subtext-on").getCtrl().setValue(endText);
+					$('#subtext-off textarea').attr('id', 'textarea-start-editor');
+					$('#subtext-on textarea').attr('id', 'textarea-end-editor');
+							
+					setTimeout(function(){
+							getStartEditor('textarea-start-editor');
+							getEndEditor('textarea-end-editor');
+					},800);
+
+					$("#resetbtn_start").getCtrl().onClick(function(){
+								$("#textarea-start-editor").summernote('reset');
+								$("#subtext-off").getCtrl().setValue('');
+								saveAndRefresh();
+						});
+					$("#resetbtn_end").getCtrl().onClick(function(){
+								$("#textarea-end-editor").summernote('reset');
+								$("#subtext-on").getCtrl().setValue('');
+								saveAndRefresh();
+					});	
+			
+				}
+				/*****Set Text Using Text Tab*****/
+				
+				if ($.trim(componetTab) == "Design") {
+					reload_drill("design_drill");
+
+				var imageOffControl = $('#image0').getCtrl();
+       			var imageOnControl  = $('#image1').getCtrl();
+
+
+				var  changeImg0 = {
+						label: 'Change',
+						icon: 'image-change',
+						onClick: function () {
+							Wix.Settings.openMediaDialog(Wix.Settings.MediaType.IMAGE, false, function (data) {
+							imageOffControl.setValue([data]);
+							image_trigger('image0', [data]);
+							var img0Ext = data.relativeUri.split('.').pop();
+							if (img0Ext != 'png') {
+								$("#background-colour-off").hide();
+							}
+							if (img0Ext == 'png') {
+								$("#background-colour-off").show();
+							}
+							});
+						}
+					};
+
+			
+			var deleteImg0 =  {
+						label: 'Remove',
+						icon: 'delete',
+						onClick: function () {
+							imageOffControl.setValue([]);
+							setTimeout(saveAndRefresh, 100);
+							$("#background-colour-off").show();
+						}
+						}
+
+				if(settings.transitiontype=='distortion'){
+					var buttons = [changeImg0];
+				}else{
+					var buttons = [changeImg0,deleteImg0];
+				}
+         
+			imageOffControl.setButtons(buttons);
+
+			var changeImg1 = {
+				label: 'Change',
+				icon: 'image-change',
+				onClick: function () {
+					Wix.Settings.openMediaDialog(Wix.Settings.MediaType.IMAGE, false, function (data) {
+					imageOnControl.setValue([data]);
+					var img1Ext = data.relativeUri.split('.').pop();
+					if (img1Ext != 'png') {
+						$("#background-colour-on").hide();
+					}
+					image_trigger('image1', [data]);
+					});
+				}
+				};
+
+			var deleteImg1 =  
+				{ 
+					label: 'Remove',
+					icon: 'delete',
+					onClick: function () {
+					imageOnControl.setValue([]);
+					setTimeout(saveAndRefresh, 100);
+					$("#background-colour-on").show();
+					},
+				}
+
+			if(settings.transitiontype=='distortion'){
+				var buttons = [changeImg1];
+			}else{
+				var buttons = [changeImg1,deleteImg1];
+			}
+			// Image controls
+			imageOnControl.setButtons(buttons);
+	
+
+
+				}
+				if ($.trim(componetTab) == "Effects") {
+					var radioValue = $(".effectcat input[name='rb_0']:checked").val();
+					if (radioValue == "codyhouse") {
+						var checkClass =  $(".mydrilldown").filter("[data-cat='codyhouse']").find(".image-radio").parent().hasClass('active');
+						if (checkClass == false) {
+							$(".mydrilldown").filter("[data-cat='codyhouse']").find(".image-radio").parent().removeClass('active');
+							$(".mydrilldown").filter("[data-cat='codyhouse']").find(".image-radio[value='gooey-transition']").parent().addClass('active');
+						}
+					}
+				}
+			});
+
+			if(settings.textbtna==false || settings.textbtna=='false' || settings.textbtna==0 || settings.transitiontype=="ap1"){
+				 $('#textbtn-allow').getCtrl().setValue('0');
+			}
+			else{
+				 $('#textbtn-allow').getCtrl().setValue('1');
+			}
+			
+			/*****Stop Switching Pack Code*************/
+			$("#effectcat").click(function(){
+			
+			var getTransitiontype = $(this).getCtrl().getValue();
+			
+			localStorage.setItem("Transitiontype", getTransitiontype);	
+			
+			if($(this).getCtrl().getValue() == "cooltips")
+			{
+					
+			//var cooltipsTxtTitle =  $("#triggerchoice div.dd div.selected-container .selected").text();
+			//localStorage.setItem("cooltipsTxtTitle",cooltipsTxtTitle);
+			
+			
+			//var tooltipheading =  $("#tooltip-heading .control-text-input textarea.textarea").text();
+			//localStorage.setItem("tooltipheading",tooltipheading);
+			
+			//var triggerheading =  $("#trigger-heading").getCtrl().getValue();
+			//localStorage.setItem("triggerheading",triggerheading);
+			
+			
+			
+						
+			}
+			else
+			{
+			//localStorage.setItem("tooltipheading",tooltipheading);
+			//localStorage.setItem("triggerheading",triggerheading);
+			}
+			
+			
+				settings.is_active = 1;
+			});
+
+				$("#addnew_widget").click(function(){
+					Wix.Settings.addComponent({
+						componentType: 'WIDGET',
+						copyStyle:false,
+						widget : {widgetId:'rollover_sandbox',subtext0: "Wow your users with stunning animations"}},
+						function(x) {
+							var custom = {"reason": "button-clicked"};
+							Wix.Settings.closeWindow({target: 'ALL', custom});
+						},
+						function(x) {
+							console.error(x)
+						}
+					)
+				});
+					$(".add_widget_oneffect").click(function(){
+
+						 localStorage.setItem('TransType',settings.transitiontype);
+						 localStorage.setItem('TransTypeEffect',settings.transition);
+						 
+						if(localStorage.getItem('TransType') == "cooltips")
+						{
+							var tooltipheading =  $("#tooltip-heading .control-text-input textarea.textarea").text();
+							localStorage.setItem("tooltipheading",tooltipheading);
+							
+							var triggerheading =  $("#trigger-heading").getCtrl().getValue();
+							localStorage.setItem("triggerheading",triggerheading);
+						}
+						else
+						{
+							localStorage.setItem("tooltipheading","");
+							localStorage.setItem("triggerheading","");
+						}
+						
+			
+						 Wix.Settings.addComponent({
+							componentType: 'WIDGET',
+							copyStyle:true,
+							widget : {widgetId:'rollover_sandbox',subtext0: "Wow your users with stunning animations"}},
+							function(x) {
+								
+								console.log(x);
+								$('#effectcat').getCtrl().setValue(localStorage.getItem('TransType'));
+								
+								Wix.Settings.refreshAppByCompIds([x], {cid:x,transitiontype: localStorage.getItem('TransType'),transition:localStorage.getItem('TransTypeEffect'),tooltipheading:localStorage.getItem('tooltipheading'),triggerheading:localStorage.getItem('triggerheading')});
+							},
+							function(x) {
+								console.error(x)
+							}
+							)
+						});
+	    	});
+			
+
+
+		
+
+
+		var first_load = 0;
+		var allow_widgetload = 0;
+		var instance = getParameterByName('instance');
+		var origCompId = Wix.Utils.getOrigCompId();
+		var lastSettings = '';
+		var textbtna = settings.textbtna;
+		var textbtnb = settings.textbtnb;
+		var subtextAlign1 = settings.subtextAlign1;
+		var subtextAlign0 = settings.subtextAlign0;
+		var subtextMobileAlign1 = settings.subtextMobileAlign1;
+		var subtextMobileAlign0 = settings.subtextMobileAlign0;
+		var direction = settings.direction;
+		var subtextAllowmob1 = settings.subtextAllowmob1;
+		var subtextAllowmob0 = settings.subtextAllowmob0;
+		var sticky = settings.sticky;
+		var allowSubtextBtn = settings.allowSubtextBtn || 'false';
+		var youtube0mute = settings.youtube0mute;
+		var youtube1mute = settings.youtube1mute;
+		var startEndToggle = 1;
+		var urlspages = settings.urlspages;
+		var urlsanchor = settings.urlsanchor;
+		var image0 = settings.image0;
+		var image1 = settings.image1;
+		var noimage0 = settings.noimage0;
+		var noimage1 = settings.noimage1;
+		var headingp = settings.headingp;
+		// For Link Page
+		var linkpage_dropdown = {}
+		var linkpage_ctr = 0;
+		//for anchor
+		var linkanchor_dropdown = {}
+		var linkanchor_ctr = 0;
+		// Defaults
+		var overlayOffColour1_startWithColor = 'color-2',
+			overlayOffColour1Opacity_startWithOpacity = 0,
+			overlayOffColour2_startWithColor = 'color-2',
+			overlayOffColour2Opacity_startWithOpacity = 0,
+			overlayOffColour1_startWithColor = 'color-2',
+			overlayOffColour1Opacity_startWithOpacity = 0,
+			overlayOffColour2_startWithColor = 'color-2',
+			overlayOffColour2Opacity_startWithOpacity = 0,
+			overlayOnColour1_startWithColor = 'color-2',
+			overlayOnColour1Opacity_startWithOpacity = 0,
+			overlayOnColour2_startWithColor = 'color-2',
+			overlayOnColour2Opacity_startWithOpacity = 0,
+			overlayOnColour1_startWithColor = 'color-2',
+			overlayOnColour1Opacity_startWithOpacity = 0,
+			overlayOnColour2_startWithColor = 'color-2',
+			overlayOnColour2Opacity_startWithOpacity = 0;
+		if (settings.overlayOffColour1)
+			overlayOffColour1_startWithColor = settings.overlayOffColour1;
+		if (settings.overlayOffColour1Opacity)
+			overlayOffColour1Opacity_startWithOpacity = settings.overlayOffColour1Opacity;
+		if (settings.overlayOffColour2)
+			overlayOffColour2_startWithColor = settings.overlayOffColour2;
+		if (settings.overlayOffColour2Opacity)
+			overlayOffColour2Opacity_startWithOpacity = settings.overlayOffColour2Opacity;
+		if (settings.overlayOnColour1)
+			overlayOnColour1_startWithColor = settings.overlayOnColour1;
+		if (settings.overlayOnColour1Opacity)
+			overlayOnColour1Opacity_startWithOpacity = settings.overlayOnColour1Opacity;
+		if (settings.overlayOnColour2)
+			overlayOnColour2_startWithColor = settings.overlayOnColour2;
+		if (settings.overlayOnColour2Opacity)
+			overlayOnColour2Opacity_startWithOpacity = settings.overlayOnColour2Opacity;
+		//settings
+		settings.blurLevel = 6;
+		settings.opacityLevel = 70;
+		//settings.twistLevel =  20;
+		//settings.zoomLevel  =  20;
+		//image
+		this['reimg_image0'] = false;
+		this['reimg_image1'] = false;
+		var donotload = ["image0", "image1", "thumbnails_codyhouse", "thumbnails_ap1", "thumbnails_trad", "thumbnails_special"];
+
+
+		
+
+		
+		$(document).ready(function () {
+			initial_load(settings.transition);
+			hideshow_effect(settings.effectcat);
+
+			// Hide end containers on first load
+			$('.end-tab-container').hide();
+			$('.start-tab-container').show();
+			$('#design-button-start').show();
+			$('#design-button-end').hide();
+			
+			/* ----------- Start Element Action --------------------------------------------------------------------------------------------------------------------------- */
+			$('.mydrilldown .myhead').off().on('click', function () {
+				if ($(this).parent().hasClass('myactive')) {
+					$(this).parent().removeClass('myactive');
+				} else {
+					$(this).parent().addClass('myactive');
+				}
+			});
+
+			//Transition Thumb
+			$('.select-effect .mythumb').off().on('click', function () {
+			
+			
+	var getTransitionThumb = $(this).attr('value');
+	localStorage.setItem("TransitionThumbx", getTransitionThumb);
+	
+	
+				$('.ro-effect-item').removeClass('active');
+				$('.ro-effect-item input').prop('checked', false);
+				$(this).closest('label').addClass('active');
+				// Reload the widget if the user selects a codrops effect
+				if ($(this).data('category') == "codrops") {
+							allow_widgetload = 1;
+							if(settings.startEndToggle==2){
+								$('.preview #face4').css('opacity','1');
+							}else{
+								$('.preview #face4').css('opacity','0');
+							}
+				}
+				if ($(this).data('category') == "particles"){
+						Wix.resizeComponent({
+							width: 225,
+							height:100
+						});
+				}	
+				initial_load(1);
+				reload_drill("design_drill");
+				$('.select-effect .mythumb').removeClass('myselected');
+				$(this).addClass('myselected');
+				selectTransition($(this).attr('value'));
+				transition_type_temp($(this).attr('value'));
+
+				setTimeout(function(){
+  					 document.getElementById('gotodesign').scrollIntoView();
+				},1000);	
+			});
+			reflectSettings();
+			Wix.Settings.triggerSettingsUpdatedEvent(settings, origCompId);
+		});
+
+
+		$(document).ready(function () {
+			// Listen for changes on any wix elements
+			attachListeners();
+		});
+
+		/*******Start Editor July 2018*********/
+		
+		function getStartEditor(Id){
+			$('#'+Id).summernote(
+				{
+					toolbar: [
+						["font", ["bold", "italic", "underline"]],
+						["color", ["color"]],
+						["para", ["ul", "ol", "paragraph"]],
+						["table", ["table"]],
+						["insert", ["link", "video"]],
+						["view", ["fullscreen", "codeview", "help"]]
+					],
+					callbacks: {
+						onChange: function (contents, $editable) {
+							var startcode = $(this).summernote("code");
+							$("#subtext-off").getCtrl().setValue(startcode);
+							$('#'+Id).text(startcode);
+							if (startcode!= "") {
+								saveAndRefresh();
+							} 
+						}
+					}
+				}
+			);
+		}
+
+		function getEndEditor(Id){
+			$('#'+Id).summernote(
+				{
+					toolbar: [
+						["font", ["bold", "italic", "underline"]],
+						["color", ["color"]],
+						["para", ["ul", "ol", "paragraph"]],
+						["table", ["table"]],
+						["insert", ["link", "video"]],
+						["view", ["fullscreen", "codeview", "help"]]
+					],
+					callbacks: {
+						onChange: function (contents, $editable) {
+							var endcode = $(this).summernote("code");
+							$("#subtext-on").getCtrl().setValue(endcode);
+							$('#'+Id).text(endcode);
+							if (endcode != "") {
+								saveAndRefresh();
+							} 
+						}
+					}
+				}
+			);
+		}
+
+		/*---------------------------------------------------------*/
+		/* Save the settings to AWS
+		/*---------------------------------------------------------*/
+		
+		
+		function saveAndRefresh() { 
+			settings = encodeSettings();
+			reflectSettings();
+			Wix.Settings.triggerSettingsUpdatedEvent(settings, origCompId);
+			$.ajax({
+				type: "POST",
+				url: "save",
+				data: { instance: instance, compId: origCompId, settings: settings },
+				success: function (result) {
+					if (allow_widgetload) {
+						allow_widgetload = 0;
+						Wix.Settings.refreshAppByCompIds([origCompId]);
+					}
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>
