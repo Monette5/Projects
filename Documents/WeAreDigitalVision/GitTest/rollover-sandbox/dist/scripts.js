@@ -200,12 +200,12 @@ function encodeSettings() {
     localSettings.youtube1loop = $('#youtube1loop').getCtrl().getValue();
     localSettings.youtube1autoplay = $('#youtube1autoplay').getCtrl().getValue();
 
-    if(settings.transitiontype=="particles"){
-        if(settings.height > 100 ){
-            localSettings.height = parseInt(100);
-            localSettings.width  = parseInt(100);
+    if(settings.transitiontype=="particles" || settings.transitiontype=="ripples" || settings.transitiontype=="bubbles" || settings.transitiontype=="fancy"){
+      if(settings.height > 100 ){
+          localSettings.height = parseInt(100);
+          localSettings.width  = parseInt(100);
         }
-    }
+      }
 
     localSettings.height = settings.height;
     localSettings.width = settings.width;
@@ -268,6 +268,14 @@ function encodeSettings() {
         }
 
     }
+    /**********Buttons (options)******************* */
+      if(localSettings.transitiontype=="ripples" || localSettings.transitiontype=="bubbles" || localSettings.transitiontype=="fancy"){
+        localSettings.button_text               = $('#button_text').getCtrl().getValue();
+        localSettings.buttoncolorfilter  	     = $('#buttoncolorfilter').getCtrl().getValue().color;
+        localSettings.buttoncoloropacity        = $('#buttoncoloropacity').getCtrl().getValue();
+        //localSettings.ripplebtngradient  	 = $('#ripplebtngradient').getCtrl().getValue().color;
+        //localSettings.btncolorfilter  	 = $('#btncolorfilter').getCtrl().getValue().color;
+}
 
     /**********Particle Buttons (options)******************* */
     if(localSettings.transitiontype=="particles"){
@@ -627,6 +635,15 @@ function reflectSettings() {
 
       /****Particle text Background  Option */
 
+      /****Button text Background  Option */
+    if ($('#button_text').getCtrl().getValue() != settings.button_text) {
+        $('#button_text').getCtrl().setValue(settings.button_text);
+    }
+
+    /****Button text Background  Option */
+if ($('#text-position-subtexton').getCtrl().getValue() != settings.subtextonposition) {
+    $('#text-position-subtexton').getCtrl().setValue(settings.button_text);
+}
 
     /****Allow Sub button text*****/
     if ($('#allowSubtextBtn').getCtrl().getValue() != settings.allowSubtextBtn) {
@@ -836,7 +853,7 @@ function reflectSettings() {
         'cooltip_text_label','cooltipscolor-opacity','cooltips-imgfilter-label','triggerchoice','tootltipsettings','tooltip_btn_mouseout',
         'trigger-heading','tooltip-heading','triggericoncolorcontainer','trigger_font_container','cooltipbordersize','particles_color_link','particle_text_container',
         'zoom_arisian','image-zoom-off','image-zoom-on','tabs-menu div:nth-of-type(6)','zoom-duration-off','zoom-duration-on',
-        'addLink','dist_img1_level','dist_img0_level','text-dist-link'
+        'addLink','dist_img1_level','dist_img0_level','text-dist-link','button_text_container', 'button_color_link'
     ];
 
     for (key in menus) {
@@ -1086,6 +1103,52 @@ function reflectSettings() {
         $('#particles_color_link').removeClass('display-none');
         $('#font-option').removeClass('display-none');
     }
+    else if(transition_type == 'ripples'){
+          var hideRipplesId =  ['videoAccordion','trans_color_link','mobileparagraphsize','mobilefontsize','textbtn-allowlink',
+          'text-animation-delay-off','start_end_toggle_level','start_textsection_label','resetbtn_start','layoutsettings','end-tab',
+          'textbtn-allowlink-container','text-align-off','start_text_label','choose_effect_container','settings_trigger_level'];
+          for (key in hideRipplesId) {
+              $('#' + hideRipplesId[key]).hide();
+          }
+          $('.images_filter').hide();
+          $("#button_color_link").show();
+          $("#button_text_container").show();
+          $("#textbtn-font-off label").text('Button Text');
+          $('#trigger_icon_option').hide();
+          $(".allowbuttons").addClass('display-none');
+
+      }
+      else if(transition_type == 'bubbles'){
+          var hideRipplesId =  ['videoAccordion','trans_color_link','mobileparagraphsize','mobilefontsize','textbtn-allowlink',
+          'text-animation-delay-off','start_end_toggle_level','start_textsection_label','resetbtn_start','layoutsettings','end-tab',
+          'textbtn-allowlink-container','text-align-off','start_text_label','choose_effect_container','settings_trigger_level'];
+          for (key in hideRipplesId) {
+              $('#' + hideRipplesId[key]).hide();
+          }
+          $('.images_filter').hide();
+          $("#button_color_link").show();
+          $("#button_text_container").show();
+          $("#textbtn-font-off label").text('Button Text');
+          $('#trigger_icon_option').hide();
+          $(".allowbuttons").addClass('display-none');
+
+      }
+      else if(transition_type == 'fancy'){
+          var hideRipplesId =  ['videoAccordion','trans_color_link','mobileparagraphsize','mobilefontsize','textbtn-allowlink',
+          'text-animation-delay-off','start_end_toggle_level','start_textsection_label','resetbtn_start','layoutsettings','end-tab',
+          'textbtn-allowlink-container','text-align-off','start_text_label','choose_effect_container','settings_trigger_level'];
+          for (key in hideRipplesId) {
+              $('#' + hideRipplesId[key]).hide();
+          }
+          $('.images_filter').hide();
+          $("#button_color_link").show();
+          $("#button_text_container").show();
+          $("#textbtn-font-off label").text('Button Text');
+          $('#trigger_icon_option').hide();
+          $(".allowbuttons").addClass('display-none');
+
+      }
+
      /****Distortion Pack */
     else if(transition_type == 'distortion'){
 

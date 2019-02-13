@@ -24,6 +24,10 @@
 	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/codrops/css/component.css" />
 	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/distortion/distortion.css" />
 
+	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/bubbles.css" />
+	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/ripples.css" />
+	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/fancy.css" />
+
 
 	<!-- <link rel="stylesheet" type="text/css" href="src/widget/stylesheets/tilt/component.css" /> -->
 	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/tilt/tilter.css" />
@@ -774,7 +778,53 @@
 		border : \{{style.borderSize 0}}px solid \{{style.borderColor transparent}};
 		border-radius: \{{style.radius0 0}}px;
 	}
+	/**************Ripples Animations **************/
+	.ripples .ripple-button{
+				border: \{{ style.borderSize }}px solid \{{ style.borderColor }};
+				color: \{{style.textColorB0 #FF0000}};
+						\{{style.myFontB0 Body-M}}
+				background-color: \{{ style.buttoncolorfilter #000}};
+				border-radius:\{{ style.radius0 10}}px;
+	}
+	.ripples .ripples-text{
+	 pointer-events: none;
+	}
+	/**************Fireworks Animations **************/
+	.fancy .f-button{
+			 border: \{{ style.borderSize }}px solid \{{ style.borderColor }};
+			 color: \{{style.textColorB0 #FF0000}};
+					 \{{style.myFontB0 Body-M}}
+			 background-color: \{{ style.buttoncolorfilter #000}};
+			 border-radius:\{{ style.radius0 10}}px;
+	}
+	.fancy .f-button:active{
+	 box-shadow: \{{ style.buttoncolorfilter #000}};
+	}
+	.fancy .frills, .frills:after, .frills:before {
+		background: \{{ style.buttoncolorfilter #000}};
+		/**** border-radius: \{{ style.radius0 10}}px; ******/
+	}
+	.fancy .f-button-text{
+	pointer-events: none;
+	}
+	/**************Bubbles Animations **************/
 
+.bubbles .bubbles-text{
+	color: \{{style.textColorB0 #FF0000}};
+			\{{style.myFontB0 Body-M}};
+}
+.bubbles .button--bubble__container .effect-button {
+	border: \{{ style.borderSize }}px solid \{{ style.borderColor }};
+	background-color: \{{ style.buttoncolorfilter #000}};
+	border-radius:\{{ style.radius0 10}}px;
+}
+.bubbles .button--bubble{
+	border-radius:\{{ style.radius0 10}}px;
+}
+.bubbles .button--bubble__effect-container .circle,
+.bubbles .button--bubble__effect-container .button{
+	background: \{{ style.buttoncolorfilter #000}};
+}
 	/**************Distortion Effect Css **************/
 
 	.grid_distortion	.grid__item-title {
@@ -1349,6 +1399,145 @@
 		</div>
 	</div>
 
+
+<!--fancy-->
+	<div class="fancy" id="fancy">
+	<div class="fancy-grid" id="fancy-container">
+	<div class="fancy-grid__item" id="fancy-grid">
+				<div class="fancy-button">
+				  <div class="left-frills frills"></div>
+				  <button class="f-button"></button>
+				  <div class="right-frills frills"></div>
+				</div>
+				</div>
+				</div>
+				</div>
+
+<!--bubbles-->
+		<div class="bubbles" id="bubbles">
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+		  <defs>
+		    <filter id="goo">
+		      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+		      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+		      <feComposite in="SourceGraphic" in2="goo"/>
+		    </filter>
+		  </defs>
+		</svg>
+		<div class="bubbles-grid" id="bubbles-container">
+		<div class="bubbles-grid__item" id="bubbles-grid">
+		<span class="button--bubble__container">
+
+		  <a href='#' class="button button--bubble">
+		    <span class="bubbles-text"></span>
+		  </a>
+		  <span class="button--bubble__effect-container">
+		    <span class="circle top-left"></span>
+		    <span class="circle top-left"></span>
+		    <span class="circle top-left"></span>
+
+		    <span class="button effect-button"></span>
+
+		    <span class="circle bottom-right"></span>
+		    <span class="circle bottom-right"></span>
+		    <span class="circle bottom-right"></span>
+			 </span>
+		</span>
+	</div>
+		</div>
+		</div>
+
+		<!--Ripple Buttons-->
+		<div id="ripples" class="grid_ripples">
+		<div style="height: 0; width: 0; position: absolute; visibility: hidden;" aria-hidden="true">
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false">
+			<symbol id="ripple1" viewBox="0 0 100 100">
+				<circle id="circle" cx="1" cy="1" r="1"/>
+			</symbol>
+				<!-- Because of Firefox. -->
+				<defs>
+					<radialGradient id="grad">
+						<stop offset="0" stop-color="#0868BB" />
+						<stop offset="0.25" stop-color="#0075D8" />
+						<stop offset="0.35" stop-color="#0868BB" />
+						<stop offset="0.50" stop-color="#0075D8" />
+						<stop offset="0.60" stop-color="#0868BB" />
+						<stop offset="0.85" stop-color="#0075D8" />
+						<stop offset="1" stop-color="#0868BB" />
+					</radialGradient>
+				</defs>
+				<symbol id="ripple2" viewBox="0 0 100 100" width="100" height="100">
+					<circle fill="url(#grad)" cx="1" cy="1" r="1"/>
+				</symbol>
+			<symbol id="ripple3" viewBox="0 0 100 100">
+					<g>
+						<polygon points="5.6,77.4 0,29 39.1,0 83.8,19.3 89.4,67.7 50.3,96.7"/>
+						<polygon fill="url(#grad)" transform="scale(0.5), translate(50, 50)" points="5.6,77.4 0,29 39.1,0 83.8,19.3 89.4,67.7 50.3,96.7"/>
+						<polygon fill="url(#grad)" transform="scale(0.25), translate(145, 145)" points="5.6,77.4 0,29 39.1,0 83.8,19.3 89.4,67.7 50.3,96.7"/>
+					</g>
+				</symbol>
+				<defs>
+					<linearGradient id="grad1" gradientTransform="rotate(0)">
+						<stop offset="0" stop-color="#0868BB" />
+						<stop offset="0.15" stop-color="#0075D8" />
+						<stop offset="0.2" stop-color="#0868BB" />
+						<stop offset="0.25" stop-color="#0075D8" />
+						<stop offset="0.3" stop-color="#0868BB" />
+						<stop offset="0.35" stop-color="#0075D8" />
+						<stop offset="0.4" stop-color="#0868BB" />
+						<stop offset="0.45" stop-color="#0075D8" />
+						<stop offset="0.5" stop-color="#0868BB" />
+						<stop offset="0.6" stop-color="#0075D8" />
+						<stop offset="0.65" stop-color="#0868BB" />
+						<stop offset="0.7" stop-color="#0075D8" />
+						<stop offset="0.75" stop-color="#0868BB" />
+						<stop offset="0.8" stop-color="#0075D8" />
+						<stop offset="0.85" stop-color="#0868BB" />
+						<stop offset="0.9" stop-color="#0075D8" />
+						<stop offset="0.95" stop-color="#0868BB" />
+						<stop offset="1" stop-color="#0075D8" />
+					</linearGradient>
+				</defs>
+				<symbol id="ripple4" viewBox="0 0 120 120">
+					<rect width="5" height="5" fill="url(#grad1)" />
+				</symbol>
+			</svg>
+		</div>
+
+		<div class="button__item ripples-1">
+			<button id ="js-ripple-btn" class="ripple-button styl-material ripples-1">
+							<svg class="ripple-obj" id="js-ripple">
+								<use height="100" width="100" xlink:href="#ripple1" class="js-ripple"/>
+							</svg>
+							<span class="ripples-text"></span>
+						</button>
+			</div>
+
+		<!--<div class="button__item ripples-2">
+			<button id ="js-ripple-btn2" class="ripple-button styl-material ripples-2">
+							<svg class="ripple-obj">
+								<use height="100" width="100" xlink:href="#ripple2" class="js-ripple"/>
+							</svg>
+							<span class="ripples-text"></span>
+						</button>
+		</div>
+		<div class="button__item ripples-3">
+			<button id ="js-ripple-btn3" class="ripple-button styl-material ripples-3">
+							<svg class="ripple-obj">
+								<use height="4" width="4" xlink:href="#ripple3" class="js-ripple"/>
+							</svg>
+								<span class="ripples-text"></span>
+						</button>
+		</div>
+		<div class="button__item ripples-4">
+		<button id ="js-ripple-btn4" class="ripple-button styl-material ripples-4">
+						<svg class="ripple-obj">
+							<use height="100" width="100" xlink:href="#ripple4" class="js-ripple"/>
+						</svg>
+							<span class="ripples-text"></span>
+					</button>
+		</div>-->
+
 	<!--Distortion-->
 	<div class="grid_distortion" id="distortion">
 		<div class="grid__item grid__item--bg theme-2">
@@ -1771,7 +1960,7 @@
 
 		var elem0, elem1;
 
-		var effectsTypes = ['card', 'figure', 'codyhouse', 'cooltips', 'particles', 'codrops','distortion','tilter'];
+		var effectsTypes = ['card', 'figure', 'codyhouse', 'cooltips', 'particles', 'codrops','distortion','tilter','bubbles','fancy', 'ripples'];
 		for (key in effectsTypes) {
 			$('#' + effectsTypes[key]).hide();
 		}
@@ -1813,6 +2002,21 @@
 					$('#particles').show();
 					$("#container").hide();
 					break;
+					case 'fancy':
+							$('#fancy').show();
+							$("#container").hide();
+							break;
+
+						case 'ripples':
+							$('#ripples').show();
+							$("#container").hide();
+							break;
+
+					case 'bubbles':
+								$('#bubbles').show();
+								$("#container").hide();
+								break;
+
 				case 'codrops':
 					$('#codrops').show();
 					$("#container").hide();
@@ -2463,7 +2667,9 @@
 
 <script src='src/widget/js/particleButtons/particles.js'></script>
 <script src='src/widget/js/particleButtons/demo.js'></script>
-
+<script src='src/widget/js/ripple.js'></script>
+<script src='src/widget/js/fancy.js'></script>
+<script src='src/widget/js/bubbles.js'></script>
 
 <link rel="stylesheet" type="text/css" href="src/widget/stylesheets/particle.css" />
 

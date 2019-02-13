@@ -30,7 +30,7 @@ function checkInstance(req, res, next) {
     var secretKey = siteId;
     req.testMode = false;
 
-    if (host.indexOf('95066706.ngrok.io') !== -1) {    
+    if (host.indexOf('9c376ac9.ngrok.io') !== -1) {
         secretKey = 'localhost' + siteId;
         req.isLocal = true;
         req.testMode = true;

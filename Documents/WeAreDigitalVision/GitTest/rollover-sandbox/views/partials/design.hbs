@@ -25,12 +25,13 @@
       <li data-item="8" data-main="design_drill" class="drillaccordionlink" id="trans_color_link">Transition colour</li>
       <li data-item="10" data-main="design_drill" class="drillaccordionlink" id="cooltips_color_link">Background Colour</li>
       <li data-item="11" data-main="design_drill" class="drillaccordionlink" id="particles_color_link">Button</li>
+      <li data-item="14" data-main="design_drill" class="drillaccordionlink" id="button_color_link">Button</li>
       <li data-item="2" data-main="design_drill" class="drillaccordionlink" id="borderandline1">Border &amp; Line</li>
       <li data-item="3" data-main="design_drill" class="drillaccordionlink" id="font-option">Fonts</li>
       <div class="allowbuttons">
         <li data-item="4" data-main="design_drill" class="drillaccordionlink">Buttons</li>
       </div>
-    
+
       <!-- <li class="drillaccordionback">
         <div class="backlink" data-main="design_drill">❮ Back</div>
       </li>-->
@@ -47,7 +48,7 @@
       <div class="specialhide img-filter-label" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Images &amp; Filters', infoText: 'Classic and Transition packs use two images. Artisan packs only use one.'}"></div>
 
         <div id="dist_img0_level" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Start Image', infoText: 'To use this image as a start image for distortion'}"></div>
-        
+
       <div>
       </div>
 
@@ -167,7 +168,7 @@
       <hr class="divider-long text-font-heading" />
       <div id="text-font-subheading" wix-param-font="myFontS" wix-param-color="textColorS" wix-ctrl="FontAndColorPicker"
         wix-options="{title: 'Subheading', startWithColor: 'color-1',startWithTheme : 'font_8'}"></div>
-       
+
        <hr class="divider-long text-font-subheading" />
 
       <div id="text-font-link" wix-param-font="linkFont" wix-param-color="linkFontcolor" wix-ctrl="FontAndColorPicker"
@@ -215,16 +216,16 @@
             <hr class="divider-long" />
 
            <div id="triggerbackgroundcolor" wix-param="triggerbackgroundcolor" wix-ctrl="ColorPickerInput" wix-options="{ title: 'Trigger background Color'}"></div>
-          
+
            <hr class="divider-long" />
 
           <div id="tooltip-font" wix-param-font="tooltipFont" wix-param-color="tooltipFontColor" wix-ctrl="FontAndColorPicker"
             wix-options="{title: 'CoolTip Font', startWithColor: 'color-1', startWithTheme : 'font_8', fontMaxSize: 20}"></div>
-          
+
            <hr class="divider-long" />
 
            <div id="cooltipfontAngle" wix-param="cooltipfontAngle" wix-ctrl="Slider" wix-options="{title: 'Cooltip text Angle', defaultValue:0, units: '&deg;', max : 20, min : -20, infoText:'You can change the angle of Cooltip text'}"></div>
-           
+
            <hr class="divider-long" />
 
 
@@ -232,12 +233,12 @@
              <hr class="divider-long" />
 
           <div id="mobiletriggerfontsize" wix-ctrl="Slider" wix-param="mobiletriggerfontsize" wix-options="{title: 'Mobile Trigger Font Size', defaultValue:14, units: 'px', max : 20, infoText: 'You can overide the default cooltip font size with this setting'}"></div>
-             
+
              <hr class="divider-long" />
 
           <div id="mobilecooltipfontsize" wix-ctrl="Slider" wix-param="mobilecooltipfontsize" wix-options="{title: 'Mobile Cooltip Font Size', defaultValue:14, units: 'px', max : 20, infoText: 'You can overide the default cooltip font size with this setting'}"></div>
 
-        
+
         </div>
 
       </div>
@@ -384,9 +385,9 @@
       <hr class="divider-long" />
       <div id="cooltipscolor-opacity" class="cooltipscolor-opacity" wix-param="cooltipscoloropacity" wix-ctrl="Slider"
         wix-options="{title: 'Cooltips Color Opacity', defaultValue:100, units: ' %', max : 100}"></div>
-       
+
     </div>
-    <!-- Cooltips Color-->
+    <!-- Particles Color-->
 
     <div class="drillaccordioncontent item_11">
         <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Button Background Colour', infoText:'Choose a color for your Particles Button'}"></div>
@@ -400,11 +401,23 @@
         <div id="particlesbackcoloropacity"  wix-param="particlesbackcoloropacity" wix-ctrl="Slider"
         wix-options="{title: 'Back Option Opacity', defaultValue:100, units: ' %', max : 100}"></div>-->
         <div id="particlescolorfilter" wix-param="particlescolorfilter" wix-ctrl="ColorPickerInput" wix-options="{startWithColor: 'color-5', title: 'Particle Colour'}"></div>
-        
+
     </div>
+
+<!-- Button Color-->
+    <div class="drillaccordioncontent item_14">
+          <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Button Background Colour', infoText:'Choose a color for your Button'}"></div>
+          <!-- <div id="btncolorfilter" wix-param="btncolorfilter" wix-ctrl="ColorPickerInput" wix-options="{startWithColor: 'color-5', title: 'Button Effect Colour'}"></div> -->
+            <hr class="divider-long" />
+          <div id="buttoncolorfilter" wix-param="buttoncolorfilter" wix-ctrl="ColorPickerInput" wix-options="{startWithColor: 'color-5', title: 'Button Background Colour'}"></div>
+            <hr class="divider-long" />
+          <div id="buttoncoloropacity"  wix-param="buttoncoloropacity" wix-ctrl="Slider"
+          wix-options="{title: 'Button Opacity', defaultValue:100, units: ' %', max : 100}"></div>
+      </div>
+
      <!-- Cooltips Trigger-->
     <div class="drillaccordioncontent item_12">
-      
+
       <div id="cooltips-imgfilter-label" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Trigger Type', infoText: 'Select trigger type using below dropdown'}"></div>
 
       <div id="triggerchoice" wix-ctrl="DropDown" wix-options="{title: 'Trigger', defaultValue: '1', options:[
@@ -600,7 +613,7 @@
             <li data-code="f003" data-class="fa fa-envelope-o" class="fa fa-envelope-o"></li>
             <li data-code="f199" data-class="fa fa-envelope-square" class="fa fa-envelope-square"></li>
             <li data-code="f041" data-class="fa fa-map-marker" class="fa fa-map-marker"></li>
-           
+
             <!---Payment Icons-->
             <li data-code="f09d" data-class="fa fa-credit-card" class="fa fa-credit-card"></li>
           </ul>
@@ -625,10 +638,11 @@
   <script>
     $(document).ready(function () {
       $('.drill_accordion > ul .drillaccordionlink').on('click', function () {
-        
+
         $('.start_end_view').addClass('display-none');
         $("#particles_color_link").addClass('display-none');
         $("#settings_triggerlink_container").hide();
+        $("#button_color_link").addClass('display-none');
         $("#trans_color_link").hide();
 
 
@@ -707,7 +721,7 @@
      if(settings.startEndToggle == 2){
        $('.img-filter-label').hide();
      }
-     
+
      $('.hide-filter-effect label input[value="2"]').parent().click('on',
         function () {
           $('.start_end_view').addClass('display-none');
@@ -768,7 +782,7 @@
     }
 
     function globaldesignSettings(transition_type) {
-      
+
       /****Transition pack ******/
       if (transition_type == 'codyhouse') {
         $("#trans_color_link").show();

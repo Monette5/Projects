@@ -2203,6 +2203,144 @@ var rollovers = {
              visible: true,
              display_method: 'particles'
          },
+
+         'bubbles': {
+                     html: 'Bubble Buttons',
+                     visible: true
+                 },
+        /*****Bubbles Button Themes: Trying to set menu items for wix UI to match the wireframes *****/
+        'button--bubble': {
+          id: 'button--bubble',
+          name: 'Bubbles Button',
+          menus: ['link-tab', 'link','start-tab','textbtn-tab'],
+          on_load: function(data) {
+            default_bubbles_on_load(data);
+          },
+          /*****using animation scripts because anime.js is needed in addition to the CSS *****/
+          animation_script_on: function(data) {
+            default_bubbles_on(data);
+          },
+          animation_script_off: function(data) {
+            default_bubbles_off(data);
+
+          },
+          premium: true,
+          visible: true,
+          display_method: 'bubbles'
+
+        },
+
+        'fancy': {
+                           html: 'Fancy Button',
+                           visible: true
+                       },
+              /*****Button Themes *****/
+              'fancy-button': {
+                id: 'fancy-button',
+                name: 'Fancy',
+                menus: ['link-tab', 'link','start-tab','textbtn-tab'],
+                on_load: function(data) {
+                  default_fancy_on_load(data);
+                },
+                /*****using animation scripts because anime.js is needed in addition to the CSS *****/
+                animation_script_on: function(data) {
+                  default_fancy_on(data);
+                },
+                animation_script_off: function(data) {
+                  default_fancy_off(data);
+
+                },
+                premium: true,
+                visible: true,
+                display_method: 'fancy'
+
+              },
+
+               'ripples': {
+                            html: 'Ripple Buttons',
+                            visible: true
+                        },
+               /*****Ripple Button Themes: Trying to set menu items for wix UI to match the wireframes *****/
+               'ripples-1': {
+                 id: 'ripples-1',
+                 name: 'Circle',
+                 menus: ['link-tab', 'link','start-tab','textbtn-tab'],
+                 on_load: function(data) {
+                   default_ripples_on_load(data);
+                 },
+                 /*****using animation scripts because anime.js is needed in addition to the CSS *****/
+                 animation_script_on: function(data) {
+                   default_ripples_on(data);
+                 },
+                 animation_script_off: function(data) {
+                   default_ripples_off(data);
+
+                 },
+                 premium: true,
+                 visible: true,
+                 display_method: 'ripples'
+
+               },
+              'ripples-2': {
+              id: 'ripples-2',
+             name: 'Shape',
+             menus: ['link-tab', 'link','start-tab','textbtn-tab'],
+             on_load: function(data) {
+            default_ripples_on_load(data);
+            },
+            animation_script_on: function(data) {
+              default_ripples_on(data);
+             },
+            animation_script_off: function(data) {
+            default_ripples_off(data);
+
+            },
+            premium: true,
+            visible: true,
+            display_method: 'ripples'
+
+              },
+
+               'ripples-3': {
+                id: 'ripples-3',
+                name: 'Polygon',
+                menus: ['link-tab', 'link','start-tab','textbtn-tab'],
+                on_load: function(data) {
+                default_ripples_on_load(data);
+              },
+              animation_script_on: function(data) {
+                  default_ripples_on(data);
+              },
+              animation_script_off: function(data) {
+                  default_ripples_off(data);
+
+              },
+              premium: true,
+              visible: true,
+              display_method: 'ripples'
+
+              },
+
+              'ripples-4': {
+              id: 'ripples-4',
+              name: 'Gradient',
+              menus: ['link-tab', 'link','start-tab','textbtn-tab'],
+              on_load: function(data) {
+                  default_ripples_on_load(data);
+              },
+              animation_script_on: function(data) {
+                  default_ripples_on(data);
+              },
+              animation_script_off: function(data) {
+                  default_ripples_off(data);
+
+              },
+              premium: true,
+              visible: true,
+              display_method: 'ripples'
+
+      },
+
          'distortion': {
              html: 'Distortion Hover',
              visible: true

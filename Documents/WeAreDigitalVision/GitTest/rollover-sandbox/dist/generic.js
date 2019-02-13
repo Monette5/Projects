@@ -1748,6 +1748,126 @@ var default_particles_off = function (data){
     //console.log('Hi off');
 }
 
+var default_ripples_on_load = function (data){
+
+    $('.ripples .button__item').hide();
+      if(data.transitiontype=="ripples"){
+          $('.ripples .'+ data.transition).show();
+
+     if(data.endStateLink==true || data.endStateLink=='true'){
+         $("#ripples ").removeClass('target-link');
+         $('.ripple-button').off().on('click',function(){
+
+             setTimeout(function(){
+                 $("#ripples").addClass('target-link');//link stays even after removal on pre
+                 $(".target-link").trigger('click');
+             },1000);
+         });
+       }
+         $('#ripples .ripple-button').each(function(){
+         var rippleclass = $(this).attr("class").match(/\d+/g)[0];
+         var a = document.getElementsByTagName("use")[0];
+         var txt = data.button_text;
+        switch (data.transition) {
+          case 'ripples-1':
+              setRipples(rippleclass,'ripples-1',txt);
+              a.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href','#ripple1');
+              break;
+          case 'ripples-2':
+              setRipples(rippleclass,'ripples-2',txt);
+              a.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href','#ripple2');
+              break;
+          case 'ripples-3':
+               setRipples(rippleclass,'ripples-3',txt);
+               a.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href','#ripple3');
+               ripples.init("js-ripple-btn", 8.25);
+              break;
+          case 'ripples-4':
+              setRipples(rippleclass,'ripples-4',txt);
+              a.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href','#ripple4');
+                break;
+      function setRipples(rippleclass,currentRipple, txt){
+
+             $('#ripples .ripple-button').removeClass("ripple-"+rippleclass).addClass(currentRipple);
+             if(data.button_text!=""){
+                 $("#ripples .ripples-text").html(parseText(txt));
+           }
+             $('.ripples .'+   +' .ripple-button').css('opacity',(data.ripplecoloropacity)/100);
+     }
+}
+});
+}
+}
+var default_ripples_on = function (data){
+    console.log('Hi On');
+}
+
+var default_ripples_off = function (data){
+    console.log('Hi off');
+}
+
+var default_bubbles_on_load = function (data){
+  if(data.endStateLink==true || data.endStateLink=='true'){
+      $("#bubbles ").removeClass('target-link');
+      $('.button--bubble').off().on('click',function(){
+
+          setTimeout(function(){
+              $("#bubbles").addClass('target-link');
+              $(".target-link").trigger('click');
+          },1800);
+      });
+    }
+var txtb = data.button_text;
+  if(data.button_text!=""){
+    $('.bubbles-text').html(parseText(txtb));
+}
+var width = $('.button--bubble').width();
+var height = $('.button--bubble').height();
+if (width > 100) {
+  $('.button--bubble__effect-container .circle').css('border-radius:25px');
+}
+
+}
+
+var default_bubbles_on = function (data){
+
+}
+
+var default_bubbles_off = function (data){
+
+}
+
+var default_fancy_on_load = function (data){
+  if(data.endStateLink==true || data.endStateLink=='true'){
+      $("#fancy ").removeClass('target-link');
+      $('.fancy-button').off().on('click',function(){
+
+          setTimeout(function(){
+              $("#fancy").addClass('target-link');
+              $(".target-link").trigger('click');
+          },1000);
+      });
+    }
+  //  $('.fancy .'+ data.transition).show();
+  if(data.button_text!=""){
+      $('.fancy .'+ data.transition+' .f-button').text(data.button_text);
+//   }else{
+// var txtb = data.button_text;
+//   if(data.button_text!=""){
+//     $('.f-button-text').html(parseText(txtb));
+}
+var width = $('.fancy-button').width();
+var height = $('.fancy-button').height();
+}
+
+var default_fancy_on = function (data){
+
+}
+
+var default_fancy_off = function (data){
+
+}
+
 var default_distortion_on_load = function (data){
     var image0Src = "";
     var image1Src = "";

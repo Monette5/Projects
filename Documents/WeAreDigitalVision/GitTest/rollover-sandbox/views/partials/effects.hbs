@@ -1,7 +1,7 @@
 <div tab="Effects">
   <hr class="divider-long"/>
 
-  <div id="selected_effect_type" class="selected_effect_type hide" wix-ctrl="RadioButtons" wix-param="radioParam" 
+  <div id="selected_effect_type" class="selected_effect_type hide" wix-ctrl="RadioButtons" wix-param="radioParam"
 wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rollover to your page', defaultValue: '1', options: [{ value: '1', label: 'Transition pack'}]}"></div>
 
   <div class="effectcat_level" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Step 1 - Select Effect Type', infoText: 'Choose a pack, each has different characteristics'}"></div>
@@ -16,7 +16,10 @@ wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rol
       {value: 'cooltips', label: 'CoolTips Pack(*beta)', name:'CoolTips Pack'},
       {value: 'particles', label: 'Particle Buttons', name:'Particle Buttons'},
       {value: 'distortion', label: 'Distortion Pack', name:'Distortion Pack'},
-      {value: 'tilter', label: 'Tilter Pack', name:'Tilter Pack'}
+      {value: 'tilter', label: 'Tilter Pack', name:'Tilter Pack'},
+      {value: 'ripples', label: 'Ripple Buttons', name:'Ripple Buttons'},
+      {value: 'bubbles', label: 'Bubbles Buttons', name:'Bubbles Buttons'},
+      {value: 'fancy', label: 'Fancy Button', name:'Fancy Button'}
     ]
   }">
   </div>
@@ -126,7 +129,7 @@ wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rol
           var keyed = tree_roller[key]['sub'][key2];
 
           var effectName = keyed.name;
-        
+
           var isPremium = key2!='alt'; // && key2!='blur' && key2!='unblur';
 
           var drill_down_body_opt =  $('<label class="ro-effect-item radio-control '+(isPremium?'pthumb':'')+' ' + (settings.transition == key2 ? 'active' : '') + '">');
@@ -142,7 +145,7 @@ wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rol
             id: 'transition-'+key2,
             value: key2
           }))
-        
+
 
           drill_down_body_opt.find('.image-radio').append($('<video>').attr({
               preload: 'none',
@@ -152,7 +155,7 @@ wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rol
               height: '100%',
               src: videoSrc,
               poster: posterSrc}))
-  
+
           drill_down_body_opt.append($('<span class="label">' + effectName + '</span>'));
           drill_down.append(drill_down_body_opt);
         }
@@ -162,7 +165,7 @@ wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rol
     }
 
     $(document).ready(function() {
-      $("#gotodesign").getCtrl().onClick(function(){ 
+      $("#gotodesign").getCtrl().onClick(function(){
 					$('#tabpanel_main').getCtrl().setValue(2);
 			});
 
@@ -181,6 +184,6 @@ wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rol
     });
   </script>
 
-  
+
 
 </div>
