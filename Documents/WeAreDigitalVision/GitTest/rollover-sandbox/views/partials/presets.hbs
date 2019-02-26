@@ -1,10 +1,10 @@
-<div tab="Effects">
+<div tab="Presets">
   <hr class="divider-long"/>
 
   <div id="selected_effect_type" class="selected_effect_type hide" wix-ctrl="RadioButtons" wix-param="radioParam"
 wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rollover to your page', defaultValue: '1', options: [{ value: '1', label: 'Transition pack'}]}"></div>
 
-  <div class="effectcat_level" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Step 1 - Select Effect Type', infoText: 'Choose a pack, each has different characteristics'}"></div>
+  <div class="effectcat_level" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Step 1 - Select Preset', infoText: 'Choose a pack, each has different characteristics'}"></div>
   <div id="effectcat" class="effectcat" wix-ctrl="RadioButtons" wix-param="effectcat"  wix-options="{
     title: '',
     defaultValue: 'codyhouse',
@@ -13,13 +13,9 @@ wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rol
       {value: 'codrops', label: 'Atomic Pack', name:'Atomic Pack'},
       {value: 'codyhouse', label: 'Transition Pack', name:'Transition Pack'},
       {value: 'ap1', label: 'Artisan Pack', name:'Artisan Pack'},
-      {value: 'cooltips', label: 'CoolTips Pack(*beta)', name:'CoolTips Pack'},
-      {value: 'particles', label: 'Particle Buttons', name:'Particle Buttons'},
+      {value: 'cooltips', label: 'CoolTips Pack', name:'CoolTips Pack'},
       {value: 'distortion', label: 'Distortion Pack', name:'Distortion Pack'},
-      {value: 'tilter', label: 'Tilter Pack', name:'Tilter Pack'},
-      {value: 'ripples', label: 'Ripple Buttons', name:'Ripple Buttons'},//Button_Changes
-      {value: 'bubbles', label: 'Bubbles Buttons', name:'Bubbles Buttons'},//Button_Changes
-      {value: 'fancy', label: 'Fancy Button', name:'Fancy Button'}//Button_Changes
+      {value: 'tilter', label: 'Tilt Effects', name:'Tilt effects'}
     ]
   }">
   </div>
@@ -41,19 +37,19 @@ wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rol
     ]
   }"></div>-->
 
-  <div class="addwidget_effect_container text-center">
+  <!-- <div class="addwidget_effect_container text-center">
       <div wix-ctrl="Button" wix-options="{ label: 'Add Widget for selected effect', className: 'btn-confirm-secondary' }" class="add_widget_oneffect"  ></div>
-  </div>
+  </div> -->
 
   <hr class="divider-long select-effect-type"/>
-  <div id="select-effect" class="select-effect-type" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Step 2 - Select Effect',infoText: 'Pick an Effect to edit, then go to Settings or Design tab to get started'}"></div>
+  <div id="select-effect" class="select-effect-type" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Step 2 - Select Preset',infoText: 'Pick a Preset Design to edit, then go to Design tab to make changes'}"></div>
 
   <div id="transitions"></div>
 
   <hr class="divider-long"/>
 
-  <div id="select-effect" class="select-effect-type" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Step 3 - Get Started',infoText: 'Click on this to go to the Settings tab'}"></div>
-  <div id="gotodesign" wix-ctrl="Button" wix-options="{label: 'Edit Settings', className: 'btn-confirm-primary'}">
+  <div id="select-effect" class="select-effect-type" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Step 3 - Get Started',infoText: 'Click on this to go to the Design tab'}"></div>
+  <div id="gotodesign" wix-ctrl="Button" wix-options="{label: 'Edit Preset', className: 'btn-confirm-primary'}">
   </div>
 
   <script>
@@ -69,7 +65,7 @@ wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rol
     var featured_roller = {};
     var emp_head = false;
     var ctr = 0;
-    var effectTypeArr = ['cooltips','particles'];
+    var effectTypeArr = ['cooltips'];
 
     // the effect item and groups are here
     // rollovers is a global object , see/dist/rollovers.js

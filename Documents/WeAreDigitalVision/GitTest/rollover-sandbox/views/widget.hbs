@@ -24,9 +24,9 @@
 	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/codrops/css/component.css" />
 	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/distortion/distortion.css" />
 
-	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/bubbles.css" />
-	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/ripples.css" />
-	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/fancy.css" />
+	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/bubbles.css" />//Button_Changes
+	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/ripples.css" />//Button_Changes
+	<link rel="stylesheet" type="text/css" href="src/widget/stylesheets/fancy.css" />//Button_Changes
 
 
 	<!-- <link rel="stylesheet" type="text/css" href="src/widget/stylesheets/tilt/component.css" /> -->
@@ -778,6 +778,8 @@
 		border : \{{style.borderSize 0}}px solid \{{style.borderColor transparent}};
 		border-radius: \{{style.radius0 0}}px;
 	}
+
+	/**************Button_Changes**************/
 	/**************Ripples Animations **************/
 	.ripples .ripple-button{
 				border: \{{ style.borderSize }}px solid \{{ style.borderColor }};
@@ -825,6 +827,8 @@
 .bubbles .button--bubble__effect-container .button{
 	background: \{{ style.buttoncolorfilter #000}};
 }
+/**************Button_Changes**************/
+
 	/**************Distortion Effect Css **************/
 
 	.grid_distortion	.grid__item-title {
@@ -1399,7 +1403,7 @@
 		</div>
 	</div>
 
-
+/**************Button_Changes**************/
 <!--fancy-->
 	<div class="fancy" id="fancy">
 	<div class="fancy-grid" id="fancy-container">
@@ -1412,7 +1416,7 @@
 				</div>
 				</div>
 				</div>
-
+/**************Button_Changes**************/
 <!--bubbles-->
 		<div class="bubbles" id="bubbles">
 		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
@@ -1446,7 +1450,7 @@
 	</div>
 		</div>
 		</div>
-
+/**************Button_Changes**************/
 		<!--Ripple Buttons-->
 		<div id="ripples" class="grid_ripples">
 		<div style="height: 0; width: 0; position: absolute; visibility: hidden;" aria-hidden="true">
@@ -1960,7 +1964,7 @@
 
 		var elem0, elem1;
 
-		var effectsTypes = ['card', 'figure', 'codyhouse', 'cooltips', 'particles', 'codrops','distortion','tilter','bubbles','fancy', 'ripples'];
+		var effectsTypes = ['card', 'figure', 'codyhouse', 'cooltips', 'particles', 'codrops','distortion','tilter','bubbles','fancy', 'ripples'];//Button_Changes
 		for (key in effectsTypes) {
 			$('#' + effectsTypes[key]).hide();
 		}
@@ -2002,16 +2006,17 @@
 					$('#particles').show();
 					$("#container").hide();
 					break;
+					//Button_Changes
 					case 'fancy':
 							$('#fancy').show();
 							$("#container").hide();
 							break;
-
+					//Button_Changes
 						case 'ripples':
 							$('#ripples').show();
 							$("#container").hide();
 							break;
-
+				//Button_Changes
 					case 'bubbles':
 								$('#bubbles').show();
 								$("#container").hide();
@@ -2667,9 +2672,9 @@
 
 <script src='src/widget/js/particleButtons/particles.js'></script>
 <script src='src/widget/js/particleButtons/demo.js'></script>
-<script src='src/widget/js/ripple.js'></script>
-<script src='src/widget/js/fancy.js'></script>
-<script src='src/widget/js/bubbles.js'></script>
+<script src='src/widget/js/ripple.js'></script>//Button_Changes
+<script src='src/widget/js/fancy.js'></script>//Button_Changes
+<script src='src/widget/js/bubbles.js'></script>//Button_Changes
 
 <link rel="stylesheet" type="text/css" href="src/widget/stylesheets/particle.css" />
 

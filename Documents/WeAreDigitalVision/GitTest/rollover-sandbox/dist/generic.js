@@ -1747,7 +1747,7 @@ var default_particles_on = function (data){
 var default_particles_off = function (data){
     //console.log('Hi off');
 }
-
+//Button_Changes
 var default_ripples_on_load = function (data){
 
     $('.ripples .button__item').hide();
@@ -1805,7 +1805,7 @@ var default_ripples_on = function (data){
 var default_ripples_off = function (data){
     console.log('Hi off');
 }
-
+//Button_Changes
 var default_bubbles_on_load = function (data){
   if(data.endStateLink==true || data.endStateLink=='true'){
       $("#bubbles ").removeClass('target-link');
@@ -1836,7 +1836,7 @@ var default_bubbles_on = function (data){
 var default_bubbles_off = function (data){
 
 }
-
+//Button_Changes
 var default_fancy_on_load = function (data){
   if(data.endStateLink==true || data.endStateLink=='true'){
       $("#fancy ").removeClass('target-link');

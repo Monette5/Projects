@@ -2204,6 +2204,7 @@ var rollovers = {
              display_method: 'particles'
          },
 
+//Button_Changes
          'bubbles': {
                      html: 'Bubble Buttons',
                      visible: true
@@ -2229,7 +2230,7 @@ var rollovers = {
           display_method: 'bubbles'
 
         },
-
+//Button_Changes
         'fancy': {
                            html: 'Fancy Button',
                            visible: true
@@ -2255,7 +2256,7 @@ var rollovers = {
                 display_method: 'fancy'
 
               },
-
+//Button_Changes
                'ripples': {
                             html: 'Ripple Buttons',
                             visible: true

@@ -1,0 +1,1295 @@
+<div tab="Design">
+  <div class="text-off start_end_view">
+    <hr class="divider-long" />
+    <!-- Toggle -->
+  </div>
+  <div class="drill_accordion" id="design_drill" style="display:none"><!-- new-ui-->
+    <div class="drillaccordionshowactive" style="display:none">
+      <div id="both-tab-container">
+        <div id="both-tab">
+        </div>
+      </div>
+      <hr class="divider-long"/>
+      <div id="start_end_toggle_level" class="start_end_toggle_level" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Switch View', infoText:'Switch between Start and End to edit and preview your Rollover app'}"></div>
+      <!-- Toggle -->
+      <div style="display:none" id="start-end-toggle" class='end-tab hide-filter-effect' wix-ctrl="ToggleButtons" wix-options="{ defaultValue: '1', infoTitle:'Toggle Switch', infoText:'You can switch between editing the start and end of the effect with this Toggle Switch', options: [{ value: '1', label: 'Start'}, { value: '2', label: 'End'} ]}"></div>
+    </div>
+
+    <ul class="list_designs_tab">
+      <li data-item="1" data-main="design_drill" class="drillaccordionlink images_filter" id="images_filter_option">Images &amp; Filters</li>
+      <li data-item="12" data-main="design_drill" class="drillaccordionlink" id="trigger_icon_option">Trigger</li>
+      <li data-item="6" data-main="design_drill" id="videoAccordion" class="drillaccordionlink">Video</li>
+      <li data-item="8" data-main="design_drill" class="drillaccordionlink" id="trans_color_link">Transition colour</li>
+      <li data-item="10" data-main="design_drill" class="drillaccordionlink" id="cooltips_color_link">Background Colour</li>
+      <li data-item="5" data-main="design_drill" class="drillaccordionlink" id="borderandline1">Border &amp; Line</li><!--was 2 new-ui-->
+      <!-- <li data-item="3" data-main="design_drill" class="drillaccordionlink" id="font-option">Fonts</li> -->
+      <li data-item="2" data-main="design_drill" class="drillaccordionlink" id="text-option">Edit Texts</li><!--was 5 new-ui-->
+      <li data-item="4" data-main="design_drill" class="drillaccordionlink" id="layout-option">Layout</li><!--new-ui-->
+      <div class="allowbuttons">
+        <li data-item="15" data-main="design_drill" class="drillaccordionlink">Buttons</li>
+      </div>
+
+      <!-- <li class="drillaccordionback">
+        <div class="backlink" data-main="design_drill">❮ Back</div>
+      </li>-->
+    </ul>
+</div>
+  <div class="effectcat" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Featured Effect', infoText:'Choose this ready made effect or create your own by selecting an effect below'}"></div>
+
+<!--Effects dropdown if user chooses "start from scratch" new-ui-->
+<div class="start-tab-container">
+  <div id="effect-thumbnail" class ="mythumb transition" wix-ctrl="Thumbnails"
+    wix-param="effectthumbnail"
+    wix-options="{
+         activeDesign:'vmark',
+         maxThumbsPerRow:1,
+         title:'',
+         defaultValue:1,
+         square:true,
+         options:[
+         {value: '1', src: ''}
+         ]}">
+</div>
+
+<hr class="divider-long" />
+
+<div class="textbtn-tab textbtn-allow premiumonly" id="choose_effect_container">
+  <div id="settings_trigger_level" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Choose Effect trigger', infoText:'You can choose how your effect is triggered. Choose Rollover if you want it to run when a visitor hovers over the image, or choose Button press'}"></div>
+  <!-- <div id="textbtn-allow" wix-param="textbtna" class='end-tab' wix-ctrl="ToggleButtons" wix-options="{ defaultValue: 1, infoTitle:'Toggle Switch', infoText:'You can switch between editing the start and end of the effect with this Toggle Switch', options: [{ value: '0', label: 'Rollover'}, { value: '1', label: 'Button'} ]}"></div> -->
+  <div id="textbtn-allow" wix-param="textbtna" wix-ctrl="DropDown" wix-options="{ title: '', infoTitle:'Choose Effect Trigger', infoText:'You can choose how your effect is triggered. Choose Rollover if you want it to run when a visitor hovers over the image, or choose Button press', options: [{ value: '0', label: 'Rollover'}, { value: '1', label: 'Button'} ]}"></div>
+
+  <hr class="divider-long" />
+</div>
+<div id="selected_effect_type" class="selected_effect_type hide" wix-ctrl="RadioButtons" wix-param="radioParam"
+wix-options="{title: 'Effect type',infoText:'Go to main tab for adding a new Rollover to your page', defaultValue: '1', options: [{ value: '1', label: 'Transition pack'}]}"></div>
+  <div class="effectcat" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Select Effect', infoText:'Choose an effect to use for your design'}"></div>
+  <div id="effectdropdown" class="effectcat" wix-ctrl="DropDown" wix-param="effectdropdown"
+    wix-options="{title: '',
+    <!--will be crossfade-->
+    defaultValue: 'codyhouse',
+    options: [
+      {value: 'trad', label: 'Classic Pack'},
+      {value: 'codrops', label: 'Atomic Pack', name:'Atomic Pack'},
+      {value: 'codyhouse', label: 'Transition Pack', name:'Transition Pack'},
+      {value: 'ap1', label: 'Artisan Pack', name:'Artisan Pack'},
+      {value: 'cooltips', label: 'CoolTips Pack', name:'CoolTips Pack'},
+      {value: 'distortion', label: 'Distortion Pack', name:'Distortion Pack'},
+      {value: 'tilter', label: 'Tilter Pack', name:'Tilter Pack'}
+    ]
+  }">
+</div>
+
+</div>
+<div>
+<select id ="transition-dropdown"></select>
+</div>
+<script>
+var value=$("#effectdropdown").getCtrl().getValue();
+var tp=$('#transition-dropdown');
+var pnt_head = 0;
+var tree_roller = {};
+tree_roller[pnt_head] = {};
+tree_roller[pnt_head]['name'] = '';
+tree_roller[pnt_head]['sub'] = {};
+var featured_roller = {};
+var emp_head = false;
+var ctr = 0;
+var effectTypeArr = ['cooltips'];
+
+// the effect item and groups are here
+// rollovers is a global object , see/dist/rollovers.js
+// initial setup here
+for(rk in rollovers){
+  var rollover = rollovers[rk];
+  var testServer = false;
+  if(rollover.visible || testServer) {
+    if (rollover.html) {
+      pnt_head = rk;
+      tree_roller[pnt_head] = {};
+      tree_roller[pnt_head]['name'] = rollover.html
+      tree_roller[pnt_head]['sub'] = {}
+
+      // there is no info if it is premium or not, lets do it in hard code
+      var premiumPack = ['Transition Pack', 'Artisan Pack']
+      if (premiumPack.indexOf(rollover.html) > -1) {
+        tree_roller[pnt_head]['premium'] = true
+      } else {
+        tree_roller[pnt_head]['premium'] = false
+      }
+    } else {
+      emp_head = pnt_head == 0 ? true : emp_head;
+      tree_roller[pnt_head]['sub'][rk] = {};
+      tree_roller[pnt_head]['sub'][rk]['name'] = rollover.name;
+      var layer = {};
+      layer['name'] = rk;
+      layer['value'] = rollover;
+      featured_roller[ctr++] = layer;
+    }
+  }
+}
+      // loop the effect pack
+      for(key in tree_roller){
+        var rolleritem=tree_roller[key];
+
+        var val_name = tree_roller[key]['name'];
+
+        if((val_name == '' && emp_head) || val_name){
+
+          var drill_down;
+
+          // trim name if needed
+          if(val_name.length > 20) val_name = val_name.substring(0,17) + '...';
+
+          // loop the effect
+          for(key2 in tree_roller[key]['sub']){
+            var keyed = tree_roller[key]['sub'][key2];
+
+            var effectName = keyed.name;
+
+            var isPremium = key2!='alt'; // && key2!='blur' && key2!='unblur';
+
+            var drill_down_opt =  $('<label class="ro-effect-item radio-control '+(isPremium?'pthumb':'')+' ' + (settings.transition == key2 ? 'active' : '') + '">');
+
+            var videoSrc = tree_roller[key]['sub'][key2]['image'] ?  tree_roller[key]['sub'][key2]['image']  : 'src/settings/mp4/' + key2 + '-movie.mp4';
+            var posterSrc = tree_roller[key]['sub'][key2]['image'] ?  tree_roller[key]['sub'][key2]['image']  : 'src/settings/png/' + key2 + '-poster.png';
+
+          $('#transition-dropdown').append($("<option></option>").val(effectName).text(val_name));
+
+
+//prepare markup for video thumbnails
+
+            drill_down_opt.find('.mythumb transition').append($('<video>').attr({
+                preload: 'none',
+                loop: false,
+                autoplay: false,
+                width: '100%',
+                height: '100%',
+                src: videoSrc,
+                poster: posterSrc}))
+
+
+            drill_down.append(drill_down_opt);
+          }
+          drill_down.append(drill_down);
+        }
+        tp.append(drill_down);
+
+      }
+
+        $('.ro-effect-item').hover(function() {
+          var video = $(this).find('video').get(0);
+
+
+          if($.inArray(settings.transitiontype, effectTypeArr) !== -1){
+              video.play();
+              $(this).find('video').on('ended',function(){
+                video.pause();
+                video.currentTime = 0;
+              });
+          }
+         });
+
+//
+
+
+
+  </script>
+
+
+    <!-- Image & Filter -->
+    <div class="drillaccordioncontent item_1">
+
+      <hr class="divider-long twist" />
+      <div class="specialhide img-filter-label" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Add Media', infoText: 'Classic and Transition packs use two images. Artisan packs only use one.'}"></div>
+
+      <div>
+      </div>
+
+
+      <div class="start-tab-container design_start_tab" id="start-tab-container">
+        <div id="start-tab">
+
+          <div id="image0" class="codrops-hide" wix-ctrl="ImagePreview"></div>
+
+          <div id="image-zoom-off" wix-param="imageZoomOff" wix-ctrl="ToggleSwitch" wix-options="{label:'Zoom Image', infoText: 'Start state image will zoom on load', defaultValue:false}"></div>
+          <hr class="divider-long image-zoom-off codrops-hide" />
+
+          <div id="zoom-duration-off" class="zoom-duration-off" wix-param="zoomDurantionOff" wix-ctrl="Slider"
+            wix-options="{title: 'Zoom Duration', defaultValue:5, units: ' s', max : 10}"></div>
+          <hr class="divider-long zoom-duration-off" />
+
+          <!-- <hr class="divider-long" /> -->
+
+          <div id="zoom_arisian" wix-param="zoomArtLevel" wix-ctrl="Slider" wix-options="{title: 'Zoom level', defaultValue:0, units: '%', max : 130}"></div>
+          <hr class="divider-short" />
+
+          <div id="twist" wix-param="twistLevel" wix-ctrl="Slider" wix-options="{title: 'Twist', defaultValue:0, units: '%', max : 100}"></div>
+
+          <div id="background-colour-off" wix-param="backColor0" wix-ctrl="ColorPickerSlider" wix-options="{title: 'Background colour', startWithColor: 'color-5', startWithOpacity: 1, infoText:'You can use rollover without an image. Set the background colour and opacity here'}"></div>
+          <hr class="divider-long background-colour-off" />
+
+
+
+          <div id="end-image" wix-param="endimage" wix-ctrl="ToggleSwitch" wix-options="{label:'End Media', defaultValue:false, infoText: 'Add media to the end state'}">
+          </div>
+          <hr class="divider-long end-image"/>
+          <!--new-ui-->
+          <div id ="end-image-show" wix-param="endimageshow">
+            <hr class="divider-long end-image-show"/>
+          <div id="image1" wix-ctrl="ImagePreview"></div>
+          <hr class="divider-long" />
+          <div id="image-zoom-on" wix-param="imageZoomOn" wix-ctrl="ToggleSwitch" wix-options="{label:'Zoom Image', infoText: 'End state image will zoom after transition', defaultValue:false}"></div>
+          <hr class="divider-long background-colour-on" />
+
+          <div id="zoom-duration-on" class="zoom-duration-on" wix-param="zoomDurantionOn" wix-ctrl="Slider" wix-options="{title: 'Zoom Duration', defaultValue:5, units: ' px', max : 10}"></div>
+          <hr class="divider-long zoom-duration-on" />
+
+          <div id="background-colour-on" class="img-back-color-on" wix-param="backColor1" wix-ctrl="ColorPickerSlider"
+            wix-options="{title: 'Background Color', startWithColor: 'color-5', startWithOpacity: 1, infoText:'You can use rollover without an image. Set the background colour and opacity here'}"></div>
+
+          <hr class="divider-long background-colour-on" />
+            </div>
+
+      </div>
+</div>
+  </div>
+
+      <div class="end-tab-container" id="end-tab-container">
+        <div id="end-tab">
+          <div id="image1" wix-ctrl="ImagePreview"></div>
+          <hr class="divider-long" />
+          <div id="image-zoom-on" wix-param="imageZoomOn" wix-ctrl="ToggleSwitch" wix-options="{label:'Zoom Image', infoText: 'End state image will zoom after transition', defaultValue:false}"></div>
+          <hr class="divider-long background-colour-on" />
+
+          <div id="zoom-duration-on" class="zoom-duration-on" wix-param="zoomDurantionOn" wix-ctrl="Slider" wix-options="{title: 'Zoom Duration', defaultValue:5, units: ' px', max : 10}"></div>
+          <hr class="divider-long zoom-duration-on" />
+
+
+          <div id="background-colour-on" class="img-back-color-on" wix-param="backColor1" wix-ctrl="ColorPickerSlider"
+            wix-options="{title: 'Background Color', startWithColor: 'color-5', startWithOpacity: 1, infoText:'You can use rollover without an image. Set the background colour and opacity here'}"></div>
+
+          <hr class="divider-long background-colour-on" />
+
+        </div>
+      </div>
+
+
+
+
+      <script>
+        $(document).ready(function () {
+          // Image controls
+          var imageOffControl = $('#image0').getCtrl();
+          var imageOnControl = $('#image1').getCtrl();
+
+          var buttons = [
+            {
+              label: 'Add Media',
+              icon: 'plus',
+              onClick: function () {
+                Wix.Settings.openMediaDialog(Wix.Settings.MediaType.IMAGE, false, function (data) {
+                  imageOffControl.setValue([data]);
+                  image_trigger('image0', [data]);
+                  var img0Ext = data.relativeUri.split('.').pop();
+                  if (img0Ext != 'png') {
+                    $("#background-colour-off").hide();
+                  }
+                  if (img0Ext == 'png') {
+
+                    $("#background-colour-off").show();
+                  }
+                });
+              }
+            },
+            {
+              label: 'Delete',
+              icon: 'delete',
+              onClick: function () {
+                imageOffControl.setValue([]);
+                $("#background-colour-off").show();
+                setTimeout(saveAndRefresh, 100);
+              }
+            }
+          ];
+
+          imageOffControl.setButtons(buttons);
+
+          // Image controls
+          var buttons = [
+            {
+              label: 'Add Media',
+              icon: 'plus',
+              onClick: function () {
+                Wix.Settings.openMediaDialog(Wix.Settings.MediaType.IMAGE, false, function (data) {
+                  imageOnControl.setValue([data]);
+                  var img1Ext = data.relativeUri.split('.').pop();
+                  if (img1Ext != 'png') {
+                    $("#background-colour-on").hide();
+                  }
+                  image_trigger('image1', [data]);
+                });
+              }
+            },
+            {
+              label: 'Delete',
+              icon: 'delete',
+              onClick: function () {
+                imageOnControl.setValue([]);
+                $("#background-colour-on").show();
+                setTimeout(saveAndRefresh, 100);
+              },
+            }
+          ];
+
+          imageOnControl.setButtons(buttons);
+        });
+      </script>
+  <hr class="divider-long peranent-effect" />
+      <div class="drillaccordioncontent item_8">
+        <div id ="trans-color-container" class="trans-color-container">
+          <div id="header-trancolor">
+            <hr class="divider-long" />
+            <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Transition colour', infoText:'Choose a color to transition between images'}"></div>
+          </div>
+          <div id="trancolor" wix-param="trancolorFilter" wix-ctrl="ColorPickerInput" wix-options="{startWithColor: 'color-1', title: 'Transition colour'}"></div>
+        </div>
+      </div>
+
+      <hr class="divider-long peranent-effect" />
+      <div class="drillaccordioncontent item_6">
+        <div id="videochoice" wix-ctrl=ToggleSwitch wix-param="videochoice" wix-options="{label:'Add Video', infoText: 'Add a YouTube video to your design', defaultValue:false}"></div>
+
+        <div id = "videocontainer">
+        <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Add Youtube Video'}" class="specialhide"></div>
+
+        <div id="start-tab-container2" class="specialhide start-tab-container">
+          <div id="start-tab">
+            <div id="youtube0" wix-ctrl="Input" wix-options="{ placeholder: 'e.g. https://www.youtube.com/watch?v=z0s9aLpK9Zs', title: 'YouTube', infoTitle: 'Just copy the ID at the END of the YouTube URL.' }"></div>
+            <hr class="divider-long" />
+            <div id="youtube0start" wix-ctrl="Input" wix-options="{ placeholder: '', defaultText:'0', title: 'Start time (seconds)' }"></div>
+            <hr class="divider-long" />
+            <div id="youtube0end" wix-ctrl="Input" wix-options="{ placeholder: '', defaultText:'30', title: 'End time (seconds)'}"></div>
+            <hr class="divider-long" />
+            <div id="youtube0mute" wix-param="youtube0mute" wix-ctrl="ToggleSwitch" wix-options="{label:'Mute', infoText: 'YouTube audio mute', defaultValue:true}">
+            </div>
+            <hr class="divider-long" />
+            <hr class="divider-long" />
+            <div id="youtube0loop" wix-param="youtube0loop" wix-ctrl="ToggleSwitch" wix-options="{label:'Loop', infoText: 'Loop YouTube video', defaultValue:false}">
+            </div>
+            <hr class="divider-long" />
+            <div id="youtube0autoplay" wix-param="youtube0autoplay" wix-ctrl="ToggleSwitch" wix-options="{label:'Autoplay', infoText: 'Autoplay YouTube video', defaultValue:false}">
+            </div>
+          </div>
+          </div>
+
+        <div id="end-tab-container2" class="specialhide end-tab-container">
+          <div id="end-tab">
+            <div id="youtube1" wix-ctrl="Input" wix-options="{ placeholder: 'e.g. https://www.youtube.com/watch?v=z0s9aLpK9Zs', title: 'YouTube', infoTitle: 'Just copy the ID at the END of the YouTube URL.' }"></div>
+            <hr class="divider-long" />
+            <div id="youtube1start" wix-ctrl="Input" wix-options="{ placeholder: '', defaultText:'0', title: 'Start time (seconds)' }"></div>
+            <hr class="divider-long" />
+            <div id="youtube1end" wix-ctrl="Input" wix-options="{ placeholder: '', defaultText:'30', title: 'End time (seconds)'}"></div>
+            <hr class="divider-long" />
+            <div id="youtube1mute" wix-param="youtube1mute" wix-ctrl="ToggleSwitch" wix-options="{label:'Mute', infoText: 'YouTube audio mute', defaultValue:true}">
+            </div>
+            <hr class="divider-long" />
+            <div id="youtube1loop" wix-param="youtube1loop" wix-ctrl="ToggleSwitch" wix-options="{label:'Loop', infoText: 'Loop YouTube video', defaultValue:false}">
+            </div>
+            <hr class="divider-long" />
+            <div id="youtube1autoplay" wix-param="youtube1autoplay" wix-ctrl="ToggleSwitch" wix-options="{label:'Autoplay', infoText: 'Autoplay YouTube video', defaultValue:false}">
+            </div>
+            <hr class="divider-long" />
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+
+      <div id="extra-container">
+        <div id="extra-tab">
+          <div id="blur" wix-param="blurLevel" wix-ctrl="Slider" wix-options="{title: 'Blur level', defaultValue:0, units: '%', max : 100}"></div>
+          <hr class="divider-long blur" />
+          <div id="opacity" wix-param="opacityLevel" wix-ctrl="Slider" wix-options="{title: 'Opacity level', defaultValue: 30, units: '%', max : 100}"></div>
+          <hr class="divider-long opacity" />
+          <div id="zoom" wix-param="zoomLevel" wix-ctrl="Slider" wix-options="{title: 'Zoom level', defaultValue:20, units: '%', max : 100}"></div>
+          <hr class="divider-long zoom" />
+          <div id="direction" wix-ctrl="RadioButtons" wix-options="{
+            title: 'Direction',
+            defaultValue: 'l',
+            infoText:'You can change the entry direction of this effect',
+            options:[
+              {value: 'l', label: 'Left'},
+              {value: 'r', label: 'Right'},
+              {value:'u', label: 'Up'},
+              {value:'d', label: 'Down'}
+            ]}"></div>
+
+        </div>
+      </div>
+<hr class="divider-long peranent-effect" />
+    <div class="drillaccordioncontent item_5">
+    <!--new-ui-->
+
+      <div id="text-on-allow" wix-param="textonallow" class='end-tab' wix-ctrl="ToggleSwitch" wix-options="{label:'Add Text', infoText: 'Add text to your rollover effect', defaultValue:false}"></div>
+      <hr class="divider-long text-on-allow"/>
+      <div id ="show-hide-text" wix-param="showhidetext">
+        <hr class="divider-long show-hide-text"/>
+        <div class="text-on">
+          <div class="heading-off"  wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Text', infoText:'To design your fonts click the Fonts toggle'}"></div>
+          <div id="heading-off"  wix-ctrl="Input"  wix-options="{ title: 'Heading', placeholder: 'Heading text', defaultText: 'Welcome to rollover', maxLength: 200, invalidMessage: 'Max 200 characters' }" ></div>
+          <hr class="divider-long heading-off"/>
+          <div id="subheading-off" wix-ctrl="Input"  wix-options="{ title: 'SubHeading', placeholder: 'SubHeading text', defaultText: 'Wow your users with stunning animations', maxLength: 500, invalidMessage: 'Max 500 characters' }" ></div>
+          <hr class="divider-long subheading-off"/>
+      <hr class="divider-long" />
+
+      <div class="start-tab-container" id="start_tab_text_section">
+        <hr class="divider-long" />
+        <div id="start_text_label" wix-ctrl="SectionDividerLabeled"  wix-options="{label: 'Start Text', infoText:'To design your fonts go to Design, then click Fonts'}"></div>
+
+        <!--  CodyHouse & Classic -->
+        <div id="text-off"  wix-ctrl="Input"  wix-options="{ title: 'Start Heading' , placeholder: 'Heading text', defaultText: 'Welcome to rollover', maxLength: 980, invalidMessage: 'Max 980 characters' }" ></div>
+        <hr class="divider-long text-off"/>
+        <div id="subtext-off" class="text-para-editor"  wix-ctrl="Input"  wix-options="{ title: 'Start Paragraph',isMultiLine:true, placeholder: 'Paragraph text' }" ></div>
+        <div id="resetbtn_start" wix-ctrl="Button" wix-options="{label: 'Reset Text', className: 'btn-confirm-primary btn-md reset-btn-text', icon: 'image-change'}"></div>
+              <hr class="divider-long"/>
+
+
+          <div class="text-align" id="text-align-off"  wix-ctrl="DropDown" wix-options="{title: 'Position', defaultValue: 'mc', options:[  {value: 'tl', label: 'Top Left'}, {value: 'tc', label: 'Top Centre'}, {value: 'tr', label: 'Top Right'}, {value:'ml', label: 'Middle Left'}, {value:'mc', label: 'Middle Centre'}, {value: 'mr', label: 'Middle Right'}, {value: 'bl', label: 'Bottom Left'}, {value: 'bc', label: 'Bottom Centre'}, {value:'br', label: 'Bottom Right'} ]}"></div>
+        <div class="textbtn-tab">
+          <hr class="divider-long subtext-off"/>
+          <div id="textbtn-off"  wix-ctrl="Input"  wix-options="{ title: 'Start Button', defaultText:'Run Effect', maxLength: 100, invalidMessage: 'Max 100 characters' }" ></div>
+        </div>
+
+        <hr class="divider-long"/>
+
+      </div>
+      <div id="end-text-allow" wix-param="endtextallow" class='end-tab' wix-ctrl="ToggleSwitch" wix-options="{label:'End Text', infoText: 'Edit your font styles', defaultValue:false}"></div>
+      <div class="end-tab-container" id="end-text">
+        <hr class="divider-long"/>
+        <div id="end_text_label" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'End Text'}"></div>
+
+        <div id="text-on"  wix-ctrl="Input"  wix-options="{ title: 'End Heading', placeholder: 'Heading text', defaultText: 'It\'s your turn', maxLength: 200, invalidMessage: 'Max 200 characters' }" ></div>
+        <hr class="divider-long subtext-font-on"/>
+        <div id="subtext-on"  wix-ctrl="Input"  wix-options="{ title: 'End Paragraph',isMultiLine:true, placeholder: 'Paragraph text', defaultText: 'To make something amazing!' }" ></div>
+        <div id="resetbtn_end" wix-ctrl="Button" wix-options="{label: 'Reset Text', className: 'btn-confirm-primary btn-md reset-btn-text', icon: 'image-change'}"></div>
+
+       <!--  <div class="saveparabtn" wix-ctrl="Button" wix-options="{label: 'Save paragraph Text', className: 'btn-confirm-primary btn-md reset-btn-text', icon: 'image-change'}"></div> -->
+
+        <hr class="divider-long"/>
+
+
+        <div class="text-align" id="text-align-on"  wix-ctrl="DropDown" wix-options="{title: 'Position', defaultValue: 'mc', options:[  {value: 'tl', label: 'Top Left'}, {value: 'tc', label: 'Top Centre'}, {value: 'tr', label: 'Top Right'}, {value:'ml', label: 'Middle Left'}, {value:'mc', label: 'Middle Centre'}, {value: 'mr', label: 'Middle Right'}, {value: 'bl', label: 'Bottom Left'}, {value: 'bc', label: 'Bottom Centre'}, {value:'br', label: 'Bottom Right'} ]}"></div>
+        <div class="textbtn-tablink">
+          <hr class="divider-long subtext-on"/>
+          <div id="textbtn-on"  wix-ctrl="Input"  wix-options="{ title: 'End Link Button', defaultText:'Edit this button', maxLength: 100, invalidMessage: 'Max 100 characters' }" ></div>
+        </div>
+      </div>
+
+    <div class="textbtn-tablink end-tab-container">
+      <hr class="divider-long textbtn-on"/>
+    </div>
+
+   </div>
+    </div>
+</div>
+
+
+    <div class="drillaccordioncontent item_3">
+      <!--new-ui-->
+        <!-- <div id="font-on-allow" wix-param="fontonallow" class='end-tab' wix-ctrl="ToggleSwitch" wix-options="{label:'Edit Font', infoText: 'Edit your font styles', defaultValue:false}"></div> -->
+      <hr class="divider-long font-on-allow"/>
+      <!--new-ui-->
+      <div id ="show-hide-font" wix-param="showhidefont">
+          <!--new-ui-->
+          <hr class="divider-long show-hide-font"/>
+      <hr class="divider-long" />
+      <hr class="divider-long specialhide" />
+      <div class="text-font-heading specialhide" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Texts',infoText:'To change your displayed text, click the Text Toggle'}"></div>
+
+      <div id="text-font-heading" wix-param-font="myFontH" wix-param-color="textColorH" wix-ctrl="FontAndColorPicker"
+        wix-options="{title: 'Heading', startWithColor: 'color-1', startWithTheme : 'font_4'}"></div>
+      <hr class="divider-long text-font-heading" />
+      <div id="text-font-subheading" wix-param-font="myFontS" wix-param-color="textColorS" wix-ctrl="FontAndColorPicker"
+        wix-options="{title: 'Subheading', startWithColor: 'color-1',startWithTheme : 'font_8'}"></div>
+      <hr class="divider-long text-font-subheading" />
+
+      <div class="start-tab-container">
+        <div class="text-font-off" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Start Fonts', infoText:'Choose an animated text style that displays when your Rollover loads, pick a delay time to suit your needs'}"></div>
+        <div id="text-animation-off" class="text-animation-off design-animation-dropdown" wix-ctrl="DropDown"
+          wix-options="{title: 'Text Animation', defaultValue: 'none', options:[
+          {value: 'none', label: 'None'},
+          {value: 'grow', label: 'Grow'},
+          {value:'zoom-in', label: 'Zoom In'},
+          {value:'fade-in', label: 'Fade In'},
+          {value:'mexican-wave', label: 'Mexican Wave'},
+          {value:'rotate-up', label: 'Rotate Up'},
+          {value:'fold-in', label: 'Fold In'}
+        ]}"></div>
+        <hr class="divider-long text-animation-off" />
+        <div id="text-animation-delay-off" wix-ctrl="Slider" wix-param="text-animation-delay-off" wix-options="{title: 'Text Animation Delay', defaultValue:800, units: 'ms', max : 5000, infoText: 'Delay text animation (milliseconds)'}"></div>
+        <hr class="divider-long text-animation-off" />
+        <div id="text-font-off" wix-param-font="myFont0" wix-param-color="textColor0" wix-ctrl="FontAndColorPicker"
+          wix-options="{title: 'Start Heading', startWithColor: 'color-1', startWithTheme : 'font_4', fontMaxSize: 120}"></div>
+        <hr class="divider-long text-font-off" />
+        <div id="subtext-font-off" wix-param-font="submyFont0" wix-param-color="subtextColor0" wix-ctrl="FontAndColorPicker"
+          wix-options="{title: 'Start Paragraph', startWithColor: 'color-1', startWithStyle: {bold: false, italic: false, underline: false},startWithTheme : 'font_8', fontMaxSize: 120}"></div>
+        <hr class="divider-long subtext-font-off" />
+        <div class="textbtn-tab">
+          <hr class="divider-long" />
+          <div id="textbtn-font-off" wix-param-font="myFontB0" wix-param-color="textColorB0" wix-ctrl="FontAndColorPicker"
+            wix-options="{title: 'Start Button', startWithColor: 'color-1', startWithTheme : 'font_8', fontMaxSize: 80}"></div>
+          <hr class="divider-long" />
+        </div>
+        <div class="tooltip-container">
+         <div id="tootltipsettings" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'ToolTip Trigger Settings', infoText:'Select your tooltips elements with animations'}"></div>
+
+         <hr class="divider-long" />
+           <div id="tooltip_btn_mouseout" wix-param="tooltiponmouse" wix-ctrl="ToggleSwitch" wix-options="{label:'Run Effect once', defaultValue:false, infoText: 'To select this option to stay with tooltips on mouseout'}">
+           </div>
+            <hr class="divider-long" />
+       </div>
+
+
+      </div>
+
+      <div id="end-font-allow" wix-param="enfontonallow" class='end-tab' wix-ctrl="ToggleSwitch" wix-options="{label:'End Font', infoText: 'Edit your font styles', defaultValue:false}"></div>
+      <div class="end-tab-container" id="endfont">
+        <div class="text-font-on" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'End Fonts', infoText:' Choose an animated text style that displays when your Rollover loads, pick a delay time to suit your needs'}"></div>
+        <div id="text-animation-on" class="text-animation-on" wix-ctrl="DropDown" wix-options="{title: 'Text Animation', defaultValue: 'none', options:[
+          {value: 'none', label: 'None'},
+          {value: 'grow', label: 'Grow'},
+          {value:'zoom-in', label: 'Zoom In'},
+          {value:'fade-in', label: 'Fade In'},
+          {value:'mexican-wave', label: 'Mexican Wave'},
+          {value:'rotate-up', label: 'Rotate Up'},
+          {value:'fold-in', label: 'Fold In'}
+        ]}"></div>
+        <hr class="divider-long text-animation-on" />
+        <div id="text-animation-delay-on" wix-ctrl="Slider" wix-param="text-animation-delay-on" wix-options="{title: 'Text Animation Delay', defaultValue:800, units: 'ms', max : 5000, infoText: 'Delay text animation (milliseconds)'}"></div>
+        <hr class="divider-long text-animation-on" />
+        <div id="text-font-on" wix-param-font="myFont1" wix-param-color="textColor1" wix-ctrl="FontAndColorPicker"
+          wix-options="{title: 'End Heading', startWithColor: 'color-1', startWithTheme : 'font_4', fontMaxSize: 120}"></div>
+        <hr class="divider-long text-font-on" />
+        <div id="subtext-font-on" wix-param-font="submyFont1" wix-param-color="subtextColor1" wix-ctrl="FontAndColorPicker"
+          wix-options="{title: 'End Paragraph', startWithColor: 'color-1', startWithTheme : 'font_8', fontMaxSize: 120}"></div>
+        <hr class="divider-long subtext-font-on" />
+        <div class="textbtn-tablink">
+          <div id="textbtn-font-on" wix-param-font="myFontB1" wix-param-color="textColorB1" wix-ctrl="FontAndColorPicker"
+            wix-options="{title: 'End Button', startWithColor: 'color-1', startWithTheme : 'font_8', fontMaxSize: 80}"></div>
+          <hr class="divider-long textbtn-font-on" />
+        </div>
+      </div>
+          </div>
+    </div>
+  <!-- new-ui cooltips font-->
+  <div id="trigger_font_container">
+    <hr class="divider-long twist" />
+    <div id="cooltiplabel" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Font and Text', infoText: 'Use these tools to design the cooltip font and text'}"></div>
+      <hr class="divider-long" />
+
+      <div id="trigger-font" wix-param-font="triggerFont" wix-param-color="triggerFontColor" wix-ctrl="FontAndColorPicker"
+        wix-options="{title: 'Trigger Font', startWithColor: 'color-5', startWithTheme : 'font_5', fontMaxSize: 28}"></div>
+
+      <hr class="divider-long" />
+
+       <div id="triggerbgoption" wix-param="triggerbgoption" wix-ctrl="ToggleSwitch" wix-options="{label:'Trigger text Background', defaultValue:false, infoText: 'To enable or disable trigger text background'}">
+       </div>
+
+        <hr class="divider-long" />
+
+       <div id="triggerbackgroundcolor" wix-param="triggerbackgroundcolor" wix-ctrl="ColorPickerInput" wix-options="{ title: 'Trigger background Color'}"></div>
+
+       <hr class="divider-long" />
+
+      <div id="tooltip-font" wix-param-font="tooltipFont" wix-param-color="tooltipFontColor" wix-ctrl="FontAndColorPicker"
+        wix-options="{title: 'CoolTip Font', startWithColor: 'color-1', startWithTheme : 'font_8', fontMaxSize: 20}"></div>
+
+       <hr class="divider-long" />
+
+       <div id="cooltipfontAngle" wix-param="cooltipfontAngle" wix-ctrl="Slider" wix-options="{title: 'Cooltip text Angle', defaultValue:0, units: '&deg;', max : 20, min : -20, infoText:'You can change the angle of Cooltip text'}"></div>
+
+       <hr class="divider-long" />
+
+    </div>
+    <!-- new-ui-->
+      <!-- Layout -->
+      <div class="drillaccordioncontent item_4">
+
+          <!-- Toggle -->
+    <div id="show-layout" wix-ctrl="ToggleSwitch" wix-param="showlayout" wix-options="{label:'Edit Layout', defaultValue:false, infoText:'Use these tools to design the position of the text and buttons'}">
+    </div>
+<div id ="layout-options" wix-param=layoutoptions>
+
+        <hr class="divider-long twist" />
+        <div class="subtext-off" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Layout', infoText: 'Use these tools to design the position of the text and buttons'}"></div>
+        <div class="text-off">
+          <hr class="divider-long" />
+
+        <div  id="text-position-subtextoff"  wix-ctrl="DropDown" wix-options="{title: 'Text Position', defaultValue: 'middle', options:[  {value: 'top', label: 'Top'}, {value: 'middle', label: 'Middle'}, {value: 'bottom', label: 'Bottom'} ]}"></div>
+
+          <hr class="divider-long subtext-off" />
+
+          <div id="text-align-subtextoff" class="subtext-off" wix-ctrl="Thumbnails" wix-param="subtextAlign0" wix-options="{  activeDesign:'highlighted', maxThumbsPerRow:5, defaultValue: 'c', title:'Text and button alignment', square:true, options:[ {value: 'l', label : 'Left', src: 'src/settings/svg/blank.svg'}, {value: 'c', label : 'Center', src: 'src/settings/svg/blank.svg'}, {value: 'r', label : 'Right', src: 'src/settings/svg/blank.svg'}, {value: 'j', label : 'Justify',  src: 'src/settings/svg/blank.svg'}  ]}"></div>
+          <hr class="divider-long subtext-off" />
+
+          <div id="text-width-subtextoff" class="subtext-off" wix-ctrl="Slider" wix-param="subtextWidth0" wix-options="{title: 'Text width', defaultValue:564, units: 'px', max : 641,min : 100,  infoText: 'Set a maximum width for text. The text will resize to respond to the size of your Rollover'}"></div>
+          <hr class="divider-long subtext-off" />
+          <div id="text-padding-subtextoff" class="subtext-off" wix-ctrl="Slider" wix-param="subtextPadding0" wix-options="{title: 'Horizontal Offset', defaultValue:'30', units: 'px', max : 250,min : 0, infoText: 'Adjust the position of your text and button elements'}"></div>
+          <hr class="divider-long subtext-off" />
+          <div id="text-paddingTB-subtextoff" class="subtext-off" wix-ctrl="Slider" wix-param="subtextPaddingTB0" wix-options="{title: 'Vertical Offset', defaultValue:'0', units: 'px', max : 250,min : 10, infoText: 'Adjust the height position of your text and button elements'}"></div>
+
+          <hr class="divider-long subtext-off" />
+
+
+        </div>
+        <!-- <CAN'T FIND THIS IN SETTINGS OR SCRIPTS"-->
+        <div id="distortion_position">
+          <hr class="divider-long"/>
+           <div class="text-dist-link" id="text-dist-link"  wix-ctrl="Input" wix-options="{title: 'Link Text', defaultText: 'Show More', maxLength: 40, invalidMessage: 'Max 40 characters'}"></div>
+           <hr class="divider-long"/>
+          <div class="text-align-heading" id="text-align-heading"  wix-ctrl="DropDown" wix-options="{title: 'Heading Position', defaultValue: 'mc', options:[  {value: 'tl', label: 'Top Left'}, {value: 'tc', label: 'Top Centre'}, {value: 'tr', label: 'Top Right'}, {value:'ml', label: 'Middle Left'}, {value:'mc', label: 'Middle Centre'}, {value: 'mr', label: 'Middle Right'}, {value: 'bl', label: 'Bottom Left'}, {value: 'bc', label: 'Bottom Centre'}, {value:'br', label: 'Bottom Right'} ]}"></div>
+
+        </div>
+
+        <script type="text/javascript">
+          $(document).ready(function () {
+
+            if (settings.width <= 980) {
+
+              $("#text-width-subtextoff").getCtrl().comp.props.max = settings.width;
+              //$("#text-width-subtextoff").getCtrl().comp.setState({value: settings.width - 40});
+
+              $("#text-width-subtexton").getCtrl().comp.props.max = settings.width;
+              //$("#text-width-subtexton").getCtrl().comp.setState({value: settings.width - 40});
+            } else {
+              $("#text-width-subtextoff").getCtrl().comp.props.max = 980;
+              $("#text-width-subtexton").getCtrl().comp.props.max = 980;
+            }
+
+            // Set and retain off state alignments
+            $('#text-align-subtextoff .radio-control').removeClass('active');
+
+
+            $('#text-align-subtextoff .radio-control').click(function () {
+              $('#text-align-subtextoff .radio-control').removeClass('active');
+              $(this).addClass('active');
+            });
+
+
+
+            if (settings.subtextAlign0 == 'l') {
+              $('#text-align-subtextoff .radio-control:nth-of-type(1)').addClass('active');
+            } else if (settings.subtextAlign0 == 'r') {
+              $('#text-align-subtextoff .radio-control:nth-of-type(3)').addClass('active');
+            } else if (settings.subtextAlign0 == 'j') {
+              $('#text-align-subtextoff .radio-control:nth-of-type(4)').addClass('active');
+            } else {
+              $('#text-align-subtextoff .radio-control:nth-of-type(2)').addClass('active');
+            }
+
+
+            $('#text-align-subtexton .radio-control').removeClass('active');
+
+            $('#text-align-subtexton .radio-control').click(function () {
+              $('#text-align-subtexton .radio-control').removeClass('active');
+              $(this).addClass('active');
+            });
+
+
+            if (settings.subtextAlign1 == 'l') {
+              $('#text-align-subtexton .radio-control:nth-of-type(1)').addClass('active');
+            } else if (settings.subtextAlign1 == 'r') {
+              $('#text-align-subtexton .radio-control:nth-of-type(3)').addClass('active');
+            } else if (settings.subtextAlign1 == 'j') {
+              $('#text-align-subtexton .radio-control:nth-of-type(4)').addClass('active');
+            } else {
+              $('#text-align-subtexton .radio-control:nth-of-type(2)').addClass('active');
+            }
+
+          });
+        </script>
+
+        <div class="end-tab-container">
+          <hr class="divider-long" />
+          <div class="subtext-on" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'End layout', infoText: 'Use these tools to design the position of the text and buttons'}">
+          </div>
+
+          <hr class="divider-long" />
+          <div  id="text-position-subtexton"  wix-ctrl="DropDown" wix-options="{title: 'Text Position', defaultValue: 'middle', options:[  {value: 'top', label: 'Top'}, {value: 'middle', label: 'Middle'}, {value: 'bottom', label: 'Bottom'} ]}"></div>
+          <hr class="divider-long subtext-off" />
+
+          <div id="text-align-subtexton" class="subtext-on" wix-ctrl="Thumbnails" wix-param="subtextAlign1" wix-options="{  activeDesign:'highlighted', maxThumbsPerRow:5, defaultValue: 'c', title:'Text and button alignment', square:true, options:[ {value: 'l', label : 'Left', src: 'src/settings/svg/blank.svg'}, {value: 'c', label : 'Center', src: 'src/settings/svg/blank.svg'}, {value: 'r', label : 'Right', src: 'src/settings/svg/blank.svg'}, {value: 'j', label : 'Justify',  src: 'src/settings/svg/blank.svg'}  ]}"></div>
+          <hr class="divider-long subtext-on" />
+
+
+          <div id="text-width-subtexton" class="subtext-on" wix-ctrl="Slider" wix-param="subtextWidth1" wix-options="{title: 'Text width', defaultValue:660, units: 'px', max : 975, min : 100, infoText: 'Set a maximum width for text.  The text will resize to respond to the size of your Rollover'}"></div>
+          <hr class="divider-long subtext-on" />
+          <div id="text-padding-subtexton" class="subtext-on" wix-ctrl="Slider" wix-param="subtextPadding1" wix-options="{title: 'Horizontal Offset', defaultValue:'30', units: 'px', max : 250,min : 0, infoText: 'Adjust the position of your text and button elements'}"></div>
+          <hr class="divider-long subtext-on" />
+          <div id="text-paddingTB-subtexton" class="subtext-on" wix-ctrl="Slider" wix-param="subtextPaddingTB1" wix-options="{title: 'Vertical Offset', defaultValue:'0', units: 'px', max : 250,min : 10, infoText: 'Adjust the height position of your text and button elements'}"></div>
+
+
+        </div>
+
+      <div id="layoutsettings" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Advanced Layout Settings', infoText:'Setup your Rollover layout. For precision select the Layout options'}"></div>
+
+      <div class="premiumonly">
+        <!-- Enable text formatting and button -->
+        <div id="allowSubtextBtn" wix-param="allowSubtextBtn" wix-ctrl="ToggleSwitch" wix-options="{label:'Advanced layout', infoText: 'Rollover now gives you more layout options than ever. Try them out by turning this switch to ON', defaultValue:true}">
+        </div>
+        <hr class="divider-long allowSubtextBtn" />
+      </div>
+    </div>
+      </div>
+
+      <hr class="divider-long peranent-effect" />
+      <!-- Add link to end state -->
+      <div id="end-state-link" class="end-state-link text-left" wix-param="endStateLink" wix-ctrl="ToggleSwitch" wix-options="{label:'Add link to end state', defaultValue:false, infoText: 'Turn this switch on to add a link to the end state of your rollover.'}">
+      </div>
+      <hr class="divider-long peranent-effect" />
+
+      <!-- Add Link -->
+      <div id="addLink" class="specialhide">
+        <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Add Link'}"></div>
+        <div style="display: none;">
+          <div id="linkData" wix-ctrl="Input"></div>
+        </div>
+        <div class="main-tab relative">
+          <div id="linkChoice" wix-ctrl="Input" wix-options="{placeholder: 'Choose Link', title: 'Where does it link to?', infoText: 'Add a link to the end state of your rollover'}"></div>
+          <div id="linkModel" wix-ctrl="Button" wix-options="{label: 'Add an action link', infoText: 'Link to...', className: 'btn-confirm-primary'}"></div>
+        </div>
+
+        <div id="textbtn-allowlink-container">
+          <hr class="divider-short" />
+          <div id="textbtn-allowlink" wix-param="textbtnb" wix-ctrl="ToggleSwitch" wix-options="{label:'Trigger end link with button', defaultValue:false, infoText: 'To Design your Link button, go to Design, then, buttons'}">
+          </div>
+        </div>
+      </div>
+      <!-- Run effect once -->
+
+      <div id="peranent-effect" class="peranent-effect text-left" wix-param="sticky" wix-ctrl="ToggleSwitch" wix-options="{label:'Only animate first time', defaultValue:false, infoText: 'If you want the effect to stay on the End State after the effect has run, toggle this switch'}">
+      </div>
+
+  <hr class="divider-long peranent-effect" />
+
+      <div id="color-filter-label" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Colour Filters', infoText: 'Apply filters to match your brand colours, or create new effects'}"></div>
+            <div id="colour-filter-start" wix-ctrl="ToggleSwitch" wix-param="colourfilterstart" wix-options="{label:'Colour Filters', defaultValue:false, infoText:'Use these colour filters to edit your design'}">
+            </div>
+<div id="colourfilters">
+        <div id="color-start-label" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Start Colour Filters', infoText: 'Apply filters to match your brand colours, or create new effects'}"></div>
+          <div id="filters-start" wix-param ="filtersstart">
+          <!--start colour filters new-ui-->
+
+          <div id="overlay-off" class="premiumonly">
+            <div id="overlayOffColour2Container" wix-param="overlayOffColour2" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Overlay Filter 1', startWithColor: 'color-1', startWithOpacity: '0'}"></div>
+            <hr class="divider-long" />
+            <div id="overlayOffColour1Container" wix-param="overlayOffColour1" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Overlay Filter 2', startWithColor: 'color-1', startWithOpacity: '0', infoText:'CCC'}"></div>
+            <hr class="divider-long" />
+            <div id="overlayOffAngleContainer" wix-param="overlayOffAngle" wix-ctrl="Slider" wix-options="{title: 'Angle', defaultValue:0, units: '&deg;', max : 360, infoText:'You can change the angle of your colour filter with this tool'}"></div>
+            <hr class="divider-long" />
+          </div>
+          </div>
+          <!--end colour filters new-ui-->
+          <div id="color-end-label" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'End Colour Filters', infoText: 'Apply filters to match your brand colours, or create new effects'}"></div>
+
+          <!-- <div id="colour-filters-end" wix-ctrl="ToggleSwitch" wix-param="colourfiltersend" wix-options="{label:'End Colour Filter Options', defaultValue:false, infoText:'Use these colour filters to edit your design'}">
+          </div> -->
+          <div id="filters-end" wix-param ="filtersend">
+
+            <div id="overlay-on" class="premiumonly">
+              <div id="overlayOnColour2Container" wix-param="overlayOnColour2" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Overlay Filter 1', startWithColor: 'color-1', startWithOpacity: '0'}"></div>
+              <hr class="divider-long" />
+              <div id="overlayOnColour1Container" wix-param="overlayOnColour1" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Overlay Filter 2', startWithColor: 'color-1', startWithOpacity: '0'}"></div>
+              <hr class="divider-long" />
+              <div id="overlayOnAngleContainer" wix-param="overlayOnAngle" wix-ctrl="Slider" wix-options="{title: 'Angle', defaultValue:0, units: '&deg;', max : 360}"></div>
+              <hr class="divider-long" />
+            </div>
+          </div>
+        </div>
+
+    <div class="drillaccordioncontent item_5">
+      <hr class="divider-long" />
+      <div id="borders" wix-param="borders" wix-ctrl="ToggleSwitch" wix-options="{label:'Edit Border', defaultValue:false, infoText: 'Edit border size, corners and border colour'}">
+      </div>
+      <div id ="border-opts">
+      <div wix-ctrl="SectionDividerLabeled" id="borderandline2" wix-options="{label: 'Border Options'}"></div>
+      <div id="border-color" wix-param="borderColor" wix-ctrl="ColorPickerInput" wix-options="{ title: 'Border Color', startWithColor: 'color-1'}"></div>
+      <hr class="divider-long border-color" />
+      <div id="border-size" wix-param="borderSize" wix-ctrl="Slider" wix-options="{title: 'Border Size', defaultValue:0, units: ' px', max : 10}"></div>
+      <div id="cooltipbordersize" wix-param="cooltipbordersize" wix-ctrl="Slider" wix-options="{title: 'Cooltip Border Size', defaultValue:0, units: ' px', max : 5}"></div>
+      <hr class="divider-long border-color" />
+      <div id="corner-controls">
+        <div wix-ctrl="SectionDividerLabeled" id="borderandline2" wix-options="{label: 'Corners'}"></div>
+        <div id="radius-off" wix-param="radius0" wix-ctrl="Slider" wix-options="{title: 'Corner Roundness', defaultValue:0, units: ' px', max : 100}"></div>
+        <hr class="divider-long border-color" />
+      </div>
+      <hr class="divider-long" />
+      <div id="line-colour-0-container" wix-ctrl="SectionDividerLabeled" id="borderandline2" wix-options="{label: 'Line'}"></div>
+      <div id="line-colour-0" wix-param="lineColor0" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Line Color', startWithColor: 'color-1', startWithOpacity: 1}"></div>
+    </div>
+  </div>
+<hr class="divider-long peranent-effect" />
+    <div class="drillaccordioncontent item_15">
+      <div id="buttons" wix-param="buttons" wix-ctrl="ToggleSwitch" wix-options="{label:'Edit Button', defaultValue:false, infoText: 'Edit border size, corners and border colour'}">
+      </div>
+      <div id="button-on">
+      <div id="design-button-start">
+        <hr class="divider-long" />
+        <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Button Options'}"></div>
+        <div id="textbtn-backcolour-off" wix-param="backColorB0" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Button Background Color', startWithColor: 'color-1', startWithOpacity: '0', infoText:'You can use rollover without an image. Set the background colour and opacity here'}"></div>
+        <hr class="divider-short" />
+        <div id="textbtn-colour-border-off" wix-param="backColorBborder0" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Button Border Color', startWithColor: 'color-1', startWithOpacity: 1}"></div>
+        <hr class="divider-short" />
+        <div id="textbtn-size-border-off" wix-ctrl="Slider" wix-param="backSizeBborder0" wix-options="{title: 'Button Border Size', defaultValue:1, units: 'px', max : 10}"></div>
+        <hr class="divider-short" />
+        <div id="textbtn-radius-off" wix-ctrl="Slider" wix-param="radiusB0" wix-options="{title: 'Corner Roundness', defaultValue:4, max : 100, units : 'px'}"></div>
+        <hr class="divider-short" />
+        <div style="display: none" id="textbtn-align-off" wix-ctrl="DropDown" wix-options="{title: 'Position', defaultValue: 'mc', options:[  {value: 'tl', label: 'Top Left'}, {value: 'tc', label: 'Top Centre'}, {value: 'tr', label: 'Top Right'}, {value:'ml', label: 'Middle Left'}, {value:'mc', label: 'Middle Centre'}, {value: 'mr', label: 'Middle Right'}, {value: 'bl', label: 'Bottom Left'}, {value: 'bc', label: 'Bottom Centre'}, {value:'br', label: 'Bottom Right'} ]}"></div>
+      </div>
+
+      <div id="design-button-end">
+        <hr class="divider-long" />
+        <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'End Button'}"></div>
+
+        <div id="textbtn-colour-on" wix-param="backColorB1" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Button Background Color', startWithColor: 'color-1', startWithOpacity: '0', infoText:'You can use rollover without an image. Set the background colour and opacity here'}"></div>
+        <hr class="divider-short trigger_end_divider" />
+        <div id="textbtn-colour-border-on" wix-param="backColorBborder1" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Button Border Color', startWithColor: 'color-1', startWithOpacity: 1}"></div>
+        <hr class="divider-short trigger_end_divider" />
+        <div id="textbtn-size-border-on" wix-ctrl="Slider" wix-param="backSizeBborder1" wix-options="{title: 'Button Border Size', defaultValue:1, units: 'px', max : 10}"></div>
+        <hr class="divider-short trigger_end_divider" />
+        <div id="textbtn-radius-on" wix-ctrl="Slider" wix-param="radiusB1" wix-options="{title: 'Corner Roundness', defaultValue:4, max : 100, units:'px'}"></div>
+        <hr class="divider-short trigger_end_divider" />
+        <div style="display: none" id="textbtn-align-on" wix-ctrl="DropDown" wix-options="{title: 'Position', defaultValue: 'mc', options:[  {value: 'tl', label: 'Top Left'}, {value: 'tc', label: 'Top Centre'}, {value: 'tr', label: 'Top Right'}, {value:'ml', label: 'Middle Left'}, {value:'mc', label: 'Middle Centre'}, {value: 'mr', label: 'Middle Right'}, {value: 'bl', label: 'Bottom Left'}, {value: 'bc', label: 'Bottom Centre'}, {value:'br', label: 'Bottom Right'} ]}"></div>
+        <hr class="divider-short trigger_end_divider" />
+        <div id="cross-colour-on-close" wix-param="crossColorB1close" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Close Button X Color', startWithColor: 'color-1', startWithOpacity: 1 }"></div>
+        <hr class="divider-short" />
+        <div id="textbtn-colour-on-close" wix-param="backColorB1close" wix-ctrl="ColorPickerSlider" wix-options="{ title: 'Close Button Background Color', startWithColor: 'color-5', startWithOpacity: 1 }"></div>
+
+        <hr class="divider-long" />
+        <div id="settings_triggerlink_container">
+          <a href="Javascript:void(0);" id="btn_settings_triggerlink">
+            Want to create your own design, click here to go to the Design Tab
+          </a>
+        </div>
+
+      </div>
+</div>
+
+    </div>
+
+
+
+
+    <div class="drillaccordioncontent item_10">
+          <div id="cooltips_color" class="cooltips-color-container">
+        <hr class="divider-long" />
+        <div wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Cooltips colour', infoText:'Choose a colour for Cooltips'}"></div>
+        <div id="cooltipscolor" wix-param="cooltipscolor" wix-ctrl="ColorPickerInput" wix-options="{startWithColor: 'color-5', title: 'Cooltips color'}"></div>
+      </div>
+      <hr class="divider-long" />
+      <div id="cooltipscolor-opacity" class="cooltipscolor-opacity" wix-param="cooltipscoloropacity" wix-ctrl="Slider"
+        wix-options="{title: 'Cooltips Color Opacity', defaultValue:100, units: ' %', max : 100}"></div>
+  </div>
+
+    <div class="drillaccordioncontent item_12">
+
+      <div id="cooltips-imgfilter-label" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Trigger Type', infoText: 'Select trigger type using below dropdown'}"></div>
+
+      <div id="triggerchoice" wix-ctrl="DropDown" wix-options="{title: 'Trigger', defaultValue: '1', options:[
+            {value: '1', label: 'Text'},
+            {value: '2', label: 'Icon'},
+            {value:'3', label: 'Both'}
+            ]}">
+      </div>
+
+      <div id="triggericoncolorcontainer">
+
+        <div id="cooltips-imgfilter-label" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Trigger Icon', infoText: 'Click on trigger icon button to select trigger icon'}"></div>
+        <div id="icon-picker" class="icon-picker" data-pickerid="fa" data-iconsets='{"fa":"Trigger Icon"}'>
+          <div class="icon-text"><input type="text" class="form-control" /></div>
+        </div>
+
+        <div class="fa-set icon-set">
+          <ul>
+            <!--Social icons-->
+
+            <li data-code="f164" data-class="fa fa-thumbs-up" class="fa fa-thumbs-up"></li>
+            <li data-code="f004" data-class="fa fa-heart" class="fa fa-heart"></li>
+            <li data-code="f08a" data-class="fa fa-heart-o" class="fa fa-heart-o"></li>
+            <li data-code="f005" data-class="fa fa-star" class="fa fa-star"></li>
+            <li data-code="f089" data-class="fa fa-star-half" class="fa fa-star-half"></li>
+            <li data-code="f123" data-class="fa fa-star-half-empty" class="fa fa-star-half-empty"></li>
+            <li data-code="f123" data-class="fa fa-star-half-full" class="fa fa-star-half-full"></li>
+            <li data-code="f123" data-class="fa fa-star-half-o" class="fa fa-star-half-o"></li>
+            <li data-code="f006" data-class="fa fa-star-o" class="fa fa-star-o"></li>
+            <li data-code="f09a" data-class="fa fa-facebook" class="fa fa-facebook"></li>
+            <li data-code="f082" data-class="fa fa-facebook-square" class="fa fa-facebook-square"></li>
+            <li data-code="f1a1" data-class="fa fa-reddit" class="fa fa-reddit"></li>
+            <li data-code="f1a2" data-class="fa fa-reddit-square" class="fa fa-reddit-square"></li>
+            <li data-code="f1ca" data-class="fa fa-vine" class="fa fa-vine"></li>
+            <li data-code="f189" data-class="fa fa-vk" class="fa fa-vk"></li>
+            <li data-code="f17e" data-class="fa fa-skype" class="fa fa-skype"></li>
+            <li data-code="f1a0" data-class="fa fa-google" class="fa fa-google"></li>
+            <li data-code="f0d5" data-class="fa fa-google-plus" class="fa fa-google-plus"></li>
+            <li data-code="f0d4" data-class="fa fa-google-plus-square" class="fa fa-google-plus-square"></li>
+            <li data-code="f1d7" data-class="fa fa-wechat" class="fa fa-wechat"></li>
+            <li data-code="f167" data-class="fa fa-youtube" class="fa fa-youtube"></li>
+            <li data-code="f16a" data-class="fa fa-youtube-play" class="fa fa-youtube-play"></li>
+            <li data-code="f166" data-class="fa fa-youtube-square" class="fa fa-youtube-square"></li>
+            <li data-code="f075" data-class="fa fa-comment" class="fa fa-comment"></li>
+            <li data-code="f0e5" data-class="fa fa-comment-o" class="fa fa-comment-o"></li>
+            <li data-code="f086" data-class="fa fa-comments" class="fa fa-comments"></li>
+            <li data-code="f0e6" data-class="fa fa-comments-o" class="fa fa-comments-o"></li>
+            <li data-code="f16d" data-class="fa fa-instagram" class="fa fa-instagram"></li>
+            <li data-code="f099" data-class="fa fa-twitter" class="fa fa-twitter"></li>
+            <li data-code="f081" data-class="fa fa-twitter-square" class="fa fa-twitter-square"></li>
+            <li data-code="f0e1" data-class="fa fa-linkedin" class="fa fa-linkedin"></li>
+            <li data-code="f08c" data-class="fa fa-linkedin-square" class="fa fa-linkedin-square"></li>
+            <li data-code="f0d2" data-class="fa fa-pinterest" class="fa fa-pinterest"></li>
+            <li data-code="f0d3" data-class="fa fa-pinterest-square" class="fa fa-pinterest-square"></li>
+
+            <!--Web icons-->
+            <li data-code="f19d" data-class="fa fa-graduation-cap" class="fa fa-graduation-cap"></li>
+            <li data-code="f192" data-class="fa fa-dot-circle-o" class="fa fa-dot-circle-o"></li>
+            <li data-code="f10b" data-class="fa fa-mobile" class="fa fa-mobile"></li>
+            <li data-code="f10b" data-class="fa fa-mobile-phone" class="fa fa-mobile-phone"></li>
+            <li data-code="f023" data-class="fa fa-lock" class="fa fa-lock"></li>
+            <li data-code="f0c0" data-class="fa fa-group" class="fa fa-group"></li>
+            <li data-code="f150" data-class="fa fa-toggle-down" class="fa fa-toggle-down"></li>
+            <li data-code="f191" data-class="fa fa-toggle-left" class="fa fa-toggle-left"></li>
+            <li data-code="f152" data-class="fa fa-toggle-right" class="fa fa-toggle-right"></li>
+            <li data-code="f151" data-class="fa fa-toggle-up" class="fa fa-toggle-up"></li>
+            <li data-code="f041" data-class="fa fa-map-marker" class="fa fa-map-marker"></li>
+            <li data-code="f08e" data-class="fa fa-external-link" class="fa fa-external-link"></li>
+            <li data-code="f14c" data-class="fa fa-external-link-square" class="fa fa-external-link-square"></li>
+            <li data-code="f108" data-class="fa fa-desktop" class="fa fa-desktop"></li>
+            <li data-code="f130" data-class="fa fa-microphone" class="fa fa-microphone"></li>
+            <li data-code="f131" data-class="fa fa-microphone-slash" class="fa fa-microphone-slash"></li>
+            <li data-code="f07a" data-class="fa fa-shopping-cart" class="fa fa-shopping-cart"></li>
+            <li data-code="f1c8" data-class="fa fa-file-video-o" class="fa fa-file-video-o"></li>
+            <li data-code="f0c6" data-class="fa fa-paperclip" class="fa fa-paperclip"></li>
+            <li data-code="f1b2" data-class="fa fa-cube" class="fa fa-cube"></li>
+            <li data-code="f1b3" data-class="fa fa-cubes" class="fa fa-cubes"></li>
+            <li data-code="f0d1" data-class="fa fa-truck" class="fa fa-truck"></li>
+            <li data-code="f017" data-class="fa fa-clock-o" class="fa fa-clock-o"></li>
+            <li data-code="f06e" data-class="fa fa-eye" class="fa fa-eye"></li>
+            <li data-code="f070" data-class="fa fa-eye-slash" class="fa fa-eye-slash"></li>
+            <li data-code="f1d8" data-class="fa fa-send" class="fa fa-send"></li>
+            <li data-code="f1d9" data-class="fa fa-send-o" class="fa fa-send-o"></li>
+            <li data-code="f0e9" data-class="fa fa-umbrella" class="fa fa-umbrella"></li>
+            <li data-code="f084" data-class="fa fa-key" class="fa fa-key"></li>
+            <li data-code="f080" data-class="fa fa-bar-chart-o" class="fa fa-bar-chart-o"></li>
+            <li data-code="f042" data-class="fa fa-adjust" class="fa fa-adjust"></li>
+            <li data-code="f186" data-class="fa fa-moon-o" class="fa fa-moon-o"></li>
+            <li data-code="f012" data-class="fa fa-signal" class="fa fa-signal"></li>
+            <li data-code="f1c4" data-class="fa fa-file-powerpoint-o" class="fa fa-file-powerpoint-o"></li>
+            <li data-code="f02e" data-class="fa fa-bookmark" class="fa fa-bookmark"></li>
+            <li data-code="f097" data-class="fa fa-bookmark-o" class="fa fa-bookmark-o"></li>
+            <li data-code="f1cd" data-class="fa fa-support" class="fa fa-support"></li>
+            <li data-code="f109" data-class="fa fa-laptop" class="fa fa-laptop"></li>
+            <li data-code="f0c3" data-class="fa fa-flask" class="fa fa-flask"></li>
+            <li data-code="f132" data-class="fa fa-shield" class="fa fa-shield"></li>
+            <li data-code="f185" data-class="fa fa-sun-o" class="fa fa-sun-o"></li>
+            <li data-code="f0fc" data-class="fa fa-beer" class="fa fa-beer"></li>
+            <li data-code="f15b" data-class="fa fa-file" class="fa fa-file"></li>
+            <li data-code="f040" data-class="fa fa-pencil" class="fa fa-pencil"></li>
+            <li data-code="f14b" data-class="fa fa-pencil-square" class="fa fa-pencil-square"></li>
+            <li data-code="f044" data-class="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></li>
+            <li data-code="f07b" data-class="fa fa-folder" class="fa fa-folder"></li>
+            <li data-code="f114" data-class="fa fa-folder-o" class="fa fa-folder-o"></li>
+            <li data-code="f07c" data-class="fa fa-folder-open" class="fa fa-folder-open"></li>
+            <li data-code="f115" data-class="fa fa-folder-open-o" class="fa fa-folder-open-o"></li>
+            <li data-code="f187" data-class="fa fa-archive" class="fa fa-archive"></li>
+            <li data-code="f024" data-class="fa fa-flag" class="fa fa-flag"></li>
+            <li data-code="f11e" data-class="fa fa-flag-checkered" class="fa fa-flag-checkered"></li>
+            <li data-code="f11d" data-class="fa fa-flag-o" class="fa fa-flag-o"></li>
+            <li data-code="f076" data-class="fa fa-magnet" class="fa fa-magnet"></li>
+            <li data-code="f05a" data-class="fa fa-info-circle" class="fa fa-info-circle"></li>
+            <li data-code="f128" data-class="fa fa-question" class="fa fa-question"></li>
+            <li data-code="f059" data-class="fa fa-question-circle" class="fa fa-question-circle"></li>
+            <li data-code="f007" data-class="fa fa-user" class="fa fa-user"></li>
+            <li data-code="f0f0" data-class="fa fa-user-md" class="fa fa-user-md"></li>
+            <li data-code="f0c0" data-class="fa fa-users" class="fa fa-users"></li>
+            <li data-code="f19c" data-class="fa fa-bank" class="fa fa-bank"></li>
+            <li data-code="f02a" data-class="fa fa-barcode" class="fa fa-barcode"></li>
+            <li data-code="f0c9" data-class="fa fa-bars" class="fa fa-bars"></li>
+            <li data-code="f069" data-class="fa fa-asterisk" class="fa fa-asterisk"></li>
+            <li data-code="f179" data-class="fa fa-apple" class="fa fa-apple"></li>
+            <li data-code="f044" data-class="fa fa-edit" class="fa fa-edit"></li>
+            <li data-code="f025" data-class="fa fa-headphones" class="fa fa-headphones"></li>
+            <li data-code="f17a" data-class="fa fa-windows" class="fa fa-windows"></li>
+            <li data-code="f1b9" data-class="fa fa-automobile" class="fa fa-automobile"></li>
+            <li data-code="f16b" data-class="fa fa-dropbox" class="fa fa-dropbox"></li>
+            <li data-code="f1c6" data-class="fa fa-file-archive-o" class="fa fa-file-archive-o"></li>
+            <li data-code="f015" data-class="fa fa-home" class="fa fa-home"></li>
+            <li data-code="f19c" data-class="fa fa-institution" class="fa fa-institution"></li>
+            <li data-code="f093" data-class="fa fa-upload" class="fa fa-upload"></li>
+            <li data-code="f03d" data-class="fa fa-video-camera" class="fa fa-video-camera"></li>
+            <li data-code="f194" data-class="fa fa-vimeo-square" class="fa fa-vimeo-square"></li>
+            <li data-code="f027" data-class="fa fa-volume-down" class="fa fa-volume-down"></li>
+            <li data-code="f026" data-class="fa fa-volume-off" class="fa fa-volume-off"></li>
+            <li data-code="f028" data-class="fa fa-volume-up" class="fa fa-volume-up"></li>
+            <li data-code="f071" data-class="fa fa-warning" class="fa fa-warning"></li>
+
+            <!--Arrow icons-->
+            <li data-code="f0ab" data-class="fa fa-arrow-circle-down" class="fa fa-arrow-circle-down"></li>
+            <li data-code="f0a8" data-class="fa fa-arrow-circle-left" class="fa fa-arrow-circle-left"></li>
+            <li data-code="f01a" data-class="fa fa-arrow-circle-o-down" class="fa fa-arrow-circle-o-down"></li>
+            <li data-code="f190" data-class="fa fa-arrow-circle-o-left" class="fa fa-arrow-circle-o-left"></li>
+            <li data-code="f18e" data-class="fa fa-arrow-circle-o-right" class="fa fa-arrow-circle-o-right"></li>
+            <li data-code="f01b" data-class="fa fa-arrow-circle-o-up" class="fa fa-arrow-circle-o-up"></li>
+            <li data-code="f0a9" data-class="fa fa-arrow-circle-right" class="fa fa-arrow-circle-right"></li>
+            <li data-code="f0aa" data-class="fa fa-arrow-circle-up" class="fa fa-arrow-circle-up"></li>
+            <li data-code="f063" data-class="fa fa-arrow-down" class="fa fa-arrow-down"></li>
+            <li data-code="f060" data-class="fa fa-arrow-left" class="fa fa-arrow-left"></li>
+            <li data-code="f061" data-class="fa fa-arrow-right" class="fa fa-arrow-right"></li>
+            <li data-code="f062" data-class="fa fa-arrow-up" class="fa fa-arrow-up"></li>
+            <li data-code="f047" data-class="fa fa-arrows" class="fa fa-arrows"></li>
+            <li data-code="f0b2" data-class="fa fa-arrows-alt" class="fa fa-arrows-alt"></li>
+            <li data-code="f07e" data-class="fa fa-arrows-h" class="fa fa-arrows-h"></li>
+            <li data-code="f07d" data-class="fa fa-arrows-v" class="fa fa-arrows-v"></li>
+            <li data-code="f111" data-class="fa fa-circle" class="fa fa-circle"></li>
+            <li data-code="f10c" data-class="fa fa-circle-o" class="fa fa-circle-o"></li>
+            <li data-code="f1ce" data-class="fa fa-circle-o-notch" class="fa fa-circle-o-notch"></li>
+            <li data-code="f1db" data-class="fa fa-circle-thin" class="fa fa-circle-thin"></li>
+            <li data-code="f058" data-class="fa fa-check-circle" class="fa fa-check-circle"></li>
+            <li data-code="f05d" data-class="fa fa-check-circle-o" class="fa fa-check-circle-o"></li>
+            <li data-code="f14a" data-class="fa fa-check-square" class="fa fa-check-square"></li>
+            <li data-code="f046" data-class="fa fa-check-square-o" class="fa fa-check-square-o"></li>
+            <li data-code="f13a" data-class="fa fa-chevron-circle-down" class="fa fa-chevron-circle-down"></li>
+            <li data-code="f137" data-class="fa fa-chevron-circle-left" class="fa fa-chevron-circle-left"></li>
+            <li data-code="f138" data-class="fa fa-chevron-circle-right" class="fa fa-chevron-circle-right"></li>
+            <li data-code="f139" data-class="fa fa-chevron-circle-up" class="fa fa-chevron-circle-up"></li>
+            <li data-code="f078" data-class="fa fa-chevron-down" class="fa fa-chevron-down"></li>
+            <li data-code="f053" data-class="fa fa-chevron-left" class="fa fa-chevron-left"></li>
+            <li data-code="f054" data-class="fa fa-chevron-right" class="fa fa-chevron-right"></li>
+            <li data-code="f077" data-class="fa fa-chevron-up" class="fa fa-chevron-up"></li>
+            <li data-code="f19e" data-class="fa fa-yahoo" class="fa fa-yahoo"></li>
+            <li data-code="f090" data-class="fa fa-sign-in" class="fa fa-sign-in"></li>
+            <li data-code="f08b" data-class="fa fa-sign-out" class="fa fa-sign-out"></li>
+             <li data-code="f014" data-class="fa fa-trash-o" class="fa fa-trash-o"></li>
+             <li data-code="f1bb" data-class="fa fa-tree" class="fa fa-tree"></li>
+            <!--Currency icons-->
+            <li data-code="f155" data-class="fa fa-usd" class="fa fa-usd"></li>
+            <li data-code="f155" data-class="fa fa-dollar" class="fa fa-dollar"></li>
+            <li data-code="f153" data-class="fa fa-eur" class="fa fa-eur"></li>
+            <li data-code="f153" data-class="fa fa-euro" class="fa fa-euro"></li>
+            <li data-code="f154" data-class="fa fa-gbp" class="fa fa-gbp"></li>
+            <li data-code="f195" data-class="fa fa-try" class="fa fa-try"></li>
+            <li data-code="f158" data-class="fa fa-rub" class="fa fa-rub"></li>
+            <li data-code="f15a" data-class="fa fa-btc" class="fa fa-btc"></li>
+            <li data-code="f0d6" data-class="fa fa-money" class="fa fa-money"></li>
+            <li data-code="f15a" data-class="fa fa-bitcoin" class="fa fa-bitcoin"></li>
+            <li data-code="f159" data-class="fa fa-krw" class="fa fa-krw"></li>
+            <li data-code="f157" data-class="fa fa-jpy" class="fa fa-jpy"></li>
+            <!--Business icons-->
+            <li data-code="f121" data-class="fa fa-code" class="fa fa-code"></li>
+            <li data-code="f0e0" data-class="fa fa-envelope" class="fa fa-envelope"></li>
+            <li data-code="f003" data-class="fa fa-envelope-o" class="fa fa-envelope-o"></li>
+            <li data-code="f199" data-class="fa fa-envelope-square" class="fa fa-envelope-square"></li>
+            <li data-code="f041" data-class="fa fa-map-marker" class="fa fa-map-marker"></li>
+
+            <!---Payment Icons-->
+            <li data-code="f09d" data-class="fa fa-credit-card" class="fa fa-credit-card"></li>
+          </ul>
+        </div>
+
+        <div id="triggericoncolorlabel" wix-ctrl="SectionDividerLabeled" wix-options="{label: 'Trigger Icon color', infoText:'Choose a color to trigger icon'}"></div>
+        <div id="triggericoncolor" wix-param="triggericoncolor" wix-ctrl="ColorPickerInput" wix-options="{startWithColor: 'color-5', title: 'Trigger Icon color'}"></div>
+        <hr class="divider-long"/>
+        <div id="iconsize" class="iconsize" wix-param="iconsize" wix-ctrl="Slider" wix-options="{title: 'Trigger Icon Size', defaultValue:40, units: 'px', max : 65}"></div>
+      </div>
+
+      <div id="triggertextcontainer">
+        <div id="cooltip_text_label" wix-ctrl="SectionDividerLabeled"  wix-options="{label: 'Cooltip/Trigger Text', infoText:'Cooltip text is revealed'}"></div>
+        <div id="trigger-heading"  wix-ctrl="Input"  wix-options="{ title: 'Trigger Text', placeholder: 'Trigger Text', defaultText: '', maxLength: 40, invalidMessage: 'Max 40 characters' ,infoText:'you can put maximum 40 characters in trigger heading input'}" ></div>
+        <hr class="divider-long"/>
+        <div id="tooltip-heading"  wix-ctrl="Input"  wix-options="{ title: 'Cooltip Text',isMultiLine:true, placeholder: 'Cooltip Text', defaultText: '', maxLength: 100, invalidMessage: 'Max 100 characters',infoText:'you can put maximum 100 characters in tooltip text input' }" ></div>
+      </div>
+
+    </div>
+
+
+
+
+  <script>
+    $(document).ready(function () {
+      $('.drill_accordion > ul .drillaccordionlink').on('click', function () {
+
+        $('.start_end_view').addClass('display-none');
+        //$("#settings_triggerlink_container").hide();
+        $("#trans_color_link").hide();
+        $('#end-image-show').hide();//new-ui
+        $('#show-hide-font').hide();//new-ui
+        $('#show-hide-text').hide();//new-ui
+        $('#layout-options').hide();//new-ui
+        $('#colour-filter-start').hide();//new-ui
+        $('#colour-filters-end').hide();//new-ui
+        $('videocontainer').hide();//new-ui
+        //$('end-mobile').hide();//new-ui
+
+
+
+        if (settings.transitiontype == "cooltips") {
+          $(".images_filter").hide();
+        }
+
+        // $('.images_filter').hide();
+        // $('#cooltips_color_link').hide();
+
+        var drill_id = $(this).data('main');
+        if (!drill_id) {
+          return false;
+        }
+        var drill_item = $(this).data('item');
+        $('#' + drill_id + ' > ul li.drillaccordionlink').hide();
+        $('#' + drill_id + ' > ul li.drillaccordionback').show();
+        $('#' + drill_id + ' > .drillaccordioncontent').hide();
+        $('#' + drill_id + ' > .drillaccordioncontent.item_' + drill_item).show();
+
+        /****Aritisian pack******/
+        if (transition_type == 'ap1') {
+          setTimeout(function () {
+            artisianPack();
+          }, 500);
+        }
+
+        /****Atomic pack ******/
+        if (transition_type == 'codrops') {
+          atomicPack();
+        }
+
+        /****Transition pack ******/
+        if (transition_type == 'codyhouse') {
+          transitionPack();
+        }
+        /****Transition pack ******/
+
+        /****Trad pack ******/
+        if (transition_type == 'trad') {
+          tradPack();
+        }
+        /****Trad pack ******/
+
+        if (drill_item != 2 && drill_item != 5 && drill_item != 8) {
+          $('#' + drill_id + ' > .drillaccordionshowactive').show();
+          $('#image1').show();
+        }
+
+        /****Trad pack ******/
+        if (transition_type == 'cooltips') {
+          // $(".start_end_toggle_level").show();
+          if (drill_item == 1 || drill_item == 10) {
+            $("#start-end-toggle").hide();
+            $(".start_end_toggle_level").hide();
+          }
+        }
+
+      });
+      globaldesignSettings(settings.transitiontype);
+    });
+
+    function tradPack() {
+      $("#image1").show();
+    }
+
+    function reload_drill(drill_id) {
+      $('.start_end_view').removeClass('display-none');
+      $('#' + drill_id + ' > ul li.drillaccordionlink').show();
+      $('#' + drill_id + ' > ul li.drillaccordionback').hide();
+      $('#' + drill_id + ' > .drillaccordioncontent').hide();
+      $('#' + drill_id + ' > .drillaccordionshowactive').hide();
+    }
+
+    function artisianPack() {
+      $('.hide-filter-effect label input[value="2"]').parent().click('on',
+        function () {
+          $('.start_end_view').addClass('display-none');
+          $('#image-zoom-on').hide();
+          $('.img-filter-label').hide();
+        });
+      $('.hide-filter-effect label input[value="1"]').parent().click('on',
+        function () {
+          $('.start_end_view').addClass('display-none');
+          $('.img-filter-label').show();
+        });
+    }
+
+    function atomicPack() {
+      $("#image-zoom-on").removeClass('display-none');
+      $(".allowbuttons").show();
+      showAtomic();
+
+      hidesectionAtomic();
+      $('.hide-filter-effect label input[value="1"]').parent().click('on',
+        function () {
+          showAtomic();
+          hidesectionAtomic();
+        });
+      $('.hide-filter-effect label input[value="2"]').parent().click('on',
+        function () {
+          $('#image1').show();
+          $('#overlay-on').show();
+          $('#overlayOffAngleContainer').show();
+          $('.content--intro').show();
+          $(".img-filter-label").show();
+        });
+    }
+
+    function showAtomic(){
+       $('.img-back-color-off').show();
+       $("#text-animation-off").show();
+       $('#textbtn-radius-off').show();
+    }
+
+    function hidesectionAtomic() {
+      $('#overlay-on').hide();
+      $('#overlay-off').hide();
+      $('#overlayOffAngleContainer').hide();
+      $('#image0').hide();
+      $("#image-zoom-off").hide();
+      $(".img-filter-label").hide();
+    }
+
+    function transitionPack() {
+      setTimeout(function () {
+        $("#image0").show();
+        $("#image-zoom-off").show();
+        $('#overlay-off').show();
+        $('.img-filter-label').show();
+        $('#overlayOffAngleContainer').show();
+      }, 1000);
+    }
+
+    function globaldesignSettings(transition_type) {
+
+      /****Transition pack ******/
+      if (transition_type == 'codyhouse') {
+        $("#trans_color_link").show();
+      }
+      $('.hide-filter-effect label input[value="1"]').parent().click('on',
+        function () {
+          $('.start_end_view').addClass('display-none');
+          //$("#settings_triggerlink_container").hide();
+        });
+
+      $('.hide-filter-effect label input[value="2"]').parent().click('on',
+        function () {
+          //$("#settings_triggerlink_container").show();
+        });
+
+      $('.drill_accordion > ul  > li.drillaccordionback > .backlink').on('click', function () {
+        $('.start_end_view').show();
+        $('.start_end_view').removeClass('display-none');
+        if (!drill_id) {
+          return false;
+        }
+        $('#' + drill_id + ' > ul li.drillaccordionlink').show();
+        $('#' + drill_id + ' > ul li.drillaccordionback').hide();
+        $('#' + drill_id + ' > .drillaccordioncontent').hide();
+        $('#' + drill_id + ' > .drillaccordionshowactive').hide();
+      });
+    }
+  </script>
+</div>
