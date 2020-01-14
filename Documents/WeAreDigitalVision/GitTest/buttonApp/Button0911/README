@@ -7,7 +7,7 @@ Clone the app via the command line to a local folder
 Navigate to the local folder
 Follow the instrucions in RolloverDoc.pdf. 
 
-Any changes made can be pushed to github, however this is not set to incremental deployments on AWS due to instability and the ability to roll back deployments to earlier states.
+Any changes made can be pushed to github, however as with the Rollover app this is not set to incremental deployments on AWS due to instability and the ability to roll back deployments to earlier states.
 
 The Buttons app is the wix-env-wix-env-sandbox-buttons1 environment on AWS elastic beanstalk. 
 .elasticbeanstalk/config.yml has the environment information.
