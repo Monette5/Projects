@@ -1,0 +1,16 @@
+Button Magic App:
+
+This app can be used with any app made locally in the wix dev centre, however it is hosted on AWS and in the WADV dev centre as Button Magic. Any uploads to AWS will be reflected in the Button Magic live app. The URL for this app should not be changed within the WADV environment.
+
+To run a local copy of the app: 
+Clone the app via the command line to a local folder
+Navigate to the local folder
+Follow the instrucions in RolloverDoc.pdf. 
+
+Any changes made can be pushed to github, however this is not set to incremental deployments on AWS due to instability and the ability to roll back deployments to earlier states.
+
+The Live app is the wix-env-wix-env-sandbox-buttons1 environment on AWS elastic beanstalk. 
+.elasticbeanstalk/config.yml has the environment information.
+
+To deploy the app: If the elastic beanstalk environment has not been set up in the local environment then at the command prompt in the local folder begin with the 'eb init' command.
+Then the command eb deploy wix-env-sandbox-buttons1 --staged will deploy any changes to the live app.
